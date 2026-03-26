@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/fruitables/clientlibs"/>
+    <filter root="/apps/fruitables/components"/>
+    <filter root="/apps/fruitables/i18n"/>
+</workspaceFilter>

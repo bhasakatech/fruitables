@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/fruitables" mode="merge"/>
+    <filter root="/content/fruitables" mode="merge"/>
+    <filter root="/content/dam/fruitables" mode="merge">
+        <exclude pattern="/content/dam/fruitables(/.*)?"/>
+        <include pattern="/content/dam/fruitables/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/fruitables/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/fruitables" mode="merge"/>
+</workspaceFilter>

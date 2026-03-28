@@ -1,0 +1,9 @@
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.ProductListModel"/>
+
+<ul data-sly-list.item="${model.products}">
+    <li>
+        <a href="/content/fruitables/us/en/product-list.${item.productName}.html">
+            ${item.productName}
+        </a>
+    </li>
+</ul>

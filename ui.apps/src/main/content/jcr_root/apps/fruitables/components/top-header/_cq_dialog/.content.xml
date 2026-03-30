@@ -51,6 +51,7 @@
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                     fieldLabel="Link URL"
                                                     name="./linkUrl"/>
+                                           
                                             </items>
                                         </field>
                                     </policyLinks>

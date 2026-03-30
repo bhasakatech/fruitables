@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:deviceGroups="[mobile/groups/responsive]"
+        cq:lastModified="{Date}2026-03-29T01:03:04.017+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/fruitables/settings/wcm/templates/fruittable-templete"
+        jcr:primaryType="cq:PageContent"
+        sling:resourceType="fruitables/components/fruittables-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="fruitables/components/container"
+            layout="responsiveGrid">
+            <experiencefragment-header
+                jcr:lastModified="{Date}2026-03-29T01:03:04.014+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="fruitables/components/experiencefragment"
+                fragmentVariationPath="/content/experience-fragments/fruitables/us/en/site/Header-Fragment/master"/>
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="fruitables/components/container"
+                editable="{Boolean}true"
+                layout="responsiveGrid"/>
+        </root>
+        <cq:responsive jcr:primaryType="nt:unstructured">
+            <breakpoints jcr:primaryType="nt:unstructured">
+                <phone
+                    jcr:primaryType="nt:unstructured"
+                    title="Smaller Screen"
+                    width="{Long}768"/>
+                <tablet
+                    jcr:primaryType="nt:unstructured"
+                    title="Tablet"
+                    width="{Long}1200"/>
+            </breakpoints>
+        </cq:responsive>
+    </jcr:content>
+</jcr:root>

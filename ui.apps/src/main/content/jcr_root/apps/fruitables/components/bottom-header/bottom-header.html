@@ -1,0 +1,77 @@
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.BottomHeaderModel"/>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.all @ categories='fruitables.header'}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<header class="fruitables-main-header">
+    <div class="fruitables-container">
+
+      
+        <div class="fruitables-logo">
+            <a href="/content/fruitables/us/en/homePage.html">
+                <img data-sly-test="${model.logoImage}" src="${model.logoImage}" alt="Fruitables"/>
+                <span data-sly-test="${!model.logoImage && model.logoText}">
+                    ${model.logoText}
+                </span>
+            </a>
+        </div>
+
+       
+        <nav class="fruitables-nav" id="mobileNav">
+            <ul data-sly-list.item="${model.menu}">
+                <li class="fruitables-nav-item">
+                    <div class="fruitables-menu-row">
+                        <a href="${item.link @ context='html'}">${item.label}</a>
+                        <span class="fruitables-toggle"
+                              data-sly-test="${item.children && item.children.size > 0}"
+                              onclick="toggleSubMenu(this)"><i class="fa-solid fa-angle-down"></i></span>
+                    </div>
+
+                    <ul class="fruitables-dropdown" 
+                        data-sly-test="${item.children && item.children.size > 0}">
+                        <li data-sly-list.child="${item.children}">
+                            <a href="${child.childLink @ context='html'}">${child.childLabel}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+       
+            <div class="fruitables-mobile-icons">
+               <span class="fruitables-search" 
+      onclick="openSearch()" 
+      data-sly-test="${model.enableSearch}">🔍</span>
+                <a href="${model.cartPagePath @ extension='html'}" class="fruitables-cart" data-sly-test="${model.enableCart}">
+                    <i class="fa-solid fa-bag-shopping"></i> <span class="badge">${model.defaultCartCount}</span>
+                </a>
+                <span class="fruitables-user" data-sly-test="${model.enableProfile}">👤</span>
+            </div>
+        </nav>
+
+       
+        <div class="fruitables-icons">
+            <div class="fruitables-icons-group">
+                <span class="fruitables-search" 
+      onclick="openSearch()" 
+      data-sly-test="${model.enableSearch}">🔍</span>
+                <a href="${model.cartPagePath @ extension='html'}" class="fruitables-cart" data-sly-test="${model.enableCart}">
+                   <i class="fa-solid fa-bag-shopping"></i> <span class="badge">${model.defaultCartCount}</span>
+                </a>
+                <span class="fruitables-user" data-sly-test="${model.enableProfile}">👤</span>
+            </div>
+            <span class="fruitables-hamburger" onclick="toggleMenu()">☰</span>
+        </div>
+
+    </div>
+</header>
+
+<div id="header-spacer" class="fruitables-header-spacer"></div>
+<div id="fruitables-search-overlay" class="fruitables-search-overlay">
+    
+    <div class="fruitables-search-box">
+        <input type="text" placeholder=" Search by keyword" />
+        <button>🔍</button>
+    </div>
+
+    <span class="fruitables-search-close" onclick="closeSearch()">✖</span>
+</div>

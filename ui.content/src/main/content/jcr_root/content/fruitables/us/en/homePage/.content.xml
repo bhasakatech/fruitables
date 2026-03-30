@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2026-03-29T01:02:24.844+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/fruitables/settings/wcm/templates/fruittable-templete"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="HomePage"
+        sling:resourceType="fruitables/components/fruittables-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="fruitables/components/container"
+            layout="responsiveGrid">
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="fruitables/components/container"
+                layout="responsiveGrid"/>
+        </root>
+    </jcr:content>
+</jcr:root>

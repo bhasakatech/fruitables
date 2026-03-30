@@ -1,0 +1,607 @@
+.fruitables-header * {
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    
+}
+.fruitables-header{
+    position: sticky;
+}
+
+.fruitables-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;         
+}
+
+.fruitables-topbar-parent{
+background-color:white;
+    padding:0px 100px;
+}
+.fruitables-topbar {
+    background:#81c408;
+    color: #fff;
+    font-size:0.875em;
+    border-radius: 230px 100px;
+    height: 50px;
+    margin: 0;
+    padding: 0 20px; 
+  
+     font-family: "Open Sans", sans-serif;
+}
+
+.fruitables-topbar .fruitables-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.policy-link::after {
+    content: " / ";
+    font-size: 16px;   
+    font-weight: bold;
+}
+
+.fruitables-toggle i{
+      font-size: 16px;
+    text-shadow: 0 0 1px rgba(0,0,0,0.6);
+}
+.fruitables-cart i {
+    font-size: 27px;
+    text-shadow: 0 0 1px rgba(0,0,0,0.6);
+}
+
+.policy-link:last-child::after {
+    content: "";
+}
+.map-icon,
+.email-icon {
+    color:orange;   
+    margin-right: 5px; 
+    font-size: 16px;   
+}
+i:hover{
+     cursor: pointer;
+}
+
+.topbar-left a {
+    color: #fff;
+    margin-left: 2px;
+    text-decoration: none;
+}
+.topbar-left a:hover {
+   
+    color:red;
+}
+
+
+.topbar-right a {
+    color: #fff;
+    margin-left: 5px;
+    text-decoration: none;
+}
+
+.topbar-right a:hover {
+   
+    color:red;
+}
+
+/* =============================================*/
+.fruitables-main-header {
+  background: #fff;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+.fruitables-main-header .fruitables-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 20px;      
+}
+
+/* Logo */
+.fruitables-logo a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+ color: #81c408;
+  font-size: 2.2em;
+    font-weight: 800;
+     font-family: "Open Sans", sans-serif;
+      line-height: 1px
+}
+
+.fruitables-logo img {
+    height: 50px;
+}
+
+.fruitables-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.fruitables-nav > ul {
+    display: flex;
+    gap: 19px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 21px;
+}
+
+.fruitables-nav-item {
+    position: relative;
+}
+
+.fruitables-nav-item > a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 8px 12px;
+    display: inline-block;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.fruitables-nav-item > a:hover {
+    color: #7ac943;
+    background-color: #f8f9fa;
+}
+.fruitables-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    min-width: 200px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    padding: 8px 0;
+    z-index: 999;
+    margin-top: 1px;
+}
+
+.fruitables-dropdown li {
+    padding: 0;
+}
+
+.fruitables-dropdown li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 12px 20px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    margin: 2px 8px;
+}
+.fruitables-dropdown li a:hover {
+    background-color: #7ac943;
+    color: #fff !important;
+    transform: translateX(6px);
+}
+@media (min-width: 981px) {
+    .fruitables-nav-item:hover > .fruitables-dropdown {
+        display: block;
+    }
+}
+
+.fruitables-icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-size: 26px;
+}
+.fruitables-search {
+    font-size: 22px;
+    border:solid 1px #81c408;
+     border-radius: 50%;
+    padding: 2px 3px;
+}
+.fruitables-search:hover{
+background-color:#81c408;
+}
+
+.fruitables-icons-group {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+.fruitables-cart {
+    position: relative;
+}
+.fruitables-cart .badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: #7ac943;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 50%;
+    padding: 3px 6px;
+}
+.fruitables-cart:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: scale(1.2);
+}
+.fruitables-icons span,
+.fruitables-mobile-icons span {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fruitables-icons span:hover,
+.fruitables-mobile-icons span:hover {
+    transform: scale(1.2);
+}
+
+.fruitables-hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+.fruitables-menu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.fruitables-menu-row a {
+    flex: 1;
+    margin-top: 10px;
+}
+.fruitables-toggle {
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px 10px;
+    color: #7ac943;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+        margin-right: 1px;
+    margin-top: 9px;
+}
+.fruitables-nav-item.open .fruitables-toggle {
+    transform: rotate(180deg);
+}
+.fruitables-nav a {
+    text-decoration: none;
+    color: #000;
+    transition: color 0.3s ease;
+}
+.fruitables-nav a:hover {
+    color: #7ac943;
+}
+.fruitables-nav a.active {
+    color: #7ac943;
+    font-weight: 600;
+}
+.fruitables-mobile-icons{
+display:none;
+}
+
+@media(max-width:1200px){
+.fruitables-topbar {
+    background:#81c408;
+    color: #fff;
+    font-size:0.775em;
+    border-radius: 230px 100px;
+    height: 50px;
+    margin: 0;
+    padding: 0 20px; 
+    font-weight:bold;
+}}
+
+@media (max-width: 430px) {
+ .fruitables-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 13px;
+    }
+        .fruitables-toggle {
+        font-size: 18px;
+        cursor: pointer;
+        padding: 5px 10px;
+        color: #7ac943;
+        font-weight: bold;
+        transition: transform .3s ease;
+        margin-right: 32px ;
+    }
+}
+@media (max-width: 960px) {
+    .fruitables-topbar {
+        display: none;
+    }
+    
+    .fruitables-toggle {
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px 10px;
+    color: #7ac943;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+        margin-right: 26px;
+}
+    .fruitables-main-header {
+       position: sticky !important;
+       top: 0;
+       z-index: 9999;
+    }
+    
+    .fruitables-cart i {
+    font-size: 27px;
+    text-shadow: 0 0 1px rgba(0,0,0,0.6);
+        color:#81c408;
+}
+    .fruitables-nav > ul {
+    display: flex;
+    gap: 7px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 21px;
+}
+
+
+    .fruitables-logo a {
+        font-size: 22px;
+    }
+
+    .fruitables-icons-group {
+        display: none;
+    }
+
+    .fruitables-hamburger {
+        display: block;
+       
+    }
+    
+    
+    .fruitables-hamburger {
+    color: white; /* default */
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+.fruitables-hamburger:hover {
+    color: green;
+}
+
+/* Clicked (active) */
+.fruitables-hamburger.active {
+    color: white;  /* 👈 your desired color */
+}
+    .fruitables-nav {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        display: none;
+        flex-direction: column;
+     
+        z-index: 999;
+    }
+    
+   .fruitables-container {
+    position: fixed;
+    top: 0;
+    width: 95%;
+    background-color: black;
+}
+    
+    .fruitables-main-header .fruitables-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;      
+}
+
+    .fruitables-nav.active {
+        display: flex;
+    }
+
+    .fruitables-nav > ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .fruitables-nav-item {
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+
+    .fruitables-nav-item > a {
+        display: block;
+        padding: 12px 15px;
+        width: 100%;
+    }
+
+    /* Mobile Dropdown */
+    .fruitables-dropdown {
+        position: static;
+        box-shadow: none;
+        background: #f9f9f9;
+        padding-left: 20px;
+        margin: 0;
+    }
+
+    .fruitables-dropdown li a {
+        padding: 12px 20px;
+        border-radius: 0;
+        margin: 0;
+    }
+    .fruitables-nav-item.open > .fruitables-dropdown {
+        display: block;
+    }
+    .fruitables-mobile-icons {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        padding: 15px 0;
+        border-top: 1px solid #eee;
+    }
+   .fruitables-search {
+        border: none;         
+        border-radius: 0;      
+        padding: 0;            
+        background: none;     
+    }
+
+    .fruitables-mobile-icons span {
+        font-size: 20px;
+    }
+}
+.fruitables-search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(3px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
+}
+
+/* Active state */
+.fruitables-search-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Search box */
+.fruitables-search-box {
+    display: flex;
+    width: 60%;
+    max-width: 800px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+}
+
+/* Input */
+.fruitables-search-box input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+}
+
+/* Button */
+.fruitables-search-box button {
+    padding: 0 20px;
+    border: none;
+    background: #7ac943;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Close button */
+.fruitables-search-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+
+    .fruitables-search-box {
+        width: 90%;
+        flex-direction: row;
+    }
+
+    .fruitables-search-box input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .fruitables-search-box button {
+        padding: 0 15px;
+        font-size: 16px;
+    }
+
+    .fruitables-search-close {
+        top: 15px;
+        right: 20px;
+        font-size: 20px;
+    }
+}
+
+/* Desktop fixes */
+@media (min-width: 981px) {
+    .fruitables-menu-row {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .fruitables-toggle {
+        pointer-events: none;
+        font-size: 12px;
+        
+    }
+}
+
+
+.fruitables-main-header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+.top-header,
+.bottom-header {
+    float: none !important;
+    width: 100%;
+}
+
+
+.header-wrapper{
+	position:fixed;
+    top:0;
+    width:100%;
+    transition: top 0.5s ease-in-out;
+}
+
+@media (max-width: 430px) {
+ .fruitables-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 13px;
+    }
+        .fruitables-toggle {
+        font-size: 18px;
+        cursor: pointer;
+        padding: 5px 10px;
+        color: #7ac943;
+        font-weight: bold;
+        transition: transform .3s ease;
+        margin-right: 32px;
+    }
+}
+
+.scrolled{
+ 	top: -55px;
+}

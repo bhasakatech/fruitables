@@ -1,0 +1,27 @@
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.TopHeaderModel"/>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.css @ categories='fruitables.header'}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<div class="fruitables-header">
+<div class="fruitables-topbar-parent">
+    <div class="fruitables-topbar">
+        <div class="fruitables-container">
+            <div class="topbar-left">
+               
+    <a href="https://www.google.com/maps/search/?api=1&query=${model.address @ context='uri'}">
+       <i class="fas fa-map-marker-alt map-icon"></i>  ${model.address}
+    </a>
+                &nbsp;&nbsp;  <a href="mailto:${model.email}"><i class="fas fa-envelope email-icon"></i>${model.email}</a>
+            </div>
+            <div class="topbar-right">
+                <sly data-sly-list.link="${model.policyLinks}">
+                    <a href="${link.linkUrl @ context='html'}" class="policy-link">
+            ${link.linkText}
+        </a>
+                </sly>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

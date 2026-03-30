@@ -1,0 +1,187 @@
+/* FONT */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* CONTAINER */
+.promo-container {
+    padding: 30px 20px;
+    background-color: #f8f9fa;
+}
+
+/* ROW */
+.promo-row {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center; /* center cards */
+}
+
+/* CARD */
+.promo-card {
+    flex: 0 0 calc(30% - 20px);
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #fff;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+/* ✅ DYNAMIC BORDER COLORS */
+.promo-card.orange {
+    border: 1px solid #f4a623;
+}
+
+.promo-card.dark {
+    border: 1px solid #4e5d5c;
+}
+
+.promo-card.green {
+    border: 1px solid #7ac142;
+}
+
+/* HOVER */
+.promo-card:hover {
+    transform: translateY(-8px);
+}
+
+/* IMAGE */
+.promo-image {
+    width: 100%;
+    padding: 0px;
+}
+
+.promo-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* BOTTOM STRIP */
+.promo-bottom {
+    height: 120px;
+}
+
+.promo-bottom.orange {
+    background-color: #f4a623;
+}
+
+.promo-bottom.dark {
+    background-color: #4e5d5c;
+}
+
+.promo-bottom.green {
+    background-color: #7ac142;
+}
+
+/* OVERLAY */
+.promo-overlay {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    padding:12px 22px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 220px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* OVERLAY COLORS */
+.promo-overlay.green {
+    background-color: #7ac142;
+}
+
+.promo-overlay.white {
+    background-color: #ffffff;
+}
+
+.promo-overlay.orange {
+    background-color: #f4a623;
+}
+
+/* TEXT */
+.subtitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-family: "Raleway", sans-serif;
+}
+
+.offer {
+    font-size: calc(1.3rem + 0.6vw);
+    font-weight: 600;
+    line-height: 1px;
+    color:#45595b; /* black text */
+}
+
+/* TEXT COLORS BASED ON OVERLAY */
+.promo-overlay.green .subtitle,
+.promo-overlay.orange .subtitle {
+    color: #fff;
+}
+
+.promo-overlay.white .subtitle {
+    color: #7ac142;
+}
+
+/* ================= RESPONSIVE ================= */
+/* TABLET = 2 */
+@media (max-width: 1024px) {
+    .promo-card {
+        flex: 0 0 calc(45% - 20px);
+    }
+    .promo-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+	}
+
+    /* ✅ FIX OVERLAY SIZE */
+    .promo-overlay {
+       top: 72%;
+        min-width: 180px;
+        padding: 7px 8px;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .offer {
+        font-size: 1.2rem;
+    }
+}
+
+/* MOBILE = 1 */
+@media (max-width: 600px) {
+    .promo-card {
+        flex: 0 0 100%;
+    }
+
+    /* ✅ FIX OVERLAY SIZE */
+    .promo-overlay {
+        top: 70%;
+        min-width: 150px;
+        padding: 12px 15px;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .offer {
+        font-size: 1rem;
+    }
+
+    .promo-image {
+        padding: 15px;
+    }
+}

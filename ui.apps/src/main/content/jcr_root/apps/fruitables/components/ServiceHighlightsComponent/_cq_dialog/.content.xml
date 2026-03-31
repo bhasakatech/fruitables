@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
-    jcr:primaryType="nt:unstructured"
-    jcr:title="Service Highlights Component Dialog"
-    sling:resourceType="cq/gui/components/authoring/dialog">
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Service Highlights Component"
+          sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -17,28 +20,41 @@
                     sling:resourceType="granite/ui/components/coral/foundation/container"
                     name="./services">
                     <items jcr:primaryType="nt:unstructured">
-                        <icon
+                        <accordion
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                            fieldLabel="Icon"
-                            name="./icon"
-                            rootPath="/content/dam"/>
-                        <title
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Title"
-                            name="./title"
-                            required="{Boolean}true"/>
-                        <subtitle
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Subtitle"
-                            name="./subtitle"/>
-                        <color
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
-                            fieldLabel="Background Color"
-                            name="./color"/>
+                            sling:resourceType="granite/ui/components/coral/foundation/accordion">
+                            <items jcr:primaryType="nt:unstructured">
+                                <service
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Service"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <icon
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Icon"
+                                            name="./icon"
+                                            rootPath="/content/dam/fruitables"/>
+                                        <title
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Title"
+                                            name="./title"
+                                            required="{Boolean}true"/>
+                                        <subtitle
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Subtitle"
+                                            name="./subtitle"/>
+                                        <color
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                            fieldLabel="Background Color"
+                                            name="./color"/>
+                                    </items>
+                                </service>
+                            </items>
+                        </accordion>
                     </items>
                 </field>
             </services>

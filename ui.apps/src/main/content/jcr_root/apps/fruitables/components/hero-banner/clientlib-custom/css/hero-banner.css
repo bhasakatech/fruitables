@@ -1,0 +1,190 @@
+body,html {
+    margin: -10px !important;
+}
+.hero-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    background-size: cover;
+    gap: 90px;
+    width: 100%;
+}
+
+.hero-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 80px;
+    background-color: #ffffff;
+}
+
+.hero-left {
+    width: 50%;
+}
+
+.subtitle {
+    color: #ffb524 ;
+    font-size: 24px;
+    font-family: "Raleway", sans-serif;
+}
+
+.title {
+    color: #81c408;
+    font-size: 64px;
+    font-weight: bold;
+    font-family: "Raleway", sans-serif;
+}
+
+
+.hero-right {
+    width: 45%;
+}
+
+
+
+.slide img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+    position: relative;
+}
+
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+
+    background: rgba(255, 165, 0, 0.5);;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+
+
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+    background: rgba(122, 201, 67, 0.6); 
+
+    color: white;
+    font-size: 20px;
+
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s;
+}
+
+
+.prev {
+    left: 15px;
+}
+
+.next {
+    right: 15px;
+}
+
+
+@media (max-width: 1024px) {
+
+    .hero-banner {
+        padding: 30px 40px;
+        gap: 40px;
+    }
+
+    .title {
+        font-size: 48px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+    }
+
+    
+
+    .hero-right {
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .hero-banner {
+        flex-direction: column;
+        align-items: center;
+
+        padding: 30px 16px;
+        gap: 25px;
+
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .hero-left,
+    .hero-right {
+        width: 100%;
+    }
+
+    .carousel {
+        width: 100%;
+    }
+
+    .slide img {
+        width: 100%;
+        display: block;
+    }
+
+    
+    .hero-text {
+        text-align: center;
+    }
+
+    .title {
+        font-size: 34px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    
+
+}

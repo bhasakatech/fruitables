@@ -1,0 +1,18 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.all @ categories='fruitables.ServiceHighlightsComponent'}"/>
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.ServiceHighlights"/>
+
+<div class="cards_whole">
+    <div class="each_service">
+        <sly data-sly-list.service="${model.servicesList}">
+            <div class="service_item">
+                <div class="service_icon"
+                     style="--icon-bg:${service.color @ context='styleString'};background-color:${service.color @ context='styleString'}">
+                    <img src="${service.icon @ context='uri'}"/>
+                </div>
+                <h3 id="heading">${service.title}</h3>
+                <p id="sub-heading">${service.subtitle}</p>
+            </div>
+        </sly>
+    </div>
+</div>

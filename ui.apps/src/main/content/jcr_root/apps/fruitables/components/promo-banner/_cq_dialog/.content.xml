@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="Properties"
+    jcr:title="Promo Banner"
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
@@ -17,62 +17,75 @@
                     sling:resourceType="granite/ui/components/coral/foundation/container"
                     name="./cards">
                     <items jcr:primaryType="nt:unstructured">
-                        <image
+                        <accordion
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                            fieldLabel="Image"
-                            name="./image"
-                            rootPath="/content/dam"/>
-                        <subtitle
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Subtitle"
-                            name="./subtitle"/>
-                        <offer
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Offer Text"
-                            name="./offer"/>
-                        <overlayStyle
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                            fieldLabel="Overlay Style"
-                            name="./overlayStyle">
+                            sling:resourceType="granite/ui/components/coral/foundation/accordion">
                             <items jcr:primaryType="nt:unstructured">
-                                <green
+                                <card
                                     jcr:primaryType="nt:unstructured"
-                                    text="Green"
-                                    value="green"/>
-                                <white
-                                    jcr:primaryType="nt:unstructured"
-                                    text="White"
-                                    value="white"/>
-                                <orange
-                                    jcr:primaryType="nt:unstructured"
-                                    text="Orange"
-                                    value="orange"/>
+                                    jcr:title="Promo Card"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <image
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Image"
+                                            name="./image"
+                                            rootPath="/content/dam"/>
+                                        <subtitle
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Subtitle"
+                                            name="./subtitle"/>
+                                        <offer
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Offer Text"
+                                            name="./offer"/>
+                                        <overlayStyle
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Overlay Style"
+                                            name="./overlayStyle">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <green
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Green"
+                                                    value="green"/>
+                                                <white
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="White"
+                                                    value="white"/>
+                                                <orange
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Orange"
+                                                    value="orange"/>
+                                            </items>
+                                        </overlayStyle>
+                                        <bgColor
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Bottom Color"
+                                            name="./bgColor">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <orange
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Orange"
+                                                    value="orange"/>
+                                                <dark
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Dark"
+                                                    value="dark"/>
+                                                <green
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Green"
+                                                    value="green"/>
+                                            </items>
+                                        </bgColor>
+                                    </items>
+                                </card>
                             </items>
-                        </overlayStyle>
-                        <bgColor
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                            fieldLabel="Bottom Color"
-                            name="./bgColor">
-                            <items jcr:primaryType="nt:unstructured">
-                                <orange
-                                    jcr:primaryType="nt:unstructured"
-                                    text="Orange"
-                                    value="orange"/>
-                                <dark
-                                    jcr:primaryType="nt:unstructured"
-                                    text="Dark"
-                                    value="dark"/>
-                                <green
-                                    jcr:primaryType="nt:unstructured"
-                                    text="Green"
-                                    value="green"/>
-                            </items>
-                        </bgColor>
+                        </accordion>
                     </items>
                 </field>
             </cards>

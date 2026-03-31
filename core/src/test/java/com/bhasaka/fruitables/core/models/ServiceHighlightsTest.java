@@ -1,13 +1,16 @@
 package com.bhasaka.fruitables.core.models;
 
-import io.wcm.testing.mock.aem.junit5.AemContext;
-import io.wcm.testing.mock.aem.junit5.AemContextExtension;
+import java.util.List;
+
 import org.apache.sling.api.resource.Resource;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+
+import io.wcm.testing.mock.aem.junit5.AemContext;
+import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 @ExtendWith(AemContextExtension.class)
 class ServiceHighlightsTest {
@@ -38,4 +41,6 @@ class ServiceHighlightsTest {
         assertEquals("Subtitle 1", list.get(0).getSubtitle());
         assertEquals("#ff0000", list.get(0).getColor());
     }
+
+
 }

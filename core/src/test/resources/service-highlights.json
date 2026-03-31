@@ -1,0 +1,36 @@
+{
+  "validComponent": {
+    "services": {
+      "item0": {
+        "icon": "/content/dam/icon1.png",
+        "title": "Service 1",
+        "subtitle": "Subtitle 1",
+        "color": "#ff0000"
+      },
+      "item1": {
+        "icon": "/content/dam/icon2.png",
+        "title": "Service 2",
+        "subtitle": "Subtitle 2",
+        "color": "#00ff00"
+      }
+    }
+  },
+
+  "nullValuesComponent": {
+    "services": {
+      "item0": {
+        "title": ""
+      }
+    }
+  },
+
+  "noServicesComponent": {},
+
+  "badComponent": {
+    "services": {
+      "item0": {
+        "sling:resourceType": "invalid/type"
+      }
+    }
+  }
+}

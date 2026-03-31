@@ -1,0 +1,14 @@
+{
+  "label": "Shop",
+  "link": "/shop",
+  "children": {
+    "child1": {
+      "childLabel": "Fruits",
+      "childLink": "/shop/fruits"
+    },
+    "child2": {
+      "childLabel": "Vegetables",
+      "childLink": "/shop/vegetables"
+    }
+  }
+}

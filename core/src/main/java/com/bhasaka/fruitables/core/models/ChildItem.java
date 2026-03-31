@@ -20,7 +20,6 @@ public class ChildItem {
     public String getChildLabel() {
         return childLabel;
     }
-
     public String getChildLink() {
         return childLink;
     }

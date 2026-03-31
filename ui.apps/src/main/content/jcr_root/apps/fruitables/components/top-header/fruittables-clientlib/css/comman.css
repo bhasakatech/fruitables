@@ -8,11 +8,9 @@
     margin: 0 auto;
     padding: 0 20px;
 }
-
 i:hover {
     cursor: pointer;
 }
-
 /* Scroll hide effect */
 .header-wrapper {
     position: fixed;
@@ -21,7 +19,6 @@ i:hover {
     transition: top 0.5s ease-in-out;
     z-index: 10001;
 }
-
 .scrolled {
     top: -55px;
 }

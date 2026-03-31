@@ -11,7 +11,6 @@ import java.util.List;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class BottomHeaderModel {
-
     // Logo
     @ValueMapValue
     private String logoText;

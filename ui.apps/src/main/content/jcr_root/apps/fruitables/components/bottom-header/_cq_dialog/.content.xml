@@ -30,7 +30,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         fieldLabel="Logo Text (Fallback)"
                                         name="./logoText"
-                                        value="Fruitables"/>
+                                        value="Fruitables" />
                                 </items>
                             </column>
                         </items>

@@ -6,7 +6,6 @@ function toggleMenu() {
     hamburger.classList.toggle("active"); // 👈 important
     
 }
-
 function toggleSubMenu(el) {
 
     const parent = el.closest(".fruitables-nav-item");

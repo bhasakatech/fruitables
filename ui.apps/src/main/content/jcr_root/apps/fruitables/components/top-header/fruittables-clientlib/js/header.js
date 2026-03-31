@@ -10,8 +10,6 @@ function toggleMenu() {
 function toggleSubMenu(el) {
 
     const parent = el.closest(".fruitables-nav-item");
-
-
     if (parent.classList.contains("open")) {
         parent.classList.remove("open");
         return; // 👈 IMPORTANT (stop here)

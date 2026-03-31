@@ -7,7 +7,6 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PolicyLink {
-
     @ValueMapValue private String linkText;
     @ValueMapValue private String linkUrl;
 

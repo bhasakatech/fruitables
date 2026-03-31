@@ -20,7 +20,7 @@ public class MenuItem {
     @ValueMapValue
     private String link;
 
-    // IMPORTANT: must match "./children"
+   
     @ChildResource(name = "children")
     private List<ChildItem> children;
 

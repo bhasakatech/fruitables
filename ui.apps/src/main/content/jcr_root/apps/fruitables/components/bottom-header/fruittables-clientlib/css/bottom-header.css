@@ -3,6 +3,9 @@
    Clean & Minimized for Bottom Header + Navigation + Search Overlay
    Media Queries: Desktop (default) | Tablet | Mobile
 ============================================= */
+body,html{
+    margin:-8px;
+}
 
 .fruitables-main-header {
     background: #fff;

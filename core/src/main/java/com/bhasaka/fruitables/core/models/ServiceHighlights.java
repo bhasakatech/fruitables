@@ -4,28 +4,24 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.*;
 import org.apache.sling.models.annotations.injectorspecific.*;
-
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
-@Model(adaptables = Resource.class)
+@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ServiceHighlights {
 
     @ChildResource(name = "services")
     private Resource servicesResource;
-
 
     private List<ServiceItem> servicesList;
 
     @PostConstruct
     protected void init() {
         servicesList = new ArrayList<>();
-
         if (servicesResource == null) {
             return;
         }
-
         for (Resource child : servicesResource.getChildren()) {
             ServiceItem item = child.adaptTo(ServiceItem.class);
             if (item != null) {
@@ -38,7 +34,7 @@ public class ServiceHighlights {
         return servicesList;
     }
 
-    @Model(adaptables = Resource.class)
+    @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
     public static class ServiceItem {
 
         @ValueMapValue

@@ -41,17 +41,35 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/container"
                                             name="./policyLinks">
                                             <items jcr:primaryType="nt:unstructured">
-                                                <linkText
+                                                <accordion
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldLabel="Link Text"
-                                                    name="./linkText"/>
-                                                <linkUrl
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldLabel="Link URL"
-                                                    name="./linkUrl"/>
-                                           
+                                                    sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                                    margin="{Boolean}false"
+                                                    multiple="{Boolean}true"
+                                                    variant="quiet">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <policyItem
+                                                            jcr:primaryType="nt:unstructured"
+                                                            jcr:title="Policy Link"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <linkText
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldLabel="Link Text"
+                                                                    name="./linkText"/>
+                                                                <linkUrl
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                    fieldLabel="Link URL"
+                                                                    name="./linkUrl"/>
+                                                            </items>
+                                                            <parentConfig
+                                                                jcr:primaryType="nt:unstructured"
+                                                                active="{Boolean}true"/>
+                                                        </policyItem>
+                                                    </items>
+                                                </accordion>
                                             </items>
                                         </field>
                                     </policyLinks>

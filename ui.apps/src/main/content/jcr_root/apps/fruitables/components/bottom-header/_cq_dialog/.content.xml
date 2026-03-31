@@ -50,39 +50,71 @@
                                     sling:resourceType="granite/ui/components/coral/foundation/container"
                                     name="./menu">
                                     <items jcr:primaryType="nt:unstructured">
-                                        <label
+                                        <accordion
                                             jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                            fieldLabel="Menu Label"
-                                            name="./label"/>
-                                        <link
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                            fieldLabel="Menu Link"
-                                            name="./link"/>
-                                        <children
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                            composite="{Boolean}true"
-                                            fieldLabel="Dropdown Items">
-                                            <field
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                name="./children">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <childLabel
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        fieldLabel="Dropdown Label"
-                                                        name="./childLabel"/>
-                                                    <childLink
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                        fieldLabel="Dropdown Link"
-                                                        name="./childLink"/>
-                                                </items>
-                                            </field>
-                                        </children>
+                                            sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                            margin="{Boolean}false"
+                                            multiple="{Boolean}true"
+                                            variant="quiet">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <navItem
+                                                    jcr:primaryType="nt:unstructured"
+                                                    jcr:title="Navigation Item"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <label
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Menu Label"
+                                                            name="./label"/>
+                                                        <link
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                            fieldLabel="Menu Link"
+                                                            name="./link"/>
+                                                        <children
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                            composite="{Boolean}true"
+                                                            fieldLabel="Dropdown Items">
+                                                            <field
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                name="./children">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <accordion
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                                                        margin="{Boolean}false"
+                                                                        multiple="{Boolean}true"
+                                                                        variant="quiet">
+                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                            <dropdownItem
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                jcr:title="Dropdown Item"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                <items jcr:primaryType="nt:unstructured">
+                                                                                    <childLabel
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="Dropdown Label"
+                                                                                        name="./childLabel"/>
+                                                                                    <childLink
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                        fieldLabel="Dropdown Link"
+                                                                                        name="./childLink"/>
+                                                                                </items>
+                                                                            </dropdownItem>
+                                                                        </items>
+                                                                    </accordion>
+                                                                </items>
+                                                            </field>
+                                                        </children>
+                                                    </items>
+                                                </navItem>
+                                            </items>
+                                        </accordion>
                                     </items>
                                 </field>
                             </menu>

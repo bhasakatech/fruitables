@@ -1,0 +1,32 @@
+{
+  "logoText": "Fruitables",
+  "logoImage": "/content/dam/logo.png",
+
+  "enableSearch": true,
+  "enableCart": true,
+  "enableProfile": false,
+
+  "cartPagePath": "/content/cart",
+  "defaultCartCount": 5,
+
+  "menu": {
+    "item1": {
+      "label": "Home",
+      "link": "/home"
+    },
+    "item2": {
+      "label": "Shop",
+      "link": "/shop",
+      "children": {
+        "child1": {
+          "childLabel": "Fruits",
+          "childLink": "/shop/fruits"
+        },
+        "child2": {
+          "childLabel": "Vegetables",
+          "childLink": "/shop/vegetables"
+        }
+      }
+    }
+  }
+}

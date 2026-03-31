@@ -1,0 +1,14 @@
+{
+  "address": "Hyderabad, India",
+  "email": "test@example.com",
+  "policyLinks": {
+    "item0": {
+      "linkText": "Privacy Policy",
+      "linkUrl": "/privacy"
+    },
+    "item1": {
+      "linkText": "Terms of Service",
+      "linkUrl": "/terms"
+    }
+  }
+}

@@ -9,7 +9,6 @@ function handleSearch(event) {
     }
 
     console.log("Search value:", value);
-
     // Future API call here
     return true;
 }

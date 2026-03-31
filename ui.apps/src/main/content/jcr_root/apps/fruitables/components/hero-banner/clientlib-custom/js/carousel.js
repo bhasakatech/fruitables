@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const carousel = document.querySelector(".carousel");
     if (!carousel) return;
-
     const slides = carousel.querySelectorAll(".slide");
     const nextBtn = carousel.querySelector(".next");
     const prevBtn = carousel.querySelector(".prev");
@@ -11,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (slides.length === 0) return;
 
-    // Set first slide active
     slides[currentIndex].classList.add("active");
 
     function showSlide(index) {

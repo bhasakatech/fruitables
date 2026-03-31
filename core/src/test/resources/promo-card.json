@@ -1,0 +1,13 @@
+{
+  "banner": {
+    "cards": {
+      "item0": {
+        "image": "image1.jpg",
+        "subtitle": "Fresh Fruits",
+        "offer": "20% OFF",
+        "overlayStyle": "dark",
+        "bgColor": "#ffffff"
+      }
+    }
+  }
+}

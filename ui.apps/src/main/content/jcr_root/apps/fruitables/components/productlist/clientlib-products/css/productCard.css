@@ -1,3 +1,4 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css");
 .product-container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);

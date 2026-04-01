@@ -43,7 +43,7 @@
                                     fieldLabel="Content Fragment Path"
                                     name="./cfPath"
                                     required="{Boolean}true"
-                                    rootPath="/content/dam"/>
+                                    rootPath="/content/dam/fruitables"/>
                                 <cardStyle
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/form/select"

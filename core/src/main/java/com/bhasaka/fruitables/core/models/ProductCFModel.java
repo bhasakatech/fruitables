@@ -57,12 +57,11 @@ public class ProductCFModel {
             for (int i = 0; i < filled; i++) {
                 stars.add(i);
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             
         }
         return stars;
     }
-
     public List<Integer> getEmptyStars() {
         List<Integer> stars = new ArrayList<>();
         int empty = 5 - getFilledStars().size();

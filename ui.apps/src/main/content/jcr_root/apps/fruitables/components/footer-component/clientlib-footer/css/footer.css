@@ -4,6 +4,8 @@
     font-weight: 600;
     transition: .5s;
     max-width: fit-content;
+    top: 0;
+    right: 0;
 }
 
 .btn-square {

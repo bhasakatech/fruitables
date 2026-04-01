@@ -53,7 +53,7 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                             fieldLabel="Link URL"
                                             name="./iconUrl"
-                                            rootPath="/content/dam"/>
+                                            rootPath="/content/dam/fruitables"/>
                                     </items>
                                 </field>
                             </iconLinks>
@@ -134,7 +134,7 @@
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                         fieldLabel="Image"
                                                                         name="./paymentImage"
-                                                                        rootPath="/content/dam"/>
+                                                                        rootPath="/content/dam/fruitables"/>
                                                                 </items>
                                                             </field>
                                                         </columnLinks>

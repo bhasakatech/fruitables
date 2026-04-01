@@ -1,0 +1,54 @@
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
+    width: 45px;
+    height: 45px;
+
+    background-color: #81c408;
+    border-radius: 50%;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    z-index: 99;
+    border-width: 3px;
+
+    transition: all 0.25 ease;
+}
+
+/*  EXACT ARROW STYLE */
+.arrow-icon {
+    width: 25px;
+    height: 25px;
+
+    fill: none;                 /* IMPORTANT */
+    stroke: black;              /* black arrow */
+    stroke-width: 2.5;          /* 🔼 control thickness */
+    stroke-linecap: round;      /* smooth ends */
+    stroke-linejoin: round;
+}
+
+/* Hover (minimal like real site) */
+.scroll-top:hover {
+    background-color: #94cd2d;
+}
+
+/* Show button */
+.scroll-top.show {
+    display: flex;
+}
+
+
+/* Click effect */
+.scroll-top.clicked {
+    transform: scale(0.9); /* 🔽 press effect */
+}
+
+/* Smooth transition (important) */
+.scroll-top {
+    transition: transform 0.2s ease, background-color 0.25s ease;
+}

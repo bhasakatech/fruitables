@@ -6,19 +6,16 @@
 <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
     <div class="container py-5">
 
-        <!-- ================= TOP SECTION ================= -->
         <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5);">
             <div class="row g-4">
 
-                <!-- Title & Description -->
                 <div class="col-lg-3">
                     <a href="#">
                         <h1 class="text-primary mb-0">${footer.title}</h1>
-                        <p class="text-secondary mb-0">${footer.description}</p>
+                        <p class="text-secondary mb-0">${footer.subTitle}</p>
                     </a>
                 </div>
 
-                <!-- Search / Subscribe -->
                 <div class="col-lg-6">
                     <div class="position-relative mx-auto">
                         <input class="form-control border-0 w-100 py-3 px-4 rounded-pill"
@@ -33,75 +30,54 @@
                     </div>
                 </div>
 
-                <!-- Social Icons -->
                 <div class="col-lg-3">
                     <div class="d-flex justify-content-end pt-3"
                          data-sly-list.icon="${footer.iconLinks}">
-                        
+        
                         <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle"
                            href="${icon.iconUrl}">
                            <img src ="${icon.iconUrl}" alt="Icon">
-                           <!-- icon.iconText == "twitter" ? <i class="fa-brands fa-twitter fa-xs" style="color: rgb(255, 212, 59);"></i>: icon.iconText == "facebook" ? <i class="fa-brands fa-facebook-f fa-xs" style="color: rgb(255, 212, 59);"></i>: icon.iconText == "linkedin" ? <i class="fa-brands fa-linkedin-in fa-xs linkedin" style="color: rgb(255, 212, 59);"></i>: icon.iconText == "instagram" ? <i class="fa-brands fa-instagram fa-xs" style="color: rgb(255, 212, 59);"></i>: null -->
                         </a>
-
                     </div>
                 </div>
-
             </div>
         </div>
 
-
-        <!-- ================= FOOTER COLUMNS ================= -->
         <div class="row g-5" data-sly-list.col="${footer.footerLinks}">
-        	
-
             <div class="col-lg-3 col-md-6">
                 <div class="d-flex flex-column text-start footer-item">
-
-                    <!-- Column Title -->
                     <h4 class="text-light mb-3">${col.columnTitle}</h4>
-
-                    <!-- Column Description -->
                     <p class="mb-4" data-sly-test="${col.columnDescription}">
                         ${col.columnDescription @ context='html'}
                     </p>
 
-                    <!-- Read More Button -->
                     <a data-sly-test="${col.readMoreText}"
                        class="btn border-secondary rounded-pill py-2 px-4 text-primary mb-4"
                        href="${col.readMoreUrl @ context='uri'}">
                         ${col.readMoreText}
                     </a>
 
-                    <!-- Column Links -->
                     <sly data-sly-list.link="${col.columnLinks}">
                         <a class="btn-link"
                            href="${link.columnUrl @ context='uri'}">
                             ${link.columnText}
                         </a>
-                        <img data-sly-test="${link.paymentImage}" src="${link.paymentImage}" alt="Link Icon">
-                     	
+                        <img data-sly-test="${link.paymentImage}" src="${link.paymentImage}" alt="Link Icon">   	
                     </sly>
-                    
-
                 </div>
             </div>
-
         </div>
-        
-
     </div>
-    
 </div>
 
 <div class="container-fluid copyright bg-dark py-4">
     <div class="container">
         <div class="copyrightRow">
             <div>
-                <span class="text-light">© <a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
+                <span class="text-light">${footer.copyrightText @ context='html'}</span>
             </div>
             <div >
-                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                <span class="text-light">${footer.designedByText @ context='html'}</span>
             </div>
         </div>
     </div>

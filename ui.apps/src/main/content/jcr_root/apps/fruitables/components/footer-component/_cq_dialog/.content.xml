@@ -7,12 +7,12 @@
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
-            <tabs
+            <footerTabs
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <tab1
+                    <footerBasic
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Footer basic"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -22,11 +22,11 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="Title"
                                 name="./title"/>
-                            <description
+                            <subTitle
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                fieldLabel="Description"
-                                name="./description"/>
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Subtitle"
+                                name="./subTitle"/>
                             <searchTitle
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -58,8 +58,8 @@
                                 </field>
                             </iconLinks>
                         </items>
-                    </tab1>
-                    <tab2
+                    </footerBasic>
+                    <footerColumns
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Footer Columns"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -94,9 +94,10 @@
                                                             name="./columnTitle"/>
                                                         <columnDescription
                                                             jcr:primaryType="nt:unstructured"
-                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                            sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                                             fieldLabel="Column Description"
-                                                            name="./columnDescription"/>
+                                                            name="./columnDescription"
+                                                            useFixedInlineToolbar="{Boolean}true"/>
                                                         <readMoreText
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -145,26 +146,28 @@
                                 </field>
                             </multifieldaccordion>
                         </items>
-                    </tab2>
-                    <tab3
+                    </footerColumns>
+                    <copyright
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Copyright"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <copyrightText
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                 fieldLabel="Copyright Text"
-                                name="./copyrightText"/>
+                                name="./copyrightText"
+                                useFixedInlineToolbar="{Boolean}true"/>
                             <designedByText
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                 fieldLabel="Designed By Text"
-                                name="./designedByText"/>
+                                name="./designedByText"
+                                useFixedInlineToolbar="{Boolean}true"/>
                         </items>
-                    </tab3>
+                    </copyright>
                 </items>
-            </tabs>
+            </footerTabs>
         </items>
     </content>
 </jcr:root>

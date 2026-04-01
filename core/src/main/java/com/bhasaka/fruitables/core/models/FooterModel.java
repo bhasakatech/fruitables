@@ -1,12 +1,11 @@
 package com.bhasaka.fruitables.core.models;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.*;
 import org.apache.sling.models.annotations.injectorspecific.*;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Model(
         adaptables = Resource.class,
@@ -14,12 +13,11 @@ import java.util.stream.Collectors;
 )
 public class FooterModel {
 
-    /* ================= BASIC FIELDS ================= */
     @ValueMapValue
     private String title;
 
     @ValueMapValue
-    private String description;
+    private String subTitle;
 
     @ValueMapValue
     private String searchTitle;
@@ -27,35 +25,17 @@ public class FooterModel {
     @ValueMapValue
     private String buttonText;
 
-    public String getTitle() {
-        return StringUtils.defaultString(title);
-    }
-
-    public String getDescription() {
-        return StringUtils.defaultString(description);
-    }
-
-    public String getSearchTitle() {
-        return StringUtils.defaultString(searchTitle);
-    }
-
-    public String getButtonText() {
-        return StringUtils.defaultString(buttonText);
-    }
-
-
-    /* ================= ICON LINKS ================= */
     @ChildResource(name = "iconLinks")
-    private List<Resource> iconLinks;
+    private List<IconLink> iconLinks;
+        
+    @ChildResource(name = "footerLinks")
+    private List<FooterColumn> footerLinks;
 
-    public List<IconLink> getIconLinks() {
-        if (iconLinks == null) {
-            return Collections.emptyList();
-        }
-        return iconLinks.stream()
-                .map(res -> res.adaptTo(IconLink.class))
-                .collect(Collectors.toList());
-    }
+    @ValueMapValue
+    private String copyrightText;
+
+    @ValueMapValue
+    private String designedByText;
 
     @Model(adaptables = Resource.class,defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
     public static class IconLink {
@@ -64,22 +44,8 @@ public class FooterModel {
         private String iconUrl;
 
         public String getIconUrl() {
-            return StringUtils.defaultString(iconUrl);
+            return iconUrl;
         }
-    }
-
-
-    /* ================= FOOTER COLUMNS ================= */
-    @ChildResource(name = "footerLinks")
-    private List<Resource> footerLinks;
-
-    public List<FooterColumn> getFooterLinks() {
-        if (footerLinks == null) {
-            return Collections.emptyList();
-        }
-        return footerLinks.stream()
-                .map(res -> res.adaptTo(FooterColumn.class))
-                .collect(Collectors.toList());
     }
 
     @Model(adaptables = Resource.class,defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -98,31 +64,29 @@ public class FooterModel {
         private String readMoreUrl;
 
         @ChildResource(name = "columnLinks")
-        private List<Resource> columnLinks;
-
-        public String getColumnTitle() {
-            return StringUtils.defaultString(columnTitle);
-        }
-
-        public String getColumnDescription() {
-            return StringUtils.defaultString(columnDescription);
-        }
-
-        public String getReadMoreText() {
-            return StringUtils.defaultString(readMoreText);
-        }
-
-        public String getReadMoreUrl() {
-            return StringUtils.defaultString(readMoreUrl);
-        }
+        private List<ColumnLink> columnLinks;
 
         public List<ColumnLink> getColumnLinks() {
             if (columnLinks == null) {
                 return Collections.emptyList();
             }
-            return columnLinks.stream()
-                    .map(res -> res.adaptTo(ColumnLink.class))
-                    .collect(Collectors.toList());
+            return columnLinks;
+        }
+
+        public String getColumnTitle() {
+            return columnTitle;
+        }
+
+        public String getColumnDescription() {
+            return columnDescription;
+        }
+
+        public String getReadMoreText() {
+            return readMoreText;
+        }
+
+        public String getReadMoreUrl() {
+            return readMoreUrl;
         }
     }
 
@@ -137,32 +101,55 @@ public class FooterModel {
 
         @ValueMapValue
         private String paymentImage;
+
         public String getPaymentImage() {
-            return StringUtils.defaultString(paymentImage);
+            return paymentImage;
         }
 
         public String getColumnText() {
-            return StringUtils.defaultString(columnText);
+            return columnText;
         }
 
         public String getColumnUrl() {
-            return StringUtils.defaultString(columnUrl);
+            return columnUrl;
         }
     }
 
+    public List<IconLink> getIconLinks() {
+        if (iconLinks == null) {
+            return Collections.emptyList();
+        }
+        return iconLinks;
+    }
 
-    /* ================= COPYRIGHT ================= */
-    @ValueMapValue
-    private String copyrightText;
+    public List<FooterColumn> getFooterLinks() {
+        if (footerLinks == null) {
+            return Collections.emptyList();
+        }
+        return footerLinks;
+    }
 
-    @ValueMapValue
-    private String designedByText;
+    public String getTitle() {
+        return title;
+    }
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public String getSearchTitle() {
+        return searchTitle;
+    }
+
+    public String getButtonText() {
+        return buttonText;
+    }
 
     public String getCopyrightText() {
-        return StringUtils.defaultString(copyrightText);
+        return copyrightText;
     }
 
     public String getDesignedByText() {
-        return StringUtils.defaultString(designedByText);
+        return designedByText;
     }
 }

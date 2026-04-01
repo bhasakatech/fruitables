@@ -1,0 +1,49 @@
+{
+  "footer": {
+    "title": "Stay Connected",
+    "subTitle": "Fresh fruit deals every day",
+    "searchTitle": "Search Products",
+    "buttonText": "Subscribe",
+    "copyrightText": "Fruitables 2026",
+    "designedByText": "Designed by Team",
+    "iconLinks": {
+      "item0": {
+        "iconUrl": "/content/dam/facebook.png"
+      },
+      "item1": {
+        "iconUrl": "/content/dam/instagram.png"
+      }
+    },
+    "footerLinks": {
+      "item0": {
+        "columnTitle": "Useful Links",
+        "columnDescription": "Everything you need for your next order.",
+        "readMoreText": "Read more",
+        "readMoreUrl": "/useful-links",
+        "columnLinks": {
+          "item0": {
+            "columnText": "About Us",
+            "columnUrl": "/about-us",
+            "paymentImage": "/content/dam/payments/visa.png"
+          },
+          "item1": {
+            "columnText": "Contact",
+            "columnUrl": "/contact"
+          }
+        }
+      },
+      "item1": {
+        "columnTitle": "Payment Methods",
+        "columnLinks": {
+          "item0": {
+            "paymentImage": "/content/dam/payments/mastercard.png"
+          }
+        }
+      }
+    }
+  },
+  "footer-empty": {},
+  "footer-column-without-links": {
+    "columnTitle": "Customer Care"
+  }
+}

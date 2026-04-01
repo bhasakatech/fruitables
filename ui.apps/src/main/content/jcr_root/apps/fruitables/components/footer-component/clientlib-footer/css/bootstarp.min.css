@@ -1,8 +1,3 @@
-/*!
- * Trimmed Bootstrap subset for footer-component only.
- * Kept selectors are based on classes used in footer-component.html
- * and variables referenced by footer.css.
- */
 :root {
     --bs-white: #fff;
     --bs-primary: #81C408;

@@ -1,0 +1,36 @@
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.HeroBannerModel" />
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlib.all @ categories='fruitables.herobanner'}" />
+
+<div class="hero-banner">
+    <div class="hero-left">
+        <div class="hero-text">
+            <p class="subtitle">${model.subtitle}</p>
+            <h1 class="title">${model.title}</h1>
+        </div>
+        <sly data-sly-resource="${'searchBar' @ resourceType='fruitables/components/search-bar', decoration=true}" />
+    </div>
+    <div class="hero-right">
+        <div class="carousel">
+            <sly data-sly-list.slide="${model.slides}">
+                <div class="slide">
+                    <img src="${slide.image @ context='uri'}" alt="${slide.label}" />
+                    <div class="overlay">
+                        ${slide.label}
+                    </div>
+                </div>
+            </sly>
+            <button class="prev" aria-label="Previous slide">
+                <svg class="arrow-icon" viewBox="0 0 24 24">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </button>
+
+            <button class="next" aria-label="Next slide">
+                <svg class="arrow-icon" viewBox="0 0 24 24">
+                    <path d="M9 6l6 6-6 6" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>

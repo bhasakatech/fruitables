@@ -1,0 +1,14 @@
+{
+  "subtitle": "Test Subtitle",
+  "title": "Test Title",
+  "slides": {
+    "item0": {
+      "image": "/content/dam/test1.jpg",
+      "label": "Slide 1"
+    },
+    "item1": {
+      "image": "/content/dam/test2.jpg",
+      "label": "Slide 2"
+    }
+  }
+}

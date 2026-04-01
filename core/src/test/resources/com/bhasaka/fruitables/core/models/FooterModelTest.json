@@ -1,0 +1,35 @@
+{
+  "footer": {
+    "title": "Stay Connected",
+    "description": "Fresh fruit deals every day",
+    "searchTitle": "Search Products",
+    "buttonText": "Subscribe",
+    "copyrightText": "Fruitables 2026",
+    "designedByText": "Designed by Team",
+    "iconLinks": {
+      "item0": {
+        "iconUrl": "/content/dam/facebook.png"
+      },
+      "item1": {
+        "iconUrl": ""
+      }
+    },
+    "footerLinks": {
+      "item0": {
+        "columnTitle": "Useful Links",
+        "columnLinks": {
+          "item0": {
+            "columnText": "About Us",
+            "columnUrl": "/about-us",
+            "paymentImage": "/content/dam/payments/visa.png"
+          },
+          "item1": {
+            "columnText": "",
+            "columnUrl": "",
+            "paymentImage": ""
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+<sly data-sly-use.footer="com.bhasaka.fruitables.core.models.FooterModel" />
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.css @ categories='fruitables.footer'}"/>
+
+<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+    <div class="container py-5">
+
+        <div class="pb-4 mb-4">
+            <div class="row g-4">
+
+                <div class="col-lg-3">
+                    <a href="#">
+                        <h1 class="text-primary mb-0">${footer.title}</h1>
+                        <p class="text-secondary mb-0">${footer.subTitle}</p>
+                    </a>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="position-relative mx-auto">
+                        <input class="form-control border-0 w-100 py-3 px-4 rounded-pill"
+                               type="text"
+                               placeholder="${footer.searchTitle}">
+                        
+                        <button type="submit"
+                                class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white">
+                            ${footer.buttonText}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="d-flex justify-content-end pt-3"
+                         data-sly-list.icon="${footer.iconLinks}">
+        
+                        <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle"
+                           href="${icon.iconUrl}">
+                           <img src ="${icon.iconUrl}" alt="Icon">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-5" data-sly-list.col="${footer.footerLinks}">
+            <div class="col-lg-3 col-md-6">
+                <div class="d-flex flex-column text-start footer-item">
+                    <h4 class="text-light mb-3">${col.columnTitle}</h4>
+                    <p class="mb-4" data-sly-test="${col.columnDescription}">
+                        ${col.columnDescription @ context='html'}
+                    </p>
+
+                    <a data-sly-test="${col.readMoreText}"
+                       class="btn border-secondary rounded-pill py-2 px-4 text-primary mb-4"
+                       href="${col.readMoreUrl @ context='uri'}">
+                        ${col.readMoreText}
+                    </a>
+
+                    <sly data-sly-list.link="${col.columnLinks}">
+                        <a class="btn-link"
+                           href="${link.columnUrl @ context='uri'}">
+                            ${link.columnText}
+                        </a>
+                        <img data-sly-test="${link.paymentImage}" src="${link.paymentImage}" alt="Link Icon">   	
+                    </sly>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid copyright bg-dark py-4">
+    <div class="container">
+        <div class="copyrightRow">
+            <div>
+                <span class="text-light">${footer.copyrightText @ context='html'}</span>
+            </div>
+            <div >
+                <span class="text-light">${footer.designedByText @ context='html'}</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @Model(
         adaptables = Resource.class,
+        adapters = SearchBarModel.class,
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
 )
 public class SearchBarModel {
@@ -17,4 +18,11 @@ public class SearchBarModel {
     @ValueMapValue
     private String buttonLabel;
 
+    public String getPlaceholder() {
+        return placeholder;
+    }
+
+    public String getButtonLabel() {
+        return buttonLabel;
+    }
 }

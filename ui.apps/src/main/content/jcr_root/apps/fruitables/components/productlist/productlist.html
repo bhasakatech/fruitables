@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.css @ categories='fruitables.product'}"/>
+<sly data-sly-use.list="com.bhasaka.fruitables.core.models.ProductListModel"/>
+
+<sly data-sly-test="${list.sectionTitle}">
+    <div class="product-header">
+        <h2 class="section-title">${list.sectionTitle}</h2>
+        <p class="section-desc">${list.sectionDescription @ context='html'}</p>   
+    </div>
+</sly>
+
+<div class="product-container">
+
+    <sly data-sly-list.item="${list.items}">
+        <sly data-sly-call="${productCard @ item=item, buttonText=list.cartButtonText}"/>
+    </sly>
+
+</div>
+
+<sly data-sly-template.productCard="${@ item, buttonText}">
+    <div class="product-card ${item.cardStyle}">
+        <div class="product-image">
+            <img src="${item.product.productImage @ context='uri'}" alt="${item.product.productName}"/>
+        </div>
+        <div class="product-details">
+            <h2 class="product-title">${item.product.productName}</h2>
+            <p class="price">₹ ${item.product.productPrice} / ${item.product.unit}</p>
+
+            <div class="rating">
+                <sly data-sly-list.star="${item.product.filledStars}">
+                    <span class="star filled">★</span>
+                </sly>
+                <sly data-sly-list.star="${item.product.emptyStars}">
+                    <span class="star">★</span>
+                </sly>
+            </div>
+
+            <button class="add-to-cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+                ${buttonText}
+            </button> 
+        </div>
+    </div>
+</sly>

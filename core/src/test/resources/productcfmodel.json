@@ -1,0 +1,29 @@
+{
+  "product-valid": {
+    "productName": "Tomato",
+    "productDescription": "Fresh Tomato",
+    "productCategory": "Vegetables",
+    "productImage": "/content/dam/tomato.png",
+    "productPrice": "30",
+    "unit": "kg",
+    "productRating": "4.2"
+  },
+  "product-invalid": {
+    "productName": "Potato",
+    "productDescription": "Fresh Potato",
+    "productCategory": "Vegetables",
+    "productImage": "/content/dam/potato.png",
+    "productPrice": "40",
+    "unit": "kg",
+    "productRating": "abc"
+  },
+  "product-empty": {
+    "productName": "Carrot",
+    "productDescription": "Fresh Carrot",
+    "productCategory": "Vegetables",
+    "productImage": "/content/dam/carrot.png",
+    "productPrice": "50",
+    "unit": "kg",
+    "productRating": ""
+  }
+}

@@ -24,20 +24,13 @@ class HeroBannerModelTest {
     @Test
     void testModelWithSlides() {
         context.load().json("/hero-banner.json", "/content/test");
-
         Resource resource = context.resourceResolver().getResource("/content/test");
         model = resource.adaptTo(HeroBannerModel.class);
-
         assertNotNull(model);
-
-        // subtitle & title
         assertEquals("Test Subtitle", model.getSubtitle());
         assertEquals("Test Title", model.getTitle());
-
-        // slides
         assertNotNull(model.getSlides());
         assertEquals(2, model.getSlides().size());
-
         assertEquals("/content/dam/test1.jpg", model.getSlides().get(0).getImage());
         assertEquals("Slide 1", model.getSlides().get(0).getLabel());
     }
@@ -48,17 +41,11 @@ class HeroBannerModelTest {
                 "subtitle", "No Slides Subtitle",
                 "title", "No Slides Title"
         );
-
         Resource resource = context.resourceResolver().getResource("/content/test2");
         model = resource.adaptTo(HeroBannerModel.class);
-
         assertNotNull(model);
-
-        // subtitle & title
         assertEquals("No Slides Subtitle", model.getSubtitle());
         assertEquals("No Slides Title", model.getTitle());
-
-        // slides should be empty list (covers null case)
         assertNotNull(model.getSlides());
         assertTrue(model.getSlides().isEmpty());
     }

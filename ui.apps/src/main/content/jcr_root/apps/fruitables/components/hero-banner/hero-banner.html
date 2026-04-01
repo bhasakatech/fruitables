@@ -17,22 +17,20 @@
                     <sly data-sly-test="${slide.image}">
                         <img src="${slide.image}" alt="${slide.label}" />
                     </sly>
-                    <sly data-sly-test="${!slide.image}">
-                        <p>No Image Found</p>
-                    </sly>
                     <div class="overlay">
                         ${slide.label}
                     </div>
                 </div>
             </sly>
             <button class="prev" aria-label="Previous slide">
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M15 18l-6-6 6-6" stroke="black" stroke-width="2" fill="none" />
+                <svg class="arrow-icon" viewBox="0 0 24 24">
+                    <path d="M15 18l-6-6 6-6" />
                 </svg>
             </button>
+
             <button class="next" aria-label="Next slide">
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M9 6l6 6-6 6" stroke="black" stroke-width="2" fill="none" />
+                <svg class="arrow-icon" viewBox="0 0 24 24">
+                    <path d="M9 6l6 6-6 6" />
                 </svg>
             </button>
         </div>

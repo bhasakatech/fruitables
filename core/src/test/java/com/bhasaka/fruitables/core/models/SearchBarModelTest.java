@@ -7,50 +7,57 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import java.lang.reflect.Field;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(AemContextExtension.class)
 class SearchBarModelTest {
 
     private final AemContext context = new AemContext();
+
     private SearchBarModel model;
 
     @BeforeEach
     void setUp() {
         context.addModelsForClasses(SearchBarModel.class);
-
-        // Load JSON
-        context.load().json("/search-bar.json", "/content");
-
-        // Set current resource
-        Resource resource = context.resourceResolver().getResource("/content/search");
-        context.currentResource(resource);
-
-        // Adapt model
-        model = resource.adaptTo(SearchBarModel.class);
     }
 
     @Test
-    void testValuesFromJson() {
+    void testModelWithValues() throws Exception {
+        context.load().json("/search-bar.json", "/content/test");
+
+        Resource resource = context.resourceResolver().getResource("/content/test");
+        model = resource.adaptTo(SearchBarModel.class);
+
         assertNotNull(model);
 
-        assertEquals("Search Fruits", model.getPlaceholder());
-        assertEquals("Find Now", model.getButtonLabel());
+        Field placeholderField = SearchBarModel.class.getDeclaredField("placeholder");
+        placeholderField.setAccessible(true);
+
+        Field buttonLabelField = SearchBarModel.class.getDeclaredField("buttonLabel");
+        buttonLabelField.setAccessible(true);
+
+        assertEquals("Search fruits", placeholderField.get(model));
+        assertEquals("Submit Now", buttonLabelField.get(model));
     }
 
     @Test
-    void testDefaultValuesWhenEmpty() {
+    void testModelWithoutValues() throws Exception {
+        context.create().resource("/content/empty");
 
-        // Create empty resource (no properties)
-        context.build().resource("/content/emptySearch");
+        Resource resource = context.resourceResolver().getResource("/content/empty");
+        model = resource.adaptTo(SearchBarModel.class);
 
-        Resource resource = context.resourceResolver().getResource("/content/emptySearch");
-        SearchBarModel emptyModel = resource.adaptTo(SearchBarModel.class);
+        assertNotNull(model);
 
-        assertNotNull(emptyModel);
+        Field placeholderField = SearchBarModel.class.getDeclaredField("placeholder");
+        placeholderField.setAccessible(true);
 
-        // Validate defaults
-        assertEquals("Search", emptyModel.getPlaceholder());
-        assertEquals("Submit Now", emptyModel.getButtonLabel());
+        Field buttonLabelField = SearchBarModel.class.getDeclaredField("buttonLabel");
+        buttonLabelField.setAccessible(true);
+
+        assertNull(placeholderField.get(model));
+        assertNull(buttonLabelField.get(model));
     }
 }

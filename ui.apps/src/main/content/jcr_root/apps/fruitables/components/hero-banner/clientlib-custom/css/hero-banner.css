@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap');
+
 .hero-banner {
     display: flex;
     align-items: center;
@@ -16,7 +18,8 @@
 .subtitle {
     color: #ffb524 ;
     font-size: 24px;
-    font-family: "Raleway", sans-serif;
+    font-family: Raleway, sans-serif;
+    font-weight: bold;
 }
 
 .title {
@@ -97,7 +100,16 @@
 .next {
     right: 15px;
 }
+.arrow-icon {
+    width: 24px;
+    height: 24px;
+}
 
+.arrow-icon path {
+    stroke: #ffffff;
+    stroke-width: 2;
+    fill: none;
+}
 
 @media (max-width: 1024px) {
 

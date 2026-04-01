@@ -17,11 +17,4 @@ public class SearchBarModel {
     @ValueMapValue
     private String buttonLabel;
 
-    public String getPlaceholder() {
-        return placeholder != null ? placeholder : "Search";
-    }
-
-    public String getButtonLabel() {
-        return buttonLabel != null ? buttonLabel : "Submit Now";
-    }
 }

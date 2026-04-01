@@ -58,7 +58,7 @@
                                                             fieldLabel="Image"
                                                             name="./image"
                                                             required="{Boolean}true"
-                                                            rootPath="/content/dam"/>
+                                                            rootPath="/content/dam/fruitables"/>
                                                         <label
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

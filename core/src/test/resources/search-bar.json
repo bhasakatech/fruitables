@@ -1,6 +1,4 @@
 {
-  "search": {
-    "placeholder": "Search Fruits",
-    "buttonLabel": "Find Now"
-  }
+  "placeholder": "Search fruits",
+  "buttonLabel": "Submit Now"
 }

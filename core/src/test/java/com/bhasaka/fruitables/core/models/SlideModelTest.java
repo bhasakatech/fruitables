@@ -13,9 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SlideModelTest {
 
     private final AemContext context = new AemContext();
-
     private SlideModel model;
-
     @BeforeEach
     void setUp() {
         context.addModelsForClasses(SlideModel.class);
@@ -24,10 +22,8 @@ class SlideModelTest {
     @Test
     void testSlideModelWithValues() {
         context.load().json("/slide.json", "/content/slide");
-
         Resource resource = context.resourceResolver().getResource("/content/slide");
         model = resource.adaptTo(SlideModel.class);
-
         assertNotNull(model);
         assertEquals("/content/dam/sample.jpg", model.getImage());
         assertEquals("Test Slide", model.getLabel());
@@ -36,10 +32,8 @@ class SlideModelTest {
     @Test
     void testSlideModelWithoutValues() {
         context.create().resource("/content/empty-slide");
-
         Resource resource = context.resourceResolver().getResource("/content/empty-slide");
         model = resource.adaptTo(SlideModel.class);
-
         assertNotNull(model);
         assertNull(model.getImage());
         assertNull(model.getLabel());

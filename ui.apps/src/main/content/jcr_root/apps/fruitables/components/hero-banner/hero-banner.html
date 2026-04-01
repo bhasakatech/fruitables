@@ -14,9 +14,7 @@
         <div class="carousel">
             <sly data-sly-list.slide="${model.slides}">
                 <div class="slide">
-                    <sly data-sly-test="${slide.image}">
-                        <img src="${slide.image}" alt="${slide.label}" />
-                    </sly>
+                    <img src="${slide.image @ context='uri'}" alt="${slide.label}" />
                     <div class="overlay">
                         ${slide.label}
                     </div>

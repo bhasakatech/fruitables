@@ -1,1 +1,1 @@
-css/promo.css
+css/scroll-to-top.css

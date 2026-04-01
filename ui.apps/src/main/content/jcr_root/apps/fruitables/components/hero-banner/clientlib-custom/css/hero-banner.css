@@ -1,22 +1,12 @@
-body,html {
-    margin: -10px !important;
-}
-.hero-banner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #ffffff;
-    background-size: cover;
-    gap: 90px;
-    width: 100%;
-}
-
 .hero-banner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 40px 80px;
     background-color: #ffffff;
+    background-size: cover;
+    gap: 90px;
+    width: 100%;
 }
 
 .hero-left {
@@ -35,13 +25,13 @@ body,html {
     font-weight: bold;
     font-family: "Raleway", sans-serif;
 }
-
+.hero-text{
+    font-family: "Raleway", sans-serif;
+}
 
 .hero-right {
     width: 45%;
 }
-
-
 
 .slide img {
     width: 100%;
@@ -63,7 +53,6 @@ body,html {
     position: relative;
 }
 
-
 .carousel {
     position: relative;
     overflow: hidden;
@@ -74,7 +63,6 @@ body,html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); 
-
     background: rgba(255, 165, 0, 0.5);;
     color: white;
     padding: 12px 24px;
@@ -83,35 +71,24 @@ body,html {
     font-size: 20px;
 }
 
-
-
-
-
 .prev,
 .next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-
     width: 50px;
     height: 50px;
-
     border-radius: 50%;
     background: rgba(122, 201, 67, 0.6); 
-
     color: white;
     font-size: 20px;
-
     border: none;
     cursor: pointer;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     transition: 0.3s;
 }
-
 
 .prev {
     left: 15px;
@@ -136,9 +113,6 @@ body,html {
     .subtitle {
         font-size: 20px;
     }
-
-    
-
     .hero-right {
         max-width: 500px;
     }
@@ -148,19 +122,89 @@ body,html {
 
     .hero-banner {
         flex-direction: column;
-        align-items: center;
-
-        padding: 30px 16px;
-        gap: 25px;
-
+        align-items: flex-start;
+        padding: 20px 10px;
         width: 100%;
-        margin: 0;
         box-sizing: border-box;
+    }
+
+    .hero-left {
+        width: 100%;
+        padding: 0px 0px; 
+        box-sizing: border-box;
+        order: 1;
+    }
+
+    .hero-right {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        max-width: 100%;
+        order: 2;
+    }
+
+    .hero-text {
+        text-align: left; 
+        width: 100%;
+    }
+
+    .carousel {
+        width: 100%;
+    }
+
+    .slide {
+        width: 100%;
+    }
+
+    .slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 20px;
+    }
+
+    html, body {
+        overflow-x: hidden;
+    }
+     .title {
+        font-size: 48px;
+        line-height: 1.2;
+        font-family: "Raleway", sans-serif;
+        padding: 0px;
+    }
+
+    .subtitle {
+        font-size: 24px;
+        font-family: "Raleway", sans-serif;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .hero-banner {
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 20px 16px;
+        gap: 20px;
     }
 
     .hero-left,
     .hero-right {
         width: 100%;
+    }
+
+    .hero-text {
+        text-align: left;
+    }
+
+    .title {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .subtitle {
+        font-size: 16px;
     }
 
     .carousel {
@@ -170,21 +214,6 @@ body,html {
     .slide img {
         width: 100%;
         display: block;
+        border-radius: 16px;
     }
-
-    
-    .hero-text {
-        text-align: center;
-    }
-
-    .title {
-        font-size: 34px;
-    }
-
-    .subtitle {
-        font-size: 18px;
-    }
-
-    
-
 }

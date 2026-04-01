@@ -1,17 +1,14 @@
 {
-  "hero": {
-    "sling:resourceType": "fruitables/components/hero-banner",
-    "subtitle": "Fresh & Organic",
-    "title": "Healthy Fruits Collection",
-    "slides": {
-      "slide1": {
-        "image": "/content/dam/fruits/apple.jpg",
-        "label": "Apple"
-      },
-      "slide2": {
-        "image": "/content/dam/fruits/banana.jpg",
-        "label": "Banana"
-      }
+  "subtitle": "Test Subtitle",
+  "title": "Test Title",
+  "slides": {
+    "item0": {
+      "image": "/content/dam/test1.jpg",
+      "label": "Slide 1"
+    },
+    "item1": {
+      "image": "/content/dam/test2.jpg",
+      "label": "Slide 2"
     }
   }
 }

@@ -13,43 +13,53 @@ import static org.junit.jupiter.api.Assertions.*;
 class HeroBannerModelTest {
 
     private final AemContext context = new AemContext();
+
     private HeroBannerModel model;
 
     @BeforeEach
     void setUp() {
-        // Register model
-        context.addModelsForClasses(HeroBannerModel.class);
-
-        // Load JSON
-        context.load().json("/hero-banner.json", "/content");
-
-        // Set current resource
-        Resource resource = context.resourceResolver().getResource("/content/hero");
-        context.currentResource(resource);
-
-        // Adapt model from RESOURCE (correct way)
-        model = resource.adaptTo(HeroBannerModel.class);
+        context.addModelsForClasses(HeroBannerModel.class, SlideModel.class);
     }
 
     @Test
     void testModelWithSlides() {
+        context.load().json("/hero-banner.json", "/content/test");
+
+        Resource resource = context.resourceResolver().getResource("/content/test");
+        model = resource.adaptTo(HeroBannerModel.class);
 
         assertNotNull(model);
 
-        // Validate subtitle & title
-        assertEquals("Fresh & Organic", model.getSubtitle());
-        assertEquals("Healthy Fruits Collection", model.getTitle());
+        // subtitle & title
+        assertEquals("Test Subtitle", model.getSubtitle());
+        assertEquals("Test Title", model.getTitle());
 
-        // Validate slides
+        // slides
         assertNotNull(model.getSlides());
         assertEquals(2, model.getSlides().size());
 
-        // Slide 1
-        assertEquals("/content/dam/fruits/apple.jpg", model.getSlides().get(0).getImage());
-        assertEquals("Apple", model.getSlides().get(0).getLabel());
+        assertEquals("/content/dam/test1.jpg", model.getSlides().get(0).getImage());
+        assertEquals("Slide 1", model.getSlides().get(0).getLabel());
+    }
 
-        // Slide 2
-        assertEquals("/content/dam/fruits/banana.jpg", model.getSlides().get(1).getImage());
-        assertEquals("Banana", model.getSlides().get(1).getLabel());
+    @Test
+    void testModelWithoutSlides() {
+        context.create().resource("/content/test2",
+                "subtitle", "No Slides Subtitle",
+                "title", "No Slides Title"
+        );
+
+        Resource resource = context.resourceResolver().getResource("/content/test2");
+        model = resource.adaptTo(HeroBannerModel.class);
+
+        assertNotNull(model);
+
+        // subtitle & title
+        assertEquals("No Slides Subtitle", model.getSubtitle());
+        assertEquals("No Slides Title", model.getTitle());
+
+        // slides should be empty list (covers null case)
+        assertNotNull(model.getSlides());
+        assertTrue(model.getSlides().isEmpty());
     }
 }

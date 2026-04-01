@@ -1,31 +1,21 @@
-<sly data-sly-use.model="com.bhasaka.fruitables.core.models.HeroBannerModel"/>
-
-
-<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
-<sly data-sly-call="${clientlib.all @ categories='fruitables.herobanner'}"/>
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.HeroBannerModel" />
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlib.all @ categories='fruitables.herobanner'}" />
 
 <div class="hero-banner">
-
-    <!-- LEFT SECTION -->
     <div class="hero-left">
-
-    <div class="hero-text">
-        <p class="subtitle">${model.subtitle}</p>
-        <h1 class="title">${model.title}</h1>
+        <div class="hero-text">
+            <p class="subtitle">${model.subtitle}</p>
+            <h1 class="title">${model.title}</h1>
+        </div>
+        <sly data-sly-resource="${'searchBar' @ resourceType='fruitables/components/search-bar', decoration=true}" />
     </div>
- 
-   <sly data-sly-resource="${'searchBar' @ resourceType='fruitables/components/search-bar', decoration=true}"/>
-
-</div>
-
-    <!-- RIGHT SECTION (SLIDER) -->
     <div class="hero-right">
         <div class="carousel">
-            
             <sly data-sly-list.slide="${model.slides}">
                 <div class="slide">
                     <sly data-sly-test="${slide.image}">
-                        <img src="${slide.image}" alt="${slide.label}"/>
+                        <img src="${slide.image}" alt="${slide.label}" />
                     </sly>
                     <sly data-sly-test="${!slide.image}">
                         <p>No Image Found</p>
@@ -34,12 +24,17 @@
                         ${slide.label}
                     </div>
                 </div>
-            </sly> 
-
-            <button class="prev">&#10094;</button>
-            <button class="next">&#10095;</button>
-
+            </sly>
+            <button class="prev" aria-label="Previous slide">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M15 18l-6-6 6-6" stroke="black" stroke-width="2" fill="none" />
+                </svg>
+            </button>
+            <button class="next" aria-label="Next slide">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M9 6l6 6-6 6" stroke="black" stroke-width="2" fill="none" />
+                </svg>
+            </button>
         </div>
     </div>
-
 </div>

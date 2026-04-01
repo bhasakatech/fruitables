@@ -1,11 +1,10 @@
 package com.bhasaka.fruitables.core.models;
 
-import lombok.Getter;
-import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.*;
-import org.apache.sling.models.annotations.injectorspecific.*;
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.apache.sling.api.resource.Resource;
+import java.util.Collections;
 import java.util.List;
 
 @Model(
@@ -13,8 +12,10 @@ import java.util.List;
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL,
         resourceType = "fruitables/components/hero-banner"
 )
-@Getter
 public class HeroBannerModel {
+
+    @ChildResource
+    private List<SlideModel> slides;
 
     @ValueMapValue
     private String subtitle;
@@ -22,34 +23,15 @@ public class HeroBannerModel {
     @ValueMapValue
     private String title;
 
-    @ChildResource(name = "slides")
-    private Resource slidesResource;
-
-    private List<Slide> slides = new ArrayList<>();
-
-    @PostConstruct
-    protected void init() {
-        if (slidesResource != null) {
-            for (Resource res : slidesResource.getChildren()) {
-                Slide slide = new Slide();
-                slide.image = res.getValueMap().get("image", String.class);
-                slide.label = res.getValueMap().get("label", String.class);
-                slides.add(slide);
-            }
-        }
-    }
-
     public String getSubtitle() {
-        return subtitle != null ? subtitle : "100% Organic Foods";
+        return subtitle;
     }
 
     public String getTitle() {
-        return title != null ? title : "Organic Veggies & Fruits Foods";
+        return title;
     }
 
-    @Getter
-    public static class Slide {
-        private String image;
-        private String label;
+    public List<SlideModel> getSlides() {
+        return slides != null ? slides : Collections.emptyList();
     }
 }

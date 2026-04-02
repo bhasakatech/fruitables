@@ -1,0 +1,19 @@
+<sly data-sly-use.banner="com.bhasaka.fruitables.core.models.ShopBannerModel" />
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.css @ categories='fruitables.shopBanner'}"/>
+
+<div class="container-fluid page-header py-5 shop-banner">
+    <div class="shop-banner__media" data-sly-test="${banner.shopBannerImage}">
+        <img
+            class="shop-banner__image"
+            src="${banner.shopBannerImage @ context='uri'}"
+            alt="${banner.shopBannerTitle}" />
+    </div>
+    <div class="shop-banner__overlay"></div>
+    <div class="shop-banner__content">
+        <h1 class="text-center text-white display-6 shop-banner__title">${banner.shopBannerTitle}</h1>
+        <div class="shop-banner__breadcrumb breadcrumb justify-content-center mb-0">
+            <sly data-sly-resource="${'breadcrumb' @ resourceType='fruitables/components/breadcrumb'}"></sly>
+        </div>
+    </div>
+</div>

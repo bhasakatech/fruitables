@@ -1,14 +1,12 @@
 package com.bhasaka.fruitables.core.models;
 
+import java.util.List;
+
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
 
 @Model(
         adaptables = Resource.class,
@@ -26,15 +24,7 @@ public class TestimonialCarouselModel {
     private List<TestimonialItemsModel> testimonials;
 
     private List<TestimonialItemsModel> testimonialsList;
-
-    @PostConstruct
-    protected void init() {
-        if (testimonials != null) {
-            testimonialsList = testimonials;
-        } else {
-            testimonialsList = new ArrayList<>();
-        }
-    }
+    
 
     public String getSubtitle() {
         return subtitle;

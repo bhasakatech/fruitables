@@ -33,7 +33,6 @@ class TestimonialItemsModelTest {
     @Test
     void testValidItem() {
         TestimonialItemsModel model = adapt("/content/test/validItem");
-
         assertEquals("/content/dam/client1.png", model.getClientImage());
         assertEquals("Client One", model.getClientName());
         assertEquals("Designer", model.getProfession());
@@ -44,7 +43,6 @@ class TestimonialItemsModelTest {
     @Test
     void testNullValuesItem() {
         TestimonialItemsModel model = adapt("/content/test/nullValuesItem");
-
         assertNull(model.getClientImage());
         assertEquals("", model.getClientName());
         assertNull(model.getProfession());
@@ -55,7 +53,6 @@ class TestimonialItemsModelTest {
     @Test
     void testEmptyItem() {
         TestimonialItemsModel model = adapt("/content/test/emptyItem");
-
         assertNull(model.getClientImage());
         assertNull(model.getClientName());
         assertNull(model.getProfession());

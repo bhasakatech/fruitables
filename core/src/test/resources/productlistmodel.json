@@ -1,0 +1,77 @@
+{
+  "component": {
+    "sectionTitle": "Fresh Vegetables",
+    "sectionDescription": "Organic and fresh items",
+    "cartButtonText": "Add to Cart",
+    "products": {
+      "item1": {
+        "cfPath": "/content/dam/products/tomato",
+        "cardStyle": "standard"
+      },
+      "item2": {
+        "cfPath": "/content/dam/products/potato",
+        "cardStyle": "compact"
+      },
+      "item3": {
+        "cfPath": "/content/dam/products/notfound",
+        "cardStyle": "standard"
+      },
+      "item4": {
+        "cfPath": "/content/dam/products/nested",
+        "cardStyle": "compact"
+      }
+    }
+  },
+
+  "dam": {
+    "products": {
+      "tomato": {
+        "jcr:content": {
+          "data": {
+            "master": {
+              "productName": "Tomato",
+              "productDescription": "Fresh Tomato",
+              "productCategory": "Vegetables",
+              "productImage": "/content/dam/tomato.png",
+              "productPrice": "30",
+              "unit": "kg",
+              "productRating": "4"
+            }
+          }
+        }
+      },
+      "potato": {
+        "jcr:content": {
+          "data": {
+            "master": {
+              "productName": "Potato",
+              "productDescription": "Fresh Potato",
+              "productCategory": "Vegetables",
+              "productImage": "/content/dam/potato.png",
+              "productPrice": "40",
+              "unit": "kg",
+              "productRating": "3"
+            }
+          }
+        }
+      },
+      "nested": {
+        "variant1": {
+          "jcr:content": {
+            "data": {
+              "master": {
+                "productName": "Carrot",
+                "productDescription": "Fresh Carrot",
+                "productCategory": "Vegetables",
+                "productImage": "/content/dam/carrot.png",
+                "productPrice": "50",
+                "unit": "kg",
+                "productRating": "5"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

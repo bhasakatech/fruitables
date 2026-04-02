@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <title
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Section Title"
+                name="./sectionTitle"/>
+            <description
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                useFixedInlineToolbar="{Boolean}true"
+                fieldLabel="Section Description"
+                name="./sectionDescription"/>
+            <cartButtonText
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Cart Button Text"
+                name="./cartButtonText"/>
+            <products
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                composite="{Boolean}true"
+                fieldLabel="Products">
+                <field
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                    name="./products">
+                    <items jcr:primaryType="nt:unstructured">
+                        <item
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Product"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                            <items jcr:primaryType="nt:unstructured">
+                                <cfPath
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    fieldLabel="Content Fragment Path"
+                                    name="./cfPath"
+                                    required="{Boolean}true"
+                                    rootPath="/content/dam/fruitables"/>
+                                <cardStyle
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                    fieldLabel="Card Style"
+                                    name="./cardStyle">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <compact
+                                            jcr:primaryType="nt:unstructured"
+                                            text="Compact"
+                                            value="compact"/>
+                                        <standard
+                                            jcr:primaryType="nt:unstructured"
+                                            text="Standard"
+                                            value="standard"/>
+                                    </items>
+                                </cardStyle>
+                            </items>
+                        </item>
+                    </items>
+                </field>
+            </products>
+        </items>
+    </content>
+</jcr:root>

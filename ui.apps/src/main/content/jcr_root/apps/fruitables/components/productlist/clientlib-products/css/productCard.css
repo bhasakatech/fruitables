@@ -1,0 +1,153 @@
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 25px;
+    width: 100%;
+    grid-auto-flow: row;
+}
+
+.product-card.compact {
+    grid-column: span 4;
+}
+
+.product-card.standard {
+    grid-column: span 3;
+}
+.product-card.compact {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #eef0f1;
+    border-radius: 15px;
+    padding: 15px;
+    min-height: 140px;
+}
+
+.product-card.compact .product-image {
+    flex: 0 0 95px;
+}
+
+.product-card.compact .product-image img {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.product-card.compact .product-details {
+    flex: 1;
+    text-align: left;
+}
+
+.product-card.standard {
+    background: #eef0f1;
+    border-radius: 15px;
+    text-align: center;
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+
+.product-card.standard .product-image img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-card.standard .product-details {
+    padding: 10px 15px;
+}
+
+.product-title {
+    font-size: 18px;
+    margin: 10px 0 5px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.product-card.compact .rating {
+    justify-content: flex-start;
+}
+
+.star {
+    color: #ccc;
+    font-size: 16px;
+}
+
+.star.filled {
+    color: #7ac142;
+}
+
+.add-to-cart {
+    margin-top: 8px;
+    padding: 6px 14px;
+    border: 2px solid orange;
+    background: transparent;
+    color: #7ac142;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+.add-to-cart:hover {
+    background: #7ac142;
+    color: white;
+}
+
+.product-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+}
+
+.section-desc {
+    color: black;
+    max-width: 600px;
+    margin: 10px auto;
+}
+
+@media (max-width: 992px) {
+    .product-card.standard,
+    .product-card.compact {
+        grid-column: span 6;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-card.standard,
+    .product-card.compact {
+        grid-column: span 12;
+    }
+
+    .product-card.compact {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .product-card.compact .rating {
+        justify-content: center;
+    }
+}

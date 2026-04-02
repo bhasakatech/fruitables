@@ -1,0 +1,57 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.all @ categories='fruitables.TestimonialCarousel'}"/>
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.TestimonialCarouselModel" />
+<sly data-sly-set.testimonials="${model.testimonials}" />
+
+<section class="testimonial-carousel" data-cmp-is="testimonial-carousel">
+    <div class="testimonial-carousel__header">
+        <div class="testimonial-carousel__heading">
+            <p class="testimonial-carousel__subtitle" data-sly-test="${model.subtitle}">
+                ${model.subtitle}
+            </p>
+            <h2 class="testimonial-carousel__title" data-sly-test="${model.title}">
+                ${model.title}
+            </h2>
+        </div>
+
+        <div class="testimonial-carousel__controls" data-sly-test="${testimonials && testimonials.size > 1}">
+            <button class="testimonial-carousel__arrow" type="button" data-direction="prev" aria-label="Previous testimonials">
+                <span>&rarr;</span>
+            </button>
+            <button class="testimonial-carousel__arrow" type="button" data-direction="next" aria-label="Next testimonials">
+                <span>&larr;</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="testimonial-carousel__viewport">
+        <div class="testimonial-carousel__track" data-track>
+            <div class="testimonial-carousel__slide" data-sly-repeat.item="${testimonials}">
+                <article class="testimonial-card">
+                    <div class="testimonial-card__review-wrap">
+                       <p class="testimonial-card__review">${item.reviewText @ context='html'}</p>
+                    </div>
+
+                    <div class="testimonial-card__footer">
+                        <div class="testimonial-card__profile">
+                            <div class="testimonial-card__image-wrap">
+                                <img
+                                    data-sly-test="${item.clientImage}"
+                                    src="${item.clientImage @ context='uri'}"
+                                    alt="${item.clientName}"
+                                    class="testimonial-card__image" />
+                            </div>
+
+                            <div class="testimonial-card__meta">
+                                <h3 class="testimonial-card__name">${item.clientName}</h3>
+                                <p class="testimonial-card__profession">${item.profession}</p>
+                                <div class="testimonial-card__stars" data-rating="${item.rating}"></div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card__quote">&#8221;</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>

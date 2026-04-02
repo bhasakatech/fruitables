@@ -1,0 +1,13 @@
+{
+  "validItem": {
+    "clientImage": "/content/dam/client1.png",
+    "clientName": "Client One",
+    "profession": "Designer",
+    "reviewText": "Excellent service",
+    "rating": "5"
+  },
+  "nullValuesItem": {
+    "clientName": ""
+  },
+  "emptyItem": {}
+}

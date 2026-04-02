@@ -3,6 +3,9 @@ package com.bhasaka.fruitables.core.models;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.*;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +29,7 @@ public class ProductCFModel {
     private String unit;
     @ValueMapValue
     private String productRating;
-
+    private static final Logger LOG = LoggerFactory.getLogger(ProductCFModel.class);
 
     public String getProductName() {
         return productName;
@@ -58,7 +61,7 @@ public class ProductCFModel {
                 stars.add(i);
             }
         } catch (NumberFormatException e) {
-            
+            LOG.error("Invalid product rating value: {}", productRating, e);
         }
         return stars;
     }

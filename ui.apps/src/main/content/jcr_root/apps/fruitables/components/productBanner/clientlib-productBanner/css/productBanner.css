@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+.product-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px;
+    background-color: #FFB524;
+    overflow: hidden;
+
+}
+
+.banner-left {
+    width: 50%;
+}
+
+.banner-left h1 {
+    font-size: 64px;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: "Raleway", sans-serif;
+    margin: 0px 0px 8px;
+}
+
+.banner-left h2 {
+    font-size: 64px;
+    color: #45595B;
+    margin: 0px 0px 24px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+}
+
+.banner-left p {
+    color: #45595B;
+    margin: 0px 0px 24px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 15px;
+    padding-left: 45px;
+    padding-right: 45px;
+    border: 2px solid white;
+    border-radius: 40px;
+    color: #45595B;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+.cta-btn:hover {
+    background-color: #81c408;
+}
+
+.banner-right {
+    position: relative;
+    width: 50%;
+    text-align: right;
+    padding: 1px;
+}
+
+.banner-right img {
+    max-width: 100%;
+    height: auto;
+    padding: 1px;
+}
+
+.price-badge {
+    position: absolute;
+    top: -2%;
+    left: 5%;
+    background: #ffffff;
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.price-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.price-main {
+    font-size: 100px;
+    color: #45595B;
+    font-weight: 700;
+    font-family: "Raleway", sans-serif;
+    line-height: 1;
+}
+
+.price-direction {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 6px;
+}
+
+.price-decimal {
+    font-size: 28px;
+    color: #45595B;
+    font-family: "Raleway", sans-serif;
+    line-height: 1;
+}
+
+.unit {
+    font-size: 20px;
+    color: #45595B;
+    font-family: "Raleway", sans-serif;
+    margin-top: 2px;
+}
+
+
+
+@media (max-width: 768px) {
+
+    .product-banner {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+    .banner-left {
+        width: 100%;
+        text-align: left;
+    }
+
+    .banner-left h1 {
+        font-size: 40px;
+    }
+
+    .banner-left h2 {
+        font-size: 40px;
+    }
+
+    .banner-left p {
+        font-size: 16px;
+    }
+
+    .cta-btn {
+        margin: 0;
+    }
+
+    .banner-right {
+        width: 100%;
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .banner-right img {
+        max-width: 80%;
+    }
+
+    .price-badge {
+        top: 8%;
+        left: 17%;
+        transform: translate(-50%, -40%);
+        width: 120px;
+        height: 120px;
+    }
+
+    .price-main {
+        font-size: 70px;
+    }
+
+    .price-decimal {
+        font-size: 22px;
+    }
+
+    .unit {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 320px) {
+    .price-badge {
+        top: 15%;
+        left: 26%;
+    }
+
+}

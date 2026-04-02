@@ -1,0 +1,29 @@
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.ProductBannerModel" />
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlib.css @ categories='fruitables.ProductBanner'}" />
+
+<div class="product-banner">
+    <div class="banner-left">
+        <h1>${model.heading}</h1>
+        <h2>${model.subheading}</h2>
+        <p>${model.description}</p>
+        <a href="${model.buttonLink @ context='uri'}" class="cta-btn">
+            ${model.buttonLabel}
+        </a>
+    </div>
+    <div class="banner-right">
+        <img src="${model.productImage @ context='uri'}" alt="Product Image" />
+        <div class="price-badge">
+            <div class="price-row">
+                <span class="price-main">${model.mainPrice}</span>
+                <div class="price-direction">
+                    <span class="price-decimal">
+                        ${model.decimalPrice}${model.currency}
+                    </span>
+                    <span class="unit">${model.unit}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

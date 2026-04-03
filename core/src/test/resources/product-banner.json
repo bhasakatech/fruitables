@@ -1,0 +1,12 @@
+{
+  "heading": "Fresh Exotic Fruits",
+  "subheading": "in Our Store",
+  "description": "Test Description",
+  "buttonLabel": "BUY",
+  "buttonLink": "/content/test-page",
+  "productImage": "/content/dam/test/apple.png",
+  "mainPrice": "1",
+  "decimalPrice": "50",
+  "currency": "$",
+  "unit": "kg"
+}

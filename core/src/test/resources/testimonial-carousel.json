@@ -1,0 +1,35 @@
+{
+  "validComponent": {
+    "subtitle": "Our Testimonial",
+    "title": "Our Client Saying!",
+    "testimonials": {
+      "item0": {
+        "clientImage": "/content/dam/client1.png",
+        "clientName": "Client One",
+        "profession": "Designer",
+        "reviewText": "Excellent service",
+        "rating": "5"
+      },
+      "item1": {
+        "clientImage": "/content/dam/client2.png",
+        "clientName": "Client Two",
+        "profession": "Developer",
+        "reviewText": "Very good support",
+        "rating": "4"
+      }
+    }
+  },
+  "nullValuesComponent": {
+    "subtitle": "",
+    "title": "",
+    "testimonials": {
+      "item0": {
+        "clientName": ""
+      }
+    }
+  },
+  "noTestimonialsComponent": {
+    "subtitle": "Only Heading",
+    "title": "No Items"
+  }
+}

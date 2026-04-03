@@ -30,7 +30,7 @@
                         sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                         fieldLabel="Description"
                         name="./description"
-                        useFixedInlineToolbar="{Boolean}true">
+                        useFixedInlineToolbar="{Boolean}true"/>
                     <buttonLabel
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

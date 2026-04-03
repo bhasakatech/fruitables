@@ -24,7 +24,7 @@ public class TestimonialItemsModel {
     private String reviewText;
 
     @ValueMapValue
-    private String rating;
+    private Integer rating;
 
     public String getClientImage() {
         return clientImage;
@@ -42,7 +42,7 @@ public class TestimonialItemsModel {
         return reviewText;
     }
 
-    public String getRating() {
+    public Integer getRating() {
         return rating;
     }
 }

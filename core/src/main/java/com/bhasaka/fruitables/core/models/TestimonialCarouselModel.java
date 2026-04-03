@@ -23,9 +23,6 @@ public class TestimonialCarouselModel {
     @ChildResource(name = "testimonials")
     private List<TestimonialItemsModel> testimonials;
 
-    private List<TestimonialItemsModel> testimonialsList;
-    
-
     public String getSubtitle() {
         return subtitle;
     }
@@ -35,6 +32,6 @@ public class TestimonialCarouselModel {
     }
 
     public List<TestimonialItemsModel> getTestimonials() {
-        return testimonialsList;
+        return testimonials;
     }
 }

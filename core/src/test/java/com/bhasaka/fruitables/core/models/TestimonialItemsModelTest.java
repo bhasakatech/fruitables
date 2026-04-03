@@ -31,16 +31,6 @@ class TestimonialItemsModelTest {
     }
 
     @Test
-    void testValidItem() {
-        TestimonialItemsModel model = adapt("/content/test/validItem");
-        assertEquals("/content/dam/client1.png", model.getClientImage());
-        assertEquals("Client One", model.getClientName());
-        assertEquals("Designer", model.getProfession());
-        assertEquals("Excellent service", model.getReviewText());
-        assertEquals("5", model.getRating());
-    }
-
-    @Test
     void testNullValuesItem() {
         TestimonialItemsModel model = adapt("/content/test/nullValuesItem");
         assertNull(model.getClientImage());

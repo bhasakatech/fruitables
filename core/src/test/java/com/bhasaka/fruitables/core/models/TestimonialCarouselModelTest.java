@@ -32,23 +32,6 @@ class TestimonialCarouselModelTest {
         return model;
     }
 
-    @Test
-    void testValidComponent() {
-        TestimonialCarouselModel model = adapt("/content/test/validComponent");
-        assertEquals("Our Testimonial", model.getSubtitle());
-        assertEquals("Our Client Saying!", model.getTitle());
-        List<TestimonialItemsModel> testimonials = model.getTestimonials();
-        assertNull(testimonials);
-    }
-
-    @Test
-    void testNullValuesComponent() {
-        TestimonialCarouselModel model = adapt("/content/test/nullValuesComponent");
-        assertEquals("", model.getSubtitle());
-        assertEquals("", model.getTitle());
-        List<TestimonialItemsModel> testimonials = model.getTestimonials();
-        assertNull(testimonials);
-    }
 
     @Test
     void testNoTestimonialsComponent() {

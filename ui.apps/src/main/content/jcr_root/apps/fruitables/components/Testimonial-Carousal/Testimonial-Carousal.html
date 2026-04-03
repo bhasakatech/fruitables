@@ -1,7 +1,6 @@
 <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
 <sly data-sly-call="${clientlib.all @ categories='fruitables.testimonialCarousel'}"/>
-<sly data-sly-use.model="com.bhasaka.fruitables.core.models.TestimonialCarouselModel" />
-<sly data-sly-set.testimonials="${model.testimonials}" />
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.TestimonialCarouselModel"/>
 
 <section class="testimonial-carousel" data-cmp-is="testimonial-carousel">
     <div class="testimonial-carousel__header">
@@ -14,22 +13,25 @@
             </h2>
         </div>
 
-        <div class="testimonial-carousel__controls" data-sly-test="${testimonials && testimonials.size > 1}">
+        <div class="testimonial-carousel__controls"
+             data-sly-test="${model.testimonials && model.testimonials.size > 1}">
             <button class="testimonial-carousel__arrow" type="button" data-direction="prev" aria-label="Previous testimonials">
-                <span>&rarr;</span>
+                <span>&larr;</span>
             </button>
             <button class="testimonial-carousel__arrow" type="button" data-direction="next" aria-label="Next testimonials">
-                <span>&larr;</span>
+                <span>&rarr;</span>
             </button>
         </div>
     </div>
 
-    <div class="testimonial-carousel__viewport">
+    <div class="testimonial-carousel__viewport" data-sly-test="${model.testimonials}">
         <div class="testimonial-carousel__track" data-track>
-            <div class="testimonial-carousel__slide" data-sly-repeat.item="${testimonials}">
+            <div class="testimonial-carousel__slide" data-sly-repeat.item="${model.testimonials}">
                 <article class="testimonial-card">
                     <div class="testimonial-card__review-wrap">
-                       <p class="testimonial-card__review">${item.reviewText @ context='html'}</p>
+                        <div class="testimonial-card__review">
+                            ${item.reviewText @ context='html'}
+                        </div>
                     </div>
 
                     <div class="testimonial-card__footer">
@@ -39,7 +41,7 @@
                                     data-sly-test="${item.clientImage}"
                                     src="${item.clientImage @ context='uri'}"
                                     alt="${item.clientName}"
-                                    class="testimonial-card__image" />
+                                    class="testimonial-card__image"/>
                             </div>
 
                             <div class="testimonial-card__meta">
@@ -48,6 +50,7 @@
                                 <div class="testimonial-card__stars" data-rating="${item.rating}"></div>
                             </div>
                         </div>
+
                         <div class="testimonial-card__quote">&#8221;</div>
                     </div>
                 </article>

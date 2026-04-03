@@ -21,7 +21,7 @@
                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                         fieldLabel="Shop Banner Image"
                         name="./shopBannerImage"
-                        rootPath="/content/dam/fruitables/shop-banner---slidebar"/>
+                        rootPath="/content/dam/fruitables"/>
                 </items>
             </container>
         </items>

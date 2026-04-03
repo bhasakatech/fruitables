@@ -5,8 +5,11 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.*;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import javax.annotation.PostConstruct;
+
 @Model(
         adaptables = Resource.class,
+        adapters = ProductBannerModel.class,
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
 )
 
@@ -42,5 +45,8 @@ public class ProductBannerModel {
 
     @ValueMapValue
     private String unit;
+
+    @PostConstruct
+    protected void init() {}
 
 }

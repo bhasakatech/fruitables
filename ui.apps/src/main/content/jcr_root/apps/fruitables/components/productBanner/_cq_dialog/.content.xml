@@ -47,7 +47,7 @@
                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                         fieldLabel="Product Image"
                         name="./productImage"
-                        rootPath="/content/dam"/>
+                        rootPath="/content/dam/fruitables"/>
                     <mainPrice
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

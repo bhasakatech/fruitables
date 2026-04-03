@@ -7,7 +7,7 @@
     <div class="banner-left">
         <h1>${model.heading}</h1>
         <h2>${model.subheading}</h2>
-        <p>${model.description}</p>
+        <p>${model.description @context='html'}</p>
         <a href="${model.buttonLink @ context='uri'}" class="cta-btn">
             ${model.buttonLabel}
         </a>

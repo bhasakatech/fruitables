@@ -1,0 +1,45 @@
+{
+  "shop-detail": {
+    "jcr:primaryType": "cq:Page",
+    "jcr:content": {
+      "jcr:primaryType": "cq:PageContent",
+      "root": {
+        "jcr:primaryType": "nt:unstructured",
+        "shop-banner": {
+          "jcr:primaryType": "nt:unstructured",
+          "shopBannerTitle": "Shop Detail",
+          "shopBannerImage": "/content/dam/fruitables/banner/shop-banner.jpg"
+        }
+      }
+    }
+  },
+  "category-page": {
+    "jcr:primaryType": "cq:Page",
+    "jcr:content": {
+      "jcr:primaryType": "cq:PageContent",
+      "root": {
+        "jcr:primaryType": "nt:unstructured",
+        "shop-banner": {
+          "jcr:primaryType": "nt:unstructured"
+        }
+      }
+    }
+  },
+  "fresh-fruits": {
+    "jcr:primaryType": "cq:Page",
+    "jcr:content": {
+      "jcr:primaryType": "cq:PageContent",
+      "root": {
+        "jcr:primaryType": "nt:unstructured",
+        "shop-banner": {
+          "jcr:primaryType": "nt:unstructured",
+          "shopBannerTitle": "   "
+        }
+      }
+    }
+  },
+  "orphan-banner": {
+    "jcr:primaryType": "nt:unstructured",
+    "shopBannerImage": "/content/dam/fruitables/banner/orphan-banner.jpg"
+  }
+}

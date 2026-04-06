@@ -1,10 +1,80 @@
-/* =============================================
-   bottom-header.css 
-   Clean & Minimized for Bottom Header + Navigation + Search Overlay
-   Media Queries: Desktop (default) | Tablet | Mobile
-============================================= */
-body,html{
-    margin:-8px;
+
+*{
+font-family: Raleway;
+}
+
+
+.fruitables-cart:hover svg {
+    transform: scale(1.15);
+}
+.fruitables-search svg{
+ width: 18px;    
+    height: 25px;
+    transition: transform 0.3s ease;
+}
+.fruitables-cart svg {
+    transition: all 0.3s ease;
+}
+
+.fruitables-search:hover svg,
+.fruitables-cart:hover svg {
+    transform: scale(1.1);
+    stroke: #fff;          
+}
+
+.cart-bag-icon {
+      width: 49px;
+    height: 39px;
+    transition: transform 0.3s ease;
+    filter: brightness(1);  
+}
+
+.fruitables-cart:hover .cart-bag-icon {
+    transform: scale(1.15);
+}
+
+.fruitables-cart {
+    position: relative;
+}
+
+.fruitables-cart .badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+}
+
+
+.fruitables-cart:hover .cart-bag-icon {
+    transform: scale(1.15);
+}
+
+.user-icon {
+       width: 42px;
+    height: 33px;
+    transition: transform 0.3s ease;
+
+}
+
+.fruitables-user:hover .user-icon {
+    transform: scale(1.15);
+}
+
+/* Badge positioning */
+.fruitables-cart {
+    position: relative;
+}
+
+.fruitables-cart .badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+}
+
+
+
+.fruitables-main-header * {
+    box-sizing: border-box;
+  
 }
 
 .fruitables-main-header {
@@ -22,13 +92,13 @@ body,html{
     padding: 25px 90px;
 }
 
-/* Logo */
+
 .fruitables-logo a {
     display: flex;
     align-items: center;
     gap: 10px;
     text-decoration: none;
-    color: #81c408;
+    color: #81c408 !important;
     font-size: 2.2em;
     font-weight: 800;
     font-family: "Open Sans", sans-serif;
@@ -39,7 +109,7 @@ body,html{
     height: 50px;
 }
 
-/* Navigation */
+
 .fruitables-nav {
     flex: 1;
     display: flex;
@@ -60,7 +130,7 @@ body,html{
 
 .fruitables-nav-item > a {
     text-decoration: none;
-    color: #333;
+    color: #333 !important;
     font-weight: 500;
     font-size: 16px;
     padding: 8px 12px;
@@ -73,8 +143,10 @@ body,html{
     color: #7ac943;
     background-color: #f8f9fa;
 }
+.fruitables-nav a:hover{
+    color: #81c408 !important;
+}
 
-/* Dropdown */
 .fruitables-dropdown {
     display: none;
     position: absolute;
@@ -87,6 +159,7 @@ body,html{
     padding: 8px 0;
     z-index: 999;
     margin-top: 1px;
+    list-style: none;
 }
 
 .fruitables-dropdown li {
@@ -105,28 +178,36 @@ body,html{
 }
 
 .fruitables-dropdown li a:hover {
-    background-color: #7ac943;
+    background-color: #7ac943 !important;
     color: #fff !important;
     transform: translateX(6px);
 }
 
-/* Icons */
+
 .fruitables-icons {
     display: flex;
     align-items: center;
     gap: 25px;
-    font-size: 26px;
+    font-size: 30px;
+     margin-right: -25px;
 }
 
 .fruitables-search {
-    font-size: 22px;
+    font-size: 12px;
     border: solid 1px #81c408;
     border-radius: 50%;
-    padding: 2px 3px;
+    padding: 7px 11px 0px 11px;
+    color: #81c408;
+    font-weight: bold;
+        margin-bottom: -9px;
+    
 }
 
+
 .fruitables-search:hover {
-    background-color: #81c408;
+    background-color: #81c408 !important;
+    opacity: 0.8;
+    color: #333 !important;
 }
 
 .fruitables-icons-group {
@@ -141,13 +222,13 @@ body,html{
 
 .fruitables-cart .badge {
     position: absolute;
-    top: -8px;
-    right: -10px;
+    top: 0px;
+    right: -7px;
     background: #7ac943;
     color: #fff;
-    font-size: 12px;
+    font-size: 14px;
     border-radius: 50%;
-    padding: 3px 6px;
+    padding: 3px 7px;
 }
 
 .fruitables-cart:hover {
@@ -164,32 +245,36 @@ body,html{
 
 .fruitables-icons span:hover,
 .fruitables-mobile-icons span:hover {
-    transform: scale(1.2);
+    transform: scale(1.0);
 }
 
 .fruitables-hamburger {
     display: none;
     font-size: 24px;
     cursor: pointer;
-    color: #333;
+    color: #81c408 !important;
     transition: all 0.3s ease;
+        padding-right: 1rem !important;
+    padding-left: 1rem !important;
+    border: 2px solid white;
+    border-radius: 10px;
+    border-color: rgba(0, 0, 0, .1);
+    font-weight:bold;
 }
 
 .fruitables-hamburger:hover {
     color: #81c408;
 }
 
-.fruitables-hamburger.active {
-    color: white;
-}
+
 
 .fruitables-toggle {
     font-size: 18px;
     cursor: pointer;
     padding: 5px 10px;
-    color: #7ac943;
+   
     font-weight: bold;
-    transition: transform 0.3s ease;
+    
     margin-right: 1px;
     margin-top: 9px;
 }
@@ -199,10 +284,11 @@ body,html{
 }
 
 .fruitables-nav a {
-    text-decoration: none;
-    color: rgba(0, 0, 0, .55);;
-    transition: color 0.3s ease;
-    font-size:17px;
+  text-decoration: none !important;
+    color: rgba(0, 0, 0, .55) !important;
+    transition: color .3s ease;
+    font-size: 16px;
+    font-family: sans-serif;
 }
 
 .fruitables-nav a:hover {
@@ -217,11 +303,6 @@ body,html{
 .fruitables-mobile-icons {
     display: none;
 }
-
-/* =============================================
-   SEARCH OVERLAY (Kept Fully)
-============================================= */
-
 .fruitables-search-overlay {
     position: fixed;
     top: 0;
@@ -284,29 +365,17 @@ body,html{
     color: #81c408;
 }
 
-/* =============================================
-   MEDIA QUERIES
-   Desktop (Default) | Tablet | Mobile
-============================================= */
-
-/* =============== DESKTOP (min-width: 981px) =============== */
-@media (min-width: 981px) {
-    .fruitables-nav-item:hover > .fruitables-dropdown {
-        display: block;
-    }
-
-    .fruitables-menu-row {
-        align-items: center;
-        gap: 5px;
-    }
-
-    .fruitables-toggle {
-        pointer-events: none;
-        font-size: 12px;
-    }
+.searchIcon{
+font-size: 13px;
+    border: solid 1px #81c408;
+    border-radius: 50%;
+    padding: 8px;
+    color: #81c408 !important;
+    font-weight: bold;
 }
 
-/* =============== TABLET & LARGE MOBILE (max-width: 960px) =============== */
+
+
 @media (max-width: 960px) {
     .fruitables-icons-group {
         display: none;
@@ -314,10 +383,9 @@ body,html{
 
     .fruitables-hamburger {
         display: block;
+        margin-right: 25px;
     }
-    .fruitables-hamburger.active{
-    color:green;
-    }
+  
 
     .fruitables-nav {
         position: absolute;
@@ -338,11 +406,14 @@ body,html{
         flex-direction: column;
         width: 100%;
         gap: 10px;
+            padding: 10px 20px;
+    font-size: 16px;
+    transition: .5s;
     }
 
     .fruitables-nav-item {
         width: 100%;
-        border-bottom: 1px solid #eee;
+        
     }
 
     .fruitables-nav-item > a {
@@ -372,11 +443,17 @@ body,html{
 
     .fruitables-mobile-icons {
         display: flex;
-        justify-content: center;
-        gap: 25px;
-        padding: 15px 0;
-        border-top: 1px solid #eee;
+        
+        gap: 14px;
+        padding: 15px 14px;
+      
     }
+    .fruitables-search svg {
+    width: 31px;
+    height: 37px;
+    transition: transform .3s ease;
+        
+}
 
     .fruitables-search {
         border: none;
@@ -384,17 +461,34 @@ body,html{
         padding: 0;
         background: none;
     }
+    
+     .fruitables-cart .badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #7ac943;
+        color: #fff;
+        font-size: 12px;
+        border-radius: 50%;
+        padding: 4px 6px;
+    }
 
     .fruitables-mobile-icons span {
         font-size: 20px;
     }
 
     .fruitables-main-header .fruitables-container {
+    
         padding: 20px 20px;
+        position: fixed;
+        background-color: white;
+        width: 100%;
+        top:0px;
+    
     }
 
     .fruitables-logo a {
-        font-size: 28px;
+        font-size: 33px;
     }
 
     .fruitables-cart i {
@@ -403,38 +497,14 @@ body,html{
     }
 
     .fruitables-toggle {
-        margin-right: 26px;
+        margin-right: -2px;
         margin-top: -8px;
     }
     .fa-solid{
-    color:black;
+    color:rgba(0, 0, 0, .55);
       font-weight: 100;}
 }
 
-/* =============== SMALL MOBILE (max-width: 430px) =============== */
-@media (max-width: 430px) {
-    .fruitables-main-header .fruitables-container {
-        padding: 19px 10px;
-        position:fixed;
-        top:0;
-        left:0;
-        width:96%;
-        background-color:white;
-    }
-    .fruitables-logo a {
-        font-size: 20px;
-    }
-
-    .fruitables-toggle {
-        margin-right: 1px;
-    }
-    .fa-solid{
-    color:black;
-      font-weight: 100;
-    }
-}
-
-/* =============== SEARCH OVERLAY RESPONSIVE (Tablet & Mobile) =============== */
 @media (max-width: 768px) {
     .fruitables-search-box {
         width: 90%;
@@ -456,16 +526,96 @@ body,html{
         right: 20px;
         font-size: 20px;
     }
+    .cart-bag-icon {
+    width: 44px;
+    height: 33px;
+    transition: transform .3s ease;
+    filter: brightness(1);
 }
-
-/* Extra small adjustment for very small tablets */
-@media (max-width: 768px) and (min-width: 431px) {
+    .user-icon {
+    width: 37px;
+    height: 29px;
+    transition: transform .3s ease;
+ 
+}
+}
+@media (max-width: 430px) {
     .fruitables-main-header .fruitables-container {
-        padding: 18px 20px;
+        padding: 30px 10px;
         position:fixed;
         top:0;
         left:0;
-        width:96%;
+        width:100%;
         background-color:white;
+    }
+    .fruitables-nav > ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+            padding: 10px 15px;
+    font-size: 16px;
+    transition: .5s;
+    }
+    
+    .fruitables-logo a {
+        font-size: 26px;
+        margin-left: 6px;
+    }
+
+    .fruitables-toggle {
+        margin-right: 1px;
+    }
+    .fa-solid{
+   
+      font-weight: 100;
+    }
+}
+
+
+@media (max-width: 768px) and (min-width: 431px) {
+    .fruitables-main-header .fruitables-container {
+        padding: 31px 20px;
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        background-color:white;
+    }
+}
+@media (min-width: 981px) {
+    .fruitables-nav-item:hover > .fruitables-dropdown {
+        display: block;
+    }
+
+    .fruitables-menu-row {
+        align-items: center;
+        gap: 5px;
+    }
+
+    .fruitables-toggle {
+        pointer-events: none;
+        font-size: 12px;
+    }
+ 
+    .fruitables-logo a {
+        font-size: 40px;
+        font-weight: 800 !important;
+        line-height: 1.2;
+        font-family: Raleway, sans-serif !important;
+        margin-left: -68px;
+    }
+}
+@media (min-width: 970px) and (max-width: 1400px) {
+    .fruitables-logo a {
+        font-size: 36px;
+        margin-left:-40px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1500px) {
+    .fruitables-logo a {
+        font-size: 40px;
+        font-weight: 800;
+         margin-left: -71px;
     }
 }

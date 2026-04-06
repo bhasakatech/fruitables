@@ -1,8 +1,3 @@
-/* =============================================
-   top-header.css 
-   Specifically for TopHeader HTL only
-============================================= */
-
 .fruitables-header * {
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
@@ -16,6 +11,64 @@
     margin: 0 auto;
     padding: 0 20px;
 }
+.topbar-left a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.8px;
+    font-size: 13px;
+}
+
+.topbar-left a svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.topbar-left a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.8px;
+    font-size: 13px;
+}
+
+.topbar-left a svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    position: relative;
+    top: 1px;
+}
+
+.topbar-left a:hover {
+    color: red;
+}
+
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+.topbar-left a svg {
+    position: relative;
+    top: 1px;    
+}
 
 .fruitables-topbar-parent {
     background-color: white;
@@ -27,7 +80,7 @@
     color: #fff;
     font-size: 0.875em;
     border-radius: 230px 100px;
-    height: 50px;
+    height: 55px;
     margin: 0;
     padding: 0 20px;
     font-family: "Open Sans", sans-serif;
@@ -38,7 +91,7 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    padding: 0 25px;
+    padding: 0 15px;
 }
 
 .policy-link::after {
@@ -63,9 +116,11 @@ i:hover {
 }
 
 .topbar-left a {
-    color: #fff;
+  color: #fff;
     margin-left: 2px;
     text-decoration: none;
+    letter-spacing: 0.8px;
+    font-size: 13px;
 }
 
 .topbar-left a:hover {
@@ -73,26 +128,18 @@ i:hover {
 }
 
 .topbar-right a {
-    color: #fff;
-    margin-left: 5px;
+       color: #fff;
+    margin-left: 0px;
     text-decoration: none;
+    letter-spacing: 1.3px;
+    font-size: 13px;
 }
 
 .topbar-right a:hover {
     color: red;
 }
 
-/* =============================================
-   MEDIA QUERIES
-   Desktop | Laptop/Tablet | Mobile
-============================================= */
 
-/* =============== DESKTOP (Large Screens - min 981px) =============== */
-@media (min-width: 981px) {
-    /* Desktop specific adjustments if needed */
-}
-
-/* =============== LAPTOP & TABLET (max-width 960px) =============== */
 @media (max-width: 960px) {
     .fruitables-topbar {
         display: none;
@@ -103,7 +150,6 @@ i:hover {
     }
 }
 
-/* =============== MOBILE (Small screens - max 430px) =============== */
 @media (max-width: 430px) {
     .fruitables-topbar-parent {
         padding: 0 15px;
@@ -123,11 +169,11 @@ i:hover {
     }
 }
 
-/* =============== Medium Tablet / Small Laptop (max 1200px) =============== */
+
 @media (max-width: 1200px) {
     .fruitables-topbar {
         font-size: 0.775em;
-        font-weight: bold;
+  
     }
     
     .fruitables-topbar-parent {

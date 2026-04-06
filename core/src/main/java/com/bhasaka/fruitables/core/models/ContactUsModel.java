@@ -39,7 +39,7 @@ public class ContactUsModel {
     @ValueMapValue
     private String phoneLabel;
     @ValueMapValue
-    private long    phoneNumber;
+    private long phoneNumber;
 
     public String getMapUrl() {
         return mapUrl;

@@ -1,0 +1,22 @@
+{
+  "contact": {
+    "mapUrl": "https://maps.google.com/test",
+    "headingText": "Contact Us",
+    "descriptionText": "This is description",
+    "buttonText": "Download",
+
+    "namePlaceholder": "Enter Name",
+    "emailPlaceholder": "Enter Email",
+    "messagePlaceholder": "Enter Message",
+    "submitButtonText": "Submit",
+
+    "addressLabel": "Address",
+    "addressText": "Hyderabad",
+
+    "emailLabel": "Email",
+    "emailText": "test@gmail.com",
+
+    "phoneLabel": "Phone",
+    "phoneNumber": 9876543210
+  }
+}

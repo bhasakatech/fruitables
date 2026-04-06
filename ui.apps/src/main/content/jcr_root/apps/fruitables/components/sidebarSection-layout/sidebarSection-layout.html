@@ -1,0 +1,195 @@
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.SidebarSectionLayoutModel"/>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.css @ categories='fruitables.sidebarSection'}"/>
+<sly data-sly-call="${clientlib.js @ categories='fruitables.sidebarSection'}"/>
+
+
+<div class="sidebar-section-layout">
+    <h1 class="sidebar-section-layout__title mb-4">${model.sectionTitle}</h1>
+
+    <div class="row g-4">
+        <div class="col-lg-12">
+
+            <div class="row g-4 sidebar-section-layout__header">
+                <div class="col-xl-3">
+                    <div class="input-group w-100 mx-auto d-flex">
+                        <input
+                            type="search"
+                            class="form-control p-3"
+                            placeholder="${model.searchPlaceholder}"
+                            aria-describedby="${model.searchIconId}">
+                        <span id="${model.searchIconId}" class="input-group-text p-3 sidebar-section-layout__search-icon">
+                            <sly data-sly-test="${model.searchImage}">
+                                <img
+                                    src="${model.searchImage @ context='uri'}"
+                                    alt="Search"
+                                    class="sidebar-section-layout__search-image">
+                            </sly>
+                            <sly data-sly-test="${!model.searchImage}">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </sly>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-6"></div>
+
+                <div class="col-xl-3">
+                    <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4 sidebar-section-layout__sorting">
+                        <label for="${model.sortingId}">${model.sortingLabel}</label>
+                        <select id="${model.sortingId}" name="fruitlist" class="border-0 form-select-sm bg-light me-3">
+                            <option
+                                data-sly-repeat.option="${model.sortingOptions}"
+                                value="${option.optionValue}"
+                                selected="${option.selected}">${option.optionText}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-lg-3 sidebar-section-layout__content">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <h4>${model.categoriesTitle}</h4>
+                                <ul class="list-unstyled sidebar-section-layout__category-list">
+                                    <li class="sidebar-section-layout__category-item" data-sly-repeat.category="${model.categories}">
+                                        <div class="d-flex justify-content-between sidebar-section-layout__category-row">
+                                            <a href="#" class="sidebar-section-layout__category-link">
+                                                <i class="fas fa-apple-alt me-2"></i>${category.title}
+                                            </a>
+                                            <span>(${category.count})</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="mb-3 sidebar-section-layout__price" data-price-range>
+                                <h4 class="mb-2">${model.priceTitle}</h4>
+                                <input
+                                    type="range"
+                                    class="form-range w-100"
+                                    id="${model.rangeInputId}"
+                                    name="${model.rangeInputId}"
+                                    data-price-range-input
+                                    min="${model.minPrice}"
+                                    max="${model.maxPrice}"
+                                    value="${model.selectedPrice}">
+                                <output
+                                    id="${model.amountOutputId}"
+                                    class="sidebar-section-layout__price-value"
+                                    data-price-range-output
+                                    for="${model.rangeInputId}">Rs. ${model.selectedPrice}</output>
+                                <p class="sidebar-section-layout__price-example mb-0" data-price-range-example>
+                                    Example: showing products up to Rs. ${model.selectedPrice}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <h4>${model.additionalTitle}</h4>
+                                <div class="mb-2 sidebar-section-layout__additional-option" data-sly-repeat.additional="${model.additionalOptions}">
+                                    <input
+                                        type="radio"
+                                        class="me-2"
+                                        id="${model.additionalIdPrefix}${additionalList.count}"
+                                        name="${model.additionalGroupName}"
+                                        value="${additional.value}"
+                                        checked="${additional.checked}">
+                                    <label for="${model.additionalIdPrefix}${additionalList.count}">${additional.label}</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12" data-featured-products-section>
+                            <h4 class="mb-3">${model.featuredProductsTitle}</h4>
+                            <div
+                                id="${model.featuredProductsListId}"
+                                class="sidebar-section-layout__featured-products"
+                                data-featured-products>
+                                <div
+                                    class="d-flex align-items-center justify-content-start mb-3 sidebar-section-layout__featured-item"
+                                    data-featured-product-item
+                                    data-sly-repeat.item="${model.featuredProductsPreview}">
+                                    <div class="rounded me-4 sidebar-section-layout__featured-image-wrapper">
+                                        <img
+                                            src="${item.product.productImage @ context='uri'}"
+                                            class="img-fluid rounded sidebar-section-layout__featured-image"
+                                            alt="${item.product.productName}">
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-2">${item.product.productName}</h6>
+                                        <div class="d-flex mb-2 sidebar-section-layout__stars" aria-label="${item.product.productRating} out of 5 stars">
+                                            <sly data-sly-repeat.star="${item.product.filledStars}">
+                                                <i class="fa fa-star text-secondary" aria-hidden="true"></i>
+                                            </sly>
+                                            <sly data-sly-repeat.star="${item.product.emptyStars}">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </sly>
+                                        </div>
+                                        <div class="d-flex mb-2">
+                                            <h5 class="fw-bold me-2" data-sly-test="${item.product.productPrice}">
+                                                &#8377; ${item.product.productPrice}<span data-sly-test="${item.product.unit}"> / ${item.product.unit}</span>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="d-flex align-items-center justify-content-start mb-3 sidebar-section-layout__featured-item"
+                                    data-featured-product-item
+                                    data-sly-repeat.item="${model.remainingFeaturedProducts}"
+                                    hidden>
+                                    <div class="rounded me-4 sidebar-section-layout__featured-image-wrapper">
+                                        <img
+                                            src="${item.product.productImage @ context='uri'}"
+                                            class="img-fluid rounded sidebar-section-layout__featured-image"
+                                            alt="${item.product.productName}">
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-2">${item.product.productName}</h6>
+                                        <div class="d-flex mb-2 sidebar-section-layout__stars" aria-label="${item.product.productRating} out of 5 stars">
+                                            <sly data-sly-repeat.star="${item.product.filledStars}">
+                                                <i class="fa fa-star text-secondary" aria-hidden="true"></i>
+                                            </sly>
+                                            <sly data-sly-repeat.star="${item.product.emptyStars}">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </sly>
+                                        </div>
+                                        <div class="d-flex mb-2">
+                                            <h5 class="fw-bold me-2" data-sly-test="${item.product.productPrice}">
+                                                &#8377; ${item.product.productPrice}<span data-sly-test="${item.product.unit}"> / ${item.product.unit}</span>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center my-4" data-sly-test="${model.featuredProductsExpandable}">
+                                <button
+                                    type="button"
+                                    class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100 sidebar-section-layout__featured-toggle"
+                                    data-featured-products-toggle
+                                    aria-controls="${model.featuredProductsListId}"
+                                    aria-expanded="false">${model.viewMoreLabel}</button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12" data-sly-test="${model.bannerImage}">
+                            <div class="position-relative">
+                                <img src="${model.bannerImage @ context='uri'}" class="img-fluid w-100 rounded" alt="${model.bannerAltText}">
+                                <div class="position-absolute sidebar-section-layout__banner-content">
+                                    <h3 class="text-secondary fw-bold sidebar-section-layout__banner-title">${model.bannerTitle @ context='html'}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

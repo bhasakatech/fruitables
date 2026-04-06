@@ -1,0 +1,56 @@
+{
+  "sectionTitle": "Fresh fruits shop",
+  "searchPlaceholder": "keywords",
+  "sortingLabel": "Default Sorting:",
+  "categoriesTitle": "Categories",
+  "tags": [
+    "/content/cq:tags/fruitables/apples",
+    "/content/cq:tags/fruitables/banana"
+  ],
+  "categorySearchRoot": "/content/site/products",
+  "priceTitle": "Price",
+  "minPrice": 0,
+  "maxPrice": 500,
+  "selectedPrice": 112,
+  "additionalTitle": "Additional",
+  "featuredProductsTitle": "Featured products",
+  "viewMoreLabel": "View More",
+  "viewMoreLink": "/shop/products",
+  "bannerImage": "/content/dam/fruitables/banner-fruits.jpg",
+  "bannerAltText": "Fresh Fruits Banner",
+  "bannerTitle": "Fresh Fruits Banner",
+  "sortingOptions": {
+    "item0": {
+      "optionText": "Nothing",
+      "optionValue": "nothing",
+      "selected": true
+    },
+    "item1": {
+      "optionText": "Popularity",
+      "optionValue": "popularity",
+      "selected": false
+    }
+  },
+  "additionalOptions": {
+    "item0": {
+      "label": "Organic",
+      "value": "Organic",
+      "checked": false
+    },
+    "item1": {
+      "label": "Expired",
+      "value": "Expired",
+      "checked": true
+    }
+  },
+  "products": {
+    "item0": {
+      "cfPath": "/content/dam/fruitables/products/big-banana",
+      "cardStyle": "compact"
+    },
+    "item1": {
+      "cfPath": "/content/dam/fruitables/products/fresh-strawberry",
+      "cardStyle": "standard"
+    }
+  }
+}

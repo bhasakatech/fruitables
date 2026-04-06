@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Sidebar Section Properties"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <fruitablesTabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                <items jcr:primaryType="nt:unstructured">
+                    <searchAndSorting
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Search &amp; Sorting"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <sectionTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Section Title"
+                                name="./sectionTitle"
+                                value="Fresh fruits shop"/>
+                            <searchPlaceholder
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Search Placeholder"
+                                name="./searchPlaceholder"
+                                value="keywords"/>
+                            <searchImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Optional icon image. If empty, the default search icon is used."
+                                fieldLabel="Search Icon Image"
+                                name="./searchImage"
+                                rootPath="/content/dam/fruitables"/>
+                            <sortingLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Sorting Label"
+                                name="./sortingLabel"
+                                value="Default Sorting:"/>
+                            <sortingOptions
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Sorting Options">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./sortingOptions">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <optionText
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Option Text"
+                                            name="./optionText"/>
+                                        <selected
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            fieldLabel="Selected by Default"
+                                            name="./selected"
+                                            text="Select this option"
+                                            uncheckedValue="false"
+                                            value="true"/>
+                                    </items>
+                                </field>
+                            </sortingOptions>
+                        </items>
+                    </searchAndSorting>
+                    <categories
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Categories"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <categoriesTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Categories Title"
+                                name="./categoriesTitle"
+                                value="Categories"/>
+                            <tags
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                fieldDescription="Select the tags to display as categories."
+                                fieldLabel="Category Tags"
+                                multiple="{Boolean}true"
+                                name="./tags"
+                                rootPath="/content/cq:tags"/>
+                            <categorySearchRoot
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Optional. When set, category counts are calculated by scanning this content path for matching cq:tags."
+                                fieldLabel="Category Count Search Root"
+                                name="./categorySearchRoot"
+                                rootPath="/content"/>
+                        </items>
+                    </categories>
+                    <price
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Price"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <priceTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Price Title"
+                                name="./priceTitle"
+                                value="Price"/>
+                            <minPrice
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Minimum Price"
+                                min="0"
+                                name="./minPrice"
+                                step="1"
+                                value="0"/>
+                            <maxPrice
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Maximum Price"
+                                min="0"
+                                name="./maxPrice"
+                                step="1"
+                                value="500"/>
+                            <selectedPrice
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Default Selected Price"
+                                min="0"
+                                name="./selectedPrice"
+                                step="1"
+                                value="0"/>
+                        </items>
+                    </price>
+                    <additional
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Additional"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <additionalTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Additional Title"
+                                name="./additionalTitle"
+                                value="Additional"/>
+                            <additionalOptions
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Radio Options">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./additionalOptions">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <label
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Label"
+                                            name="./label"/>
+                                        <checked
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            fieldLabel="Checked by Default"
+                                            name="./checked"
+                                            text="Select this radio option"
+                                            uncheckedValue="false"
+                                            value="true"/>
+                                    </items>
+                                </field>
+                            </additionalOptions>
+                        </items>
+                    </additional>
+                    <featuredProducts
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Featured Products"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <featuredProductsTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Featured Products Title"
+                                name="./featuredProductsTitle"
+                                value="Featured products"/>
+                            <products
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Products">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                                    name="./products">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <item
+                                            jcr:primaryType="nt:unstructured"
+                                            jcr:title="Product"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <cfPath
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldLabel="Content Fragment Path"
+                                                    name="./cfPath"
+                                                    required="{Boolean}true"
+                                                    rootPath="/content/dam/fruitables"/>
+                                                <cardStyle
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="Card Style"
+                                                    name="./cardStyle">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <compact
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Compact"
+                                                            value="compact"/>
+                                                        <standard
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Standard"
+                                                            value="standard"/>
+                                                    </items>
+                                                </cardStyle>
+                                            </items>
+                                        </item>
+                                    </items>
+                                </field>
+                            </products>
+                            <viewMoreLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="View More Button Label"
+                                name="./viewMoreLabel"
+                                value="View More"/>
+                            <viewMoreLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="View More Button Link"
+                                name="./viewMoreLink"/>
+                        </items>
+                    </featuredProducts>
+                    <banner
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Banner"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <bannerImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="Banner Image"
+                                name="./bannerImage"
+                                rootPath="/content/dam/fruitables"/>
+                            <bannerTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                fieldDescription="Example: Fresh Fruits Banner"
+                                fieldLabel="Banner Text"
+                                name="./bannerTitle"
+                                useFixedInlineToolbar="{Boolean}true"
+                                value="Fresh Fruits Banner"/>
+                        </items>
+                    </banner>
+                </items>
+            </fruitablesTabs>
+        </items>
+    </content>
+</jcr:root>

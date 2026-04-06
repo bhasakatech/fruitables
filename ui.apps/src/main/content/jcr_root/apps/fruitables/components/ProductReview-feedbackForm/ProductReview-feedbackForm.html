@@ -1,0 +1,65 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.all @ categories='fruitables.productReviewFeedbackForm'}"/>
+
+<div class="review-form">
+    <h2 class="review-form__title">${properties.sectionTitle || 'Leave a Reply'}</h2>
+
+    <form class="review-form__form" novalidate>
+
+        <div class="review-form__row">
+            <input
+                class="review-form__input"
+                type="text"
+                name="name"
+                placeholder="${properties.namePlaceholder || 'Your Name *'}"
+                required />
+
+            <input
+                class="review-form__input"
+                type="email"
+                name="email"
+                placeholder="${properties.emailPlaceholder || 'Your Email *'}"
+                required />
+        </div>
+
+        <div class="review-form__rte">
+            ${properties.reviewPlaceholder @ context='html'}
+        </div>
+
+        <textarea
+            class="review-form__textarea"
+            name="review"
+            required></textarea>
+
+        <div class="review-form__bottom">
+
+            <div class="review-form__rating-wrap">
+                <span class="review-form__rating-label">
+                    ${properties.ratingLabel || 'Please rate:'}
+                </span>
+
+                <div class="review-form__rating" data-rating="0">
+                    <button type="button" class="review-form__star" data-value="1">&#9733;</button>
+                    <button type="button" class="review-form__star" data-value="2">&#9733;</button>
+                    <button type="button" class="review-form__star" data-value="3">&#9733;</button>
+                    <button type="button" class="review-form__star" data-value="4">&#9733;</button>
+                    <button type="button" class="review-form__star" data-value="5">&#9733;</button>
+                </div>
+
+                <input
+                    type="hidden"
+                    name="rating"
+                    class="review-form__rating-input"
+                    value="0" />
+            </div>
+
+            <button type="submit" class="review-form__submit">
+                ${properties.buttonText || 'Post Comment'}
+            </button>
+
+        </div>
+
+        <p class="review-form__message" hidden></p>
+
+    </form>
+</div>

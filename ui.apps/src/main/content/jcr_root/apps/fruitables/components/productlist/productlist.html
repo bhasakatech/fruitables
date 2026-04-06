@@ -1,44 +1,74 @@
-<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
-<sly data-sly-call="${clientlib.css @ categories='fruitables.product'}"/>
-<sly data-sly-use.list="com.bhasaka.fruitables.core.models.ProductListModel"/>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlib.all @ categories='fruitables.product'}" />
+<sly data-sly-use.list="com.bhasaka.fruitables.core.models.ProductListModel" />
 
-<sly data-sly-test="${list.sectionTitle}">
+<div class="product-section ${properties.sectionType}">
     <div class="product-header">
         <h2 class="section-title">${list.sectionTitle}</h2>
-        <p class="section-desc">${list.sectionDescription @ context='html'}</p>   
+        <p class="section-desc">${list.sectionDescription @ context='html'}</p>
+
+        <div class="carousel-arrows"
+             data-sly-test="${properties.sectionType == 'fresh-vegetables'}">
+            <button class="carousel-btn next">→</button>
+            <button class="carousel-btn prev">←</button>
+        </div>
     </div>
-</sly>
 
-<div class="product-container">
+    <div class="carousel-wrapper" data-carousel>
 
-    <sly data-sly-list.item="${list.items}">
-        <sly data-sly-call="${productCard @ item=item, buttonText=list.cartButtonText}"/>
-    </sly>
-
+        <div class="product-container ${properties.sectionType == 'fresh-vegetables' ? 'carousel-container' : ''}">
+            
+            <sly data-sly-list.item="${list.items}">
+                <sly data-sly-call="${productCard @ item=item, buttonText=list.cartButtonText}" />
+            </sly>
+        </div>
+    </div>
 </div>
 
 <sly data-sly-template.productCard="${@ item, buttonText}">
-    <div class="product-card ${item.cardStyle}">
+    <div class="product-card ${item.cardStyle} ${properties.showBorder ? 'card-border' : ''} ${properties.categoryColor}">
+        
         <div class="product-image">
-            <img src="${item.product.productImage @ context='uri'}" alt="${item.product.productName}"/>
+            <img src="${item.product.productImage @ context='uri'}" alt="${item.product.productName}" />
+
+            <span data-sly-test="${item.cardStyle == 'standard' && properties.showCategory}"
+                class="category-badge ${properties.categoryColor} ${properties.badgePosition}">
+                ${item.product.productCategory}
+            </span>
         </div>
+
         <div class="product-details">
             <h2 class="product-title">${item.product.productName}</h2>
-            <p class="price">₹ ${item.product.productPrice} / ${item.product.unit}</p>
 
-            <div class="rating">
-                <sly data-sly-list.star="${item.product.filledStars}">
-                    <span class="star filled">★</span>
+            <sly data-sly-test="${item.cardStyle == 'standard' && properties.showDescription}">
+                <div class="product-description">
+                    ${item.product.productDescription @ context='html'}
+                </div>
+            </sly>
+            
+            <p class="price">
+                ₹ ${item.product.productPrice}
+                <sly data-sly-test="${item.cardStyle == 'standard' && properties.priceUnit}">
+                    / ${properties.priceUnit}
                 </sly>
-                <sly data-sly-list.star="${item.product.emptyStars}">
-                    <span class="star">★</span>
-                </sly>
-            </div>
+            </p>
+
+            <sly data-sly-test="${properties.showRating}">
+                <div class="rating">
+                    <sly data-sly-list.star="${item.product.filledStars}">
+                        <span class="star filled">★</span>
+                    </sly>
+                    <sly data-sly-list.star="${item.product.emptyStars}">
+                        <span class="star">★</span>
+                    </sly>
+                </div>
+            </sly>
 
             <button class="add-to-cart">
                 <i class="fa-solid fa-bag-shopping"></i>
                 ${buttonText}
-            </button> 
+            </button>
         </div>
+
     </div>
 </sly>

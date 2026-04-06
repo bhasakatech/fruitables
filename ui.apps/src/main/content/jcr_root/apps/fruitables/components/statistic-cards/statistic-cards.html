@@ -1,0 +1,29 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.all @ categories='fruitables.statistics-cards'}"/>
+
+<div class="statistics-cards"
+     data-sly-use.model="com.bhasaka.fruitables.core.models.StatisticsCardsModel">
+
+    <div class="stats-container">
+        <div class="stats-grid"
+             data-sly-list.card="${model.statsItems}">
+           
+            <div class="stat-card">
+                
+                <div class="stat-icon">
+                    <i class="fa fa-users text-secondary" aria-hidden="true"></i>
+                </div>
+               
+                <div class="stat-title" data-sly-test="${card.title}">
+                    ${card.title}
+                </div>
+               
+          
+                <div class="stat-value" data-sly-test="${card.value}">
+                    ${card.value}
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>

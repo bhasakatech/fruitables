@@ -1,0 +1,90 @@
+.shop-banner{
+    padding: 125px 0 0;
+}
+.page-header.shop-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #8f5a20;
+    text-align: center;
+}
+
+.shop-banner__media,
+.shop-banner__overlay {
+    position: absolute;
+    inset: 0;
+}
+
+.shop-banner__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.shop-banner__overlay {
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.shop-banner__content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+.shop-banner__title {
+    margin: 0 0 1rem;
+}
+
+.shop-banner__breadcrumb .cmp-breadcrumb {
+    display: flex;
+    justify-content: center;
+}
+
+.shop-banner__breadcrumb .cmp-breadcrumb__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.shop-banner__breadcrumb .cmp-breadcrumb__item {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    color: #8bc34a;
+}
+
+.shop-banner__breadcrumb .cmp-breadcrumb__item + .cmp-breadcrumb__item::before {
+    content: "/";
+    margin: 0 0.75rem;
+    color: #ffffff;
+}
+
+.shop-banner__breadcrumb .cmp-breadcrumb__item-link,
+.shop-banner__breadcrumb .cmp-breadcrumb__item-title {
+    color: inherit;
+    text-decoration: none;
+}
+
+.shop-banner__breadcrumb .cmp-breadcrumb__item--active,
+.shop-banner__breadcrumb .cmp-breadcrumb__item--active .cmp-breadcrumb__item-title {
+    color: #ffffff;
+}
+
+.shop-banner__breadcrumb .cmp-breadcrumb__item:not(.cmp-breadcrumb__item--active) .cmp-breadcrumb__item-link:hover,
+.shop-banner__breadcrumb .cmp-breadcrumb__item:not(.cmp-breadcrumb__item--active) .cmp-breadcrumb__item-link:focus {
+    color: #b8dd74;
+}
+
+@media (max-width: 767px) {
+    .page-header.shop-banner {
+        min-height: auto;
+    }
+}

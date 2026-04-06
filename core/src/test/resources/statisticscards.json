@@ -1,0 +1,14 @@
+{
+  "statsItems": {
+    "item0": {
+      "iconImage": "/content/dam/icons/apple.png",
+      "title": "Apples Sold",
+      "value": "150"
+    },
+    "item1": {
+      "iconImage": "/content/dam/icons/orange.png",
+      "title": "Oranges Sold",
+      "value": "200"
+    }
+  }
+}

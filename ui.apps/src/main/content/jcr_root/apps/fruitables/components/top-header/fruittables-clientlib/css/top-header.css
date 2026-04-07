@@ -25,6 +25,7 @@
     width: 18px;
     height: 18px;
     flex-shrink: 0;
+    color:#ffb524 !important;
 }
 .topbar-left {
     display: flex;

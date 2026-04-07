@@ -3,75 +3,6 @@
 font-family: Raleway;
 }
 
-
-.fruitables-cart:hover svg {
-    transform: scale(1.15);
-}
-.fruitables-search svg{
- width: 18px;    
-    height: 25px;
-    transition: transform 0.3s ease;
-}
-.fruitables-cart svg {
-    transition: all 0.3s ease;
-}
-
-.fruitables-search:hover svg,
-.fruitables-cart:hover svg {
-    transform: scale(1.1);
-    stroke: #fff;          
-}
-
-.cart-bag-icon {
-      width: 49px;
-    height: 39px;
-    transition: transform 0.3s ease;
-    filter: brightness(1);  
-}
-
-.fruitables-cart:hover .cart-bag-icon {
-    transform: scale(1.15);
-}
-
-.fruitables-cart {
-    position: relative;
-}
-
-.fruitables-cart .badge {
-    position: absolute;
-    top: -6px;
-    right: -8px;
-}
-
-
-.fruitables-cart:hover .cart-bag-icon {
-    transform: scale(1.15);
-}
-
-.user-icon {
-       width: 42px;
-    height: 33px;
-    transition: transform 0.3s ease;
-
-}
-
-.fruitables-user:hover .user-icon {
-    transform: scale(1.15);
-}
-
-/* Badge positioning */
-.fruitables-cart {
-    position: relative;
-}
-
-.fruitables-cart .badge {
-    position: absolute;
-    top: -6px;
-    right: -8px;
-}
-
-
-
 .fruitables-main-header * {
     box-sizing: border-box;
   
@@ -189,17 +120,17 @@ font-family: Raleway;
     align-items: center;
     gap: 25px;
     font-size: 30px;
-     margin-right: -25px;
+    margin-right: -25px;
 }
 
 .fruitables-search {
     font-size: 12px;
     border: solid 1px #81c408;
     border-radius: 50%;
-    padding: 7px 11px 0px 11px;
+    padding: 5px 7px 0px 7px;
     color: #81c408;
     font-weight: bold;
-        margin-bottom: -9px;
+        margin-bottom: 6px;
     
 }
 
@@ -375,6 +306,81 @@ font-size: 13px;
 }
 
 
+.fruitables-icons-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.fruitables-icons svg {
+    width: 23px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.icon-bag {
+    width: 28px;
+    height: 28px;
+}
+
+.icon-bag .bag-body {
+    fill: #7ac943;
+    stroke: #7ac943;
+    stroke-width: 1.5;
+}
+
+.icon-bag .bag-handle {
+    fill: none;
+    stroke: #7ac943;
+    stroke-width: 2;
+}
+
+.icon-user {
+    width: 35px;
+    height: 35px;
+}
+
+.fruitables-cart {
+    position: relative;
+}
+
+.fruitables-cart .badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background-color: #7ac943;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 50%;
+    padding: 3px 6px;
+}
+.fruitables-cart svg {
+    transition: all 0.3s ease;
+}
+
+.fruitables-cart .icon-user:hover svg {
+    transform: scale(1.1);
+}
+.icon-circle svg {
+    width: 35px;
+    height: 35px;
+}
+
+.icon-bag .bag-body {
+    fill: #81c408;
+    stroke: #81c408;
+}
+
+.icon-bag .bag-handle {
+    fill: none;
+    stroke: #81c408;
+}
+
+
+.icon-user {
+    fill: #81c408;
+}
 
 @media (max-width: 960px) {
     .fruitables-icons-group {

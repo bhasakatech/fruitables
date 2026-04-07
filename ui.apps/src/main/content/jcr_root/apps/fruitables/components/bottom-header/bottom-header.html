@@ -40,15 +40,21 @@
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </span>           
-                <a href="${model.cartPagePath @ extension='html'}" class="fruitables-cart" data-sly-test="${model.enableCart}">
-                    <img src="/content/dam/fruitables/cart.png" alt="Cart" width="30" height="30" class="cart-bag-icon">
-                    <span class="badge">${model.defaultCartCount}</span>
-                </a>
+                <a href="${model.cartPagePath @ extension='html'}" class="fruitables-cart icon-circle">
+    <svg class="icon-bag" viewBox="0 0 24 24">
+        <path d="M6 7h12l-1 13H7L6 7z" class="bag-body"></path>
+        <path d="M9 7V5a3 3 0 0 1 6 0v2" class="bag-handle"></path>
+    </svg>
+    <span class="badge">${model.defaultCartCount}</span>
+</a>
                 
-              
-                <span class="fruitables-user" data-sly-test="${model.enableProfile}">
-                    <img src="/content/dam/fruitables/user.png" alt="User" width="30" height="30" class="user-icon">
-                </span>
+            
+              <span class="fruitables-user icon-circle">
+    <svg class="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4"></circle>
+        <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+    </svg>
+</span>
             </div>
         </nav>
 
@@ -63,15 +69,21 @@
                 </span>
                 
                 
-                <a href="${model.cartPagePath @ extension='html'}" class="fruitables-cart" data-sly-test="${model.enableCart}">
-                    <img src="/content/dam/fruitables/cart.png" alt="Cart" width="30" height="30" class="cart-bag-icon">
-                    <span class="badge">${model.defaultCartCount}</span>
-                </a>
+           <a href="${model.cartPagePath @ extension='html'}" class="fruitables-cart icon-circle">
+    <svg class="icon-bag" viewBox="0 0 24 24">
+        <path d="M6 7h12l-1 13H7L6 7z" class="bag-body"></path>
+        <path d="M9 7V5a3 3 0 0 1 6 0v2" class="bag-handle"></path>
+    </svg>
+    <span class="badge">${model.defaultCartCount}</span>
+</a>
                 
             
-                <span class="fruitables-user" data-sly-test="${model.enableProfile}">
-                    <img src="/content/dam/fruitables/user.png" alt="User" width="30" height="30" class="user-icon">
-                </span>
+              <span class="fruitables-user icon-circle">
+    <svg class="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4"></circle>
+        <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+    </svg>
+</span>
             </div>
             
             <span class="fruitables-hamburger" onclick="toggleMenu()">☰</span>

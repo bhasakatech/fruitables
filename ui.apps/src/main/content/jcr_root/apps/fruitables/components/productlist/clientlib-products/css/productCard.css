@@ -4,9 +4,12 @@
     gap: 25px;
     width: 100%;
     grid-auto-flow: row;
+<<<<<<< HEAD
     padding-left: 6rem !important;
     padding-right: 6rem !important;
     padding-bottom: 3rem !important;
+=======
+>>>>>>> 76d1ee2 (Implemented enhancement for product list component)
     
 }
 .product-card.compact {
@@ -127,7 +130,10 @@
     justify-content: center;
     gap: 5px;
     transition: 0.3s;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 76d1ee2 (Implemented enhancement for product list component)
 }
 .add-to-cart:hover {
     background: #7ac142;
@@ -187,6 +193,7 @@
     max-width: calc((100% - 80px) / 4);
     flex-shrink: 0;
 }
+<<<<<<< HEAD
 .product-section.fresh-vegetables .product-card {
     position: relative;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -341,3 +348,134 @@
     padding-bottom: 3rem !important;
 }
 } 
+=======
+
+.product-card {
+    position: relative;
+    transition: box-shadow 0.3s ease;
+}
+.product-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    z-index: 5;
+}
+
+.product-image {
+    overflow: hidden;
+}
+.product-image img {
+    transition: transform 0.4s ease;
+}
+.product-image:hover img {
+    transform: scale(1.1);
+}
+
+.product-container .product-card:hover {
+    box-shadow: 0 0 0 2px #D4D3D2, 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.product-container .product-card:first-child:hover {
+    box-shadow: 
+        2px 0 0 #7ac142,
+        0 2px 0 #7ac142,
+        0 -2px 0 #7ac142,
+        15px 0 35px rgba(0,0,0,0.15);
+}
+
+.product-container .product-card:last-child:hover {
+    box-shadow: 
+        -2px 0 0 #7ac142,
+        0 2px 0 #7ac142,
+        0 -2px 0 #7ac142,
+        -15px 0 35px rgba(0,0,0,0.15);
+}
+
+.product-section.fresh-vegetables .product-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "title title"
+        "desc desc"
+        "rating rating"
+        "price cart";
+    grid-template-rows: auto auto 20px 32px;
+    align-items: center;
+}
+
+.product-section.fresh-vegetables .product-title {
+    grid-area: title;
+}
+.product-section.fresh-vegetables .product-description {
+    grid-area: desc;
+}
+.product-section.fresh-vegetables .rating {
+    grid-area: rating;
+}
+.product-section.fresh-vegetables .price {
+    grid-area: price;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+.product-section.fresh-vegetables .add-to-cart {
+    grid-area: cart;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    margin: 0;
+}
+.product-section.fresh-vegetables .price,
+.product-section.fresh-vegetables .add-to-cart {
+    margin: 0;
+}
+
+.product-description p {
+    margin: 0;
+}
+
+.product-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+    min-height: calc(1.4em * 3);
+}
+
+.rating {
+    min-height: 20px;
+}
+
+.price {
+    margin: 0;
+    line-height: 32px;
+}
+.add-to-cart {
+    height: 32px;
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .product-section.fresh-vegetables .product-card {
+        flex: 0 0 calc((100% - 25px) / 2);
+        max-width: calc((100% - 25px) / 2);
+    }
+}
+
+@media (max-width: 576px) {
+    .product-section.fresh-vegetables .product-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+}
+
+
+>>>>>>> 76d1ee2 (Implemented enhancement for product list component)

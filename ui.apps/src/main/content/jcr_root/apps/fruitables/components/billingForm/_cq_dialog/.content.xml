@@ -17,18 +17,85 @@
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                         fieldLabel="Section Title"
                         name="./sectionTitle"
-                        value="Billing details"/>
-                    <placeholder
+                        value="Billing Details"/>
+                    <firstNameLabel
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Placeholder"
-                        name="./placeholder"/>
-                    <buttonLabel
+                        fieldLabel="First Name Label"
+                        name="./firstNameLabel"
+                        value="First Name"/>
+                    <lastNameLabel
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Button Label"
-                        name="./buttonLabel"
-                        value="Submit"/>
+                        fieldLabel="Last Name Label"
+                        name="./lastNameLabel"
+                        value="Last Name"/>
+                    <companyNameLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Company Name Label"
+                        name="./companyNameLabel"
+                        value="Company Name"/>
+                    <addressLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Address Label"
+                        name="./addressLabel"
+                        value="Address"/>
+                    <addressPlaceholder
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Address Placeholder"
+                        name="./addressPlaceholder"
+                        value="House number and street"/>
+                    <cityLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="City Label"
+                        name="./cityLabel"
+                        value="City"/>
+                    <countryLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Country Label"
+                        name="./countryLabel"
+                        value="Country"/>
+                    <zipLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Zip Label"
+                        name="./zipLabel"
+                        value="Zip"/>
+                    <mobileLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Mobile Label"
+                        name="./mobileLabel"
+                        value="Mobile"/>
+                    <emailLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Email Label"
+                        name="./emailLabel"
+                        value="Email Address"/>
+                    <createAccountLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Create Account Label"
+                        name="./createAccountLabel"
+                        value="Create an account"/>
+                    <shipDifferentAddressLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Ship Different Address Label"
+                        name="./shipDifferentAddressLabel"
+                        value="different address"/>
+                    <notesPlaceholder
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Notes Placeholder"
+                        name="./notesPlaceholder"
+                        value="Order Notes"/>
                 </items>
             </fields>
         </items>

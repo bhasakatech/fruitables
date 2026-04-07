@@ -4,6 +4,9 @@
     gap: 25px;
     width: 100%;
     grid-auto-flow: row;
+    padding-left: 6rem !important;
+    padding-right: 6rem !important;
+    padding-bottom: 3rem !important;
     
 }
 .product-card.compact {
@@ -122,8 +125,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 5px;
     transition: 0.3s;
+
 }
 .add-to-cart:hover {
     background: #7ac142;
@@ -183,31 +187,34 @@
     max-width: calc((100% - 80px) / 4);
     flex-shrink: 0;
 }
-
-.product-card {
+.product-section.fresh-vegetables .product-card {
     position: relative;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
-.product-card:hover {
+.product-section.fresh-vegetables .product-card:hover {
     box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-    z-index: 5;
+    transform: translateY(-5px);
+    z-index: 10;
 }
-
 .product-image {
     overflow: hidden;
 }
-.product-image img {
+.product-section.fresh-vegetables .product-image img {
     transition: transform 0.4s ease;
 }
-.product-image:hover img {
+.product-section.fresh-vegetables .product-image:hover img {
     transform: scale(1.1);
 }
 
-.product-container .product-card:hover {
-    box-shadow: 0 0 0 2px #D4D3D2, 0 15px 35px rgba(0,0,0,0.15);
+.product-card:hover {
+    box-shadow: none;
 }
 
-.product-container .product-card:first-child:hover {
+.product-section.fresh-vegetables .product-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
+
+.product-section.fresh-vegetables .product-card:first-child:hover {
     box-shadow: 
         2px 0 0 #7ac142,
         0 2px 0 #7ac142,
@@ -215,14 +222,13 @@
         15px 0 35px rgba(0,0,0,0.15);
 }
 
-.product-container .product-card:last-child:hover {
+.product-section.fresh-vegetables .product-card:last-child:hover {
     box-shadow: 
         -2px 0 0 #7ac142,
         0 2px 0 #7ac142,
         0 -2px 0 #7ac142,
         -15px 0 35px rgba(0,0,0,0.15);
 }
-
 .product-section.fresh-vegetables .product-details {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -280,7 +286,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     line-height: 1.4;
-    min-height: calc(1.4em * 3);
+    height: calc(1.4em * 3);
 }
 
 .rating {
@@ -296,19 +302,42 @@
     margin: 0;
 }
 
-@media (max-width: 991px) {
-    .product-section.fresh-vegetables .product-card {
-        flex: 0 0 calc((100% - 25px) / 2);
-        max-width: calc((100% - 25px) / 2);
-    }
+
+
+@media (max-width: 321px) {
+  .product-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 25px;
+    width: 100%;
+    grid-auto-flow: row;
+    padding-left: 1.5rem !important;
+    padding-right: 6rem !important;
+    padding-bottom: 3rem !important;
+}
 }
 
-@media (max-width: 576px) {
-    .product-section.fresh-vegetables .product-card {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-    
+@media (min-width: 321px) and (max-width: 426px) {
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 25px;
+    width: 116%;
+    grid-auto-flow: row;
+    padding-left: 2rem !important;
+    padding-right: 6rem !important;
+    padding-bottom: 3rem !important;
 }
-
-
+}
+@media (min-width: 765px) and (max-width: 1024px) {
+    .product-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 25px;
+    width: 105%;
+    grid-auto-flow: row;
+    padding-left: 4rem !important;
+    padding-right: 6.4rem !important;
+    padding-bottom: 3rem !important;
+}
+} 

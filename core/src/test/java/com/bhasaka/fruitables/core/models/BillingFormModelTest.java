@@ -23,10 +23,8 @@ class BillingFormModelTest {
     void testModelWithValues() {
         Resource resource = context.resourceResolver().getResource("/content/billingForm");
         assertNotNull(resource);
-
         BillingFormModel model = resource.adaptTo(BillingFormModel.class);
         assertNotNull(model);
-
         assertEquals("Billing Details", model.getSectionTitle());
         assertEquals("Enter your name", model.getPlaceholder());
         assertEquals("Submit", model.getButtonLabel());
@@ -36,10 +34,8 @@ class BillingFormModelTest {
     void testModelWithEmptyValues() {
         Resource resource = context.resourceResolver().getResource("/content/billingFormEmpty");
         assertNotNull(resource);
-
         BillingFormModel model = resource.adaptTo(BillingFormModel.class);
         assertNotNull(model);
-
         assertNull(model.getSectionTitle());
         assertNull(model.getPlaceholder());
         assertNull(model.getButtonLabel());
@@ -49,7 +45,6 @@ class BillingFormModelTest {
     void testInitMethodCoverage() {
         Resource resource = context.resourceResolver().getResource("/content/billingForm");
         BillingFormModel model = resource.adaptTo(BillingFormModel.class);
-
         assertNotNull(model); // ensures @PostConstruct is executed
     }
 }

@@ -1,26 +1,37 @@
 (function (document) {
     "use strict";
 
-    function revealFeaturedProducts(container) {
-        var hiddenItems = container.querySelectorAll("[data-featured-product-item][hidden]");
+    function setFeaturedProductsExpanded(container, expanded) {
+        var extraItems = container.querySelectorAll("[data-featured-product-extra]");
 
-        hiddenItems.forEach(function (item) {
-            item.hidden = false;
+        extraItems.forEach(function (item) {
+            item.hidden = !expanded;
         });
     }
 
     function bindFeaturedProducts(section) {
         var container = section.querySelector("[data-featured-products]");
         var toggle = section.querySelector("[data-featured-products-toggle]");
+        var viewMoreLabel = toggle && toggle.getAttribute("data-view-more-label");
+        var viewLessLabel = toggle && toggle.getAttribute("data-view-less-label");
 
         if (!container || !toggle) {
             return;
         }
 
+        setFeaturedProductsExpanded(container, false);
+        toggle.textContent = viewMoreLabel || toggle.textContent;
+        toggle.setAttribute("aria-expanded", "false");
+
         toggle.addEventListener("click", function () {
-            revealFeaturedProducts(container);
-            toggle.setAttribute("aria-expanded", "true");
-            toggle.parentElement.hidden = true;
+            var expanded = toggle.getAttribute("aria-expanded") === "true";
+            var nextExpandedState = !expanded;
+
+            setFeaturedProductsExpanded(container, nextExpandedState);
+            toggle.setAttribute("aria-expanded", String(nextExpandedState));
+            toggle.textContent = nextExpandedState
+                ? (viewLessLabel || "View Less")
+                : (viewMoreLabel || "View More");
         });
     }
 

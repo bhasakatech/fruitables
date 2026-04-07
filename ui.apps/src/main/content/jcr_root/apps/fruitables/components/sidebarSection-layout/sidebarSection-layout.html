@@ -142,6 +142,7 @@
                                 <div
                                     class="d-flex align-items-center justify-content-start mb-3 sidebar-section-layout__featured-item"
                                     data-featured-product-item
+                                    data-featured-product-extra
                                     data-sly-repeat.item="${model.remainingFeaturedProducts}"
                                     hidden>
                                     <div class="rounded me-4 sidebar-section-layout__featured-image-wrapper">
@@ -174,6 +175,8 @@
                                     type="button"
                                     class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100 sidebar-section-layout__featured-toggle"
                                     data-featured-products-toggle
+                                    data-view-more-label="${model.viewMoreLabel}"
+                                    data-view-less-label="View Less"
                                     aria-controls="${model.featuredProductsListId}"
                                     aria-expanded="false">${model.viewMoreLabel}</button>
                             </div>

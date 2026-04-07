@@ -1,0 +1,11 @@
+{
+  "billingForm": {
+    "jcr:primaryType": "nt:unstructured",
+    "sectionTitle": "Billing Details",
+    "placeholder": "Enter your name",
+    "buttonLabel": "Submit"
+  },
+  "billingFormEmpty": {
+    "jcr:primaryType": "nt:unstructured"
+  }
+}

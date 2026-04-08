@@ -17,7 +17,7 @@
         "cardStyle": "standard"
       },
       "item4": {
-        "cfPath": "/content/dam/products/nested",
+        "cfPath": "/content/dam/products/carrot",
         "cardStyle": "compact"
       }
     }
@@ -55,19 +55,17 @@
           }
         }
       },
-      "nested": {
-        "variant1": {
-          "jcr:content": {
-            "data": {
-              "master": {
-                "productName": "Carrot",
-                "productDescription": "Fresh Carrot",
-                "productCategory": "Vegetables",
-                "productImage": "/content/dam/carrot.png",
-                "productPrice": "50",
-                "unit": "kg",
-                "productRating": "5"
-              }
+      "carrot": {
+        "jcr:content": {
+          "data": {
+            "master": {
+              "productName": "Carrot",
+              "productDescription": "Fresh Carrot",
+              "productCategory": "Vegetables",
+              "productImage": "/content/dam/carrot.png",
+              "productPrice": "50",
+              "unit": "kg",
+              "productRating": "5"
             }
           }
         }

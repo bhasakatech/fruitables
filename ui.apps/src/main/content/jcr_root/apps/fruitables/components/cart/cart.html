@@ -1,0 +1,42 @@
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.CartModel"/>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.all @ categories='clientlibs.fruitables.cart'}"/>
+<div class="cart-container">
+
+  <div class="cart-header">
+    <div>Products</div>
+    <div>Name</div>
+    <div>Price</div>
+    <div>Quantity</div>
+    <div>Total</div>
+    <div>Handle</div>
+  </div>
+
+  <div data-sly-list.item="${model.items}">
+    
+    <div class="cart-row" data-path="${item.productPath}">
+
+      <img src="${item.image}" />
+
+      <h3>${item.name}</h3>
+
+      <p>₹ ${item.price}</p>
+
+ 
+      <div class="qty-box">
+  <button class="qty-btn minus">-</button>
+  <span class="qty-value">${item.qty}</span>
+  <button class="qty-btn plus">+</button>
+</div>
+
+   
+      <p class="total">₹ ${item.total}</p>
+
+  
+      <button class="delete-btn">✖</button>
+
+    </div>
+
+  </div>
+
+</div>

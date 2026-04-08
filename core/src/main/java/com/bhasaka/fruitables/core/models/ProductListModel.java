@@ -40,25 +40,25 @@ public class ProductListModel {
 
             Resource master = resource.getChild("jcr:content/data/master");
             if (master != null) {
-                addProduct(master, cardStyle);
+                addProduct(master, cardStyle, cfPath);
                 continue;
             }
 
             for (Resource child : resource.getChildren()) {
                 Resource masterNode = child.getChild("jcr:content/data/master");
                 if (masterNode != null) {
-                    addProduct(masterNode, cardStyle);
+                    addProduct(masterNode, cardStyle, cfPath);
                 }
             }
         }
     }
 
-    private void addProduct(Resource masterNode, String cardStyle) {
-        ProductCFModel product = masterNode.adaptTo(ProductCFModel.class);
-        if (product != null) {
-            items.add(new ProductItem(product, cardStyle));
-        }
+   private void addProduct(Resource masterNode, String cardStyle, String productPath) {
+    ProductCFModel product = masterNode.adaptTo(ProductCFModel.class);
+    if (product != null) {
+        items.add(new ProductItem(product, cardStyle, productPath));
     }
+}
 
     public String getSectionTitle() {
         return sectionTitle;
@@ -76,3 +76,4 @@ public class ProductListModel {
     }
 
 }
+ 

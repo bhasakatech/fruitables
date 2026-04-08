@@ -233,11 +233,6 @@
                                 fieldLabel="View More Button Label"
                                 name="./viewMoreLabel"
                                 value="View More"/>
-                            <viewMoreLink
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                fieldLabel="View More Button Link"
-                                name="./viewMoreLink"/>
                         </items>
                     </featuredProducts>
                     <banner

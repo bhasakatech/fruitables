@@ -1,0 +1,33 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "mango": {
+    "jcr:primaryType": "nt:unstructured",
+    "jcr:content": {
+      "jcr:primaryType": "nt:unstructured",
+      "data": {
+        "jcr:primaryType": "nt:unstructured",
+        "master": {
+          "jcr:primaryType": "nt:unstructured",
+          "productName": "Mango",
+          "productPrice": 75.5,
+          "productImage": "/content/dam/fruits/mango.jpg"
+        }
+      }
+    }
+  },
+  "apple": {
+    "jcr:primaryType": "nt:unstructured",
+    "jcr:content": {
+      "jcr:primaryType": "nt:unstructured",
+      "data": {
+        "jcr:primaryType": "nt:unstructured",
+        "master": {
+          "jcr:primaryType": "nt:unstructured",
+          "productName": "Apple",
+          "productPrice": 120.0,
+          "productImage": "/content/dam/fruits/apple.jpg"
+        }
+      }
+    }
+  }
+}

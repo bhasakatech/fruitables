@@ -18,14 +18,9 @@ class CartItemTest {
 
     @BeforeEach
     void setUp() {
-        // Load test data from JSON file
         context.load().json("/cartitem.json", "/content/cart");
-
-        // Get the resource
         Resource resource = context.resourceResolver().getResource("/content/cart");
         assertNotNull(resource, "Resource should not be null");
-
-        // Manually create and populate the plain POJO from ValueMap
         ValueMap properties = resource.getValueMap();
 
         cartItem = new CartItem();
@@ -64,11 +59,11 @@ class CartItemTest {
 
     @Test
     void testTotalUpdatesWhenPriceOrQtyChanges() {
-        // Change price
+
         cartItem.setPrice(100.0);
         assertEquals(300.0, cartItem.getTotal(), 0.001);
 
-        // Change quantity
+
         cartItem.setQty(5);
         assertEquals(500.0, cartItem.getTotal(), 0.001);
     }

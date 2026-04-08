@@ -22,15 +22,9 @@ class AddToCartServletTest {
     @BeforeEach
     void setUp() throws Exception {
         servlet = new AddToCartServlet();
-
-        // Create a mock ResourceResolverFactory
         ResourceResolverFactory factoryMock = mock(ResourceResolverFactory.class);
         ResourceResolver resolver = context.resourceResolver();
-
-        // When getServiceResourceResolver is called, return the AEM mock resolver
         when(factoryMock.getServiceResourceResolver(anyMap())).thenReturn(resolver);
-
-        // Inject the mock into servlet
         servlet.factory = factoryMock;
 
         context.create().resource("/content/usergenerated");

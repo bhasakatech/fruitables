@@ -19,13 +19,12 @@ class ProductListModelTest {
 
     @BeforeEach
     void setUp() {
-        // Register models
+
         context.addModelsForClasses(ProductListModel.class, ProductCFModel.class, ProductResource.class);
 
-        // Load JSON content for testing
         context.load().json("/productlistmodel.json", "/content");
 
-        // Set current resource to the component path
+
         context.currentResource("/content/component");
         model = context.currentResource().adaptTo(ProductListModel.class);
     }
@@ -67,7 +66,7 @@ class ProductListModelTest {
 
     @Test
     void testInitWithNoProducts() {
-        // Create an empty resource without products
+
         context.create().resource("/content/empty");
         context.currentResource("/content/empty");
 

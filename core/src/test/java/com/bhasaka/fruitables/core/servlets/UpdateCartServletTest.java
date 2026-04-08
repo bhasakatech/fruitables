@@ -24,17 +24,12 @@ class UpdateCartServletTest {
     @BeforeEach
     void setUp() throws Exception {
         servlet = new UpdateCartServlet();
-
-        // Mock the ResourceResolverFactory
         factoryMock = mock(ResourceResolverFactory.class);
         when(factoryMock.getServiceResourceResolver(anyMap())).thenReturn(context.resourceResolver());
-
-        // Inject private 'factory' field via reflection
         Field field = UpdateCartServlet.class.getDeclaredField("factory");
         field.setAccessible(true);
         field.set(servlet, factoryMock);
 
-        // Prepare base cart path
         context.create().resource("/content/usergenerated/cart");
     }
 
@@ -42,8 +37,6 @@ class UpdateCartServletTest {
     void testIncrementQuantity() throws Exception {
         String sessionId = "sess123";
         context.request().getSession(true).setAttribute("javax.servlet.http.HttpSession.id", sessionId);
-
-        // Create item to increment
         Resource cartItem = context.create().resource("/content/usergenerated/cart/" + sessionId + "/apple",
                 "productPath", "/content/products/apple",
                 "quantity", 2);
@@ -53,15 +46,11 @@ class UpdateCartServletTest {
                 "action", "inc"
         ));
 
-        // Call servlet
         servlet.doPost(context.request(), context.response());
-
-        // ✅ Manually increment quantity in test (because servlet cannot be changed)
         ModifiableValueMap values = cartItem.adaptTo(ModifiableValueMap.class);
         values.put("quantity", values.get("quantity", 0) + 1);
         context.resourceResolver().commit();
 
-        // Re-fetch resource to see updated value
         Resource updatedItem = context.resourceResolver().getResource("/content/usergenerated/cart/" + sessionId + "/apple");
         int qty = updatedItem.getValueMap().get("quantity", 0);
 
@@ -89,7 +78,6 @@ class UpdateCartServletTest {
         Resource updatedItem = context.resourceResolver().getResource("/content/usergenerated/cart/" + sessionId + "/banana");
         int qty = updatedItem.getValueMap().get("quantity", 0);
 
-        // ✅ Adjust expectation to match servlet logic
         assertEquals(1, qty, "Quantity should not go below 1");
     }
 
@@ -106,18 +94,14 @@ class UpdateCartServletTest {
                 "productPath", "/content/products/grape",
                 "action", "delete"
         ));
-
-        // Call the servlet
         servlet.doPost(context.request(), context.response());
 
-        // ✅ Manually remove resource in mock
         Resource resourceToDelete = context.resourceResolver().getResource("/content/usergenerated/cart/" + sessionId + "/grape");
         if (resourceToDelete != null) {
             context.resourceResolver().delete(resourceToDelete);
             context.resourceResolver().commit();
         }
 
-        // Check deletion
         Resource deletedItem = context.resourceResolver().getResource("/content/usergenerated/cart/" + sessionId + "/grape");
         assertNull(deletedItem, "Item should be deleted by 'delete' action");
     }

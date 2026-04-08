@@ -21,19 +21,15 @@ class CartModelTest {
 
     @BeforeEach
     void setUp() {
-        // Register model classes
-        context.addModelsForClasses(CartModel.class, CartItem.class);
 
-        // Create session and capture session ID
+        context.addModelsForClasses(CartModel.class, CartItem.class);
         SlingHttpServletRequest request = context.request();
         request.getSession(true);
         sessionId = request.getSession().getId();
 
-        // Load product and cart data
         context.load().json("/products.json", "/content/products");
         context.load().json("/cart.json", cartBasePath + "/" + sessionId);
 
-        // Adapt request to CartModel
         cartModel = request.adaptTo(CartModel.class);
         assertNotNull(cartModel, "CartModel should not be null");
     }
@@ -84,11 +80,9 @@ class CartModelTest {
 
     @Test
     void testEmptyCartWhenNoCartResource() {
-        // Create a fresh AemContext
+
         AemContext freshContext = new AemContext();
         freshContext.addModelsForClasses(CartModel.class, CartItem.class);
-
-        // Fresh request and session, no cart data loaded
         CartModel emptyCartModel = freshContext.request().adaptTo(CartModel.class);
         assertNotNull(emptyCartModel, "CartModel should not be null for new session");
 

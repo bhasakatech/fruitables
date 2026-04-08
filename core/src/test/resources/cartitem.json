@@ -1,0 +1,8 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "name": "Mango",
+  "price": 75.5,
+  "image": "/assets/images/mango.jpg",
+  "qty": 3,
+  "productPath": "/content/fruits/mango"
+}

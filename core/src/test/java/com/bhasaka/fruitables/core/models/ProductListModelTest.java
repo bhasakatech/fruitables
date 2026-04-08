@@ -19,14 +19,19 @@ class ProductListModelTest {
 
     @BeforeEach
     void setUp() {
+
         context.addModelsForClasses(ProductListModel.class, ProductCFModel.class, ProductResource.class);
+
         context.load().json("/productlistmodel.json", "/content");
+
+
         context.currentResource("/content/component");
         model = context.currentResource().adaptTo(ProductListModel.class);
     }
 
     @Test
     void testSectionTitleAndDescription() {
+        assertNotNull(model);
         assertEquals("Fresh Vegetables", model.getSectionTitle());
         assertEquals("Organic and fresh items", model.getSectionDescription());
         assertEquals("Add to Cart", model.getCartButtonText());
@@ -34,7 +39,8 @@ class ProductListModelTest {
 
     @Test
     void testItemsSize() {
-        assertEquals(3, model.getItems().size());
+        assertNotNull(model.getItems());
+        assertEquals(3, model.getItems().size(), "Expected 3 products in the list");
     }
 
     @Test
@@ -55,16 +61,18 @@ class ProductListModelTest {
     void testNestedChildBranch() {
         boolean found = model.getItems().stream()
                 .anyMatch(item -> "Carrot".equals(item.getProduct().getProductName()));
-        assertTrue(found);
+        assertTrue(found, "Carrot product should exist even in nested child node");
     }
 
     @Test
     void testInitWithNoProducts() {
+
         context.create().resource("/content/empty");
         context.currentResource("/content/empty");
 
         ProductListModel emptyModel = context.currentResource().adaptTo(ProductListModel.class);
-        assertEquals(0, emptyModel.getItems().size());
+        assertNotNull(emptyModel);
+        assertEquals(0, emptyModel.getItems().size(), "Expected 0 products for empty resource");
     }
 
     @Test

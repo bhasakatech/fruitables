@@ -47,7 +47,7 @@ public class ProductListModel {
             for (Resource child : resource.getChildren()) {
                 Resource masterNode = child.getChild("jcr:content/data/master");
                 if (masterNode != null) {
-                    addProduct(master, cardStyle, cfPath);
+                    addProduct(masterNode, cardStyle, cfPath);
                 }
             }
         }
@@ -76,3 +76,4 @@ public class ProductListModel {
     }
 
 }
+ 

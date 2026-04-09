@@ -40,3 +40,38 @@
   </div>
 
 </div>
+
+<div class="cart-bottom">
+
+
+  <div class="coupon-box">
+    <input type="text" placeholder="Coupon Code" class="coupon-input"/>
+    <button class="coupon-btn">Apply Coupon</button>
+  </div>
+
+  <div class="cart-summary">
+    <h2>Cart Total</h2>
+
+    <div class="summary-row">
+      <span id="subhead">Subtotal:</span>
+      <span>₹ ${model.subtotal}</span>
+    </div>
+
+    <div class="summary-row">
+      <span id="subhead">Shipping</span>
+      <span>Flat rate: ₹ ${model.shipping}</span>
+    </div>
+
+    <hr/>
+
+    <div class="summary-row total">
+      <strong id="subhead">Total</strong>
+      <strong>₹ ${model.total}</strong>
+    </div>
+  <hr/>
+    <button class="checkout-btn">
+      PROCEED CHECKOUT
+    </button>
+  </div>
+
+</div>

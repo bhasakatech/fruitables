@@ -7,9 +7,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.spy;
 
 @ExtendWith(AemContextExtension.class)
 class CartModelTest {
@@ -18,7 +21,9 @@ class CartModelTest {
     private CartModel cartModel;
     private String sessionId;
     private final String cartBasePath = "/content/usergenerated/cart";
+    private final AemContext ctx = new AemContext();
 
+    private CartModel model;
     @BeforeEach
     void setUp() {
 
@@ -32,6 +37,12 @@ class CartModelTest {
 
         cartModel = request.adaptTo(CartModel.class);
         assertNotNull(cartModel, "CartModel should not be null");
+
+        model = spy(new CartModel());
+        SlingHttpServletRequest req = ctx.request();
+
+
+        ctx.request().setAttribute("request", req);
     }
 
     @Test
@@ -89,5 +100,32 @@ class CartModelTest {
         List<CartItem> items = emptyCartModel.getItems();
         assertNotNull(items, "Items list should not be null");
         assertTrue(items.isEmpty(), "Cart should be empty for a session with no cart data");
+    }
+    @Test
+    void testGetSubtotal() {
+
+
+        CartItem item1 = new CartItem();
+        item1.setPrice(10);
+        item1.setQty(2);
+        CartItem item2 = new CartItem();
+        item2.setPrice(15);
+        item2.setQty(1);
+
+        doReturn(Arrays.asList(item1, item2)).when(model).getItems();
+        double subtotal = model.getSubtotal();
+        assertEquals(35.0, subtotal);
+    }
+
+
+    @Test
+    void testGetTotal() {
+        CartItem item1 = new CartItem();
+        item1.setPrice(20);
+        item1.setQty(1);
+
+        doReturn(Arrays.asList(item1)).when(model).getItems();
+        double total = model.getTotal();
+        assertEquals(23.0, total); 
     }
 }

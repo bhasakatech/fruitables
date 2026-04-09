@@ -78,4 +78,22 @@ public class CartModel {
         }
         return list;
     }
+    public double getSubtotal() {
+        return getItems().stream()
+                .mapToDouble(CartItem::getTotal)
+                .sum();
+    }
+
+    public double getShipping() {
+        List<CartItem> items = getItems();
+
+        if (items == null || items.isEmpty()) {
+            return 0.0;
+        }
+        return 3.0;
+    }
+
+    public double getTotal() {
+        return getSubtotal() + getShipping();
+    }
 }

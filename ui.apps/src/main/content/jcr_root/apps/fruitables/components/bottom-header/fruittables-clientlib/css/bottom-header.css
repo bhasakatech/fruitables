@@ -109,9 +109,9 @@ font-family: Raleway;
 }
 
 .fruitables-dropdown li a:hover {
-    background-color: #7ac943 !important;
-    color: #fff !important;
-    transform: translateX(6px);
+    background-color:#81c408 !important ;
+    color: black !important;
+    transform: translateX(1px);
 }
 
 
@@ -622,6 +622,6 @@ font-size: 13px;
     .fruitables-logo a {
         font-size: 40px;
         font-weight: 800;
-         margin-left: -71px;
+         margin-left: -50px;
     }
 }

@@ -26,6 +26,8 @@
         }
 
         function updatePosition() {
+            if (!slides.length) return;
+
             var slideWidth = slides[0].offsetWidth;
             var gap = 20;
             var offset = currentIndex * (slideWidth + gap);
@@ -53,15 +55,19 @@
             if (timer) clearInterval(timer);
         }
 
-        if (nextBtn) nextBtn.addEventListener("click", function() {
-            moveNext();
-            startAuto();
-        });
+        if (nextBtn) {
+            nextBtn.addEventListener("click", function () {
+                moveNext();
+                startAuto();
+            });
+        }
 
-        if (prevBtn) prevBtn.addEventListener("click", function() {
-            movePrev();
-            startAuto();
-        });
+        if (prevBtn) {
+            prevBtn.addEventListener("click", function () {
+                movePrev();
+                startAuto();
+            });
+        }
 
         window.addEventListener("resize", updatePosition);
 
@@ -69,9 +75,58 @@
         startAuto();
     }
 
+    function initCategoryFilter(section) {
+
+        var buttons = section.querySelectorAll(".category-tab");
+        var cards = section.querySelectorAll(".product-card");
+        var message = section.querySelector(".no-products-message");
+
+        if (!buttons.length || !cards.length) return;
+
+        buttons.forEach(function (btn) {
+
+            btn.addEventListener("click", function () {
+
+                buttons.forEach(function (b) {
+                    b.classList.remove("active");
+                });
+                btn.classList.add("active");
+
+                var selectedCategory = btn.getAttribute("data-category");
+                var visibleCount = 0;
+
+                cards.forEach(function (card) {
+                    var cardCategory = card.getAttribute("data-category");
+
+                    if (selectedCategory === "all" || selectedCategory === cardCategory) {
+                        card.style.display = "block";
+                        visibleCount++;
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+
+                if (message) {
+                    message.style.display = visibleCount === 0 ? "block" : "none";
+                }
+
+            });
+
+        });
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
-        var carousels = document.querySelectorAll(".product-section.fresh-vegetables");
-        carousels.forEach(initCarousel);
+
+        var carouselSections = document.querySelectorAll(".product-section.fresh-vegetables");
+        carouselSections.forEach(function (section) {
+            initCarousel(section);
+        });
+
+        var filterSections = document.querySelectorAll(".product-section.organic-products");
+        filterSections.forEach(function (section) {
+            initCategoryFilter(section);
+        });
+
     });
 
 })();

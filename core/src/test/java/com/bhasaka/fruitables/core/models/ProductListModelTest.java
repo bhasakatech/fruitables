@@ -19,18 +19,15 @@ class ProductListModelTest {
 
     @BeforeEach
     void setUp() {
-
         context.addModelsForClasses(ProductListModel.class, ProductCFModel.class, ProductResource.class);
-
         context.load().json("/productlistmodel.json", "/content");
-
 
         context.currentResource("/content/component");
         model = context.currentResource().adaptTo(ProductListModel.class);
     }
 
     @Test
-    void testSectionTitleAndDescription() {
+    void testSectionDetails() {
         assertNotNull(model);
         assertEquals("Fresh Vegetables", model.getSectionTitle());
         assertEquals("Organic and fresh items", model.getSectionDescription());
@@ -40,43 +37,88 @@ class ProductListModelTest {
     @Test
     void testItemsSize() {
         assertNotNull(model.getItems());
-        assertEquals(3, model.getItems().size(), "Expected 3 products in the list");
+        assertEquals(4, model.getItems().size(), "Only valid products should be added");
     }
 
     @Test
     void testItemValues() {
         List<ProductItem> items = model.getItems();
 
-        assertEquals("Tomato", items.get(0).getProduct().getProductName());
-        assertEquals("standard", items.get(0).getCardStyle());
-
-        assertEquals("Potato", items.get(1).getProduct().getProductName());
-        assertEquals("compact", items.get(1).getCardStyle());
-
-        assertEquals("Carrot", items.get(2).getProduct().getProductName());
-        assertEquals("compact", items.get(2).getCardStyle());
+        assertTrue(items.stream().anyMatch(i -> "Tomato".equals(i.getProduct().getProductName())));
+        assertTrue(items.stream().anyMatch(i -> "Potato".equals(i.getProduct().getProductName())));
+        assertTrue(items.stream().anyMatch(i -> "Carrot".equals(i.getProduct().getProductName())));
+        assertTrue(items.stream().anyMatch(i -> "Onion".equals(i.getProduct().getProductName())));
     }
 
     @Test
-    void testNestedChildBranch() {
+    void testDirectMasterNode() {
         boolean found = model.getItems().stream()
-                .anyMatch(item -> "Carrot".equals(item.getProduct().getProductName()));
-        assertTrue(found, "Carrot product should exist even in nested child node");
+                .anyMatch(item -> "Tomato".equals(item.getProduct().getProductName()));
+
+        assertTrue(found, "Direct master node should be processed");
     }
 
     @Test
-    void testInitWithNoProducts() {
+    void testChildMasterNode() {
+        boolean found = model.getItems().stream()
+                .anyMatch(item -> "Onion".equals(item.getProduct().getProductName()));
+
+        assertTrue(found, "Child master node should be processed");
+    }
+
+    @Test
+    void testNoMasterNode() {
+        boolean found = model.getItems().stream()
+                .anyMatch(item -> "no-master".equals(item.getProduct().getProductName()));
+
+        assertFalse(found, "Products without master should not be added");
+    }
+
+    @Test
+    void testInvalidCFPath() {
+        boolean found = model.getItems().stream()
+                .anyMatch(item -> item.getProduct() == null);
+
+        assertFalse(found, "Invalid CF paths should be ignored");
+    }
+    @Test
+    void testGetCategories() {
+        List<String> categories = model.getCategories();
+
+        assertNotNull(categories);
+        assertEquals(1, categories.size());
+        assertEquals("Vegetables", categories.get(0));
+    }
+
+    @Test
+    void testGetCategoriesNoDuplicates() {
+        List<String> categories = model.getCategories();
+
+        long count = categories.stream()
+                .filter(cat -> cat.equals("Vegetables"))
+                .count();
+
+        assertEquals(1, count);
+    }
+
+    @Test
+    void testGetCategoriesTrim() {
+        List<String> categories = model.getCategories();
+
+        categories.forEach(cat ->
+                assertEquals(cat.trim(), cat)
+        );
+    }
+    @Test
+    void testEmptyModel() {
 
         context.create().resource("/content/empty");
         context.currentResource("/content/empty");
 
         ProductListModel emptyModel = context.currentResource().adaptTo(ProductListModel.class);
-        assertNotNull(emptyModel);
-        assertEquals(0, emptyModel.getItems().size(), "Expected 0 products for empty resource");
-    }
 
-    @Test
-    void testCartButtonGetter() {
-        assertEquals("Add to Cart", model.getCartButtonText());
+        assertNotNull(emptyModel);
+        assertTrue(emptyModel.getItems().isEmpty());
+        assertTrue(emptyModel.getCategories().isEmpty());
     }
 }

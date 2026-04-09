@@ -59,7 +59,22 @@ public class ProductListModel {
         items.add(new ProductItem(product, cardStyle, productPath));
     }
 }
+    public List<String> getCategories() {
+        List<String> categories = new ArrayList<>();
 
+        for (ProductItem item : items) {
+            if (item.getProduct() != null &&
+                    item.getProduct().getProductCategory() != null) {
+
+                String category = item.getProduct().getProductCategory().trim();
+
+                if (!categories.contains(category)) {
+                    categories.add(category);
+                }
+            }
+        }
+        return categories;
+    }
     public String getSectionTitle() {
         return sectionTitle;
     }

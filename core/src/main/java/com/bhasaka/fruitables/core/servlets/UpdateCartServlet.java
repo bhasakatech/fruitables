@@ -36,7 +36,7 @@ public class UpdateCartServlet extends SlingAllMethodsServlet {
 
         try {
             Map<String, Object> param = new HashMap<>();
-            param.put(ResourceResolverFactory.SUBSERVICE, "cart-service");
+            param.put(ResourceResolverFactory.SUBSERVICE, "fruitables-cart-service");
 
             try (ResourceResolver resolver = factory.getServiceResourceResolver(param)) {
 

@@ -1,7 +1,16 @@
 {
-    "scripts": [
-        "create path (sling:OrderedFolder) /content/dam/fruitables",
-        "create path (nt:unstructured) /content/dam/fruitables/jcr:content",
-        "set properties on /content/dam/fruitables/jcr:content\n  set cq:conf{String} to /conf/fruitables\n  set jcr:title{String} to \"Fruitables\"\nend"
-    ]
+  "scripts": [
+    "create path (sling:OrderedFolder) /content/dam/fruitables",
+    "create path (nt:unstructured) /content/dam/fruitables/jcr:content",
+    "set properties on /content/dam/fruitables/jcr:content\n  set cq:conf{String} to /conf/fruitables\n  set jcr:title{String} to \"Fruitables\"\nend",
+
+    "create path (nt:unstructured) /content/usergenerated",
+    "create path (nt:unstructured) /content/usergenerated/cart",
+
+    "create service user fruitables-cart-service-user with path system/fruitables",
+    "set ACL for fruitables-cart-service-user",
+    "allow jcr:all on /content/usergenerated",
+    "allow jcr:read on /content",
+    "end"
+  ]
 }

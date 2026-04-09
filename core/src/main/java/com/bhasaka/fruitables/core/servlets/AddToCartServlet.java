@@ -42,8 +42,8 @@ public class AddToCartServlet extends SlingAllMethodsServlet {
         }
 
         try (ResourceResolver resolver = factory.getServiceResourceResolver(
-                Collections.singletonMap(ResourceResolverFactory.SUBSERVICE, "cart-service"))) {
-
+                Collections.singletonMap(ResourceResolverFactory.SUBSERVICE, "fruitables-cart-service"))) {
+log.info("=============================system-user===================="+resolver);
             String sessionId = request.getSession().getId();
 
 

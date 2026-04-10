@@ -1,29 +1,24 @@
-<sly data-sly-use.model="com.bhasaka.fruitables.core.models.SidebarSectionLayoutModel"/>
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.SidebarSectionLayoutModel"/><sly data-sly-use.modelCategory="com.bhasaka.fruitables.core.models.CategorysTagsModel"/>
+<sly data-sly-use.list="com.bhasaka.fruitables.core.models.ProductListModel" />
 <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
 <sly data-sly-call="${clientlib.css @ categories='fruitables.sidebarSection'}"/>
 <sly data-sly-call="${clientlib.js @ categories='fruitables.sidebarSection'}"/>
+<sly data-sly-call="${clientlib.css @ categories='fruitables.categorysTags'}"/>
+<sly data-sly-set.layoutPosition="${properties.layoutPosition == 'right' ? 'right' : 'left'}"/>
 
-
-<div class="sidebar-section-layout">
+<div class="sidebar-section-layout sidebar-section-layout--sidebar-${layoutPosition}">
     <h1 class="sidebar-section-layout__title mb-4">${model.sectionTitle}</h1>
 
     <div class="row g-4">
         <div class="col-lg-12">
-
             <div class="row g-4 sidebar-section-layout__header">
                 <div class="col-xl-3">
                     <div class="input-group w-100 mx-auto d-flex">
-                        <input
-                            type="search"
-                            class="form-control p-3"
-                            placeholder="${model.searchPlaceholder}"
+                        <input type="search" class="form-control p-3" placeholder="${model.searchPlaceholder}"
                             aria-describedby="${model.searchIconId}">
                         <span id="${model.searchIconId}" class="input-group-text p-3 sidebar-section-layout__search-icon">
                             <sly data-sly-test="${model.searchImage}">
-                                <img
-                                    src="${model.searchImage @ context='uri'}"
-                                    alt="Search"
-                                    class="sidebar-section-layout__search-image">
+                                <img src="${model.searchImage @ context='uri'}" alt="Search" class="sidebar-section-layout__search-image">
                             </sly>
                             <sly data-sly-test="${!model.searchImage}">
                                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -31,9 +26,7 @@
                         </span>
                     </div>
                 </div>
-
                 <div class="col-6"></div>
-
                 <div class="col-xl-3">
                     <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4 sidebar-section-layout__sorting">
                         <label for="${model.sortingId}">${model.sortingLabel}</label>
@@ -47,32 +40,30 @@
                 </div>
             </div>
 
-            <div class="row g-4">
-
-                <div class="col-lg-3 sidebar-section-layout__content">
+            <div class="row g-4 sidebar-section-layout__body">
+                <aside class="col-lg-3 sidebar-section-layout__content sidebar-section-layout__sidebar">
                     <div class="row g-4">
                         <div class="col-lg-12">
                             <div class="mb-3">
-                                <h4>${model.categoriesTitle}</h4>
-                                <ul class="list-unstyled sidebar-section-layout__category-list">
-                                    <li class="sidebar-section-layout__category-item" data-sly-repeat.category="${model.categories}">
+                                <h4>${modelCategory.categoryTitle}</h4>
+                                <ul class="list-unstyled sidebar-section-layout__category-list" data-sly-test="${modelCategory.categories}">
+                                    <li class="sidebar-section-layout__category-item" data-sly-repeat.category="${modelCategory.categories}">
                                         <div class="d-flex justify-content-between sidebar-section-layout__category-row">
-                                            <a href="#" class="sidebar-section-layout__category-link">
-                                                <i class="fas fa-apple-alt me-2"></i>${category.title}
+                                            <a href="${category.link @ context='uri'}" class="sidebar-section-layout__category-link ${category.selected ? 'categorys-tags__category-link--active' : ''}" aria-current="${category.selected ? 'page' : ''}">
+                                                <i class="fas fa-apple-alt me-2" aria-hidden="true"></i>${category.title}
                                             </a>
                                             <span>(${category.count})</span>
                                         </div>
                                     </li>
                                 </ul>
+                                <p class="categorys-tags__message mb-0" data-sly-test="${modelCategory.categories.size == 0}">Configure tags to render categories.</p>
                             </div>
                         </div>
-
+                          
                         <div class="col-lg-12">
                             <div class="mb-3 sidebar-section-layout__price" data-price-range>
                                 <h4 class="mb-2">${model.priceTitle}</h4>
-                                <input
-                                    type="range"
-                                    class="form-range w-100"
+                                <input type="range" class="form-range w-100"
                                     id="${model.rangeInputId}"
                                     name="${model.rangeInputId}"
                                     data-price-range-input
@@ -84,9 +75,6 @@
                                     class="sidebar-section-layout__price-value"
                                     data-price-range-output
                                     for="${model.rangeInputId}">Rs. ${model.selectedPrice}</output>
-                                <p class="sidebar-section-layout__price-example mb-0" data-price-range-example>
-                                    Example: showing products up to Rs. ${model.selectedPrice}
-                                </p>
                             </div>
                         </div>
 
@@ -94,10 +82,7 @@
                             <div class="mb-3">
                                 <h4>${model.additionalTitle}</h4>
                                 <div class="mb-2 sidebar-section-layout__additional-option" data-sly-repeat.additional="${model.additionalOptions}">
-                                    <input
-                                        type="radio"
-                                        class="me-2"
-                                        id="${model.additionalIdPrefix}${additionalList.count}"
+                                    <input type="radio" class="me-2" id="${model.additionalIdPrefix}${additionalList.count}"
                                         name="${model.additionalGroupName}"
                                         value="${additional.value}"
                                         checked="${additional.checked}">
@@ -108,19 +93,11 @@
 
                         <div class="col-lg-12" data-featured-products-section>
                             <h4 class="mb-3">${model.featuredProductsTitle}</h4>
-                            <div
-                                id="${model.featuredProductsListId}"
-                                class="sidebar-section-layout__featured-products"
-                                data-featured-products>
-                                <div
-                                    class="d-flex align-items-center justify-content-start mb-3 sidebar-section-layout__featured-item"
-                                    data-featured-product-item
-                                    data-sly-repeat.item="${model.featuredProductsPreview}">
+                            <div id="${model.featuredProductsListId}" class="sidebar-section-layout__featured-products" data-featured-products>
+                                <div class="d-flex align-items-center justify-content-start mb-3 sidebar-section-layout__featured-item"
+                                    data-featured-product-item data-sly-repeat.item="${model.featuredProductsPreview}">
                                     <div class="rounded me-4 sidebar-section-layout__featured-image-wrapper">
-                                        <img
-                                            src="${item.product.productImage @ context='uri'}"
-                                            class="img-fluid rounded sidebar-section-layout__featured-image"
-                                            alt="${item.product.productName}">
+                                        <img src="${item.product.productImage @ context='uri'}" class="img-fluid rounded sidebar-section-layout__featured-image" alt="${item.product.productName}">
                                     </div>
                                     <div>
                                         <h6 class="mb-2">${item.product.productName}</h6>
@@ -139,17 +116,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                    class="d-flex align-items-center justify-content-start mb-3 sidebar-section-layout__featured-item"
-                                    data-featured-product-item
-                                    data-featured-product-extra
-                                    data-sly-repeat.item="${model.remainingFeaturedProducts}"
-                                    hidden>
+                                <div class="d-flex align-items-center justify-content-start mb-3 sidebar-section-layout__featured-item"
+                                    data-featured-product-item data-featured-product-extra
+                                    data-sly-repeat.item="${model.remainingFeaturedProducts}" hidden>
                                     <div class="rounded me-4 sidebar-section-layout__featured-image-wrapper">
-                                        <img
-                                            src="${item.product.productImage @ context='uri'}"
-                                            class="img-fluid rounded sidebar-section-layout__featured-image"
-                                            alt="${item.product.productName}">
+                                        <img src="${item.product.productImage @ context='uri'}" class="img-fluid rounded sidebar-section-layout__featured-image" alt="${item.product.productName}">
                                     </div>
                                     <div>
                                         <h6 class="mb-2">${item.product.productName}</h6>
@@ -191,7 +162,37 @@
                             </div>
                         </div>
                     </div>
+                </aside>
+     
+                <div class="col-lg-9 sidebar-section-layout__main">             
+                    <div class="categorys-tags__message" data-sly-test="${!modelCategory.configured}">
+                        Select a Content Fragment root path and at least one category tag in the dialog.
+                    </div>
+                    <div class="product-section grid-75-view" data-sly-test="${modelCategory.hasProducts}">
+                        <div class="product-container">
+                            <sly data-sly-list.item="${modelCategory.products}">
+                                <sly data-sly-call="${productCard @ item=item, modelCategory=modelCategory}" />
+                            </sly>
+                        </div>
+                    </div>
                 </div>
+
+                <sly data-sly-template.productCard="${@ item, modelCategory}">
+                    <div class="product-card standard ${modelCategory.showBorder ? 'card-border' : ''}">
+                        <div class="product-image">
+                            <img src="${item.product.productImage @ context='uri'}" alt="${item.product.productTitle}" />
+                            <span data-sly-test="${modelCategory.showCategory}" class="category-badge ${modelCategory.categoryColor} ${modelCategory.badgePosition}"> ${modelCategory.selectedCategoryTitle} </span>
+                        </div>
+                        <div class="product-details">
+                            <h2 class="product-title">${item.product.productName}</h2>
+                            <div class="product-description"> ${item.product.productDescription @ context='html'} </div>
+                            <p class="price">&#8377; ${item.product.productPrice}</p>
+                            <button type="button" class="add-to-cart" data-path="${item.productPath}"> <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                                ${modelCategory.cartButtonText}
+                            </button>
+                        </div>
+                    </div>
+                </sly>
             </div>
         </div>
     </div>

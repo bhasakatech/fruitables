@@ -1,2 +1,3 @@
 css/bootstrap-sidebar.css
 css/sidebarSection.css
+css/productItem.css

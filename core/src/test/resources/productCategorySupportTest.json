@@ -1,0 +1,30 @@
+{
+  "page": {
+    "jcr:content": {
+      "root": {
+        "container": {
+          "sidebar": {
+            "sling:resourceType": "fruitables/components/categorys-tags"
+          },
+          "current": {
+            "sling:resourceType": "fruitables/components/content"
+          }
+        }
+      }
+    }
+  },
+  "product-with-product-tags": {
+    "productName": "Fruit Box",
+    "productTags": [
+      "fruitables:apples",
+      "/content/cq:tags/fruitables/citrus",
+      "fruitables:apples"
+    ]
+  },
+  "product-with-cq-tags": {
+    "productName": "Seasonal Mix",
+    "cq:tags": [
+      "/content/cq:tags/fruitables/fresh_fruits"
+    ]
+  }
+}

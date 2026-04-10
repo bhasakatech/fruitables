@@ -1,1 +1,2 @@
 js/sidebarSection.js
+js/category.js

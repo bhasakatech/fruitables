@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Checkout Summary Dialog"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                <items jcr:primaryType="nt:unstructured">
+                    <labels
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Labels"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <subtotalLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Subtotal Label"
+                                name="./subtotalLabel"
+                                value="Subtotal"/>
+                            <shippingLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Shipping Label"
+                                name="./shippingLabel"
+                                value="Shipping"/>
+                            <totalLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Total Label"
+                                name="./totalLabel"
+                                value="Total"/>
+                            <buttonText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Button Text"
+                                name="./buttonText"
+                                value="Place Order"/>
+                        </items>
+                    </labels>
+                    <shipping
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Shipping"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <flatRate
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Flat Rate Price"
+                                name="./flatRate"
+                                value="15"/>
+                            <pickupRate
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Local Pickup Price"
+                                name="./pickupRate"
+                                value="8"/>
+                            <freeshiping
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Free Shipping"
+                                name="./freeShipping"
+                                value="0"/>
+                        </items>
+                    </shipping>
+                    <payment
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Payment Methods"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <bankEnable
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./bankEnable"
+                                text="Enable Bank Transfer"
+                                value="true"/>
+                            <bankDesc
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                fieldLabel="Bank Description"
+                                name="./bankDesc"
+                                value="Make payment to bank account."/>
+                            <bankAccount
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Bank Account Number"
+                                name="./bankAccount"/>
+                            <ifsc
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="IFSC Code"
+                                name="./ifsc"/>
+                            <checkEnable
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./checkEnable"
+                                text="Enable Check Payment"
+                                value="true"/>
+                            <checkDesc
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                fieldLabel="Check Payment Description"
+                                name="./checkDesc"/>
+                            <codEnable
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./codEnable"
+                                text="Enable Cash On Delivery"
+                                value="true"/>
+                            <paypalEnable
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./paypalEnable"
+                                text="Enable UPI"
+                                value="true"/>
+                            <upiId
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="UPI ID"
+                                name="./upi"/>
+                        </items>
+                    </payment>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

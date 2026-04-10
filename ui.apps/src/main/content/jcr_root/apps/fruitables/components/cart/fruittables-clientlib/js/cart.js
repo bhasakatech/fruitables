@@ -45,3 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+function goToCheckout() {
+    window.location.href = "/content/fruitables/us/en/Fruitables-Homepage/Pages/checkout.html";
+}

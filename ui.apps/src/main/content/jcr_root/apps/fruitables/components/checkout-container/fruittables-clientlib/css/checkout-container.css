@@ -1,0 +1,33 @@
+.checkout-page {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+    max-width: 1250px;
+    margin: 30px auto;
+    align-items: flex-start;
+}
+
+.checkout-left {
+    background: #fff;
+}
+.checkout-right{
+padding-top:9rem;
+}
+
+@media (max-width: 768px) {
+    .checkout-page {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        width:100%
+    }
+
+    .checkout-right {
+        padding: 15px;
+       background: white;
+    }
+}
+@media (min-width: 430px) and (max-width: 768px) {
+    .checkout-right{
+    padding-top: 1rem !important; 
+    }
+}

@@ -1,0 +1,125 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.all @ categories='clientlibs.fruitables.checkout'}"/>
+<sly data-sly-use.checkout="com.bhasaka.fruitables.core.models.CheckoutModel"/>
+
+<div class="checkout-summary checkout-v2">
+
+    <div class="cart-items">
+        <div class="cart-header">
+            <span>Product</span>
+            <span>Name</span>
+            <span>Price</span>
+            <span>Qty</span>
+            <span>Total</span>
+        </div>
+
+        <div data-sly-list.item="${checkout.items}">
+            <div class="cart-row">
+                <img src="${item.image}" alt="${item.name}" width="90"/>
+                <span>${item.name}</span>
+                <span>₹${item.price}</span>
+                <span>${item.qty}</span>
+                <span>₹${item.total}</span>
+            </div>
+        </div>
+
+        <sly data-sly-test="${!checkout.items || checkout.items.size == 0}">
+            <p>Your cart is empty</p>
+        </sly>
+    </div>
+
+    <div class="summary-row">
+        <span>${properties.subtotalLabel || 'Subtotal'}</span>
+        <span id="subtotal">₹${checkout.subtotal}</span>
+    </div>
+
+    <div class="shipping-section">
+    <div class="shipLabel">
+        <p>${properties.shippingLabel || 'Shipping'}</p>
+        </div>
+<div class="shipRadio">
+        <label>
+            <input type="radio" name="shipping" value="flat" checked>
+            Flat Rate: ₹${properties.flatRate || 15}
+        </label>
+
+        <label>
+            <input type="radio" name="shipping" value="pickup">
+            Local Pickup: ₹${properties.pickupRate || 8}
+        </label>
+         <label>
+            <input type="radio" name="shipping" value="free">
+            Local Pickup: ₹${properties.freeShipping || 0}
+        </label>
+        </div>
+    </div>
+
+    <div class="summary-row total">
+    <div class="total-label">
+        <span>${properties.totalLabel || 'Total'}</span>
+        </div>
+          <div class="total-bill">
+        <span id="total">₹${checkout.total}</span>
+        </div>
+    </div>
+
+    <div class="payment-section">
+
+        <sly data-sly-test="${properties.bankEnable}">
+            <label>
+                <input type="radio" name="payment" value="bank">
+                Direct Bank Transfer
+            </label>
+
+            <div class="payment-content" id="bank-content">
+                <p>${properties.bankDesc}</p>
+                <p><strong>Account:</strong> ${properties.bankAccount}</p>
+                <p><strong>IFSC:</strong> ${properties.ifsc}</p>
+            </div>
+        </sly>
+
+        <sly data-sly-test="${properties.checkEnable}">
+            <label>
+                <input type="radio" name="payment" value="check">
+                Check Payment
+            </label>
+
+            <div class="payment-content" id="check-content">
+                <p>${properties.checkDesc}</p>
+            </div>
+        </sly>
+
+   
+        <sly data-sly-test="${properties.codEnable}">
+            <label>
+                <input type="radio" name="payment" value="cod">
+                Cash On Delivery
+            </label>
+        </sly>
+
+      
+        <sly data-sly-test="${properties.paypalEnable}">
+            <label>
+                <input type="radio" name="payment" value="paypal">
+                UPI
+            </label>
+            <div class="payment-content" id="paypal-content">
+        <p>Pay using UPI</p>
+        <p><strong>UPI ID:</strong> ${properties.upi}</p>
+    </div>
+        </sly>
+
+    </div>
+
+    <button class="place-order">
+        ${properties.buttonText || 'Place Order'}
+    </button>
+
+</div>
+<div id="orderPopup" class="order-popup">
+    <div class="popup-content">
+        <h2>✅ Order Placed Successfully</h2>
+        <p>Thank you for your order!</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+</div>

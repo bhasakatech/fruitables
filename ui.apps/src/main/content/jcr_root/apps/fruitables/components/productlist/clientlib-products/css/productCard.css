@@ -3,10 +3,7 @@
     grid-template-columns: repeat(12, 1fr);
     gap: 25px;
     width: 100%;
-    grid-auto-flow: row;
-    /* padding-left: 6rem !important;
-    padding-right: 6rem !important;
-    padding-bottom: 3rem !important; */  
+    grid-auto-flow: row;  
 }
 .product-card.compact {
     grid-column: span 4;

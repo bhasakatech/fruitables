@@ -25,7 +25,7 @@
     font-weight: bold;
 }
 
-.title {
+.head-title {
     color: #81c408;
     font-size: 64px;
     font-weight: bold;
@@ -69,7 +69,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); 
-    background: rgba(255, 165, 0, 0.5);;
+    background:  rgba(255, 165, 0, 0.5);
     color: white;
     padding: 12px 24px;
     border-radius: 12px;
@@ -121,7 +121,7 @@
         gap: 40px;
     }
 
-    .title {
+    .head-title {
         font-size: 48px;
     }
 
@@ -181,8 +181,8 @@
     html, body {
         overflow-x: hidden;
     }
-     .title {
-        font-size: 48px;
+     .head-title {
+        font-size: 50px;
         line-height: 1.2;
         font-family: "Raleway", sans-serif;
         padding: 0px;
@@ -213,8 +213,8 @@
         text-align: left;
     }
 
-    .title {
-        font-size: 32px;
+    .head-title {
+        font-size: 40px;
         line-height: 1.2;
     }
 

@@ -6,7 +6,7 @@
 <div class="billing-form">
     <h2>${model.sectionTitle}</h2>
     <form id="billingForm" novalidate>
-        <div class="row two-col">
+        <div class="row-billing two-col">
             <div>
                 <label for="firstName">${model.firstNameLabel}</label>
                 <input type="text" id="firstName" name="firstName" required aria-describedby="firstNameError" />
@@ -18,57 +18,57 @@
                 <span id="lastNameError" class="error"></span>
             </div>
         </div>
-        <div class="row">
+        <div class="row-billing">
             <label for="companyName">${model.companyNameLabel}</label>
             <input type="text" id="companyName" name="companyName" required aria-describedby="companyNameError" />
             <span id="companyNameError" class="error"></span>
         </div>
-        <div class="row">
+        <div class="row-billing">
             <label for="address">${model.addressLabel}</label>
             <input type="text" id="address" name="address" placeholder="${model.addressPlaceholder}" required
                 aria-describedby="addressError" />
             <span id="addressError" class="error"></span>
         </div>
-        <div class="row">
+        <div class="row-billing">
             <label for="city">${model.cityLabel}</label>
             <input type="text" id="city" name="city" required aria-describedby="cityError" />
             <span id="cityError" class="error"></span>
         </div>
-        <div class="row">
+        <div class="row-billing">
             <label for="country">${model.countryLabel}</label>
             <input type="text" id="country" name="country" required aria-describedby="countryError" />
             <span id="countryError" class="error"></span>
         </div>
-        <div class="row">
+        <div class="row-billing">
             <label for="zip">${model.zipLabel}</label>
             <input type="text" id="zip" name="zip" required aria-describedby="zipError" />
             <span id="zipError" class="error"></span>
         </div>
-        <div class="row">
+        <div class="row-billing">
             <label for="mobile">${model.mobileLabel}</label>
             <input type="tel" id="mobile" name="mobile" required aria-describedby="mobileError" />
             <span id="mobileError" class="error"></span>
         </div>
-        <div class="row">
+        <div class="row-billing-billing">
             <label for="email">${model.emailLabel}</label>
             <input type="email" id="email" name="email" required aria-describedby="emailError" />
             <span id="emailError" class="error"></span>
         </div>
-        <div class="row checkbox">
+        <div class="row-billing checkbox">
             <label class="custom-checkbox">
                 <input type="checkbox" />
                 <span class="checkmark"></span>
                 ${model.createAccountLabel}
             </label>
         </div>
-        <div class="row checkbox">
+        <div class="row-billing checkbox">
             <label class="custom-checkbox">
                 <input type="checkbox" />
                 <span class="checkmark"></span>
                 ${model.shipDifferentAddressLabel}
             </label>
         </div>
-        <div class="row">
+        <div class="row-billing">
             <textarea id="notes" name="notes" placeholder="${model.notesPlaceholder}"></textarea>
         </div>
     </form>

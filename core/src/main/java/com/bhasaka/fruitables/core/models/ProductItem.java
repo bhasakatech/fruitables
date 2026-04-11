@@ -6,7 +6,21 @@ public class ProductItem {
     private String cardStyle;
     private String productPath; 
 
+    public ProductItem(ProductCFModel product, String cardStyle) {
+        this(product, cardStyle, null);
+    }
+
     public ProductItem(ProductCFModel product, String cardStyle, String productPath) {
+        this.product = product;
+        this.cardStyle = cardStyle;
+        this.productPath = productPath;
+    }
+
+    public ProductItem(ProductCFModelTag product, String cardStyle) {
+        this(product, cardStyle, null);
+    }
+
+    public ProductItem(ProductCFModelTag product, String cardStyle, String productPath) {
         this.product = product;
         this.cardStyle = cardStyle;
         this.productPath = productPath;

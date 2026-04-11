@@ -1,0 +1,89 @@
+{
+  "page": {
+    "jcr:content": {
+      "root": {
+        "categorys-tags": {
+          "categoryTitle": "Browse by category",
+          "fragmentRootPath": "/content/dam/fruitables/category-products",
+          "tags": [
+            "fruitables:apples",
+            "/content/cq:tags/fruitables/citrus"
+          ],
+          "cartButtonText": "Add now",
+          "cardStyle": "featured",
+          "priceUnit": "/kg",
+          "showDescription": false,
+          "showRating": true,
+          "showCategory": false,
+          "showBorder": true,
+          "categoryColor": "green",
+          "badgePosition": "bottom-right",
+          "emptySelectionMessage": "Pick a category to start shopping.",
+          "noResultsMessage": "No products match this category."
+        },
+        "categorys-tags-defaults": {}
+      }
+    }
+  },
+  "dam": {
+    "fruitables": {
+      "category-products": {
+        "apple-basket": {
+          "jcr:content": {
+            "data": {
+              "master": {
+                "productName": "Apple Basket",
+                "productDescription": "A basket of apples.",
+                "productCategory": "Fruits",
+                "productImage": "/content/dam/fruitables/apple-basket.jpg",
+                "productPrice": "150",
+                "unit": "kg",
+                "productRating": "4.3",
+                "productTags": [
+                  "fruitables:apples"
+                ]
+              }
+            }
+          }
+        },
+        "citrus-box": {
+          "jcr:content": {
+            "data": {
+              "master": {
+                "productName": "Citrus Box",
+                "productDescription": "Mixed citrus fruits.",
+                "productCategory": "Fruits",
+                "productImage": "/content/dam/fruitables/citrus-box.jpg",
+                "productPrice": "180",
+                "unit": "box",
+                "productRating": "4.1",
+                "productTags": [
+                  "/content/cq:tags/fruitables/citrus"
+                ]
+              }
+            }
+          }
+        },
+        "mixed-basket": {
+          "jcr:content": {
+            "data": {
+              "master": {
+                "productName": "Mixed Basket",
+                "productDescription": "Apples and citrus together.",
+                "productCategory": "Fruits",
+                "productImage": "/content/dam/fruitables/mixed-basket.jpg",
+                "productPrice": "220",
+                "unit": "basket",
+                "productRating": "4.8",
+                "productTags": [
+                  "fruitables:apples",
+                  "fruitables:citrus"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

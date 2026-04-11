@@ -164,20 +164,21 @@
     display: flex;
     align-items: end;
     gap: 10px;
-} 
+}
 .carousel-btn {
     border: 1px solid orange;
     background: #fff;
-    padding: 8px 14px;
     border-radius: 20px;
     cursor: pointer;
+    transition: 0.3s;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 15px;
     padding-right: 15px;
     color: #7ac142;
 }
-.carousel-arrows:hover .carousel-btn{
+
+.carousel-btn:hover {
     background: #FFB524;
     color: white;
 }
@@ -378,7 +379,8 @@
     .product-section.organic-products .product-card.standard {
         grid-column: span 12; 
     }
-    .product-section.bestseller .product-card.standard {
+    .product-section.bestseller .product-card.standard,
+    .product-section.bestseller .product-card.compact {
         grid-column: span 12;
     }
     .section-desc {
@@ -424,6 +426,9 @@
     .category-tab {
     padding: 10px;
 }
+.product-section.bestseller .product-card.compact {
+        grid-column: span 12;
+    }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
     .product-section.fresh-vegetables .product-card {

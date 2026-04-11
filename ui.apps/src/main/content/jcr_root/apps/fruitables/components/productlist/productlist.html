@@ -4,25 +4,32 @@
 
 <div class="product-section ${properties.sectionType}">
     <div class="product-header">
-            <h2 class="section-title">${list.sectionTitle}</h2>
-            <div class="section-desc">${list.sectionDescription @ context='html'}</div>
+        <h2 class="section-title">${list.sectionTitle}</h2>
+        <div class="section-desc">${list.sectionDescription @ context='html'}</div>
+
         <div class="carousel-arrows" data-sly-test="${properties.sectionType == 'fresh-vegetables'}">
             <button class="carousel-btn">→</button>
             <button class="carousel-btn">←</button>
         </div>
         <div class="organic-vegetables" data-sly-test="${properties.sectionType == 'organic-products'}">
+
             <ul class="category-tabs">
+
                 <li class="category-tab active" data-category="all">
                     All Products
                 </li>
+
                 <sly data-sly-list.category="${list.categories}">
                     <li class="category-tab" data-category="${category}">
                         ${category}
                     </li>
                 </sly>
+
             </ul>
+
         </div>
     </div>
+
     <div class="carousel-wrapper" data-carousel>
         <div class="product-container ${properties.sectionType == 'fresh-vegetables'}">
             <sly data-sly-list.item="${list.items}">
@@ -71,10 +78,11 @@
                 </sly>
             </p>
 
-            <button class="add-to-cart" data-path="${item.productPath}">
-                <i class="fa-solid fa-bag-shopping"></i>
-                ${buttonText}
-            </button>
+             <button class="add-to-cart" data-path="${item.productPath}">
+    <i class="fa-solid fa-bag-shopping"></i>
+    ${buttonText}
+</button>
         </div>
+
     </div>
 </sly>

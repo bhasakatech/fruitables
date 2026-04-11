@@ -1,0 +1,167 @@
+{
+  "sidebar": {
+
+    "authored": {
+      "jcr:primaryType": "nt:unstructured",
+      "searchImage": "/content/dam/fruitables/search.svg",
+      "viewMoreLink": "/shop/products",
+      "bannerImage": "/content/dam/fruitables/banner-fruits.jpg",
+
+      "tags": [
+        "fruitables:apples",
+        "fruitables:banana"
+      ],
+      "categorySearchRoot": "/content/products",
+      "selectedPrice": 112,
+
+      "sortingOptions": {
+        "item0": {
+          "jcr:primaryType": "nt:unstructured",
+          "optionText": "Nothing",
+          "optionValue": "nothing",
+          "selected": true
+        },
+        "item1": {
+          "jcr:primaryType": "nt:unstructured",
+          "optionText": "Popularity",
+          "optionValue": "popularity",
+          "selected": false
+        }
+      },
+
+      "additionalOptions": {
+        "item0": {
+          "jcr:primaryType": "nt:unstructured",
+          "label": "Organic",
+          "value": "Organic",
+          "checked": false
+        },
+        "item1": {
+          "jcr:primaryType": "nt:unstructured",
+          "label": "Expired",
+          "value": "Expired",
+          "checked": true
+        }
+      },
+
+      "products": {
+        "item0": {
+          "jcr:primaryType": "nt:unstructured",
+          "cfPath": "/content/dam/fruitables/products/big-banana",
+          "cardStyle": "compact"
+        },
+        "item1": {
+          "jcr:primaryType": "nt:unstructured",
+          "cfPath": "/content/dam/fruitables/products/fresh-strawberry",
+          "cardStyle": "standard"
+        }
+      }
+    },
+
+    "defaults": {
+      "jcr:primaryType": "nt:unstructured"
+    },
+
+    "expanded": {
+      "jcr:primaryType": "nt:unstructured",
+      "products": {
+        "item0": { "cfPath": "/content/dam/fruitables/products/apple" },
+        "item1": { "cfPath": "/content/dam/fruitables/products/banana" },
+        "item2": { "cfPath": "/content/dam/fruitables/products/orange" },
+        "item3": { "cfPath": "/content/dam/fruitables/products/raspberries" }
+      }
+    },
+
+    "price-bounds": {
+      "jcr:primaryType": "nt:unstructured",
+      "minPrice": 50,
+      "maxPrice": 10,
+      "selectedPrice": 100
+    },
+
+    "banner": {
+      "jcr:primaryType": "nt:unstructured",
+      "bannerTitle": "<b>Fresh Fruits Banner</b>"
+    }
+  },
+
+  "products": {
+    "item1": {
+      "cq:tags": ["fruitables:apples"]
+    },
+    "item2": {
+      "cq:tags": ["/content/cq:tags/fruitables/apples"]
+    },
+    "item3": {
+      "cq:tags": ["fruitables:banana"]
+    }
+  },
+
+  "dam": {
+    "fruitables": {
+      "products": {
+
+        "big-banana": {
+          "jcr:content": {
+            "data": {
+              "master": {
+                "productName": "Big Banana"
+              }
+            }
+          }
+        },
+
+        "fresh-strawberry": {
+          "jcr:content": {
+            "data": {
+              "master": {
+                "productName": "Fresh Strawberry"
+              }
+            }
+          }
+        },
+
+        "apple": {
+          "jcr:content": {
+            "data": {
+              "master": {
+                "productName": "Apple"
+              }
+            }
+          }
+        },
+
+        "banana": {
+          "jcr:content": {
+            "data": {
+              "master": {
+                "productName": "Banana"
+              }
+            }
+          }
+        },
+
+        "orange": {
+          "jcr:content": {
+            "data": {
+              "master": {
+                "productName": "Orange"
+              }
+            }
+          }
+        },
+
+        "raspberries": {
+          "jcr:content": {
+            "data": {
+              "master": {
+                "productName": "Raspberries"
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+}

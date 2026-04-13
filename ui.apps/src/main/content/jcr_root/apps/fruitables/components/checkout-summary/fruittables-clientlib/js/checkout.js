@@ -183,4 +183,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-function closePopup() { document.getElementById('orderPopup').style.display = 'none'; }
+function closePopup() {
+     document.getElementById('orderPopup').style.display = 'none';
+      location.reload();
+
+ }

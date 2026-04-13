@@ -19,21 +19,19 @@ class BottomHeaderModelTest {
     @BeforeEach
     void setUp() {
 
-        // Register ALL models
         context.addModelsForClasses(
                 BottomHeaderModel.class,
                 MenuItem.class,
                 ChildItem.class
         );
 
-        // Load JSON
         context.load().json("/bottomheader.json", "/content/header");
 
-        // Get resource
+  
         Resource resource = context.resourceResolver().getResource("/content/header");
         assertNotNull(resource);
 
-        // Adapt to model
+
         model = resource.adaptTo(BottomHeaderModel.class);
         assertNotNull(model);
     }
@@ -51,19 +49,15 @@ class BottomHeaderModelTest {
 
         assertNotNull(menu);
         assertEquals(2, menu.size());
-
-        // ----- Item 1 -----
         MenuItem item1 = menu.get(0);
         assertEquals("Home", item1.getLabel());
         assertEquals("/home", item1.getLink());
         assertNull(item1.getChildren()); // no children
 
-        // ----- Item 2 -----
         MenuItem item2 = menu.get(1);
         assertEquals("Shop", item2.getLabel());
         assertEquals("/shop", item2.getLink());
 
-        // ----- Children -----
         List<ChildItem> children = item2.getChildren();
         assertNotNull(children);
         assertEquals(2, children.size());
@@ -88,5 +82,16 @@ class BottomHeaderModelTest {
     void testCartDetails() {
         assertEquals("/content/cart", model.getCartPagePath());
         assertEquals(5, model.getDefaultCartCount());
+    }
+    @Test
+    void testHomeLink() {
+
+        Resource resource = context.create().resource("/content/test",
+                "homeLink", "/content/home");
+
+          BottomHeaderModel model = resource.adaptTo(BottomHeaderModel.class);
+
+        assertNotNull(model);
+        assertEquals("/content/home", model.getHomeLink());
     }
 }

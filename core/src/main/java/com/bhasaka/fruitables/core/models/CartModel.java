@@ -4,7 +4,9 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,16 +14,24 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
-@Model(adaptables = SlingHttpServletRequest.class)
+@Model(adaptables = SlingHttpServletRequest.class,defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class CartModel {
 
     private static final Logger log = LoggerFactory.getLogger(CartModel.class);
 
-    @Inject
+    @org.apache.sling.models.annotations.injectorspecific.SlingObject
     private SlingHttpServletRequest request;
+
 
     @Inject
     private ResourceResolver resolver;
+
+    @ValueMapValue
+    private String checkoutLink;
+
+    public String getCheckoutLink() {
+        return checkoutLink;
+    }
 
     public List<CartItem> getItems() {
 
@@ -29,6 +39,9 @@ public class CartModel {
 
         String sessionId = request.getSession().getId();
         String path = "/content/usergenerated/cart/" + sessionId;
+        log.info("=== CART DEBUG START ===");
+        log.info("Session ID: {}", sessionId);
+        log.info("Cart Path: {}", path);
 
         Resource cartRes = resolver.getResource(path);
 
@@ -36,12 +49,13 @@ public class CartModel {
             log.warn("Cart not found for session: {}", sessionId);
             return list;
         }
+        log.info("Cart Resource FOUND: {}", cartRes.getPath());
 
         for (Resource child : cartRes.getChildren()) {
             ValueMap vm = child.getValueMap();
             String productPath = vm.get("productPath", "");
             int qty = vm.get("quantity", 0);
-            log.info("Processing cart item: {}", productPath);
+            log.info("Item Found -> ProductPath: {}, Qty: {}", productPath, qty);
             Resource productRes = resolver.getResource(productPath);
             if (productRes == null) {
                 log.warn("Product not found: {}", productPath);

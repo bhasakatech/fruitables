@@ -3,86 +3,97 @@
 <sly data-sly-use.list="com.bhasaka.fruitables.core.models.ProductListModel" />
 
 <div class="product-section ${properties.sectionType}">
-    <div class="product-header">
-        <h2 class="section-title">${list.sectionTitle}</h2>
-        <div class="section-desc">${list.sectionDescription @ context='html'}</div>
+  <div class="product-header">
+    <h2 class="section-title">${list.sectionTitle}</h2>
+    <div class="section-desc">${list.sectionDescription @ context='html'}</div>
 
-        <div class="carousel-arrows" data-sly-test="${properties.sectionType == 'fresh-vegetables'}">
-            <button class="carousel-btn">→</button>
-            <button class="carousel-btn">←</button>
-        </div>
-        <div class="organic-vegetables" data-sly-test="${properties.sectionType == 'organic-products'}">
-
-            <ul class="category-tabs">
-
-                <li class="category-tab active" data-category="all">
-                    All Products
-                </li>
-
-                <sly data-sly-list.category="${list.categories}">
-                    <li class="category-tab" data-category="${category}">
-                        ${category}
-                    </li>
-                </sly>
-
-            </ul>
-
-        </div>
+    <div
+      class="carousel-arrows"
+      data-sly-test="${properties.sectionType == 'fresh-vegetables'}"
+    >
+      <button class="carousel-btn">→</button>
+      <button class="carousel-btn">←</button>
     </div>
+    <div
+      class="organic-vegetables"
+      data-sly-test="${properties.sectionType == 'organic-products'}"
+    >
+      <ul class="category-tabs">
+        <li class="category-tab active" data-category="all">All Products</li>
 
-    <div class="carousel-wrapper" data-carousel>
-        <div class="product-container ${properties.sectionType == 'fresh-vegetables'}">
-            <sly data-sly-list.item="${list.items}">
-                <sly data-sly-call="${productCard @ item=item, buttonText=list.cartButtonText}" />
-            </sly>
-        </div>
+        <sly data-sly-list.category="${list.categories}">
+          <li class="category-tab" data-category="${category}">${category}</li>
+        </sly>
+      </ul>
     </div>
+  </div>
+
+  <div class="carousel-wrapper" data-carousel>
+    <div
+      class="product-container ${properties.sectionType == 'fresh-vegetables'}"
+    >
+      <sly data-sly-list.item="${list.items}">
+        <sly
+          data-sly-call="${productCard @ item=item, buttonText=list.cartButtonText}"
+        />
+      </sly>
+    </div>
+  </div>
 </div>
 
 <sly data-sly-template.productCard="${@ item, buttonText}">
-    <div class="product-card ${item.cardStyle} ${properties.showBorder ? 'card-border' : ''} ${properties.categoryColor}"
-        data-category="${item.product.productCategory}">
+  <div
+    class="product-card ${item.cardStyle} ${properties.showBorder ? 'card-border' : ''} ${properties.categoryColor}"
+    data-category="${item.product.productCategory}"
+  >
+    <div class="product-image">
+      <img
+        src="${item.product.productImage @ context='uri'}"
+        alt="${item.product.productName}"
+      />
 
-        <div class="product-image">
-            <img src="${item.product.productImage @ context='uri'}" alt="${item.product.productName}" />
-
-            <span data-sly-test="${item.cardStyle == 'standard' && properties.showCategory}"
-                class="category-badge ${properties.categoryColor} ${properties.badgePosition}">
-                ${item.product.productCategory}
-            </span>
-        </div>
-
-        <div class="product-details">
-            <a href=# class="product-title">${item.product.productName}</a>
-
-            <sly data-sly-test="${item.cardStyle == 'standard' && properties.showDescription}">
-                <div class="product-description">
-                    ${item.product.productDescription @ context='html'}
-                </div>
-            </sly>
-
-            <sly data-sly-test="${properties.showRating}">
-                <div class="rating">
-                    <sly data-sly-list.star="${item.product.filledStars}">
-                        <span class="star filled">★</span>
-                    </sly>
-                    <sly data-sly-list.star="${item.product.emptyStars}">
-                        <span class="star">★</span>
-                    </sly>
-                </div>
-            </sly>
-            <p class="price">
-                $ ${item.product.productPrice}
-                <sly data-sly-test="${item.cardStyle == 'standard' && properties.priceUnit}">
-                    / ${properties.priceUnit}
-                </sly>
-            </p>
-
-             <button class="add-to-cart" data-path="${item.productPath}">
-    <i class="fa-solid fa-bag-shopping"></i>
-    ${buttonText}
-</button>
-        </div>
-
+      <span
+        data-sly-test="${item.cardStyle == 'standard' && properties.showCategory}"
+        class="category-badge ${properties.categoryColor} ${properties.badgePosition}"
+      >
+        ${item.product.productCategory}
+      </span>
     </div>
+
+    <div class="product-details">
+      <a href="#" class="product-title">${item.product.productName}</a>
+
+      <sly
+        data-sly-test="${item.cardStyle == 'standard' && properties.showDescription}"
+      >
+        <div class="product-description">
+          ${item.product.productDescription @ context='html'}
+        </div>
+      </sly>
+
+      <sly data-sly-test="${properties.showRating}">
+        <div class="rating">
+          <sly data-sly-list.star="${item.product.filledStars}">
+            <span class="star filled">★</span>
+          </sly>
+          <sly data-sly-list.star="${item.product.emptyStars}">
+            <span class="star">★</span>
+          </sly>
+        </div>
+      </sly>
+      <p class="price">
+        $ ${item.product.productPrice}
+        <sly
+          data-sly-test="${item.cardStyle == 'standard' && properties.priceUnit}"
+        >
+          / ${properties.priceUnit}
+        </sly>
+      </p>
+
+      <button class="add-to-cart" data-path="${item.productPath}">
+        <i class="fa-solid fa-bag-shopping"></i>
+        ${buttonText}
+      </button>
+    </div>
+  </div>
 </sly>

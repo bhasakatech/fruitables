@@ -6,6 +6,7 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,7 @@ public class CartModel {
 
     private static final Logger log = LoggerFactory.getLogger(CartModel.class);
 
-    @org.apache.sling.models.annotations.injectorspecific.SlingObject
+    @SlingObject
     private SlingHttpServletRequest request;
 
 
@@ -51,29 +52,40 @@ public class CartModel {
         return checkoutLink;
     }
     public String getSubtotalLabel() {
-        return subtotalLabel != null ? subtotalLabel : "Subtotal:";
+        return subtotalLabel;
     }
 
     public String getShippingLabel() {
-        return shippingLabel != null ? shippingLabel : "Shipping";
+        return shippingLabel ;
     }
 
     public String getTotalLabel() {
-        return totalLabel != null ? totalLabel : "Total";
+        return totalLabel;
     }
 
     public String getCheckoutBtnText() {
-        return checkoutBtnText != null ? checkoutBtnText : "PROCEED CHECKOUT";
+        return checkoutBtnText;
     }
 
     public String getCouponPlaceholder() {
-        return couponPlaceholder != null ? couponPlaceholder : "Coupon Code";
+        return couponPlaceholder;
     }
 
     public String getCouponButtonText() {
-        return couponButtonText != null ? couponButtonText : "Apply Coupon";
+        return couponButtonText ;
     }
 
+    /**
+     * Fetches cart items for the current session from
+     * /content/usergenerated/cart/{sessionId}.
+     *
+     * For each entry, it reads product details (name, price, image)
+     * from the corresponding Content Fragment and builds a CartItem.
+     *
+     * Skips invalid or missing products. Uses default image if not available.
+     *
+     * @return list of cart items, or empty list if cart not found
+     */
     public List<CartItem> getItems() {
 
         List<CartItem> list = new ArrayList<>();

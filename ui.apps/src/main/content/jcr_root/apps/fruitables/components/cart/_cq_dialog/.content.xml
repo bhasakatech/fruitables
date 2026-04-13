@@ -11,6 +11,7 @@
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
         fieldLabel="Checkout Page Link"
+        rootPath="/content/fruitables"
         name="./checkoutLink"/>
 
     <subtotalLabel

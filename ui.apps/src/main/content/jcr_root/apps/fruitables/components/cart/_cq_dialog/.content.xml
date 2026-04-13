@@ -7,11 +7,54 @@
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
-            <checkoutPageLink
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                fieldLabel="Checkout Page Link"
-                name="./checkoutLink"/>
-        </items>
+    <checkoutPageLink
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+        fieldLabel="Checkout Page Link"
+        name="./checkoutLink"/>
+
+    <subtotalLabel
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+        fieldLabel="Subtotal Label"
+        name="./subtotalLabel"
+        value="Subtotal:"/>
+
+    <shippingLabel
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+        fieldLabel="Shipping Label"
+        name="./shippingLabel"
+        value="Shipping"/>
+
+    <totalLabel
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+        fieldLabel="Total Label"
+        name="./totalLabel"
+        value="Total"/>
+
+    <checkoutBtnText
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+        fieldLabel="Checkout Button Text"
+        name="./checkoutBtnText"
+        value="PROCEED CHECKOUT"/>
+
+    <couponPlaceholder
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+        fieldLabel="Coupon Placeholder"
+        name="./couponPlaceholder"
+        value="Coupon Code"/>
+
+    <couponButtonText
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+        fieldLabel="Coupon Button Text"
+        name="./couponButtonText"
+        value="Apply Coupon"/>
+
+</items>
     </content>
 </jcr:root>

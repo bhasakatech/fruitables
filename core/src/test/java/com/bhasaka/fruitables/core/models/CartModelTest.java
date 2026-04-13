@@ -121,4 +121,51 @@ class CartModelTest {
         assertNotNull(model);
         assertNull(model.getCheckoutLink(), "checkoutLink should be null when not set");
     }
+
+    @Test
+    void testAuthorableFields_FromResource() {
+
+        var props = context.currentResource("/content/test")
+                .adaptTo(org.apache.sling.api.resource.ModifiableValueMap.class);
+
+        props.put("subtotalLabel", "My Subtotal");
+        props.put("shippingLabel", "Delivery");
+        props.put("totalLabel", "Final Total");
+        props.put("checkoutBtnText", "Place Order");
+        props.put("couponPlaceholder", "Enter Code");
+        props.put("couponButtonText", "Apply Now");
+
+        CartModel model = context.request().adaptTo(CartModel.class);
+
+        assertEquals("My Subtotal", model.getSubtotalLabel());
+        assertEquals("Delivery", model.getShippingLabel());
+        assertEquals("Final Total", model.getTotalLabel());
+        assertEquals("Place Order", model.getCheckoutBtnText());
+        assertEquals("Enter Code", model.getCouponPlaceholder());
+        assertEquals("Apply Now", model.getCouponButtonText());
+    }
+
+    @Test
+    void testAuthorableFields_DefaultValues() {
+
+        CartModel model = context.request().adaptTo(CartModel.class);
+
+        assertEquals("Subtotal:", model.getSubtotalLabel());
+        assertEquals("Shipping", model.getShippingLabel());
+        assertEquals("Total", model.getTotalLabel());
+        assertEquals("PROCEED CHECKOUT", model.getCheckoutBtnText());
+        assertEquals("Coupon Code", model.getCouponPlaceholder());
+        assertEquals("Apply Coupon", model.getCouponButtonText());
+    }
+    @Test
+    void testCheckoutLink_WhenPresent() {
+
+        context.currentResource("/content/test")
+                .adaptTo(org.apache.sling.api.resource.ModifiableValueMap.class)
+                .put("checkoutLink", "/content/checkout");
+
+        CartModel model = context.request().adaptTo(CartModel.class);
+
+        assertEquals("/content/checkout", model.getCheckoutLink());
+    }
 }

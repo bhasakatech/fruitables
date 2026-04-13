@@ -29,8 +29,49 @@ public class CartModel {
     @ValueMapValue
     private String checkoutLink;
 
+    @ValueMapValue
+    private String subtotalLabel;
+
+    @ValueMapValue
+    private String shippingLabel;
+
+    @ValueMapValue
+    private String totalLabel;
+
+    @ValueMapValue
+    private String checkoutBtnText;
+
+    @ValueMapValue
+    private String couponPlaceholder;
+
+    @ValueMapValue
+    private String couponButtonText;
+
     public String getCheckoutLink() {
         return checkoutLink;
+    }
+    public String getSubtotalLabel() {
+        return subtotalLabel != null ? subtotalLabel : "Subtotal:";
+    }
+
+    public String getShippingLabel() {
+        return shippingLabel != null ? shippingLabel : "Shipping";
+    }
+
+    public String getTotalLabel() {
+        return totalLabel != null ? totalLabel : "Total";
+    }
+
+    public String getCheckoutBtnText() {
+        return checkoutBtnText != null ? checkoutBtnText : "PROCEED CHECKOUT";
+    }
+
+    public String getCouponPlaceholder() {
+        return couponPlaceholder != null ? couponPlaceholder : "Coupon Code";
+    }
+
+    public String getCouponButtonText() {
+        return couponButtonText != null ? couponButtonText : "Apply Coupon";
     }
 
     public List<CartItem> getItems() {

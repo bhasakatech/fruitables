@@ -8,8 +8,8 @@
         <div class="section-desc">${list.sectionDescription @ context='html'}</div>
 
         <div class="carousel-arrows" data-sly-test="${properties.sectionType == 'fresh-vegetables'}">
-            <button class="carousel-btn next">→</button>
-            <button class="carousel-btn prev">←</button>
+            <button class="carousel-btn">→</button>
+            <button class="carousel-btn">←</button>
         </div>
         <div class="organic-vegetables" data-sly-test="${properties.sectionType == 'organic-products'}">
 
@@ -31,7 +31,7 @@
     </div>
 
     <div class="carousel-wrapper" data-carousel>
-        <div class="product-container ${properties.sectionType == 'fresh-vegetables' ? 'carousel-container' : ''}">
+        <div class="product-container ${properties.sectionType == 'fresh-vegetables'}">
             <sly data-sly-list.item="${list.items}">
                 <sly data-sly-call="${productCard @ item=item, buttonText=list.cartButtonText}" />
             </sly>

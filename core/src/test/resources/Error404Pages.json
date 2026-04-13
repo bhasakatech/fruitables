@@ -1,0 +1,26 @@
+{
+  "validComponent": {
+    "image": "/content/dam/fruitables/error/404.png",
+    "title": "Page Not Found",
+    "subtitle": "Oops! Something went wrong",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "ctaText": "Go Back Home",
+    "ctaLink": "/home"
+  },
+  "nullValuesComponent": {
+    "image": null,
+    "title": null,
+    "subtitle": null,
+    "description": null,
+    "ctaText": null,
+    "ctaLink": null
+  },
+  "emptyValuesComponent": {
+    "image": "",
+    "title": "",
+    "subtitle": "",
+    "description": "",
+    "ctaText": "",
+    "ctaLink": ""
+  }
+}

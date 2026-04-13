@@ -48,6 +48,48 @@ public class CartModel {
     @ValueMapValue
     private String couponButtonText;
 
+    @ValueMapValue
+    private String productsHeader;
+
+    @ValueMapValue
+    private String nameHeader;
+
+    @ValueMapValue
+    private String priceHeader;
+
+    @ValueMapValue
+    private String quantityHeader;
+
+    @ValueMapValue
+    private String totalHeaderTable;
+
+    @ValueMapValue
+    private String handleHeader;
+
+    public String getProductsHeader() {
+        return productsHeader;
+    }
+
+    public String getNameHeader() {
+        return nameHeader;
+    }
+
+    public String getPriceHeader() {
+        return priceHeader;
+    }
+
+    public String getQuantityHeader() {
+        return quantityHeader;
+    }
+
+    public String getTotalHeaderTable() {
+        return totalHeaderTable ;
+    }
+
+    public String getHandleHeader() {
+        return handleHeader;
+    }
+
     public String getCheckoutLink() {
         return checkoutLink;
     }

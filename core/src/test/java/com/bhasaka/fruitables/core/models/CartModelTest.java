@@ -150,12 +150,46 @@ class CartModelTest {
 
         CartModel model = context.request().adaptTo(CartModel.class);
 
-        assertEquals("Subtotal:", model.getSubtotalLabel());
-        assertEquals("Shipping", model.getShippingLabel());
-        assertEquals("Total", model.getTotalLabel());
-        assertEquals("PROCEED CHECKOUT", model.getCheckoutBtnText());
-        assertEquals("Coupon Code", model.getCouponPlaceholder());
-        assertEquals("Apply Coupon", model.getCouponButtonText());
+        assertNull(model.getSubtotalLabel());
+        assertNull(model.getShippingLabel());
+        assertNull(model.getTotalLabel());
+        assertNull(model.getCheckoutBtnText());
+        assertNull(model.getCouponPlaceholder());
+        assertNull(model.getCouponButtonText());
+    }
+    @Test
+    void testHeaderFields_FromResource() {
+
+        var props = context.currentResource("/content/test")
+                .adaptTo(org.apache.sling.api.resource.ModifiableValueMap.class);
+
+        props.put("productsHeader", "My Products");
+        props.put("nameHeader", "Item Name");
+        props.put("priceHeader", "Cost");
+        props.put("quantityHeader", "Qty");
+        props.put("totalHeaderTable", "Amount");
+        props.put("handleHeader", "Actions");
+
+        CartModel model = context.request().adaptTo(CartModel.class);
+
+        assertEquals("My Products", model.getProductsHeader());
+        assertEquals("Item Name", model.getNameHeader());
+        assertEquals("Cost", model.getPriceHeader());
+        assertEquals("Qty", model.getQuantityHeader());
+        assertEquals("Amount", model.getTotalHeaderTable());
+        assertEquals("Actions", model.getHandleHeader());
+    }
+    @Test
+    void testHeaderFields_DefaultValues() {
+
+        CartModel model = context.request().adaptTo(CartModel.class);
+
+        assertNull(model.getProductsHeader());
+        assertNull(model.getNameHeader());
+        assertNull(model.getPriceHeader());
+        assertNull(model.getQuantityHeader());
+        assertNull(model.getTotalHeaderTable());
+        assertNull(model.getHandleHeader());
     }
     @Test
     void testCheckoutLink_WhenPresent() {

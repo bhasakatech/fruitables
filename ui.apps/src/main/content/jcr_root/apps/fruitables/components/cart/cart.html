@@ -3,13 +3,13 @@
 <sly data-sly-call="${clientlib.all @ categories='clientlibs.fruitables.cart'}"/>
 <div class="cart-container">
 
-  <div class="cart-header">
-    <div>Products</div>
-    <div>Name</div>
-    <div>Price</div>
-    <div>Quantity</div>
-    <div>Total</div>
-    <div>Handle</div>
+ <div class="cart-header">
+    <div>${model.productsHeader}</div>
+    <div>${model.nameHeader}</div>
+    <div>${model.priceHeader}</div>
+    <div>${model.quantityHeader}</div>
+    <div>${model.totalHeaderTable}</div>
+    <div>${model.handleHeader}</div>
   </div>
   <div data-sly-list.item="${model.items}">
     <div class="cart-row" data-path="${item.productPath}">

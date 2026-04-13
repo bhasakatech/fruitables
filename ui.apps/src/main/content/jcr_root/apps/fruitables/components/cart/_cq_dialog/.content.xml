@@ -1,61 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
-    jcr:primaryType="nt:unstructured"
-    jcr:title="Cart Configuration"
-    sling:resourceType="cq/gui/components/authoring/dialog">
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Cart Configuration"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
+
         <items jcr:primaryType="nt:unstructured">
-    <checkoutPageLink
-        jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-        fieldLabel="Checkout Page Link"
-        rootPath="/content/fruitables"
-        name="./checkoutLink"/>
 
-    <subtotalLabel
-        jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-        fieldLabel="Subtotal Label"
-        name="./subtotalLabel"
-        value="Subtotal:"/>
+           
+            <checkoutPageLink
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                fieldLabel="Checkout Page Link"
+                rootPath="/content/fruitables"
+                name="./checkoutLink"/>
 
-    <shippingLabel
-        jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-        fieldLabel="Shipping Label"
-        name="./shippingLabel"
-        value="Shipping"/>
+            <productsHeader
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Products Header"
+                name="./productsHeader"
+                value="Products"/>
 
-    <totalLabel
-        jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-        fieldLabel="Total Label"
-        name="./totalLabel"
-        value="Total"/>
+            <nameHeader
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Name Header"
+                name="./nameHeader"
+                value="Name"/>
 
-    <checkoutBtnText
-        jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-        fieldLabel="Checkout Button Text"
-        name="./checkoutBtnText"
-        value="PROCEED CHECKOUT"/>
+            <priceHeader
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Price Header"
+                name="./priceHeader"
+                value="Price"/>
 
-    <couponPlaceholder
-        jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-        fieldLabel="Coupon Placeholder"
-        name="./couponPlaceholder"
-        value="Coupon Code"/>
+            <quantityHeader
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Quantity Header"
+                name="./quantityHeader"
+                value="Quantity"/>
 
-    <couponButtonText
-        jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-        fieldLabel="Coupon Button Text"
-        name="./couponButtonText"
-        value="Apply Coupon"/>
+            <totalHeader
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Total Header"
+                name="./totalHeader"
+                value="Total"/>
 
-</items>
+            <handleHeader
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Handle Header"
+                name="./handleHeader"
+                value="Handle"/>
+
+            <subtotalLabel
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Subtotal Label"
+                name="./subtotalLabel"
+                value="Subtotal:"/>
+
+            <shippingLabel
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Shipping Label"
+                name="./shippingLabel"
+                value="Shipping"/>
+
+            <totalLabel
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Total Label"
+                name="./totalLabel"
+                value="Total"/>
+
+          
+            <checkoutBtnText
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Checkout Button Text"
+                name="./checkoutBtnText"
+                value="PROCEED CHECKOUT"/>
+
+         
+            <couponPlaceholder
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Coupon Placeholder"
+                name="./couponPlaceholder"
+                value="Coupon Code"/>
+
+            <couponButtonText
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Coupon Button Text"
+                name="./couponButtonText"
+                value="Apply Coupon"/>
+
+        </items>
     </content>
 </jcr:root>

@@ -3,76 +3,54 @@
 <sly data-sly-call="${clientlib.all @ categories='clientlibs.fruitables.cart'}"/>
 <div class="cart-container">
 
-  <div class="cart-header">
-    <div>Products</div>
-    <div>Name</div>
-    <div>Price</div>
-    <div>Quantity</div>
-    <div>Total</div>
-    <div>Handle</div>
+ <div class="cart-header">
+    <div>${model.productsHeader}</div>
+    <div>${model.nameHeader}</div>
+    <div>${model.priceHeader}</div>
+    <div>${model.quantityHeader}</div>
+    <div>${model.totalHeaderTable}</div>
+    <div>${model.handleHeader}</div>
   </div>
-
   <div data-sly-list.item="${model.items}">
-    
     <div class="cart-row" data-path="${item.productPath}">
-
       <img src="${item.image}" />
-
       <h3>${item.name}</h3>
-
       <p>₹ ${item.price}</p>
-
- 
       <div class="qty-box">
   <button class="qty-btn minus">-</button>
   <span class="qty-value">${item.qty}</span>
   <button class="qty-btn plus">+</button>
 </div>
-
-   
       <p class="total">₹ ${item.total}</p>
-
-  
       <button class="delete-btn">✖</button>
-
     </div>
-
   </div>
-
 </div>
-
 <div class="cart-bottom">
-
-
   <div class="coupon-box">
-    <input type="text" placeholder="Coupon Code" class="coupon-input"/>
-    <button class="coupon-btn">Apply Coupon</button>
+   <input type="text" placeholder="${model.couponPlaceholder}" class="coupon-input"/>
+<button class="coupon-btn">${model.couponButtonText}</button>
   </div>
-
   <div class="cart-summary">
     <h2>Cart Total</h2>
-
     <div class="summary-row">
-      <span id="subhead">Subtotal:</span>
+     <span id="subhead">${model.subtotalLabel}</span>
       <span>₹ ${model.subtotal}</span>
     </div>
-
     <div class="summary-row">
-      <span id="subhead">Shipping</span>
+      <span id="subhead">${model.shippingLabel}</span>
       <span>Flat rate: ₹ ${model.shipping}</span>
     </div>
-
     <hr/>
-
     <div class="summary-row total">
-      <strong id="subhead">Total</strong>
+      <strong id="subhead">${model.totalLabel}</strong>
       <strong>₹ ${model.total}</strong>
     </div>
   <hr/>
-
-    <button class="checkout-btn" onclick="goToCheckout()">
-      PROCEED CHECKOUT
+  <a href="${model.checkoutLink}.html">
+    <button class="checkout-btn">
+       ${model.checkoutBtnText}
     </button>
+    </a>
   </div>
-
 </div>

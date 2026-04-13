@@ -11,18 +11,17 @@ import java.util.List;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class BottomHeaderModel {
-    // Logo
+
     @ValueMapValue
     private String logoText;
 
     @ValueMapValue
     private String logoImage;
 
-    // Custom Navigation
+
     @ChildResource(name = "menu")
     private List<MenuItem> menu;
 
-    // Action Icons - FIXED with @Default
     @ValueMapValue
     @Default(booleanValues = true)
     private boolean enableSearch;
@@ -42,7 +41,15 @@ public class BottomHeaderModel {
     @Default(intValues = 3)
     private int defaultCartCount;
 
-    // Getters
+
+
+    @ValueMapValue
+    private String homeLink;
+
+    public String getHomeLink() {
+        return homeLink;
+    }
+
     public String getLogoText() { return logoText; }
     public String getLogoImage() { return logoImage; }
     public List<MenuItem> getMenu() { return menu; }

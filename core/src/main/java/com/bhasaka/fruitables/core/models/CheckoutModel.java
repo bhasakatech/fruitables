@@ -4,6 +4,8 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
 @Model(adaptables = SlingHttpServletRequest.class)
 public class CheckoutModel {
 
+    Logger log= LoggerFactory.getLogger(CheckoutModel.class);
     @Self
     private SlingHttpServletRequest request;
 
@@ -27,7 +30,16 @@ public class CheckoutModel {
 
     @PostConstruct
     protected void init() {
+        log.info("============== CHECKOUT DEBUG START ===============");
+        String sessionId = request.getSession().getId();
+        log.info("Checkout Session ID: {}", sessionId);
         cartModel = request.adaptTo(CartModel.class);
+
+        if (cartModel == null) {
+            log.error("CartModel adaptation FAILED");
+        } else {
+            log.info("CartModel adapted successfully");
+        }
 
         String shippingType = request.getParameter("shipping");
 
@@ -36,6 +48,8 @@ public class CheckoutModel {
         } else {
             shipping = flatRate;
         }
+
+        log.info("Shipping Applied: {}", shipping);
     }
 
     public List<CartItem> getItems() {

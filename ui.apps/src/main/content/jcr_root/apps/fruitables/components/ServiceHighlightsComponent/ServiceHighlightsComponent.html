@@ -2,6 +2,7 @@
 <sly data-sly-call="${clientlib.all @ categories='fruitables.ServiceHighlightsComponent'}"/>
 <sly data-sly-use.model="com.bhasaka.fruitables.core.models.ServiceHighlights"/>
 
+<div class="service-highlights">
 <div class="cards_whole">
     <div class="each_service">
         <sly data-sly-list.service="${model.servicesList}">
@@ -15,4 +16,5 @@
             </div>
         </sly>
     </div>
+</div>
 </div>

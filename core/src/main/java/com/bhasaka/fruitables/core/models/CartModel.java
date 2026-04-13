@@ -56,7 +56,7 @@ public class CartModel {
     }
 
     public String getShippingLabel() {
-        return shippingLabel ;
+        return shippingLabel;
     }
 
     public String getTotalLabel() {

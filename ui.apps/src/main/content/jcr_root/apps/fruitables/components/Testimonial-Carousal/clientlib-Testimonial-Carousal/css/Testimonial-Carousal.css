@@ -133,7 +133,6 @@
     background: var(--tc-bg);
     border-radius: 0.625rem;
     padding: 1.5rem;
-    min-height: 14.375rem;
     height: 100%;
     overflow: hidden;
 }
@@ -243,7 +242,7 @@
     transform: translateY(0.25rem);
 }
 
-@media (min-width: 62rem) {
+@media (min-width: 992px) {
     .testimonial-carousel__header,
     .testimonial-carousel__viewport {
         padding-left: 0.75rem;
@@ -257,7 +256,7 @@
     }
 }
 
-@media (max-width: 74.9375rem) {
+@media (max-width:1199px) {
     .testimonial-carousel {
         --tc-gap: 1.875rem;
     }
@@ -290,59 +289,7 @@
     }
 }
 
-@media (max-width: 61.9375rem) {
-    .testimonial-carousel {
-        --tc-gap: 1.25rem;
-    }
-
-    .testimonial-carousel__header,
-    .testimonial-carousel__viewport {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
-    .testimonial-carousel__header {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: end;
-        gap: 0.75rem 1rem;
-        margin-bottom: 1.25rem;
-    }
-
-    .testimonial-carousel__heading {
-        grid-column: 1 / -1;
-        width: 100%;
-        padding-top: 1rem;
-        text-align: center;
-    }
-
-    .testimonial-carousel__subtitle {
-        font-size: 1.05rem;
-    }
-
-    .testimonial-carousel__title {
-        font-size: 2.2rem;
-        line-height: 1.12;
-    }
-
-    .testimonial-carousel__controls {
-        grid-column: 2 / 3;
-        justify-self: end;
-        align-self: center;
-        gap: 0.75rem;
-        margin-top: -0.25rem;
-    }
-
-    .testimonial-card {
-        min-height: auto;
-    }
-
-    .testimonial-card__quote {
-        font-size: 3rem;
-    }
-}
-
-@media (max-width: 47.9375rem) {
+@media (max-width:767px) {
     .testimonial-carousel {
         padding: 2rem 0;
     }
@@ -400,7 +347,6 @@
     }
 
     .testimonial-card__review-wrap {
-        min-height: auto;
         margin-bottom: 1rem;
         padding-bottom: 0.5rem;
     }
@@ -445,7 +391,7 @@
     }
 }
 
-@media (max-width: 35.9375rem) {
+@media (max-width: 575px) {
     .testimonial-carousel__header,
     .testimonial-carousel__viewport {
         padding-left: 0.5rem;

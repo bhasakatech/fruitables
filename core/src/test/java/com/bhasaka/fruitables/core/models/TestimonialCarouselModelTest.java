@@ -12,18 +12,36 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
-
+/**
+ * Unit test class for {@link TestimonialCarouselModel}.
+ * <p>
+ * This class verifies the behavior of the TestimonialCarouselModel Sling Model
+ * using AEM mock context. It specifically tests scenarios where testimonial
+ * items are not present and ensures proper handling of such cases.
+ * </p>
+ */
 @ExtendWith(AemContextExtension.class)
 class TestimonialCarouselModelTest {
 
+    /** AEM mock context used to simulate repository and model adaptation */
     private final AemContext context = new AemContext();
 
+    /**
+     * Sets up the test environment by registering the models
+     * and loading JSON test data into the mock repository.
+     */
     @BeforeEach
     void setUp() {
         context.addModelsForClasses(TestimonialCarouselModel.class, TestimonialItemsModel.class);
         context.load().json("/testimonial-carousel.json", "/content/test");
     }
 
+    /**
+     * Adapts the resource at the given path to {@link TestimonialCarouselModel}.
+     *
+     * @param path resource path
+     * @return adapted TestimonialCarouselModel instance
+     */
     private TestimonialCarouselModel adapt(String path) {
         Resource resource = context.resourceResolver().getResource(path);
         assertNotNull(resource);
@@ -32,7 +50,11 @@ class TestimonialCarouselModelTest {
         return model;
     }
 
-
+    /**
+     * Tests the scenario where no testimonials are configured.
+     * Verifies that subtitle and title are populated and
+     * testimonials list is null.
+     */
     @Test
     void testNoTestimonialsComponent() {
         TestimonialCarouselModel model = adapt("/content/test/noTestimonialsComponent");

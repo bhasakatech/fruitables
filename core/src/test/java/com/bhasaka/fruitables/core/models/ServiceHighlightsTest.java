@@ -12,28 +12,23 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
-
 /**
  * Unit test class for {@link ServiceHighlights}.
- *
- * <p>This class verifies:
- * <ul>
- *     <li>Valid service items mapping</li>
- *     <li>Handling of null and empty values</li>
- *     <li>Behavior when no services are configured</li>
- *     <li>Handling of invalid component data</li>
- * </ul>
+ * <p>
+ * This class verifies the behavior of the ServiceHighlights Sling Model
+ * by testing different scenarios such as valid data, null values,
+ * missing services, and invalid configurations using AEM mock context.
  * </p>
  */
 @ExtendWith(AemContextExtension.class)
 class ServiceHighlightsTest {
 
+    /** AEM mock context used for setting up resources and models */
     private final AemContext context = new AemContext();
 
     /**
-     * Sets up test context before each test.
-     *
-     * <p>Registers model and loads JSON test data.</p>
+     * Sets up the test environment by registering the model
+     * and loading test JSON data into the mock repository.
      */
     @BeforeEach
     void setUp() {
@@ -42,10 +37,10 @@ class ServiceHighlightsTest {
     }
 
     /**
-     * Adapts a resource at given path to {@link ServiceHighlights}.
+     * Adapts a resource at the given path to {@link ServiceHighlights} model.
      *
      * @param path resource path
-     * @return adapted model
+     * @return adapted ServiceHighlights model
      */
     private ServiceHighlights adapt(String path) {
         Resource resource = context.resourceResolver().getResource(path);
@@ -58,7 +53,8 @@ class ServiceHighlightsTest {
     }
 
     /**
-     * Tests valid service items mapping.
+     * Tests the model with valid services data.
+     * Verifies that all fields are correctly mapped.
      */
     @Test
     void testValidServices() {
@@ -83,7 +79,8 @@ class ServiceHighlightsTest {
     }
 
     /**
-     * Tests handling of null and default values.
+     * Tests the model when some properties are null or empty.
+     * Ensures default handling does not break the model.
      */
     @Test
     void testNullValuesComponent() {
@@ -102,7 +99,8 @@ class ServiceHighlightsTest {
     }
 
     /**
-     * Tests behavior when no services are configured.
+     * Tests the model when no services node is present.
+     * Verifies that an empty list is returned instead of null.
      */
     @Test
     void testNoServicesComponent() {
@@ -115,7 +113,8 @@ class ServiceHighlightsTest {
     }
 
     /**
-     * Tests handling of invalid component data.
+     * Tests the model with invalid service configuration.
+     * Ensures properties are safely handled as null values.
      */
     @Test
     void testBadComponent() {

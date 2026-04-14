@@ -53,8 +53,10 @@
         </div>
 
         <div class="product-details">
-            <a href=# class="product-title">${item.product.productName}</a>
-
+            <a href="javascript:void(0);" class="product-title clickable-product"
+                data-name="${item.product.productName}">
+                ${item.product.productName}
+            </a>
             <sly data-sly-test="${item.cardStyle == 'standard' && properties.showDescription}">
                 <div class="product-description">
                     ${item.product.productDescription @ context='html'}

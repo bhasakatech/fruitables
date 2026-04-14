@@ -13,25 +13,53 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
+/**
+ * Unit test class for {@link ServiceHighlights}.
+ *
+ * <p>This class verifies:
+ * <ul>
+ *     <li>Valid service items mapping</li>
+ *     <li>Handling of null and empty values</li>
+ *     <li>Behavior when no services are configured</li>
+ *     <li>Handling of invalid component data</li>
+ * </ul>
+ * </p>
+ */
 @ExtendWith(AemContextExtension.class)
 class ServiceHighlightsTest {
 
     private final AemContext context = new AemContext();
 
+    /**
+     * Sets up test context before each test.
+     *
+     * <p>Registers model and loads JSON test data.</p>
+     */
     @BeforeEach
     void setUp() {
         context.addModelsForClasses(ServiceHighlights.class);
         context.load().json("/service-highlights.json", "/content/test");
     }
 
+    /**
+     * Adapts a resource at given path to {@link ServiceHighlights}.
+     *
+     * @param path resource path
+     * @return adapted model
+     */
     private ServiceHighlights adapt(String path) {
         Resource resource = context.resourceResolver().getResource(path);
         assertNotNull(resource);
+
         ServiceHighlights model = resource.adaptTo(ServiceHighlights.class);
         assertNotNull(model);
+
         return model;
     }
 
+    /**
+     * Tests valid service items mapping.
+     */
     @Test
     void testValidServices() {
         ServiceHighlights model = adapt("/content/test/validComponent");
@@ -54,6 +82,9 @@ class ServiceHighlightsTest {
         assertEquals("#00ff00", second.getColor());
     }
 
+    /**
+     * Tests handling of null and default values.
+     */
     @Test
     void testNullValuesComponent() {
         ServiceHighlights model = adapt("/content/test/nullValuesComponent");
@@ -70,6 +101,9 @@ class ServiceHighlightsTest {
         assertNull(item.getColor());
     }
 
+    /**
+     * Tests behavior when no services are configured.
+     */
     @Test
     void testNoServicesComponent() {
         ServiceHighlights model = adapt("/content/test/noServicesComponent");
@@ -80,6 +114,9 @@ class ServiceHighlightsTest {
         assertEquals(0, services.size());
     }
 
+    /**
+     * Tests handling of invalid component data.
+     */
     @Test
     void testBadComponent() {
         ServiceHighlights model = adapt("/content/test/badComponent");

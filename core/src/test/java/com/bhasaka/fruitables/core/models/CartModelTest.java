@@ -14,21 +14,44 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 
+/**
+ * Unit test class for {@link CartModel}.
+ *
+ * <p>This class verifies:
+ * <ul>
+ *     <li>Cart item retrieval from repository</li>
+ *     <li>Product details mapping</li>
+ *     <li>Subtotal, shipping, and total calculations</li>
+ *     <li>Handling of empty cart scenarios</li>
+ *     <li>Authorable dialog field values and defaults</li>
+ * </ul>
+ * </p>
+ */
 @ExtendWith(AemContextExtension.class)
 class CartModelTest {
+
     private final AemContext context = new AemContext();
     private CartModel cartModel;
     private CartModel model;
     private String sessionId;
     private final String cartBasePath = "/content/usergenerated/cart";
+
+    /**
+     * Sets up test context before each test.
+     *
+     * <p>Initializes session, loads mock data, and adapts request to {@link CartModel}.</p>
+     */
     @BeforeEach
     void setUp() {
 
         context.addModelsForClasses(CartModel.class, CartItem.class);
+
         SlingHttpServletRequest request = context.request();
         request.getSession(true);
         sessionId = request.getSession().getId();
+
         context.request().setResource(context.create().resource("/content/test"));
+
         context.load().json("/products.json", "/content/products");
         context.load().json("/cart.json", cartBasePath + "/" + sessionId);
 
@@ -36,10 +59,12 @@ class CartModelTest {
 
         assertNotNull(cartModel, "CartModel should not be null");
 
-
         model = spy(cartModel);
     }
 
+    /**
+     * Tests that cart model returns list of items.
+     */
     @Test
     void testCartModelReturnsItems() {
         List<CartItem> items = cartModel.getItems();
@@ -48,6 +73,9 @@ class CartModelTest {
         assertEquals(2, items.size());
     }
 
+    /**
+     * Tests details of Mango item in cart.
+     */
     @Test
     void testCartItemDetails_Mango() {
         List<CartItem> items = cartModel.getItems();
@@ -66,9 +94,13 @@ class CartModelTest {
         assertEquals(151.0, mango.getTotal(), 0.001);
     }
 
+    /**
+     * Tests details of Apple item in cart.
+     */
     @Test
     void testCartItemDetails_Apple() {
         List<CartItem> items = cartModel.getItems();
+
         CartItem apple = items.stream()
                 .filter(item -> "Apple".equals(item.getName()))
                 .findFirst()
@@ -82,46 +114,77 @@ class CartModelTest {
         assertEquals(360.0, apple.getTotal(), 0.001);
     }
 
+    /**
+     * Tests behavior when cart resource is not present.
+     */
     @Test
     void testEmptyCartWhenNoCartResource() {
         AemContext freshContext = new AemContext();
         freshContext.addModelsForClasses(CartModel.class, CartItem.class);
+
         SlingHttpServletRequest request = freshContext.request();
         request.getSession(true);
+
         CartModel emptyCartModel = request.adaptTo(CartModel.class);
+
         assertNotNull(emptyCartModel);
+
         List<CartItem> items = emptyCartModel.getItems();
+
         assertNotNull(items);
         assertTrue(items.isEmpty());
     }
+
+    /**
+     * Tests subtotal calculation using mocked items.
+     */
     @Test
     void testGetSubtotal() {
         CartItem item1 = new CartItem();
         item1.setPrice(10);
         item1.setQty(2);
+
         CartItem item2 = new CartItem();
         item2.setPrice(15);
         item2.setQty(1);
+
         doReturn(Arrays.asList(item1, item2)).when(model).getItems();
+
         double subtotal = model.getSubtotal();
+
         assertEquals(35.0, subtotal);
     }
+
+    /**
+     * Tests total calculation (subtotal + shipping).
+     */
     @Test
     void testGetTotal() {
         CartItem item1 = new CartItem();
         item1.setPrice(20);
         item1.setQty(1);
+
         doReturn(Arrays.asList(item1)).when(model).getItems();
+
         double total = model.getTotal();
+
         assertEquals(23.0, total);
     }
+
+    /**
+     * Tests checkout link when not configured.
+     */
     @Test
     void testCheckoutLink_WhenNotPresent() {
         CartModel model = context.request().adaptTo(CartModel.class);
+
         assertNotNull(model);
         assertNull(model.getCheckoutLink(), "checkoutLink should be null when not set");
     }
 
+    /**
+     * Tests authorable fields populated from resource.
+     */
     @Test
     void testAuthorableFields_FromResource() {
 
@@ -145,6 +208,9 @@ class CartModelTest {
         assertEquals("Apply Now", model.getCouponButtonText());
     }
 
+    /**
+     * Tests default values when authorable fields are not set.
+     */
     @Test
     void testAuthorableFields_DefaultValues() {
 
@@ -157,6 +223,10 @@ class CartModelTest {
         assertNull(model.getCouponPlaceholder());
         assertNull(model.getCouponButtonText());
     }
+
+    /**
+     * Tests header field values from resource.
+     */
     @Test
     void testHeaderFields_FromResource() {
 
@@ -179,6 +249,10 @@ class CartModelTest {
         assertEquals("Amount", model.getTotalHeaderTable());
         assertEquals("Actions", model.getHandleHeader());
     }
+
+    /**
+     * Tests default values for header fields.
+     */
     @Test
     void testHeaderFields_DefaultValues() {
 
@@ -191,6 +265,10 @@ class CartModelTest {
         assertNull(model.getTotalHeaderTable());
         assertNull(model.getHandleHeader());
     }
+
+    /**
+     * Tests checkout link when configured.
+     */
     @Test
     void testCheckoutLink_WhenPresent() {
 

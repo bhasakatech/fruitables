@@ -12,11 +12,30 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Unit test class for {@link CheckoutModel}.
+ *
+ * <p>This class verifies:
+ * <ul>
+ *     <li>Shipping calculation based on request parameter</li>
+ *     <li>Subtotal retrieval from {@link CartModel}</li>
+ *     <li>Total calculation logic</li>
+ *     <li>Cart items handling</li>
+ * </ul>
+ * </p>
+ */
 @ExtendWith(AemContextExtension.class)
 class CheckoutModelTest {
 
     private final AemContext context = new AemContext();
     private CheckoutModel checkoutModel;
+
+    /**
+     * Sets up test context before each test.
+     *
+     * <p>Loads mock data, sets request parameters,
+     * and registers a mocked {@link CartModel}.</p>
+     */
     @BeforeEach
     void setUp() {
 
@@ -40,30 +59,45 @@ class CheckoutModelTest {
         assertNotNull(checkoutModel);
     }
 
+    /**
+     * Tests pickup shipping calculation.
+     */
     @Test
     void testPickupShipping() {
         assertEquals(20.0, checkoutModel.getShipping(),
                 "Shipping should be pickupRate when shipping=pickup");
     }
 
+    /**
+     * Tests subtotal retrieval from CartModel.
+     */
     @Test
     void testSubtotal() {
         assertEquals(100.0, checkoutModel.getSubtotal(),
                 "Subtotal should come from CartModel");
     }
 
+    /**
+     * Tests total calculation (subtotal + shipping).
+     */
     @Test
     void testTotalCalculation() {
         assertEquals(120.0, checkoutModel.getTotal(),
                 "Total should be subtotal + shipping");
     }
 
+    /**
+     * Tests that items list is not null.
+     */
     @Test
     void testItemsNotNull() {
         assertNotNull(checkoutModel.getItems(),
                 "Items list should not be null");
     }
 
+    /**
+     * Tests flat rate shipping when delivery is selected.
+     */
     @Test
     void testFlatRateShipping() {
         context.request().setParameterMap(
@@ -75,5 +109,4 @@ class CheckoutModelTest {
         assertEquals(50.0, model.getShipping(),
                 "Shipping should be flatRate for delivery");
     }
-
 }

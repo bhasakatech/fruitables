@@ -6,7 +6,7 @@
     background: #ffffff;
     box-sizing: border-box;
     overflow: hidden;
-    margin-top: 9.375rem;
+    margin-top:0rem !important;
 }
 
 .error-page__inner {
@@ -20,9 +20,10 @@
 }
 
 .error-page__icon {
+    margin-top: 0; 
     width: 6.5rem; 
     height: 6.5rem;
-    margin: 0 0 1rem; 
+    /* margin: 0 0 1rem;  */
     display: flex;
     align-items: center;
     justify-content: center;

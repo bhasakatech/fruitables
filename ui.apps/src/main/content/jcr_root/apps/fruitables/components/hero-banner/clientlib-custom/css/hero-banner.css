@@ -6,9 +6,8 @@
     justify-content: space-between;
     background-color: #ffffff;
     background-size: cover;
-    gap: 90px;
     width: 100%;
-    margin-top:80px;
+    margin-top:70px;
     background-image: var(--bg-image);
     background-size: cover;
     background-position: center;
@@ -165,6 +164,7 @@
         padding: 0px 0px;
         width: 100%;
         box-sizing: border-box;
+        margin-top: 50px;
     }
 
     .hero-left {
@@ -173,6 +173,7 @@
         padding-right: 20px;
         box-sizing: border-box;
         order: 1;
+        padding-top: 70px;
     }
 
     .hero-right {
@@ -225,9 +226,9 @@
     .hero-banner {
         flex-direction: column;
         align-items: flex-start;
-
         padding: 0px 0px;
         gap: 20px;
+        margin-top: 50px;
     }
 
     .hero-left,
@@ -235,6 +236,7 @@
         width: 100%;
         padding-left: 20px;
         padding-right: 20px;
+        padding-top: 40px;
     }
 
     .hero-text {

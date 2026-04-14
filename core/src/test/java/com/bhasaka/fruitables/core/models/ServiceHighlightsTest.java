@@ -45,8 +45,10 @@ class ServiceHighlightsTest {
     private ServiceHighlights adapt(String path) {
         Resource resource = context.resourceResolver().getResource(path);
         assertNotNull(resource);
+
         ServiceHighlights model = resource.adaptTo(ServiceHighlights.class);
         assertNotNull(model);
+
         return model;
     }
 

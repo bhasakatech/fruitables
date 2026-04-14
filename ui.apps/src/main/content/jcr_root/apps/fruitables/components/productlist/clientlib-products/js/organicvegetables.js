@@ -13,8 +13,8 @@
     var wrapper = section.querySelector("[data-carousel]");
     var track = section.querySelector(".product-container");
     var slides = section.querySelectorAll(".product-card");
-    var prevBtn = section.querySelector(".carousel-btn.prev");
-    var nextBtn = section.querySelector(".carousel-btn.next");
+    var prevBtn = section.querySelector(".carousel-btn.backward");
+    var nextBtn = section.querySelector(".carousel-btn.forward");
 
     var currentIndex = 0;
     var timer = null;

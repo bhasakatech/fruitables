@@ -42,16 +42,32 @@
 </div>
 
 <sly data-sly-template.productCard="${@ item, buttonText}">
-    <div class="product-card ${item.cardStyle} ${properties.showBorder ? 'card-border' : ''} ${properties.categoryColor}"
-        data-category="${item.product.productCategory}">
+  <div
+    class="product-card ${item.cardStyle} ${properties.showBorder ? 'card-border' : ''} ${properties.categoryColor}"
+    data-category="${item.product.productCategory}"
+  >
+    <div class="product-image">
+      <img
+        src="${item.product.productImage @ context='uri'}"
+        alt="${item.product.productName}"
+      />
 
-        <div class="product-image">
-            <img src="${item.product.productImage @ context='uri'}" alt="${item.product.productName}" />
+      <span
+        data-sly-test="${item.cardStyle == 'standard' && properties.showCategory}"
+        class="category-badge ${properties.categoryColor} ${properties.badgePosition}"
+      >
+        ${item.product.productCategory}
+      </span>
+    </div>
 
-            <span data-sly-test="${item.cardStyle == 'standard' && properties.showCategory}"
-                class="category-badge ${properties.categoryColor} ${properties.badgePosition}">
-                ${item.product.productCategory}
-            </span>
+    <div class="product-details">
+      <a href="#" class="product-title">${item.product.productName}</a>
+
+      <sly
+        data-sly-test="${item.cardStyle == 'standard' && properties.showDescription}"
+      >
+        <div class="product-description">
+          ${item.product.productDescription @ context='html'}
         </div>
 
         <div class="product-details">
@@ -86,35 +102,6 @@
     <i class="fa-solid fa-bag-shopping"></i>
     ${buttonText}
 </button>
-        </div>
-
-      <span
-        data-sly-test="${item.cardStyle == 'standard' && properties.showCategory}"
-        class="category-badge ${properties.categoryColor} ${properties.badgePosition}"
-      >
-        ${item.product.productCategory}
-      </span>
-    </div>
-
-    <div class="product-details">
-      <a href="#" class="product-title">${item.product.productName}</a>
-
-      <sly
-        data-sly-test="${item.cardStyle == 'standard' && properties.showDescription}"
-      >
-        <div class="product-description">
-          ${item.product.productDescription @ context='html'}
-        </div>
-      </sly>
-
-      <sly data-sly-test="${properties.showRating}">
-        <div class="rating">
-          <sly data-sly-list.star="${item.product.filledStars}">
-            <span class="star filled">★</span>
-          </sly>
-          <sly data-sly-list.star="${item.product.emptyStars}">
-            <span class="star">★</span>
-          </sly>
         </div>
       </sly>
       <p class="price">

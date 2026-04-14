@@ -12,17 +12,35 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * Unit test class for {@link ProductCFModelTag}.
+ *
+ * Validates product field mapping, tag retrieval,
+ * defensive copying, and star rating calculations.
+ */
 @ExtendWith(AemContextExtension.class)
 class ProductCFModelTagTest {
 
+    /**
+     * AEM mock context used for Sling model testing.
+     */
     private final AemContext context = new AemContext(ResourceResolverType.JCR_MOCK);
 
+    /**
+     * Initializes mock context before each test execution.
+     *
+     * Registers Sling model and loads mock JSON content.
+     */
     @BeforeEach
     void setUp() {
         context.addModelsForClasses(ProductCFModelTag.class);
         context.load().json("/ProductCFModelTagTest.json", "/content");
     }
 
+    /**
+     * Tests valid product field values and verifies
+     * star rating collections are generated correctly.
+     */
     @Test
     void testValidProductFieldsAndStarCollections() {
         ProductCFModelTag model = getModel("/content/product-valid");
@@ -44,6 +62,10 @@ class ProductCFModelTagTest {
         );
     }
 
+    /**
+     * Tests that returned tag array is a defensive copy
+     * and original model data remains unchanged.
+     */
     @Test
     void testReturnedTagArrayIsDefensiveCopy() {
         ProductCFModelTag model = getModel("/content/product-valid");
@@ -57,6 +79,10 @@ class ProductCFModelTagTest {
         );
     }
 
+    /**
+     * Tests invalid and blank ratings produce
+     * zero filled stars and full empty stars.
+     */
     @Test
     void testInvalidAndBlankRatingsProduceNoFilledStars() {
         ProductCFModelTag invalidModel = getModel("/content/product-invalid");
@@ -71,6 +97,12 @@ class ProductCFModelTagTest {
         );
     }
 
+    /**
+     * Adapts resource path into ProductCFModelTag model.
+     *
+     * @param path resource path
+     * @return adapted ProductCFModelTag instance
+     */
     private ProductCFModelTag getModel(String path) {
         context.currentResource(path);
         ProductCFModelTag model = context.currentResource().adaptTo(ProductCFModelTag.class);

@@ -19,11 +19,24 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Unit test class for {@link CategorysTagsModel}.
+ *
+ * This class validates category selection, default values,
+ * configuration state, and product filtering behavior.
+ */
 @ExtendWith(AemContextExtension.class)
 class CategorysTagsModelTest {
 
+    /**
+     * AEM mock context for Sling model testing.
+     */
     private final AemContext context = new AemContext();
 
+    /**
+     * Initializes mock context, registers models,
+     * and loads test JSON content before each test.
+     */
     @BeforeEach
     void setUp() {
         context.addModelsForClasses(
@@ -33,6 +46,11 @@ class CategorysTagsModelTest {
         context.load().json("/CategorysTagsModelTest.json", "/content");
     }
 
+    /**
+     * Tests configured model behavior including:
+     * category building, selection state,
+     * and authored property values.
+     */
     @Test
     void testConfiguredModelBuildsCategoriesAndSelectionState() {
         Map<String, Object> parameters = new LinkedHashMap<>();
@@ -83,6 +101,10 @@ class CategorysTagsModelTest {
         assertTrue(products.isEmpty());
     }
 
+    /**
+     * Tests that unknown category selection
+     * does not mark any category as selected.
+     */
     @Test
     void testUnknownSelectionDoesNotMarkCategoryAsSelected() {
         CategorysTagsModel model = adaptRequestModel(
@@ -101,6 +123,10 @@ class CategorysTagsModelTest {
         );
     }
 
+    /**
+     * Tests fallback/default values when component
+     * configuration is missing.
+     */
     @Test
     void testDefaultsAreUsedWhenComponentIsNotConfigured() {
         CategorysTagsModel model = adaptRequestModel(
@@ -129,6 +155,14 @@ class CategorysTagsModelTest {
         );
     }
 
+    /**
+     * Adapts request resource into CategorysTagsModel
+     * using provided request parameters.
+     *
+     * @param resourcePath path of test resource
+     * @param parameters request parameters map
+     * @return adapted CategorysTagsModel instance
+     */
     private CategorysTagsModel adaptRequestModel(String resourcePath, Map<String, Object> parameters) {
         Resource resource = context.resourceResolver().getResource(resourcePath);
         assertNotNull(resource);

@@ -8,19 +8,31 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit test class for {@link TopHeaderModel}.
+ *
+ * <p>This class verifies mapping of header fields such as address,
+ * email, and policy links.</p>
+ */
 @ExtendWith(AemContextExtension.class)
 class TopHeaderModelTest {
 
     private final AemContext context = new AemContext();
     private TopHeaderModel model;
 
+    /**
+     * Sets up test context before each test.
+     *
+     * <p>Loads JSON data and adapts resource to {@link TopHeaderModel}.</p>
+     */
     @BeforeEach
     void setUp() {
 
-
         context.load().json("/topheader.json", "/content/header");
-        // Register models
+
         context.addModelsForClasses(TopHeaderModel.class, PolicyLink.class);
 
         Resource resource = context.resourceResolver().getResource("/content/header");
@@ -28,16 +40,25 @@ class TopHeaderModelTest {
         model = resource.adaptTo(TopHeaderModel.class);
     }
 
+    /**
+     * Tests address field mapping.
+     */
     @Test
     void testAddress() {
         assertEquals("Hyderabad, India", model.getAddress());
     }
 
+    /**
+     * Tests email field mapping.
+     */
     @Test
     void testEmail() {
         assertEquals("test@example.com", model.getEmail());
     }
 
+    /**
+     * Tests policy links mapping.
+     */
     @Test
     void testPolicyLinks() {
         List<PolicyLink> links = model.getPolicyLinks();

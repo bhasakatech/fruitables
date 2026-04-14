@@ -1,578 +1,582 @@
 .product-container {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 25px;
-    width: 100%;
-    grid-auto-flow: row;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 25px;
+  width: 100%;
+  grid-auto-flow: row;
 }
 
 .product-card.compact {
-    grid-column: span 4;
+  grid-column: span 4;
 }
 
 .product-card.standard {
-    grid-column: span 3;
+  grid-column: span 3;
 }
 
 .product-card.compact {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background: #eef0f1;
-    border-radius: 15px;
-    padding: 15px;
-    min-height: 140px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #eef0f1;
+  border-radius: 15px;
+  padding: 15px;
+  min-height: 140px;
 }
 
 .product-card.compact .product-image {
-    flex: 0 0 95px;
+  flex: 0 0 6rem;
+  height: 6rem;
 }
 
 .product-card.compact .product-image img {
-    width: 95px;
-    height: 95px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .product-card.compact .product-details {
-    flex: 1;
-    text-align: left;
+  flex: 1;
+  text-align: left;
 }
 
 .product-card.standard {
-    background: #eef0f1;
-    border-radius: 15px;
-    text-align: center;
-    overflow: hidden;
-
+  background: #eef0f1;
+  border-radius: 15px;
+  text-align: center;
+  overflow: hidden;
 }
 
 .product-card.standard .product-image {
-    position: relative;
+  position: relative;
 }
 
 .product-card.standard .product-image img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
 }
 
 .product-card.standard .product-details {
-    padding: 15px;
+  padding: 15px;
 }
 
 .product-card.standard .product-description {
-    font-size: 14px;
-    color: #747d88;
-    margin: 0px;
-    min-height: 40px;
+  font-size: 14px;
+  color: #747d88;
+  margin: 0px;
+  min-height: 40px;
 }
 
 .category-badge {
-    position: absolute;
-    padding: 6px 14px;
-    border-radius: 20px;
-    color: #fff;
-    font-size: 12px;
-    z-index: 5;
-    font-weight: 500;
+  position: absolute;
+  padding: 6px 14px;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 12px;
+  z-index: 5;
+  font-weight: 500;
 }
 
 .category-badge.green {
-    background-color: #7ac142;
+  background-color: #7ac142;
 }
 
 .category-badge.orange {
-    background-color: #f39c12;
+  background-color: #f39c12;
 }
 
 .category-badge.blue {
-    background-color: #3498db;
+  background-color: #3498db;
 }
 
 .category-badge.top-left {
-    top: 10px;
-    left: 10px;
+  top: 10px;
+  left: 10px;
 }
 
 .category-badge.top-right {
-    top: 10px;
-    right: 10px;
+  top: 10px;
+  right: 10px;
 }
 
 .category-badge.bottom-left {
-    bottom: 10px;
-    left: 10px;
+  bottom: 10px;
+  left: 10px;
 }
 
 .category-badge.bottom-right {
-    bottom: 10px;
-    right: 10px;
+  bottom: 10px;
+  right: 10px;
 }
 
 .card-border.green {
-    border: 2px solid #7ac142;
+  border: 2px solid #7ac142;
 }
 
 .card-border.orange {
-    border: 2px solid #f39c12;
+  border: 2px solid #f39c12;
 }
 
 .card-border.blue {
-    border: 2px solid #3498db;
+  border: 2px solid #3498db;
 }
 
 .product-title {
-    font-size: 18px;
-    margin: 10px 0 5px;
-    color: #2c3e50;
-    font-weight: 600;
+  font-size: 18px;
+  margin: 10px 0 5px;
+  color: #2c3e50;
+  font-weight: 600;
 }
 
 .price {
-    font-size: 16px;
-    font-weight: bold;
-    color: #2c3e50;
+  font-size: 16px;
+  font-weight: bold;
+  color: #2c3e50;
 }
 
 .rating {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 5px;
 }
 
 .product-card.compact .rating {
-    justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 .star {
-    color: #ccc;
-    font-size: 16px;
+  color: #ccc;
+  font-size: 16px;
 }
 
 .star.filled {
-    color: #7ac142;
+  color: #7ac142;
 }
 
 .add-to-cart {
-    margin-top: 10px;
-    padding: 6px 14px;
-    border: 2px solid orange;
-    background: transparent;
-    color: #7ac142;
-    border-radius: 20px;
-    font-size: 14px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    transition: 0.3s;
-
+  margin-top: 10px;
+  padding: 6px 14px;
+  border: 2px solid orange;
+  background: transparent;
+  color: #7ac142;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: 0.3s;
 }
 
 .add-to-cart:hover {
-    background: #7ac142;
-    color: white;
+  background: #7ac142;
+  color: white;
 }
 
 .product-section.bestseller .product-header {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
 .product-section.fresh-vegetables .product-header,
 .product-section.organic-products .product-header {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 30px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
 
 .section-title {
-    font-size: 36px;
-    font-weight: bold;
-    color: black;
-    display: flex;
-    margin: 0;
+  font-size: 36px;
+  font-weight: bold;
+  color: black;
+  display: flex;
+  margin: 0;
 }
 
 .section-desc {
-    color: black;
-    max-width: 600px;
-    text-align: center;
+  color: black;
+  max-width: 600px;
+  text-align: center;
 }
 
 .carousel-arrows {
-    height: 83px;
-    display: flex;
-    align-items: end;
-    gap: 10px;
+  height: 83px;
+  display: flex;
+  align-items: end;
+  gap: 10px;
 }
 
 .carousel-btn {
-    border: 1px solid orange;
-    background: #fff;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-left: 15px;
-    padding-right: 15px;
-    color: #7ac142;
+  border: 1px solid orange;
+  background: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #7ac142;
 }
 
 .carousel-btn:hover {
-    background: #FFB524;
-    color: white;
+  background: #ffb524;
+  color: white;
 }
 
 .product-section.fresh-vegetables .carousel-wrapper {
-    overflow: hidden;
-    width: 100%;
+  overflow: hidden;
+  width: 100%;
 }
 
 .product-section.fresh-vegetables .product-container {
-    display: flex;
-    gap: 20px;
-    transition: transform 0.4s ease;
-    will-change: transform;
+  display: flex;
+  gap: 20px;
+  transition: transform 0.4s ease;
+  will-change: transform;
 }
 
 .product-section.fresh-vegetables .product-card {
-    grid-column: unset;
-    text-align: left;
-    flex: 0 0 calc((100% - 80px) / 4);
-    max-width: calc((100% - 80px) / 4);
-    flex-shrink: 0;
+  grid-column: unset;
+  text-align: left;
+  flex: 0 0 calc((100% - 80px) / 4);
+  max-width: calc((100% - 80px) / 4);
+  flex-shrink: 0;
 }
 
 .product-section.fresh-vegetables .product-card {
-    position: relative;
-
-    transition: box-shadow 0.3s ease;
+  position: relative;
+  transition: box-shadow 0.3s ease;
 }
 
-.product-card:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-    z-index: 5;
+.product-section.fresh-vegetables .product-card:hover,
+.product-section.organic-products .product-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  z-index: 5;
 }
 
-.product-image {
-    overflow: hidden;
+.product-section.fresh-vegetables .product-image img,
+.product-section.organic-products .product-image img {
+  transition: transform 0.4s ease;
 }
 
-.product-image img {
-    transition: transform 0.4s ease;
+.product-section.fresh-vegetables .product-image:hover img,
+.product-section.organic-products .product-image:hover img {
+  transform: scale(1.1);
 }
 
-.product-image:hover img {
-    transform: scale(1.1);
-}
-
-.product-container .product-card:hover {
-    box-shadow: 0 0 0 2px #D4D3D2, 0 15px 35px rgba(0, 0, 0, 0.15);
+.product-section.fresh-vegetables .product-container .product-card:hover,
+.product-section.organic-products .product-container .product-card:hover {
+  box-shadow:
+    0 0 0 2px #d4d3d2,
+    0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .product-container .product-card:first-child:hover {
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .product-section.fresh-vegetables .product-card:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-    transform: translateY(-5px);
-    z-index: 10;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  transform: none;
+  z-index: 10;
 }
 
 .product-image {
-    overflow: hidden;
-}
-
-.product-section.fresh-vegetables .product-image img {
-    transition: transform 0.4s ease;
-}
-
-.product-section.fresh-vegetables .product-image:hover img {
-    transform: scale(1.1);
+  overflow: hidden;
 }
 
 .product-card:hover {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .product-section.fresh-vegetables .product-card:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
 .product-section.fresh-vegetables .product-card:first-child:hover {
-    box-shadow:
-        2px 0 0 #7ac142,
-        0 2px 0 #7ac142,
-        0 -2px 0 #7ac142,
-        15px 0 35px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    2px 0 0 #7ac142,
+    0 2px 0 #7ac142,
+    0 -2px 0 #7ac142,
+    15px 0 35px rgba(0, 0, 0, 0.15);
 }
 
 .product-section.fresh-vegetables .product-card:last-child:hover {
-    box-shadow:
-        -2px 0 0 #7ac142,
-        0 2px 0 #7ac142,
-        0 -2px 0 #7ac142,
-        -15px 0 35px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    -2px 0 0 #7ac142,
+    0 2px 0 #7ac142,
+    0 -2px 0 #7ac142,
+    -15px 0 35px rgba(0, 0, 0, 0.15);
 }
 
 .product-section.fresh-vegetables .product-details,
 .product-section.organic-products .product-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        "title title"
-        "desc desc"
-        "rating rating"
-        "price cart";
-    grid-template-rows: auto auto 20px 32px;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "title title"
+    "desc desc"
+    "rating rating"
+    "price cart";
+  grid-template-rows: auto auto 20px 32px;
+  align-items: center;
 }
 
 .product-section.fresh-vegetables .product-title,
 .product-section.organic-products .product-title {
-    grid-area: title;
+  grid-area: title;
 }
 
 .product-section.fresh-vegetables .product-description,
 .product-section.organic-products .product-description {
-    grid-area: desc;
+  grid-area: desc;
 }
 
 .product-section.fresh-vegetables .rating,
 .product-section.organic-products .rating {
-    grid-area: rating;
+  grid-area: rating;
 }
 
 .product-section.fresh-vegetables .price,
 .product-section.organic-products .price {
-    grid-area: price;
-    display: flex;
-    align-items: center;
-    margin: 0;
+  grid-area: price;
+  display: flex;
+  align-items: center;
+  margin: 0;
 }
 
 .product-section.fresh-vegetables .add-to-cart,
 .product-section.organic-products .add-to-cart {
-    grid-area: cart;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 32px;
-    margin: 0;
+  grid-area: cart;
+  display: flex;
+  padding: 0px;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  margin: 0;
 }
 
 .product-section.fresh-vegetables .price,
 .product-section.fresh-vegetables .add-to-cart {
-    margin: 0;
+  margin: 0;
 }
 
 .product-description p {
-    margin: 0;
+  margin: 0;
 }
 
 .product-title {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .product-description {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    line-height: 1.4;
-    height: calc(1.4em * 3);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+  height: calc(1.4em * 3);
 }
 
 .rating {
-    min-height: 20px;
+  min-height: 20px;
 }
 
 .price {
-    margin: 0;
-    line-height: 32px;
+  margin: 0;
+  line-height: 32px;
 }
 
 .add-to-cart {
-    height: 32px;
-    margin: 0;
+  height: 32px;
+  margin: 0;
 }
 
 .category-tabs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.category-tab {
+  padding: 8px 20px;
+  border-radius: 20px;
+  background: #eef0f1;
+  color: #2c3e50;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.category-tab.active {
+  background: #ffb524;
+  color: #fff;
+}
+
+.product-section {
+  padding: 40px 80px;
+}
+
+@media (max-width: 426px) {
+  .product-section.fresh-vegetables .product-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .product-section.organic-products .product-card.standard {
+    grid-column: span 12;
+  }
+
+  .product-section.bestseller .product-card.standard,
+  .product-section.bestseller .product-card.compact {
+    grid-column: span 12;
+  }
+
+  .section-desc {
+    font-size: 14px;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+
+  .product-section.organic-products .product-header {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+
+  .category-tabs {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 20px;
     margin-bottom: 30px;
-}
+  }
 
-.category-tab {
-    padding: 8px 20px;
-    border-radius: 20px;
-    background: #eef0f1;
-    color: #2c3e50;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background 0.3s ease, color 0.3s ease;
-}
+  .product-section {
+    padding: 10px;
+  }
 
-.category-tab.active {
-    background: #FFB524;
-    color: #fff;
-}
-
-.product-section {
-    padding: 40px 80px;
-}
-
-@media (max-width: 426px) {
-    .product-section.fresh-vegetables .product-card {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-
-    .product-section.organic-products .product-card.standard {
-        grid-column: span 12;
-    }
-
-    .product-section.bestseller .product-card.standard,
-    .product-section.bestseller .product-card.compact {
-        grid-column: span 12;
-    }
-
-    .section-desc {
-        font-size: 14px;
-    }
-
-    .section-title {
-        font-size: 22px;
-    }
-
-    .product-section.organic-products .product-header {
-        position: relative;
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        flex-direction: column;
-        margin-bottom: 30px;
-    }
-
-    .category-tabs {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        margin-bottom: 30px;
-    }
-
-    .product-section {
-        padding: 10px;
-    }
+  .product-section.fresh-vegetables .add-to-cart,
+  .product-section.organic-products .add-to-cart {
+    padding: 0px;
+  }
 }
 
 @media (min-width: 427px) and (max-width: 768px) {
-    .product-section.fresh-vegetables .product-card {
-        flex: 0 0 calc((100% - 25px) / 2);
-        max-width: calc((100% - 25px) / 2);
-    }
+  .product-section.fresh-vegetables .product-card {
+    flex: 0 0 calc((100% - 25px) / 2);
+    max-width: calc((100% - 25px) / 2);
+  }
 
-    .product-section.organic-products .product-card.standard {
-        grid-column: span 6;
-    }
+  .product-section.organic-products .product-card.standard {
+    grid-column: span 6;
+  }
 
-    .product-section.bestseller .product-card.standard {
-        grid-column: span 6;
-    }
+  .product-section.bestseller .product-card.standard {
+    grid-column: span 6;
+  }
 
-    .category-tab {
-        padding: 10px;
-    }
+  .category-tab {
+    padding: 10px;
+  }
 
-    .product-section.bestseller .product-card.compact {
-        grid-column: span 12;
-    }
+  .product-section.bestseller .product-card.compact {
+    grid-column: span 12;
+  }
 
-    .product-section.organic-products .category-tabs {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 15px;
-        justify-content: flex-start;
-    }
+  .product-section.organic-products .category-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
+    justify-content: flex-start;
+  }
 
-    .product-section.organic-products .category-tab {
-        padding: 10px 18px;
-        font-size: 14px;
-        white-space: nowrap;
-    }
+  .product-section.organic-products .category-tab {
+    padding: 10px 18px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
 
-    .product-section.organic-products .product-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-    .product-card.compact {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        padding: 20px;
-    }
+  .product-section.organic-products .product-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
 
-    .product-card.compact .product-image {
-        flex: 0 0 140px;   
-    }
+  .product-card.compact .product-image {
+    flex: 0 0 clamp(120px, 20vw, 160px);
+    width: clamp(120px, 20vw, 160px);
+    height: clamp(120px, 20vw, 160px);
+    border-radius: 50%;
+    overflow: hidden;
+  }
 
-    .product-card.compact .product-image img {
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        object-fit: cover;
-    }
+  .product-card.compact .product-image img {
+    width: 100%;
+    height: 100%;
 
-    .product-card.compact .product-details {
-        flex: 1;
-        text-align: left;
-    }
+    object-fit: cover;
+  }
 
-    .product-card.compact .price {
-        margin: 8px 0;
-    }
+  .product-card.compact .product-details {
+    flex: 1;
+    text-align: left;
+  }
 
-    .product-card.compact .add-to-cart {
-        margin-top: 5px;
-    }
+  .product-card.compact .price {
+    margin: 8px 0;
+  }
+
+  .product-card.compact .add-to-cart {
+    margin-top: 5px;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-    .product-section.fresh-vegetables .product-card {
-        flex: 0 0 calc((100% - 50px) / 3);
-        max-width: calc((100% - 50px) / 3);
-    }
+  .product-section.fresh-vegetables .product-card {
+    flex: 0 0 calc((100% - 50px) / 3);
+    max-width: calc((100% - 50px) / 3);
+  }
 
-    .product-section.organic-products .product-card.standard {
-        grid-column: span 4;
-    }
+  .product-section.organic-products .product-card.standard {
+    grid-column: span 4;
+  }
 
-    .product-section.bestseller .product-card.standard {
-        grid-column: span 4;
-    }
+  .product-section.bestseller .product-card.standard {
+    grid-column: span 4;
+  }
+
+  .product-section.fresh-vegetables .add-to-cart,
+  .product-section.organic-products .add-to-cart {
+    padding: 0px;
+  }
 }

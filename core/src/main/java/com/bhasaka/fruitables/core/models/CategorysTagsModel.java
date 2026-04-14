@@ -114,7 +114,9 @@ public class CategorysTagsModel {
 
             Set<String> productTagIds = ProductCategorySupport.extractProductTagIds(resourceResolver, masterResource.getValueMap(), product);
             if (productTagIds.contains(selectedCategoryTagId)) {
-                matchedProducts.add(new ProductItem(product, getCardStyle()));
+                matchedProducts.add(
+                        new ProductItem(product, getCardStyle(), masterResource.getPath())
+                );
             }
         }
 

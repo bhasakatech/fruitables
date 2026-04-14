@@ -15,6 +15,18 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Sling Model for Cart component.
+ *
+ * <p>This model adapts from {@link SlingHttpServletRequest} and is responsible for:
+ * <ul>
+ *     <li>Fetching cart items from session-based storage</li>
+ *     <li>Reading product details from Content Fragments</li>
+ *     <li>Calculating subtotal, shipping, and total values</li>
+ *     <li>Providing UI labels configured via dialog</li>
+ * </ul>
+ * </p>
+ */
 @Model(adaptables = SlingHttpServletRequest.class,defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class CartModel {
 
@@ -22,7 +34,6 @@ public class CartModel {
 
     @SlingObject
     private SlingHttpServletRequest request;
-
 
     @Inject
     private ResourceResolver resolver;
@@ -66,67 +77,114 @@ public class CartModel {
     @ValueMapValue
     private String handleHeader;
 
+    /**
+     * @return products table header
+     */
     public String getProductsHeader() {
         return productsHeader;
     }
 
+    /**
+     * @return name column header
+     */
     public String getNameHeader() {
         return nameHeader;
     }
 
+    /**
+     * @return price column header
+     */
     public String getPriceHeader() {
         return priceHeader;
     }
 
+    /**
+     * @return quantity column header
+     */
     public String getQuantityHeader() {
         return quantityHeader;
     }
 
+    /**
+     * @return total column header
+     */
     public String getTotalHeaderTable() {
         return totalHeaderTable ;
     }
 
+    /**
+     * @return action/handle column header
+     */
     public String getHandleHeader() {
         return handleHeader;
     }
 
+    /**
+     * @return checkout page link
+     */
     public String getCheckoutLink() {
         return checkoutLink;
     }
+
+    /**
+     * @return subtotal label text
+     */
     public String getSubtotalLabel() {
         return subtotalLabel;
     }
 
+    /**
+     * @return shipping label text
+     */
     public String getShippingLabel() {
         return shippingLabel;
     }
 
+    /**
+     * @return total label text
+     */
     public String getTotalLabel() {
         return totalLabel;
     }
 
+    /**
+     * @return checkout button text
+     */
     public String getCheckoutBtnText() {
         return checkoutBtnText;
     }
 
+    /**
+     * @return coupon input placeholder text
+     */
     public String getCouponPlaceholder() {
         return couponPlaceholder;
     }
 
+    /**
+     * @return coupon button text
+     */
     public String getCouponButtonText() {
         return couponButtonText ;
     }
 
     /**
-     * Fetches cart items for the current session from
-     * /content/usergenerated/cart/{sessionId}.
+     * Fetches cart items for the current session.
      *
-     * For each entry, it reads product details (name, price, image)
-     * from the corresponding Content Fragment and builds a CartItem.
+     * <p>Reads cart data from:
+     * <code>/content/usergenerated/cart/{sessionId}</code></p>
      *
-     * Skips invalid or missing products. Uses default image if not available.
+     * <p>For each item:
+     * <ul>
+     *     <li>Reads product path and quantity</li>
+     *     <li>Fetches product details from Content Fragment</li>
+     *     <li>Builds {@link CartItem} object</li>
+     * </ul>
+     * </p>
      *
-     * @return list of cart items, or empty list if cart not found
+     * <p>Invalid products are skipped and default image is used if missing.</p>
+     *
+     * @return list of cart items (empty if none found)
      */
     public List<CartItem> getItems() {
 
@@ -151,21 +209,27 @@ public class CartModel {
             String productPath = vm.get("productPath", "");
             int qty = vm.get("quantity", 0);
             log.info("Item Found -> ProductPath: {}, Qty: {}", productPath, qty);
+
             Resource productRes = resolver.getResource(productPath);
             if (productRes == null) {
                 log.warn("Product not found: {}", productPath);
                 continue;
             }
+
             Resource dataRes = productRes.getChild("jcr:content/data/master");
             if (dataRes == null) {
                 log.warn("CF data missing for: {}", productPath);
                 continue;
             }
+
             ValueMap pvm = dataRes.getValueMap();
             CartItem item = new CartItem();
+
             item.setName(pvm.get("productName", ""));
+
             Object priceObj = pvm.get("productPrice");
             double price = 0.0;
+
             if (priceObj instanceof Number) {
                 price = ((Number) priceObj).doubleValue();
             } else if (priceObj instanceof String) {
@@ -175,24 +239,41 @@ public class CartModel {
                     log.warn("Invalid price format for {}: {}", productPath, priceObj);
                 }
             }
+
             item.setPrice(price);
+
             String image = pvm.get("productImage", String.class);
             if (image == null || image.isEmpty()) {
-                image = "/content/dam/default.png"; // fallback image
+                image = "/content/dam/default.png";
             }
+
             item.setImage(image);
             item.setQty(qty);
             item.setProductPath(productPath);
+
             list.add(item);
         }
         return list;
     }
+
+    /**
+     * Calculates subtotal of all cart items.
+     *
+     * @return subtotal amount
+     */
     public double getSubtotal() {
         return getItems().stream()
                 .mapToDouble(CartItem::getTotal)
                 .sum();
     }
 
+    /**
+     * Returns shipping cost.
+     *
+     * <p>Returns 0 if cart is empty, otherwise fixed shipping charge.</p>
+     *
+     * @return shipping cost
+     */
     public double getShipping() {
         List<CartItem> items = getItems();
 
@@ -202,6 +283,11 @@ public class CartModel {
         return 3.0;
     }
 
+    /**
+     * Calculates total amount (subtotal + shipping).
+     *
+     * @return total amount
+     */
     public double getTotal() {
         return getSubtotal() + getShipping();
     }

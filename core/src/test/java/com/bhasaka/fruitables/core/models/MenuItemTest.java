@@ -10,36 +10,50 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit test class for {@link MenuItem}.
+ *
+ * <p>This class verifies menu item properties and
+ * nested child item mappings.</p>
+ */
 @ExtendWith(AemContextExtension.class)
 class MenuItemTest {
 
     private final AemContext context = new AemContext();
     private MenuItem model;
 
+    /**
+     * Sets up test context before each test.
+     *
+     * <p>Loads JSON data and adapts resource to {@link MenuItem}.</p>
+     */
     @BeforeEach
     void setUp() {
 
-        // Register models
         context.addModelsForClasses(MenuItem.class, ChildItem.class);
 
-        // Load JSON
         context.load().json("/menuitem.json", "/content/menu");
 
-        // Get resource
         Resource resource = context.resourceResolver().getResource("/content/menu");
         assertNotNull(resource);
 
-        // Adapt
         model = resource.adaptTo(MenuItem.class);
         assertNotNull(model);
     }
 
+    /**
+     * Tests basic fields of menu item.
+     */
     @Test
     void testBasicFields() {
         assertEquals("Shop", model.getLabel());
         assertEquals("/shop", model.getLink());
     }
 
+    /**
+     * Tests child menu items mapping.
+     */
     @Test
     void testChildren() {
 

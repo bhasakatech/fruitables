@@ -42,32 +42,7 @@
                                             fieldLabel="Client Image"
                                             forceSelection="{Boolean}true"
                                             name="./clientImage"
-                                            rootPath="/content/dam/fruitables">
-                                            <clientName
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Client Name"
-                                                name="./clientName"
-                                                required="{Boolean}true"/>
-                                            <profession
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldLabel="Profession"
-                                                name="./profession"/>
-                                            <reviewText
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                fieldLabel="Review"
-                                                name="./reviewText"
-                                                useFixedInlineToolbar="{Boolean}true"/>
-                                            <rating
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-                                                fieldLabel="Rating (1-5)"
-                                                max="5"
-                                                min="1"
-                                                name="./rating"/>
-                                        </clientImage>
+                                            rootPath="/content/dam/fruitables"/>
                                         <clientName
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

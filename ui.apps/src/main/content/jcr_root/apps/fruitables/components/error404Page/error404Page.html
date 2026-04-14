@@ -1,0 +1,31 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.all @ categories='fruitables.error404Page'}"/>
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.Error404PageModel"/>
+
+<section class="error-page">
+    <div class="error-page__inner">
+
+        <div class="error-page__icon" data-sly-test="${model.image}">
+            <img src="${model.image @ context='uri'}" alt="${model.title}" />
+        </div>
+
+        <h1 class="error-page__code">
+            ${model.title}
+        </h1>
+
+        <h2 class="error-page__title">
+            ${model.subtitle}
+        </h2>
+
+        <div class="error-page__description">
+            ${model.description @ context='html'}
+        </div>
+
+        <div class="error-page__cta" data-sly-test="${model.ctaLink && model.ctaText}">
+            <a href="${model.ctaLink @ context='uri'}" class="error-page__button">
+                ${model.ctaText}
+            </a>
+        </div>
+
+    </div>
+</section>

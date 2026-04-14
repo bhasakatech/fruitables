@@ -17,8 +17,16 @@
         "cardStyle": "standard"
       },
       "item4": {
-        "cfPath": "/content/dam/products/nested",
+        "cfPath": "/content/dam/products/carrot",
         "cardStyle": "compact"
+      },
+      "item5": {
+        "cfPath": "/content/dam/products/child-product",
+        "cardStyle": "standard"
+      },
+      "item6": {
+        "cfPath": "/content/dam/products/no-master",
+        "cardStyle": "standard"
       }
     }
   },
@@ -30,12 +38,7 @@
           "data": {
             "master": {
               "productName": "Tomato",
-              "productDescription": "Fresh Tomato",
-              "productCategory": "Vegetables",
-              "productImage": "/content/dam/tomato.png",
-              "productPrice": "30",
-              "unit": "kg",
-              "productRating": "4"
+              "productCategory": "Vegetables"
             }
           }
         }
@@ -45,31 +48,38 @@
           "data": {
             "master": {
               "productName": "Potato",
-              "productDescription": "Fresh Potato",
-              "productCategory": "Vegetables",
-              "productImage": "/content/dam/potato.png",
-              "productPrice": "40",
-              "unit": "kg",
-              "productRating": "3"
+              "productCategory": "Vegetables"
             }
           }
         }
       },
-      "nested": {
-        "variant1": {
+      "carrot": {
+        "jcr:content": {
+          "data": {
+            "master": {
+              "productName": "Carrot",
+              "productCategory": "Vegetables"
+            }
+          }
+        }
+      },
+
+      "child-product": {
+        "child1": {
           "jcr:content": {
             "data": {
               "master": {
-                "productName": "Carrot",
-                "productDescription": "Fresh Carrot",
-                "productCategory": "Vegetables",
-                "productImage": "/content/dam/carrot.png",
-                "productPrice": "50",
-                "unit": "kg",
-                "productRating": "5"
+                "productName": "Onion",
+                "productCategory": "Vegetables"
               }
             }
           }
+        }
+      },
+
+      "no-master": {
+        "child1": {
+          "jcr:content": {}
         }
       }
     }

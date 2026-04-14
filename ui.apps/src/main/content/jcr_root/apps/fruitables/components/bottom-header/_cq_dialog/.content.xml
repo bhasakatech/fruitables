@@ -30,7 +30,13 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         fieldLabel="Logo Text (Fallback)"
                                         name="./logoText"
-                                        value="Fruitables" />
+                                        value="Fruitables"/>
+                                    <homePageLink
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Home PageLink"
+                                        rootPath="/content/fruitables"
+                                        name="./homeLink"/>
                                 </items>
                             </column>
                         </items>

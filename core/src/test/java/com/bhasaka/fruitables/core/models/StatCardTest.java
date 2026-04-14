@@ -9,12 +9,23 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit test class for {@link StatCard}.
+ *
+ * <p>This class verifies mapping of stat card properties
+ * such as icon image, title, and value.</p>
+ */
 @ExtendWith(AemContextExtension.class)
 class StatCardTest {
 
     private final AemContext context = new AemContext();
     private StatCard model;
 
+    /**
+     * Sets up test context before each test.
+     *
+     * <p>Loads JSON data and adapts resource to {@link StatCard}.</p>
+     */
     @BeforeEach
     void setUp() {
         context.addModelsForClasses(StatCard.class);
@@ -25,6 +36,9 @@ class StatCardTest {
         assertNotNull(model);
     }
 
+    /**
+     * Tests stat card field mappings.
+     */
     @Test
     void testStatCardFields() {
         assertEquals("/content/dam/icons/apple.png", model.getIconImage());

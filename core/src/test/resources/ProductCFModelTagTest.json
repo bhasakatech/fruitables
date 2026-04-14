@@ -1,0 +1,36 @@
+{
+  "product-valid": {
+    "productName": "Apple Basket",
+    "productDescription": "Fresh and crisp apples.",
+    "productCategory": "Fruits",
+    "productImage": "/content/dam/fruitables/apple-basket.png",
+    "productPrice": "150",
+    "unit": "kg",
+    "productRating": "4.2",
+    "productTags": [
+      "fruitables:apples",
+      "/content/cq:tags/fruitables/seasonal"
+    ]
+  },
+  "product-invalid": {
+    "productName": "Citrus Box",
+    "productDescription": "Mixed citrus fruits.",
+    "productCategory": "Fruits",
+    "productImage": "/content/dam/fruitables/citrus-box.png",
+    "productPrice": "180",
+    "unit": "box",
+    "productRating": "invalid",
+    "productTags": [
+      "fruitables:citrus"
+    ]
+  },
+  "product-blank": {
+    "productName": "Seasonal Basket",
+    "productDescription": "Seasonal fruits.",
+    "productCategory": "Fruits",
+    "productImage": "/content/dam/fruitables/seasonal-basket.png",
+    "productPrice": "200",
+    "unit": "basket",
+    "productRating": ""
+  }
+}

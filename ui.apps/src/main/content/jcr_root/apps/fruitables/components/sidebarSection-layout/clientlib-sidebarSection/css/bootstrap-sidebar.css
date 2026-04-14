@@ -94,7 +94,6 @@ button:not(:disabled),
     cursor: pointer;
 }
 
-
 .mb-2 {
     margin-bottom: .5rem !important
 }

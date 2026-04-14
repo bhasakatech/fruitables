@@ -79,12 +79,13 @@
 .fruitables-topbar {
     background: #81c408;
     color: #fff;
-    font-size: 0.875em;
+    font-size: .875em;
     border-radius: 230px 100px;
-    height: 55px;
-    margin: 0;
+    height: 54px;
     padding: 0 20px;
     font-family: "Open Sans", sans-serif;
+    max-width: 1323px;
+    margin: 0 auto;
 }
 
 .fruitables-topbar .fruitables-container {

@@ -1,0 +1,22 @@
+{
+  "validComponent": {
+    "sectionTitle": "Write a Review",
+    "namePlaceholder": "Enter your name",
+    "emailPlaceholder": "Enter your email",
+    "reviewPlaceholder": "Write your review here...",
+    "ratingLabel": "Rating",
+    "buttonText": "Submit Review"
+  },
+
+  "nullValuesComponent": {
+    "sectionTitle": ""
+  },
+
+  "emptyComponent": {
+  },
+
+  "partialComponent": {
+    "sectionTitle": "Only Title",
+    "buttonText": "Submit"
+  }
+}

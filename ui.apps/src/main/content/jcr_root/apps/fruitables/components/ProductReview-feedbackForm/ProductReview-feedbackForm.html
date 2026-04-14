@@ -1,8 +1,11 @@
 <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
 <sly data-sly-call="${clientlib.all @ categories='fruitables.productReviewFeedbackForm'}"/>
 
+<sly data-sly-use.formModel="com.bhasaka.fruitables.core.models.ProductReviewFeedbackFormModel"/>
+
+<div class="product-review-form">
 <div class="review-form">
-    <h2 class="review-form__title">${properties.sectionTitle || 'Leave a Reply'}</h2>
+    <h2 class="review-form__title">${formModel.sectionTitle}</h2>
 
     <form class="review-form__form" novalidate>
 
@@ -11,19 +14,19 @@
                 class="review-form__input"
                 type="text"
                 name="name"
-                placeholder="${properties.namePlaceholder || 'Your Name *'}"
+                placeholder="${formModel.namePlaceholder}"
                 required />
 
             <input
                 class="review-form__input"
                 type="email"
                 name="email"
-                placeholder="${properties.emailPlaceholder || 'Your Email *'}"
+                placeholder="${formModel.emailPlaceholder}"
                 required />
         </div>
 
         <div class="review-form__rte">
-            ${properties.reviewPlaceholder @ context='html'}
+            ${formModel.reviewPlaceholder @ context='html'}
         </div>
 
         <textarea
@@ -35,7 +38,7 @@
 
             <div class="review-form__rating-wrap">
                 <span class="review-form__rating-label">
-                    ${properties.ratingLabel || 'Please rate:'}
+                    ${formModel.ratingLabel}
                 </span>
 
                 <div class="review-form__rating" data-rating="0">
@@ -54,7 +57,7 @@
             </div>
 
             <button type="submit" class="review-form__submit">
-                ${properties.buttonText || 'Post Comment'}
+                ${formModel.buttonText}
             </button>
 
         </div>
@@ -62,4 +65,5 @@
         <p class="review-form__message" hidden></p>
 
     </form>
+</div>
 </div>

@@ -2,6 +2,7 @@
 <sly data-sly-call="${clientlib.all @ categories='fruitables.testimonialCarousel'}"/>
 <sly data-sly-use.model="com.bhasaka.fruitables.core.models.TestimonialCarouselModel"/>
 
+<div class="whole-carousal">
 <section class="testimonial-carousel" data-cmp-is="testimonial-carousel">
     <div class="testimonial-carousel__header">
         <div class="testimonial-carousel__heading">
@@ -14,7 +15,7 @@
         </div>
 
         <div class="testimonial-carousel__controls"
-             data-sly-test="${model.testimonials && model.testimonials.size > 1}">
+             data-sly-test="${model.testimonials}">
             <button class="testimonial-carousel__arrow" type="button" data-direction="prev" aria-label="Previous testimonials">
                 <span>&larr;</span>
             </button>
@@ -58,3 +59,4 @@
         </div>
     </div>
 </section>
+</div>

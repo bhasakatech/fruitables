@@ -1,0 +1,15 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.all @ categories='clientlibs.fruitables.checkout'}"/>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.all @ categories='clientlibs.fruitables.checkout.container'}"/>
+
+<div class="checkout-page">
+
+    <div class="checkout-left">
+        <sly data-sly-resource="${'billing' @ resourceType='fruitables/components/billingForm'}"/>
+    </div>
+    <div class="checkout-right">
+        <sly data-sly-resource="${'summary' @ resourceType='fruitables/components/checkout-summary'}"/>
+    </div>
+
+</div>

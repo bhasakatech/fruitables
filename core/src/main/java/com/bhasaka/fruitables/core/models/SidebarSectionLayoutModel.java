@@ -142,36 +142,33 @@ public class SidebarSectionLayoutModel {
 
         List<ProductItem> items = new ArrayList<>();
         for (ProductResource productResource : productResources) {
-            if (productResource == null || isBlank(productResource.getCfPath())) {
-                continue;
-            }
 
-            Resource contentFragmentResource = resourceResolver.getResource(productResource.getCfPath());
-            if (contentFragmentResource == null) {
-                continue;
-            }
+    Resource contentFragmentResource = resourceResolver.getResource(productResource.getCfPath());
+    if (contentFragmentResource == null) {
+        continue;
+    }
 
-            Resource masterResource = contentFragmentResource.getChild("jcr:content/data/master");
-            if (masterResource != null) {
-                addFeaturedProduct(items, masterResource, productResource.getCardStyle());
-                continue;
-            }
+    Resource masterResource = contentFragmentResource.getChild("jcr:content/data/master");
+    if (masterResource != null) {
+        addFeaturedProduct(items, masterResource, productResource.getCardStyle(), productResource.getCfPath());
+        continue;
+    }
 
-            for (Resource child : contentFragmentResource.getChildren()) {
-                Resource childMasterResource = child.getChild("jcr:content/data/master");
-                if (childMasterResource != null) {
-                    addFeaturedProduct(items, childMasterResource, productResource.getCardStyle());
-                }
-            }
+    for (Resource child : contentFragmentResource.getChildren()) {
+        Resource childMasterResource = child.getChild("jcr:content/data/master");
+        if (childMasterResource != null) {
+            addFeaturedProduct(items, childMasterResource, productResource.getCardStyle(), productResource.getCfPath());
         }
+    }
+}
 
         return items;
     }
 
-    private void addFeaturedProduct(List<ProductItem> items, Resource masterResource, String cardStyle) {
+    private void addFeaturedProduct(List<ProductItem> items, Resource masterResource, String cardStyle,String productPath) {
         ProductCFModel product = masterResource.adaptTo(ProductCFModel.class);
         if (product != null) {
-            items.add(new ProductItem(product, cardStyle));
+            items.add(new ProductItem(product, cardStyle,productPath));
         }
     }
 

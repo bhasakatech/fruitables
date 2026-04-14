@@ -1,0 +1,22 @@
+{
+  "billingForm": {
+    "jcr:primaryType": "nt:unstructured",
+    "sectionTitle": "Billing Details",
+    "firstNameLabel": "First Name *",
+    "lastNameLabel": "Last Name *",
+    "companyNameLabel": "Company Name *",
+    "addressLabel": "Address *",
+    "addressPlaceholder": "House number and street",
+    "cityLabel": "Town / City *",
+    "countryLabel": "Country *",
+    "zipLabel": "Postcode / Zip *",
+    "mobileLabel": "Mobile *",
+    "emailLabel": "Email Address *",
+    "createAccountLabel": "Create an account?",
+    "shipDifferentAddressLabel": "Ship to a different address?",
+    "notesPlaceholder": "Order Notes (Optional)"
+  },
+  "billingFormEmpty": {
+    "jcr:primaryType": "nt:unstructured"
+  }
+}

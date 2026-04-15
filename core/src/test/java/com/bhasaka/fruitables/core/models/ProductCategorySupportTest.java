@@ -30,17 +30,39 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * Unit test class for {@link ProductCategorySupport}.
+ *
+ * This class validates product category support utility methods including
+ * query execution, tag extraction, component lookup,
+ * tag normalization, and category title resolution.
+ */
 @ExtendWith(AemContextExtension.class)
 class ProductCategorySupportTest {
 
+    /**
+     * AEM mock context used for Sling/AEM unit testing.
+     */
     private final AemContext context = new AemContext();
 
+    /**
+     * Initializes mock AEM context before each test execution.
+     *
+     * Loads test JSON content and registers Sling models.
+     */
     @BeforeEach
     void setUp() {
         context.addModelsForClasses(ProductCFModelTag.class);
         context.load().json("/productCategorySupportTest.json", "/content");
     }
 
+    /**
+     * Tests querying product master resources from configured fragment root path.
+     *
+     * Verifies that returned resources match expected master nodes.
+     *
+     * @throws Exception if mock query setup fails
+     */
     @Test
     void testQueryProductMasterResourcesReturnsMasterNodesBelowConfiguredRoot() throws Exception {
         Resource appleMaster = context.create().resource("/content/dam/fruitables/support-products/apple/jcr:content/data/master");
@@ -78,6 +100,10 @@ class ProductCategorySupportTest {
         verify(queryManager).createQuery(anyString(), eq(Query.JCR_SQL2));
     }
 
+    /**
+     * Tests extraction, normalization, and deduplication
+     * of product tags from product model.
+     */
     @Test
     void testExtractProductTagIdsNormalizesAndDeduplicatesProductTags() {
         Resource resource = getResource("/content/product-with-product-tags");
@@ -92,6 +118,10 @@ class ProductCategorySupportTest {
         assertEquals(Set.of("fruitables:apples", "fruitables:citrus"), tagIds);
     }
 
+    /**
+     * Tests fallback behavior when product tags are unavailable
+     * and cq:tags are used instead.
+     */
     @Test
     void testExtractProductTagIdsFallsBackToCqTags() {
         Resource resource = getResource("/content/product-with-cq-tags");
@@ -105,6 +135,10 @@ class ProductCategorySupportTest {
         assertEquals(Set.of("fruitables:fresh_fruits"), tagIds);
     }
 
+    /**
+     * Tests component lookup within page hierarchy
+     * and validates component ID generation.
+     */
     @Test
     void testFindComponentOnPageAndBuildComponentId() {
         Resource currentComponent = getResource("/content/page/jcr:content/root/container/current");
@@ -129,6 +163,10 @@ class ProductCategorySupportTest {
         );
     }
 
+    /**
+     * Tests tag normalization, category title resolution,
+     * and blank string utility check.
+     */
     @Test
     void testNormalizeTagIdAndResolveCategoryTitleUseFallbackFormatting() {
         assertAll(
@@ -150,6 +188,12 @@ class ProductCategorySupportTest {
         );
     }
 
+    /**
+     * Retrieves resource from mock context by path.
+     *
+     * @param path resource path
+     * @return resolved resource
+     */
     private Resource getResource(String path) {
         Resource resource = context.resourceResolver().getResource(path);
         assertNotNull(resource);

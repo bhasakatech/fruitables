@@ -1,218 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0"
-    xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    xmlns:cq="http://www.day.com/jcr/cq/1.0"
-    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="Product List"
     sling:resourceType="cq/gui/components/authoring/dialog">
-
     <content
         jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/tabs">
+        sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
-            <sectionTab
+            <title
                 jcr:primaryType="nt:unstructured"
-                jcr:title="Section"
-                sling:resourceType="granite/ui/components/coral/foundation/container">
-
-                <items jcr:primaryType="nt:unstructured">
-
-                    <sectionTitle
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Section Title"
-                        name="./sectionTitle" />
-
-                    <sectionDescription
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                        fieldLabel="Section Description"
-                        name="./sectionDescription"
-                        useFixedInlineToolbar="{Boolean}true" />
-
-                </items>
-            </sectionTab>
-
-            <productsTab
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Section Title"
+                name="./sectionTitle"/>
+            <description
                 jcr:primaryType="nt:unstructured"
-                jcr:title="Products"
-                sling:resourceType="granite/ui/components/coral/foundation/container">
-
-                <items jcr:primaryType="nt:unstructured">
-
-                    <products
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                        composite="{Boolean}true"
-                        fieldLabel="Products">
-
-                        <field
+                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                useFixedInlineToolbar="{Boolean}true"
+                fieldLabel="Section Description"
+                name="./sectionDescription"/>
+            <cartButtonText
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Cart Button Text"
+                name="./cartButtonText"/>
+            <products
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                composite="{Boolean}true"
+                fieldLabel="Products">
+                <field
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/accordion"
+                    name="./products">
+                    <items jcr:primaryType="nt:unstructured">
+                        <item
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/accordion"
-                            name="./products">
-
+                            jcr:title="Product"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
                             <items jcr:primaryType="nt:unstructured">
-                                <item
+                                <cfPath
                                     jcr:primaryType="nt:unstructured"
-                                    jcr:title="Product"
-                                    sling:resourceType="granite/ui/components/coral/foundation/container">
-
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    fieldLabel="Content Fragment Path"
+                                    name="./cfPath"
+                                    required="{Boolean}true"
+                                    rootPath="/content/dam/fruitables"/>
+                                <cardStyle
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                    fieldLabel="Card Style"
+                                    name="./cardStyle">
                                     <items jcr:primaryType="nt:unstructured">
-
-                                        <cfPath
+                                        <compact
                                             jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                            fieldLabel="Content Fragment Path"
-                                            name="./cfPath"
-                                            required="{Boolean}true"
-                                            rootPath="/content/dam/fruitables" />
-
-                                        <cardStyle
+                                            text="Compact"
+                                            value="compact"/>
+                                        <standard
                                             jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                            fieldLabel="Card Style"
-                                            name="./cardStyle">
-
-                                            <items jcr:primaryType="nt:unstructured">
-                                                <compact
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="Compact"
-                                                    value="compact" />
-                                                <standard
-                                                    jcr:primaryType="nt:unstructured"
-                                                    text="Standard"
-                                                    value="standard" />
-                                            </items>
-
-                                        </cardStyle>
-
+                                            text="Standard"
+                                            value="standard"/>
                                     </items>
-                                </item>
+                                </cardStyle>
                             </items>
-
-                        </field>
-                    </products>
-
-                </items>
-            </productsTab>
-
-            <displayTab
-                jcr:primaryType="nt:unstructured"
-                jcr:title="Display Settings"
-                sling:resourceType="granite/ui/components/coral/foundation/container">
-
-                <items jcr:primaryType="nt:unstructured">
-
-                    <sectionType
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                        fieldLabel="Section Type"
-                        name="./sectionType">
-
-                        <items jcr:primaryType="nt:unstructured">
-                            <organicProducts
-                                jcr:primaryType="nt:unstructured"
-                                text="Our Organic Products"
-                                value="organic-products" />
-
-                            <freshVegetables
-                                jcr:primaryType="nt:unstructured"
-                                text="Fresh Organic Vegetables"
-                                value="fresh-vegetables" />
-
-                            <bestseller
-                                jcr:primaryType="nt:unstructured"
-                                text="Bestseller Products"
-                                value="bestseller" />
-                        </items>
-
-                    </sectionType>
-
-                    <cartButtonText
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Cart Button Text"
-                        name="./cartButtonText" />
-
-                    <showDescription
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                        name="./showDescription"
-                        text="Show Description"
-                        value="true" />
-
-                    <showRating
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                        name="./showRating"
-                        text="Show Rating"
-                        value="true" />
-
-                    <showCategory
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                        name="./showCategory"
-                        text="Show Category Badge"
-                        value="true" />
-
-                    <categoryColor
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                        fieldLabel="Category Badge Color"
-                        name="./categoryColor">
-
-                        <items jcr:primaryType="nt:unstructured">
-                            <green jcr:primaryType="nt:unstructured"
-                                text="Green"
-                                value="green" />
-                            <orange jcr:primaryType="nt:unstructured"
-                                text="Orange"
-                                value="orange" />
-                            <blue jcr:primaryType="nt:unstructured"
-                                text="Blue"
-                                value="blue" />
-                        </items>
-
-                    </categoryColor>
-
-                    <badgePosition
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                        fieldLabel="Category Badge Position"
-                        name="./badgePosition">
-
-                        <items jcr:primaryType="nt:unstructured">
-                            <topLeft jcr:primaryType="nt:unstructured"
-                                text="Top Left"
-                                value="top-left" />
-                            <topRight jcr:primaryType="nt:unstructured"
-                                text="Top Right"
-                                value="top-right" />
-                            <bottomLeft jcr:primaryType="nt:unstructured"
-                                text="Bottom Left"
-                                value="bottom-left" />
-                            <bottomRight jcr:primaryType="nt:unstructured"
-                                text="Bottom Right"
-                                value="bottom-right" />
-                        </items>
-
-                    </badgePosition>
-
-                    <priceUnit
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Price Unit (kg, piece, etc.)"
-                        name="./priceUnit" />
-                    <showBorder
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                        name="./showBorder"
-                        text="Show Card Border"
-                        value="true" />
-
-                </items>
-            </displayTab>
+                        </item>
+                    </items>
+                </field>
+            </products>
         </items>
     </content>
 </jcr:root>

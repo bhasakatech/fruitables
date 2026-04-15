@@ -16,11 +16,26 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Unit test class for {@link SidebarSectionLayoutModel}.
+ *
+ * Validates sidebar authored values, default fallbacks,
+ * featured product preview logic, category generation,
+ * and banner/price normalization.
+ */
 @ExtendWith(AemContextExtension.class)
 class SidebarSectionLayoutModelTest {
 
+    /**
+     * AEM mock context used for Sling model testing.
+     */
     private final AemContext context = new AemContext();
 
+    /**
+     * Initializes mock AEM context before each test execution.
+     *
+     * Registers Sling models and loads JSON mock content.
+     */
     @BeforeEach
     void setUp() {
         context.addModelsForClasses(
@@ -33,6 +48,11 @@ class SidebarSectionLayoutModelTest {
         context.load().json("/sidebarSectionLayoutModelTest.json", "/content");
     }
 
+    /**
+     * Tests authored sidebar configuration including
+     * categories, featured products, sorting options,
+     * additional filters, and UI-related IDs.
+     */
     @Test
     void testAuthoredSidebarBuildsCategoriesAndFeaturedProducts() {
         SidebarSectionLayoutModel model = adaptModel("/content/sidebar/authored");
@@ -96,6 +116,10 @@ class SidebarSectionLayoutModelTest {
         );
     }
 
+    /**
+     * Tests fallback/default values when
+     * sidebar properties are not authored.
+     */
     @Test
     void testDefaultsAreAppliedWhenPropertiesAreMissing() {
         SidebarSectionLayoutModel model = adaptModel("/content/sidebar/defaults");
@@ -135,6 +159,10 @@ class SidebarSectionLayoutModelTest {
         );
     }
 
+    /**
+     * Tests splitting of featured product preview list
+     * when more than three products exist.
+     */
     @Test
     void testFeaturedProductsPreviewSplitsAfterThreeItems() {
         SidebarSectionLayoutModel model = adaptModel("/content/sidebar/expanded");
@@ -153,6 +181,10 @@ class SidebarSectionLayoutModelTest {
         );
     }
 
+    /**
+     * Tests normalization logic for price bounds
+     * and banner fallback text values.
+     */
     @Test
     void testPriceAndBannerFallbacksAreNormalized() {
         SidebarSectionLayoutModel priceModel = adaptModel("/content/sidebar/price-bounds");
@@ -166,6 +198,12 @@ class SidebarSectionLayoutModelTest {
         );
     }
 
+    /**
+     * Adapts resource path into SidebarSectionLayoutModel.
+     *
+     * @param resourcePath resource path for adaptation
+     * @return adapted sidebar model
+     */
     private SidebarSectionLayoutModel adaptModel(String resourcePath) {
         Resource resource = context.resourceResolver().getResource(resourcePath);
         assertNotNull(resource, "Resource not found: " + resourcePath);

@@ -21,13 +21,35 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+/**
+ * Utility support class for handling product category, tags, and component-related operations.
+ *
+ * This class provides helper methods for:
+ * querying product content fragment master resources,
+ * extracting/normalizing tags,
+ * resolving category titles,
+ * and locating components/resources in page hierarchy.
+ */
 final class ProductCategorySupport {
 
+    /**
+     * Logger instance for ProductCategorySupport.
+     */
     private static final Logger LOG = LoggerFactory.getLogger(ProductCategorySupport.class);
 
+    /**
+     * Private constructor to prevent instantiation of utility class.
+     */
     private ProductCategorySupport() {
     }
 
+    /**
+     * Queries product master resources from the given content fragment root path.
+     *
+     * @param resourceResolver resource resolver instance
+     * @param fragmentRootPath root path of content fragments
+     * @return list of product master resources
+     */
     static List<Resource> queryProductMasterResources(ResourceResolver resourceResolver, String fragmentRootPath) {
         if (resourceResolver == null || isBlank(fragmentRootPath)) {
             return Collections.emptyList();
@@ -58,6 +80,14 @@ final class ProductCategorySupport {
         return masterResources;
     }
 
+    /**
+     * Extracts product tag IDs from product and value map.
+     *
+     * @param resourceResolver resource resolver instance
+     * @param valueMap resource properties map
+     * @param product product content fragment model
+     * @return normalized set of product tag IDs
+     */
     static Set<String> extractProductTagIds(ResourceResolver resourceResolver, ValueMap valueMap, ProductCFModelTag product) {
         Set<String> productTagIds = new LinkedHashSet<>();
         addNormalizedTags(resourceResolver, productTagIds, valueMap.get("productTags", String[].class));
@@ -75,6 +105,13 @@ final class ProductCategorySupport {
         return productTagIds;
     }
 
+    /**
+     * Normalizes tag value into standard tag ID format.
+     *
+     * @param resourceResolver resource resolver instance
+     * @param value tag value/path
+     * @return normalized tag ID
+     */
     static String normalizeTagId(ResourceResolver resourceResolver, String value) {
         if (isBlank(value)) {
             return null;
@@ -98,6 +135,13 @@ final class ProductCategorySupport {
         return trimmedValue;
     }
 
+    /**
+     * Resolves readable category title from tag value.
+     *
+     * @param resourceResolver resource resolver instance
+     * @param tagValue tag value
+     * @return resolved category title
+     */
     static String resolveCategoryTitle(ResourceResolver resourceResolver, String tagValue) {
         TagManager tagManager = resourceResolver != null ? resourceResolver.adaptTo(TagManager.class) : null;
         if (tagManager != null) {
@@ -115,6 +159,13 @@ final class ProductCategorySupport {
         return humanize(extractTagLeaf(resourceResolver, tagValue));
     }
 
+    /**
+     * Finds component on page by resource type.
+     *
+     * @param componentResource component resource
+     * @param resourceType target resource type
+     * @return matching component resource
+     */
     static Resource findComponentOnPage(Resource componentResource, String resourceType) {
         Resource pageContentResource = findContainingPageContentResource(componentResource);
         if (pageContentResource == null) {
@@ -123,16 +174,36 @@ final class ProductCategorySupport {
         return findByResourceType(pageContentResource, resourceType);
     }
 
+    /**
+     * Builds unique component ID using resource path hash.
+     *
+     * @param resource resource instance
+     * @param prefix ID prefix
+     * @return generated component ID
+     */
     static String buildComponentId(Resource resource, String prefix) {
         return resource != null
                 ? prefix + Math.abs(resource.getPath().hashCode())
                 : prefix.substring(0, prefix.length() - 1);
     }
 
+    /**
+     * Checks whether string is null or blank.
+     *
+     * @param value input string
+     * @return true if blank, otherwise false
+     */
     static boolean isBlank(String value) {
         return value == null || value.trim().isEmpty();
     }
 
+    /**
+     * Adds normalized tags into target set.
+     *
+     * @param resourceResolver resource resolver instance
+     * @param target target set
+     * @param values tag values
+     */
     private static void addNormalizedTags(ResourceResolver resourceResolver, Set<String> target, String[] values) {
         if (values == null) {
             return;
@@ -142,6 +213,13 @@ final class ProductCategorySupport {
         }
     }
 
+    /**
+     * Adds single normalized tag into target set.
+     *
+     * @param resourceResolver resource resolver instance
+     * @param target target set
+     * @param value tag value
+     */
     private static void addNormalizedTag(ResourceResolver resourceResolver, Set<String> target, String value) {
         String normalizedTagId = normalizeTagId(resourceResolver, value);
         if (!isBlank(normalizedTagId)) {
@@ -149,6 +227,12 @@ final class ProductCategorySupport {
         }
     }
 
+    /**
+     * Builds SQL2 query statement for content fragment lookup.
+     *
+     * @param fragmentRootPath fragment root path
+     * @return SQL2 query string
+     */
     private static String buildSql2Statement(String fragmentRootPath) {
         return "SELECT * FROM [nt:unstructured] AS master "
                 + "WHERE ISDESCENDANTNODE(master, '" + escapeSql2Literal(fragmentRootPath) + "') "
@@ -156,10 +240,22 @@ final class ProductCategorySupport {
                 + "AND (master.[productTitle] IS NOT NULL OR master.[productName] IS NOT NULL)";
     }
 
+    /**
+     * Escapes SQL2 literals for safe query usage.
+     *
+     * @param value input string
+     * @return escaped SQL2 string
+     */
     private static String escapeSql2Literal(String value) {
         return value.replace("'", "''");
     }
 
+    /**
+     * Finds containing jcr:content resource from hierarchy.
+     *
+     * @param resource starting resource
+     * @return jcr:content resource
+     */
     private static Resource findContainingPageContentResource(Resource resource) {
         Resource current = resource;
         while (current != null) {
@@ -171,6 +267,13 @@ final class ProductCategorySupport {
         return null;
     }
 
+    /**
+     * Recursively finds resource by resource type.
+     *
+     * @param root root resource
+     * @param resourceType target resource type
+     * @return matching resource
+     */
     private static Resource findByResourceType(Resource root, String resourceType) {
         if (root == null) {
             return null;
@@ -187,6 +290,13 @@ final class ProductCategorySupport {
         return null;
     }
 
+    /**
+     * Extracts leaf portion from tag value.
+     *
+     * @param resourceResolver resource resolver instance
+     * @param tagValue tag value
+     * @return extracted tag leaf
+     */
     private static String extractTagLeaf(ResourceResolver resourceResolver, String tagValue) {
         String normalizedTagId = normalizeTagId(resourceResolver, tagValue);
         if (isBlank(normalizedTagId)) {
@@ -200,6 +310,12 @@ final class ProductCategorySupport {
         return lastSlashIndex >= 0 ? normalizedTagId.substring(lastSlashIndex + 1) : normalizedTagId;
     }
 
+    /**
+     * Converts raw string into human-readable title format.
+     *
+     * @param value input text
+     * @return formatted text
+     */
     private static String humanize(String value) {
         if (isBlank(value)) {
             return "";

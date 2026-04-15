@@ -9,17 +9,34 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+/**
+ * Unit test class for {@link ShopBannerModel}.
+ *
+ * Validates authored values, fallback title logic,
+ * page name resolution, and null handling behavior.
+ */
 @ExtendWith(AemContextExtension.class)
 class ShopBannerModelTest {
 
+    /**
+     * AEM mock context used for Sling model testing.
+     */
     private final AemContext context = new AemContext();
 
+    /**
+     * Initializes mock AEM context before each test.
+     *
+     * Registers ShopBannerModel and loads JSON test data.
+     */
     @BeforeEach
     void setUp() {
         context.addModelsForClasses(ShopBannerModel.class);
         context.load().json("/ShopBannerModelTest.json", "/content");
     }
 
+    /**
+     * Tests model adaptation when authored values exist.
+     */
     @Test
     void testModelWithValues() {
         Resource resource = context.resourceResolver().getResource("/content/shop-detail/jcr:content/root/shop-banner");
@@ -29,6 +46,9 @@ class ShopBannerModelTest {
         assertEquals("/content/dam/fruitables/banner/shop-banner.jpg", model.getShopBannerImage());
     }
 
+    /**
+     * Tests fallback to page name when authored title is missing.
+     */
     @Test
     void testModelFallsBackToPageNameWhenTitleMissing() {
         Resource resource = context.resourceResolver().getResource("/content/category-page/jcr:content/root/shop-banner");
@@ -38,6 +58,9 @@ class ShopBannerModelTest {
         assertNull(model.getShopBannerImage());
     }
 
+    /**
+     * Tests fallback to page name when authored page title is blank.
+     */
     @Test
     void testModelFallsPageTitleIsBlank() {
         Resource resource = context.resourceResolver().getResource("/content/fresh-fruits/jcr:content/root/shop-banner");
@@ -46,6 +69,9 @@ class ShopBannerModelTest {
         assertEquals("   ", model.getAuthoredShopBannerTitle());
     }
 
+    /**
+     * Tests null title handling when no parent page exists.
+     */
     @Test
     void testModelReturnsNullTitle() {
         Resource resource = context.resourceResolver().getResource("/content/orphan-banner");

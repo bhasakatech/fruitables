@@ -12,11 +12,25 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
+/**
+ * Unit test class for {@link FooterModel}.
+ *
+ * Validates footer content rendering, nested child resources,
+ * empty state handling, and footer column behavior.
+ */
 @ExtendWith(AemContextExtension.class)
 class FooterModelTest {
 
+    /**
+     * AEM mock context for Sling model testing.
+     */
     private final AemContext context = new AemContext();
 
+    /**
+     * Initializes mock context before each test.
+     *
+     * Registers footer models and loads JSON test content.
+     */
     @BeforeEach
     void setUp() {
         context.addModelsForClasses(
@@ -27,7 +41,10 @@ class FooterModelTest {
         context.load().json("/FooterModelTest.json", "/content");
     }
 
-
+    /**
+     * Tests successful adaptation of populated footer resource
+     * into FooterModel and validates all authored values.
+     */
     @Test
     void testAdaptToFooterModels() {
         Resource footerResource = context.resourceResolver().getResource("/content/footer");
@@ -77,6 +94,10 @@ class FooterModelTest {
                 paymentColumn.getColumnLinks().get(0).getPaymentImage());
     }
 
+    /**
+     * Tests adaptation of empty footer resource
+     * and validates null/empty default responses.
+     */
     @Test
     void testAdaptToFooterModel() {
         Resource footerResource = context.resourceResolver().getResource("/content/footer-empty");
@@ -94,6 +115,9 @@ class FooterModelTest {
         assertTrue(model.getFooterLinks().isEmpty());
     }
 
+    /**
+     * Tests footer column behavior when no column links exist.
+     */
     @Test
     void testFooterColumnReturns() {
         Resource columnResource = context.resourceResolver().getResource("/content/footer-column-without-links");

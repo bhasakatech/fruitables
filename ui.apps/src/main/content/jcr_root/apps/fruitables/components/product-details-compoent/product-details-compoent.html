@@ -1,0 +1,104 @@
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.ProductDetailModel" />
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlib.all @ categories='Product Details Component'}" />
+<div class="pd-product-detail" data-sly-test="${model.product}">
+    <div class="pd-product-image">
+        <img src="${model.product.productImage @ context='uri'}" alt="${model.product.productName}" />
+    </div>
+    <div class="pd-product-info">
+        <h2>${model.product.productName}</h2>
+        <p class="pd-category">
+            Category: ${model.product.productCategory @ context='html'}
+        </p>
+        <h3 class="pd-price">
+            ${model.product.productPrice}$
+        </h3>
+        <div class="pd-rating">
+            <sly data-sly-set.filled="${model.product.filledStars}" />
+            <sly data-sly-set.empty="${model.product.emptyStars}" />
+            <sly data-sly-list.star="${filled}">
+                <span class="pd-star pd-filled">★</span>
+            </sly>
+            <sly data-sly-list.star="${empty}">
+                <span class="pd-star">★</span>
+            </sly>
+        </div>
+        <p class="pd-short-desc">
+            ${model.product.productReview @ context='html'}
+        </p>
+        <button class="pd-add-to-cart" data-name="${model.product.productName @ context='attribute'}">
+            <svg class="icon-bag" viewBox="0 0 24 24">
+                <path d="M6 7h12l-1 13H7L6 7z" class="bag-body"></path>
+                <path d="M9 7V5a3 3 0 0 1 6 0v2" class="bag-handle"></path>
+            </svg>
+            Add to cart
+        </button>
+    </div>
+</div>
+<div class="pd-product-tabs" data-sly-test="${model.product}">
+    <div class="pd-tab-header">
+        <button class="pd-tab active" data-tab="desc">
+            Description
+        </button>
+        <button class="pd-tab" data-tab="review">
+            Reviews
+        </button>
+    </div>
+    <div id="desc" class="pd-tab-content active">
+        <p class="pd-desc-text">
+            ${model.product.productReview @ context='html'}
+        </p>
+        <table class="pd-product-table">
+            <tr>
+                <td>Weight</td>
+                <td>${model.product.weight}</td>
+            </tr>
+            <tr>
+                <td>Country of Origin</td>
+                <td>${model.product.countryOfOrigin}</td>
+            </tr>
+            <tr>
+                <td>Quality</td>
+                <td>${model.product.quality}</td>
+            </tr>
+            <tr>
+                <td>Check</td>
+                <td>${model.product.heck}</td>
+            </tr>
+            <tr>
+                <td>Min Weight</td>
+                <td>${model.product.minWeight}</td>
+            </tr>
+        </table>
+    </div>
+    <div id="review" class="pd-tab-content">
+        <div class="pd-review-item">
+            <div class="pd-review-avatar">
+                <sly data-sly-test="${model.product.profileImage}">
+                    <img src="${model.product.profileImage @ context='uri'}" alt="${model.product.reviewerName}" />
+                </sly>
+            </div>
+            <div class="pd-review-content">
+                <span class="pd-review-date">
+                    ${model.product.reviewDate}
+                </span>
+                <div class="pd-review-header">
+                    <h4 class="pd-review-name">
+                        ${model.product.reviewerName}
+                    </h4>
+                    <div class="pd-review-rating">
+                        <sly data-sly-list.star="${model.reviewFilledStars}">
+                            <span class="pd-star pd-filled">★</span>
+                        </sly>
+                        <sly data-sly-list.star="${model.reviewEmptyStars}">
+                            <span class="pd-star">★</span>
+                        </sly>
+                    </div>
+                </div>
+                <p class="pd-review-text">
+                    ${model.product.comment @ context='html'}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

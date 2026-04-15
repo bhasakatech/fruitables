@@ -46,6 +46,28 @@ public class ProductCFModel {
     /** Product rating (stored as String, e.g., "4.5") */
     @ValueMapValue
     private String productRating;
+    @ValueMapValue
+    private String weight;
+    @ValueMapValue
+    private String countryOfOrigin;
+    @ValueMapValue
+    private String quality;
+    @ValueMapValue
+    private String heck;
+    @ValueMapValue
+    private String minWeight;
+    @ValueMapValue
+    private String productReview;
+    @ValueMapValue
+    private String reviewerName;
+    @ValueMapValue
+    private String reviewDate;
+    @ValueMapValue
+    private int rating;
+    @ValueMapValue
+    private String profileImage;
+    @ValueMapValue
+    private String comment;
 
     /** Maximum rating value (used for star calculation) */
     private static final int MAX_RATING = 5;
@@ -100,6 +122,44 @@ public class ProductCFModel {
      */
     public String getProductRating() {
         return productRating;
+    }
+    public String getMinWeight() {
+        return minWeight;
+    }
+    public String getWeight() {
+        return weight;
+    }
+    public String getCountryOfOrigin() {
+        return countryOfOrigin;
+    }
+    public String getQuality() {
+        return quality;
+    }
+    public String getHeck() {
+        return heck;
+    }
+    public String getProductReview() {
+        return productReview;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public String getReviewerName() {
+        return reviewerName;
+    }
+
+    public String getReviewDate() {
+        return reviewDate;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public String getComment() {
+        return comment;
     }
 
     /**

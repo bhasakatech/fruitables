@@ -61,7 +61,10 @@
     </div>
 
     <div class="product-details">
-      <a href="#" class="product-title">${item.product.productName}</a>
+      <a href="/content/fruitables/us/en/shop-detail.${item.product.productName @ context='uri'}.html"
+          class="product-title">
+          ${item.product.productName}
+      </a>
 
       <sly
         data-sly-test="${item.cardStyle == 'standard' && properties.showDescription}"

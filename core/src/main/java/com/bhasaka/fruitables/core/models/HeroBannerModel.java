@@ -23,6 +23,13 @@ public class HeroBannerModel {
     @ValueMapValue
     private String title;
 
+    @ValueMapValue
+    private String backgroundImage;
+
+    public String getBackgroundImage() {
+        return backgroundImage;
+    }
+
     public String getSubtitle() {
         return subtitle;
     }

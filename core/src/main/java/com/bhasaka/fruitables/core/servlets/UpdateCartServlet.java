@@ -2,18 +2,13 @@ package com.bhasaka.fruitables.core.servlets;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
-import org.apache.sling.api.resource.ModifiableValueMap;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.ResourceResolverFactory;
+import org.apache.sling.api.resource.*;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 import javax.servlet.Servlet;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 @Component(
         service = Servlet.class,
@@ -34,11 +29,8 @@ public class UpdateCartServlet extends SlingAllMethodsServlet {
         String productPath = request.getParameter("productPath");
         String action = request.getParameter("action");
 
-        try {
-            Map<String, Object> param = new HashMap<>();
-            param.put(ResourceResolverFactory.SUBSERVICE, "fruitables-cart-service");
 
-            try (ResourceResolver resolver = factory.getServiceResourceResolver(param)) {
+            try (ResourceResolver resolver = request.getResourceResolver()) {
 
                 String sessionId = request.getSession().getId();
                 String itemName = productPath.substring(productPath.lastIndexOf("/") + 1)
@@ -70,10 +62,14 @@ public class UpdateCartServlet extends SlingAllMethodsServlet {
                 }
 
                 resolver.commit();
-            }
 
-        } catch (Exception e) {
-            response.setStatus(500);
-        }
+
+        } catch (PersistenceException e) {
+                response.setStatus(500);
+
+            } catch (IllegalArgumentException e) {
+                response.setStatus(400);
+
+            }
     }
 }

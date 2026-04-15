@@ -61,7 +61,10 @@
     </div>
 
     <div class="product-details">
-      <a href="#" class="product-title">${item.product.productName}</a>
+      <a href="/content/fruitables/us/en/shop-detail.${item.product.productName @ context='uri'}.html"
+          class="product-title">
+          ${item.product.productName}
+      </a>
 
       <sly
         data-sly-test="${item.cardStyle == 'standard' && properties.showDescription}"
@@ -69,39 +72,16 @@
         <div class="product-description">
           ${item.product.productDescription @ context='html'}
         </div>
+      </sly>
 
-        <div class="product-details">
-            <a href="javascript:void(0);" class="product-title clickable-product"
-                data-name="${item.product.productName}">
-                ${item.product.productName}
-            </a>
-            <sly data-sly-test="${item.cardStyle == 'standard' && properties.showDescription}">
-                <div class="product-description">
-                    ${item.product.productDescription @ context='html'}
-                </div>
-            </sly>
-
-            <sly data-sly-test="${properties.showRating}">
-                <div class="rating">
-                    <sly data-sly-list.star="${item.product.filledStars}">
-                        <span class="star filled">★</span>
-                    </sly>
-                    <sly data-sly-list.star="${item.product.emptyStars}">
-                        <span class="star">★</span>
-                    </sly>
-                </div>
-            </sly>
-            <p class="price">
-                $ ${item.product.productPrice}
-                <sly data-sly-test="${item.cardStyle == 'standard' && properties.priceUnit}">
-                    / ${properties.priceUnit}
-                </sly>
-            </p>
-
-             <button class="add-to-cart" data-path="${item.productPath}">
-    <i class="fa-solid fa-bag-shopping"></i>
-    ${buttonText}
-</button>
+      <sly data-sly-test="${properties.showRating}">
+        <div class="rating">
+          <sly data-sly-list.star="${item.product.filledStars}">
+            <span class="star filled">★</span>
+          </sly>
+          <sly data-sly-list.star="${item.product.emptyStars}">
+            <span class="star">★</span>
+          </sly>
         </div>
       </sly>
       <p class="price">

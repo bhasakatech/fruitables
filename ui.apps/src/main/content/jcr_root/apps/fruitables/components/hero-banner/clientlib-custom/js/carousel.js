@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-
+    document.querySelectorAll('.hero-banner').forEach(el => {
+        let bg = el.getAttribute('data-bg');
+        if (bg) {
+            bg = bg + "/_jcr_content/renditions/original";
+            el.style.setProperty('--bg-image', `url(${bg})`);
+        }
+    });
     const carousel = document.querySelector(".carousel");
     if (!carousel) return;
     const slides = carousel.querySelectorAll(".slide");

@@ -18,9 +18,35 @@
 </div>
 
 <sly data-sly-template.productCard="${@ item, buttonText}">
-    <div class="product-card ${item.cardStyle}">
-        <div class="product-image">
-            <img src="${item.product.productImage @ context='uri'}" alt="${item.product.productName}"/>
+  <div
+    class="product-card ${item.cardStyle} ${properties.showBorder ? 'card-border' : ''} ${properties.categoryColor}"
+    data-category="${item.product.productCategory}"
+  >
+    <div class="product-image">
+      <img
+        src="${item.product.productImage @ context='uri'}"
+        alt="${item.product.productName}"
+      />
+
+      <span
+        data-sly-test="${item.cardStyle == 'standard' && properties.showCategory}"
+        class="category-badge ${properties.categoryColor} ${properties.badgePosition}"
+      >
+        ${item.product.productCategory}
+      </span>
+    </div>
+
+    <div class="product-details">
+      <a href="/content/fruitables/us/en/shop-detail.${item.product.productName @ context='uri'}.html"
+          class="product-title">
+          ${item.product.productName}
+      </a>
+
+      <sly
+        data-sly-test="${item.cardStyle == 'standard' && properties.showDescription}"
+      >
+        <div class="product-description">
+          ${item.product.productDescription @ context='html'}
         </div>
         <div class="product-details">
             <h2 class="product-title">${item.product.productName}</h2>
@@ -41,5 +67,5 @@
             </button> 
         </div>
     </div>
+  </div>
 </sly>
-

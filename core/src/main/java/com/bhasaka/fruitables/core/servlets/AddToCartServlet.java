@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.Servlet;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,10 +78,9 @@ public class AddToCartServlet extends SlingAllMethodsServlet {
             return;
         }
 
-        try (ResourceResolver resolver = factory.getServiceResourceResolver(
-                Collections.singletonMap(ResourceResolverFactory.SUBSERVICE, "fruitables-cart-service"))) {
+        try (ResourceResolver resolver = request.getResourceResolver()) {
             String productPath = normalizeProductPath(rawProductPath);
-
+            log.info("Resource Resolver (predefined): {}", resolver);
             log.info("Final Product Path: {}", productPath);
 
             String sessionId = request.getSession().getId();
@@ -115,10 +113,19 @@ public class AddToCartServlet extends SlingAllMethodsServlet {
 
             sendSuccess(response, "Item added to cart");
 
-        } catch (Exception e) {
-            log.error("Error while adding item to cart", e);
-            sendError(response, 500, "Internal server error");
         }
+    catch (PersistenceException e) {
+        log.error("Persistence error while adding item to cart", e);
+        sendError(response, 500, "Unable to save cart data");
+
+    } catch (IllegalArgumentException e) {
+        log.error("Invalid input provided", e);
+        sendError(response, 400, "Invalid product data");
+
+    } catch (Exception e) {
+        log.error("Unexpected error while adding item to cart", e);
+        sendError(response, 500, "Internal server error");
+    }
     }
 
     /**

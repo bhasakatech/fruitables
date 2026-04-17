@@ -156,34 +156,6 @@ display: flex;
     color: #888;
 }
 
-@media (min-width: 430px) and (max-width: 768px) {
-.checkout-v2 .cart-row {
-     display: grid;
-    grid-template-columns: 140px 150px 150px 150px 100px;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-    font-size: 16px;
-    color: #747d88;
-    padding-left: 30px;
-}
-    
-    .checkout-v2 .cart-header{
-       display: grid;
-    grid-template-columns: 140px 150px 150px 150px 100px;
-    font-weight: bold;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 13px;
-    align-items: center;
-    font-size: 19px;
-    color: #747d88;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #f1f1f1;
-    padding-left: 30px;
-}
-}
-/* POPUP OVERLAY */
 .order-popup {
     display: none;
     position: fixed;
@@ -218,4 +190,94 @@ display: flex;
     background: #82ae46;
     color: white;
     cursor: pointer;
+}
+@media (max-width: 768px) {
+
+    .checkout-v2 .cart-row,
+    .checkout-v2 .cart-header {
+        display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 0.7fr 1fr;
+        gap: 10px;
+        padding: 10px;
+        font-size: 14px;
+    }
+     .checkout-v2 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .checkout-v2 .cart-row img {
+        width: 60px;
+    }
+
+    .checkout-v2 .summary-row {
+        padding: 20px;
+        font-size: 18px;
+    }
+
+    .checkout-v2 .summary-row.total {
+        font-size: 20px;
+        padding-top: 20px;
+    }
+
+    .shipping-section {
+        flex-direction: row;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .checkout-v2 .payment-section label {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+.checkout-v2 input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+    right: 2px;
+}
+
+
+.checkout-v2 input[type="radio"]:checked {
+    background: #81c408;
+    border-color: #81c408;
+}
+
+.checkout-v2 input[type="radio"]:checked::after {
+    content: "✔";
+    color: white;
+    font-size: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.checkout-v2 .shipping-section label {
+    display: flex;             
+    align-items: center;        
+    gap: 10px;                  
+    font-size: 17px;
+    cursor: pointer;
+}
+@media (max-width: 321px){
+        .shipping-section {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px;
+    }
+    .shipRadio {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding: 10px;
+    padding-left: 90px;
+}
 }

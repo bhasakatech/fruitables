@@ -201,6 +201,10 @@ display: flex;
         padding: 10px;
         font-size: 14px;
     }
+     .checkout-v2 {
+        padding-left: 0;
+        padding-right: 0;
+    }
 
     .checkout-v2 .cart-row img {
         width: 60px;

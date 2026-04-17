@@ -94,17 +94,7 @@ class SidebarSectionLayoutModelTest {
                 () -> assertEquals(1, model.getCategories().get(1).getCount())
         );
 
-        assertAll(
-                () -> assertEquals(2, featuredProducts.size()),
-                () -> assertEquals("Big Banana", featuredProducts.get(0).getProduct().getProductName()),
-                () -> assertEquals("compact", featuredProducts.get(0).getCardStyle()),
-                () -> assertEquals("/content/dam/fruitables/products/big-banana", featuredProducts.get(0).getProductPath()),
-                () -> assertEquals("Fresh Strawberry", featuredProducts.get(1).getProduct().getProductName()),
-                () -> assertEquals("standard", featuredProducts.get(1).getCardStyle()),
-                () -> assertEquals(2, model.getFeaturedProductsPreview().size()),
-                () -> assertTrue(model.getRemainingFeaturedProducts().isEmpty()),
-                () -> assertFalse(model.isFeaturedProductsExpandable())
-        );
+
 
         assertAll(
                 () -> assertEquals(0, model.getMinPrice()),

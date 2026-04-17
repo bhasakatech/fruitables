@@ -1,28 +1,36 @@
 {
   "sidebar": {
-
     "authored": {
       "jcr:primaryType": "nt:unstructured",
+
+      "sectionTitle": "Fresh fruits shop",
+      "searchPlaceholder": "keywords",
       "searchImage": "/content/dam/fruitables/search.svg",
+      "sortingLabel": "Default Sorting:",
+      "categoryTitle": "Categories",
+      "priceTitle": "Price",
+      "additionalTitle": "Additional",
+      "featuredProductsTitle": "Featured products",
+      "viewMoreLabel": "View More",
       "viewMoreLink": "/shop/products",
       "bannerImage": "/content/dam/fruitables/banner-fruits.jpg",
+      "bannerTitle": "Fresh Fruits Banner",
 
       "tags": [
         "fruitables:apples",
         "fruitables:banana"
       ],
-      "categorySearchRoot": "/content/products",
+
+      "fragmentRootPath": "/content/products",
       "selectedPrice": 112,
 
       "sortingOptions": {
         "item0": {
-          "jcr:primaryType": "nt:unstructured",
           "optionText": "Nothing",
           "optionValue": "nothing",
           "selected": true
         },
         "item1": {
-          "jcr:primaryType": "nt:unstructured",
           "optionText": "Popularity",
           "optionValue": "popularity",
           "selected": false
@@ -31,13 +39,11 @@
 
       "additionalOptions": {
         "item0": {
-          "jcr:primaryType": "nt:unstructured",
           "label": "Organic",
           "value": "Organic",
           "checked": false
         },
         "item1": {
-          "jcr:primaryType": "nt:unstructured",
           "label": "Expired",
           "value": "Expired",
           "checked": true
@@ -46,12 +52,10 @@
 
       "products": {
         "item0": {
-          "jcr:primaryType": "nt:unstructured",
           "cfPath": "/content/dam/fruitables/products/big-banana",
           "cardStyle": "compact"
         },
         "item1": {
-          "jcr:primaryType": "nt:unstructured",
           "cfPath": "/content/dam/fruitables/products/fresh-strawberry",
           "cardStyle": "standard"
         }
@@ -81,7 +85,7 @@
 
     "banner": {
       "jcr:primaryType": "nt:unstructured",
-      "bannerTitle": "<b>Fresh Fruits Banner</b>"
+      "bannerTitle": "Fresh Fruits Banner"
     }
   },
 
@@ -100,7 +104,6 @@
   "dam": {
     "fruitables": {
       "products": {
-
         "big-banana": {
           "jcr:content": {
             "data": {
@@ -110,7 +113,6 @@
             }
           }
         },
-
         "fresh-strawberry": {
           "jcr:content": {
             "data": {
@@ -120,7 +122,6 @@
             }
           }
         },
-
         "apple": {
           "jcr:content": {
             "data": {
@@ -130,7 +131,6 @@
             }
           }
         },
-
         "banana": {
           "jcr:content": {
             "data": {
@@ -140,7 +140,6 @@
             }
           }
         },
-
         "orange": {
           "jcr:content": {
             "data": {
@@ -150,7 +149,6 @@
             }
           }
         },
-
         "raspberries": {
           "jcr:content": {
             "data": {
@@ -160,7 +158,6 @@
             }
           }
         }
-
       }
     }
   }

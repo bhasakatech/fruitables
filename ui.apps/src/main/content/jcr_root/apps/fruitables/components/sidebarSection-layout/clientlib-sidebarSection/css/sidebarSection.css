@@ -69,7 +69,6 @@
     .sidebar-section-layout__main {
         order: 2;
     }
-
 }
 
 @media(min-width: 1200px) {
@@ -171,6 +170,18 @@
 }
 
 .sidebar-section-layout__category-link .fa-apple-alt {
+    min-width: 1em;
+    color: var(--bs-primary);
+}
+
+.sidebar-section-layout__category-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--bs-primary);
+}
+
+.sidebar-section-layout__category-text .fa-apple-alt {
     min-width: 1em;
     color: var(--bs-primary);
 }
@@ -285,4 +296,21 @@
     height: 10px;
     background: #dbe2e9;
     border-radius: 999px;
+}
+
+.sidebar-section-layout--sidebar-only {
+    max-width: none;
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.sidebar-section-layout--sidebar-only .sidebar-section-layout__sidebar--standalone {
+    width: 100%;
+}
+
+.sidebar-section-layout--sidebar-only .sidebar-section-layout__search-block {
+    margin-bottom: 0.25rem;
 }

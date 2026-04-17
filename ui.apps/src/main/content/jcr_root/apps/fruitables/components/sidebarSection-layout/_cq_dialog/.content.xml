@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Sidebar Section Properties"
     sling:resourceType="cq/gui/components/authoring/dialog">
@@ -18,10 +18,14 @@
                         <items jcr:primaryType="nt:unstructured">
                             <layoutPosition
                                 jcr:primaryType="nt:unstructured"
+                                granite:class="cq-dialog-dropdown-showhide"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                fieldDescription="Choose whether the sidebar appears on the left or right side on larger screens."
+                                fieldDescription="Choose whether the sidebar appears on the left or right side on larger screens. Right layout renders only keyword search, categories, featured products, and banner."
                                 fieldLabel="Sidebar Position"
                                 name="./layoutPosition">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    cq-dialog-dropdown-showhide-target=".sidebar-section-layout-dialog-target"/>
                                 <items jcr:primaryType="nt:unstructured">
                                     <left
                                         jcr:primaryType="nt:unstructured"
@@ -36,10 +40,15 @@
                             </layoutPosition>
                             <sectionTitle
                                 jcr:primaryType="nt:unstructured"
+                                granite:class="hide sidebar-section-layout-dialog-target"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="Section Title"
                                 name="./sectionTitle"
-                                value="Fresh fruits shop"/>
+                                value="Fresh fruits shop">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    showhidetargetvalue="left"/>
+                            </sectionTitle>
                             <searchPlaceholder
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -55,15 +64,24 @@
                                 rootPath="/content/dam/fruitables"/>
                             <sortingLabel
                                 jcr:primaryType="nt:unstructured"
+                                granite:class="hide sidebar-section-layout-dialog-target"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="Sorting Label"
                                 name="./sortingLabel"
-                                value="Default Sorting:"/>
+                                value="Default Sorting:">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    showhidetargetvalue="left"/>
+                            </sortingLabel>
                             <sortingOptions
                                 jcr:primaryType="nt:unstructured"
+                                granite:class="hide sidebar-section-layout-dialog-target"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                 composite="{Boolean}true"
                                 fieldLabel="Sorting Options">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    showhidetargetvalue="left"/>
                                 <field
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/container"
@@ -121,8 +139,12 @@
 
                     <categoryDisplayTab
                         jcr:primaryType="nt:unstructured"
+                        granite:class="hide sidebar-section-layout-dialog-target"
                         jcr:title="Category Display"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            showhidetargetvalue="left"/>
                         <items jcr:primaryType="nt:unstructured">
                             <cartButtonText
                                 jcr:primaryType="nt:unstructured"
@@ -238,8 +260,12 @@
 
                     <price
                         jcr:primaryType="nt:unstructured"
+                        granite:class="hide sidebar-section-layout-dialog-target"
                         jcr:title="Price"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            showhidetargetvalue="left"/>
                         <items jcr:primaryType="nt:unstructured">
                             <priceTitle
                                 jcr:primaryType="nt:unstructured"
@@ -275,8 +301,12 @@
                     </price>
                     <additional
                         jcr:primaryType="nt:unstructured"
+                        granite:class="hide sidebar-section-layout-dialog-target"
                         jcr:title="Additional"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            showhidetargetvalue="left"/>
                         <items jcr:primaryType="nt:unstructured">
                             <additionalTitle
                                 jcr:primaryType="nt:unstructured"

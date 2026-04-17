@@ -63,6 +63,12 @@ public class SidebarSectionLayoutModel {
     private String sectionTitle;
 
     /**
+     * The authored sidebar position used to switch between left and right layouts.
+     */
+    @ValueMapValue
+    private String layoutPosition;
+
+    /**
      * The placeholder text for the search input field.
      */
     @ValueMapValue
@@ -81,8 +87,8 @@ public class SidebarSectionLayoutModel {
     /**
      * The array of tags for the sidebar section.
      */
-    @ValueMapValue
-    private String categoriesTitle;
+    @ValueMapValue(name = "categoryTitle")
+    private String categoryTitle;
 
     /**
      * The array of tags for the sidebar section.
@@ -92,7 +98,7 @@ public class SidebarSectionLayoutModel {
     /**
      * The root path for searching categories.
      */
-    @ValueMapValue
+    @ValueMapValue(name = "fragmentRootPath")
     private String categorySearchRoot;
     /**
      * The title for the price filter section.
@@ -750,7 +756,34 @@ public class SidebarSectionLayoutModel {
      * @return categories section title
      */
     public String getCategoriesTitle() {
-        return defaultIfBlank(categoriesTitle, "Categories");
+        return defaultIfBlank(categoryTitle, "Categories");
+    }
+
+    /**
+     * Returns the authored sidebar layout position.
+     *
+     * @return "right" when the right sidebar layout is selected; otherwise "left"
+     */
+    public String getLayoutPosition() {
+        return "right".equalsIgnoreCase(layoutPosition) ? "right" : "left";
+    }
+
+    /**
+     * Indicates whether the component should render the right sidebar-only layout.
+     *
+     * @return true when right layout is selected
+     */
+    public boolean isRightLayout() {
+        return "right".equals(getLayoutPosition());
+    }
+
+    /**
+     * Indicates whether the component should render the default left layout.
+     *
+     * @return true when left layout is selected
+     */
+    public boolean isLeftLayout() {
+        return !isRightLayout();
     }
     /**
      * Returns list of category items with title and tagged resource count.

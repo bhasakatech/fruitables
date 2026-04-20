@@ -300,11 +300,15 @@
 
 .sidebar-section-layout--sidebar-only {
     max-width: none;
-    margin-top: 0 !important;
     margin-right: 0 !important;
     margin-left: 0 !important;
     padding-right: 0 !important;
     padding-left: 0 !important;
+}
+@media (max-width:576px) {
+    .sidebar-section-layout--sidebar-only{
+        margin-top: 0 !important;
+    }    
 }
 
 .sidebar-section-layout--sidebar-only .sidebar-section-layout__sidebar--standalone {

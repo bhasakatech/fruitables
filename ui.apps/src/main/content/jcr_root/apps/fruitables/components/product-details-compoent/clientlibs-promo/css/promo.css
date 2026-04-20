@@ -10,7 +10,6 @@
 }
 .pd-product-image {
     flex: 1 1 45%;
-    min-width: 18rem;
 }
 .pd-product-image img {
     width: 100%;
@@ -19,7 +18,6 @@
 }
 .pd-product-info {
     flex: 1 1 45%;
-    min-width: 18rem;
     color: #45595B;
 }
 .pd-product-info h2 {

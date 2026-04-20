@@ -13,53 +13,45 @@
             <span>Total</span>
         </div>
 
-        <div data-sly-list.item="${checkout.items}">
-            <div class="cart-row">
-                <img src="${item.image}" alt="${item.name}" width="90"/>
-                <span>${item.name}</span>
-                <span>₹${item.price}</span>
-                <span>${item.qty}</span>
-                <span>₹${item.total}</span>
-            </div>
-        </div>
+        <div id="checkout-items"></div>
 
-        <sly data-sly-test="${!checkout.items || checkout.items.size == 0}">
-            <p>Your cart is empty</p>
-        </sly>
+        <p id="empty-cart-msg" style="display:none;">Your cart is empty</p>
     </div>
 
     <div class="summary-row">
         <span>${properties.subtotalLabel || 'Subtotal'}</span>
-        <span id="subtotal">₹${checkout.subtotal}</span>
+        <span id="subtotal">₹0</span>
     </div>
 
     <div class="shipping-section">
-    <div class="shipLabel">
-        <p>${properties.shippingLabel || 'Shipping'}</p>
+        <div class="shipLabel">
+            <p>${properties.shippingLabel || 'Shipping'}</p>
         </div>
-<div class="shipRadio">
-        <label>
-            <input type="radio" name="shipping" value="flat" checked>
-            Flat Rate: ₹${properties.flatRate || 15}
-        </label>
 
-        <label>
-            <input type="radio" name="shipping" value="pickup">
-            Local Pickup: ₹${properties.pickupRate || 8}
-        </label>
-         <label>
-            <input type="radio" name="shipping" value="free">
-            Local Pickup: ₹${properties.freeShipping || 0}
-        </label>
+        <div class="shipRadio">
+            <label>
+                <input type="radio" name="shipping" value="flat">
+                Flat Rate: ₹${properties.flatRate || 15}
+            </label>
+
+            <label>
+                <input type="radio" name="shipping" value="pickup">
+                Local Pickup: ₹${properties.pickupRate || 8}
+            </label>
+
+            <label>
+                <input type="radio" name="shipping" value="free" checked>
+                Free Shipping: ₹${properties.freeShipping || 0}
+            </label>
         </div>
     </div>
 
     <div class="summary-row total">
-    <div class="total-label">
-        <span>${properties.totalLabel || 'Total'}</span>
+        <div class="total-label">
+            <span>${properties.totalLabel || 'Total'}</span>
         </div>
-          <div class="total-bill">
-        <span id="total">₹${checkout.total}</span>
+        <div class="total-bill">
+            <span id="total">₹0</span>
         </div>
     </div>
 
@@ -89,7 +81,6 @@
             </div>
         </sly>
 
-   
         <sly data-sly-test="${properties.codEnable}">
             <label>
                 <input type="radio" name="payment" value="cod">
@@ -97,16 +88,15 @@
             </label>
         </sly>
 
-      
         <sly data-sly-test="${properties.paypalEnable}">
             <label>
                 <input type="radio" name="payment" value="paypal">
                 UPI
             </label>
             <div class="payment-content" id="paypal-content">
-        <p>Pay using UPI</p>
-        <p><strong>UPI ID:</strong> ${properties.upi}</p>
-    </div>
+                <p>Pay using UPI</p>
+                <p><strong>UPI ID:</strong> ${properties.upi}</p>
+            </div>
         </sly>
 
     </div>
@@ -116,6 +106,7 @@
     </button>
 
 </div>
+
 <div id="orderPopup" class="order-popup">
     <div class="popup-content">
         <h2>✅ Order Placed Successfully</h2>

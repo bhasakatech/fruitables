@@ -7,7 +7,33 @@ import org.apache.sling.api.resource.*;
 import javax.jcr.Session;
 import java.util.HashMap;
 import java.util.Map;
+/**
+ * Service class for handling product-related operations.
+ * <p>
+ * This class provides utility methods to fetch product data from
+ * AEM Content Fragments stored under a specific DAM path.
+ * </p>
+ */
 public class ProductService {
+    /**
+     * Retrieves a product Content Fragment based on the provided slug.
+     * <p>
+     * This method performs the following operations:
+     * <ul>
+     *     <li>Builds a query using QueryBuilder to fetch all content fragments
+     *     under the specified DAM path.</li>
+     *     <li>Iterates through each result (Hit).</li>
+     *     <li>Adapts the resource to {@link ProductCFModel}.</li>
+     *     <li>Generates a slug from the product name.</li>
+     *     <li>Compares the generated slug with the input slug.</li>
+     *     <li>Returns the matching product if found.</li>
+     * </ul>
+     * </p>
+     *
+     * @param resolver the {@link ResourceResolver} used to access AEM resources
+     * @param slug the slug value used to identify the product
+     * @return {@link ProductCFModel} if a matching product is found, otherwise {@code null}
+     */
     public static ProductCFModel getProductBySlug(ResourceResolver resolver, String slug) {
         try {
             Map<String, String> map = new HashMap<>();

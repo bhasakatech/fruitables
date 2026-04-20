@@ -11,37 +11,27 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit test class for {@link ProductBannerModel}.
- *
- * <p>This test class uses AEM Mocks ({@link AemContext}) to simulate
- * an AEM repository and validate the behavior of the ProductBannerModel.</p>
- *
- * <p>The tests ensure:
- * <ul>
- *     <li>All authored properties are correctly injected into the model</li>
- *     <li>The model handles missing or empty properties gracefully</li>
- *     <li>Model adaptation from {@link Resource} works as expected</li>
- * </ul>
+ * <p>
+ * This class uses AEM Mocks to simulate repository content and verify
+ * that the ProductBannerModel correctly maps resource properties.
  * </p>
  */
 @ExtendWith(AemContextExtension.class)
 class ProductBannerModelTest {
 
     /**
-     * AEM mock context used for simulating resource resolution
-     * and Sling Model adaptation.
+     * AEM mock context for simulating Sling and JCR environment.
      */
     private final AemContext context = new AemContext();
 
     /**
-     * Instance of {@link ProductBannerModel} under test.
+     * Instance of ProductBannerModel under test.
      */
     private ProductBannerModel model;
 
     /**
-     * Sets up the test environment before each test execution.
-     *
-     * <p>Registers the Sling Model class to enable adaptation
-     * from resources.</p>
+     * Sets up the test environment before each test case.
+     * Registers the model class with the AEM context.
      */
     @BeforeEach
     void setUp() {
@@ -49,10 +39,11 @@ class ProductBannerModelTest {
     }
 
     /**
-     * Tests the model when all fields are authored and available.
-     *
-     * <p>Loads mock JSON content and verifies that all properties
-     * are correctly injected into the model.</p>
+     * Tests model adaptation when all properties are present.
+     * <p>
+     * Verifies that all getter methods return expected values
+     * from the loaded JSON content.
+     * </p>
      */
     @Test
     void testModelWithAllFields() {
@@ -77,10 +68,11 @@ class ProductBannerModelTest {
     }
 
     /**
-     * Tests the model behavior when no properties are authored.
-     *
-     * <p>Ensures that all getter methods return {@code null}
-     * when properties are not present in the resource.</p>
+     * Tests model adaptation when resource has no properties.
+     * <p>
+     * Ensures that the model is created successfully but all
+     * getter methods return null values.
+     * </p>
      */
     @Test
     void testModelWithEmptyFields() {

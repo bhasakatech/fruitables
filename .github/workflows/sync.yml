@@ -10,7 +10,6 @@ jobs:
 sync:
 runs-on: ubuntu-latest
 
-```
 steps:
   - name: Checkout Code
     uses: actions/checkout@v3
@@ -22,9 +21,9 @@ steps:
 
   - name: Add Adobe Remote
     run: |
+      git remote remove adobe || true
       git remote add adobe https://${{ secrets.ADOBE_USERNAME }}:${{ secrets.ADOBE_TOKEN }}@git.cloudmanager.adobe.com/bhashakatechptrsd/bhasaka-fruitables/
 
   - name: Push Same Branch to Adobe
     run: |
-      git push adobe HEAD:${{ github.ref_name }} --force
-```
+      git push adobe HEAD:${{ github.ref_name }}

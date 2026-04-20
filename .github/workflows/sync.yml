@@ -1,29 +1,28 @@
 name: Sync to Adobe Repo
 
 on:
-push:
-branches:
-- main
-- develop
+  push:
+    branches:
+      - main
+      - develop
 
 jobs:
-sync:
-runs-on: ubuntu-latest
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-steps:
-  - name: Checkout Code
-    uses: actions/checkout@v3
+      - name: Set Git Config
+        run: |
+          git config --global user.name "gkreddy31"
+          git config --global user.email "gopikrishnareddy24@gmail.com"
 
-  - name: Set Git Config
-    run: |
-      git config --global user.name "gkreddy31"
-      git config --global user.email "gopikrishnareddy24@gmail.com"
+      - name: Add Adobe Remote
+        run: |
+          git remote remove adobe || true
+          git remote add adobe https://${{ secrets.ADOBE_USERNAME }}:${{ secrets.ADOBE_TOKEN }}@git.cloudmanager.adobe.com/bhashakatechptrsd/bhasaka-fruitables/
 
-  - name: Add Adobe Remote
-    run: |
-      git remote remove adobe || true
-      git remote add adobe https://${{ secrets.ADOBE_USERNAME }}:${{ secrets.ADOBE_TOKEN }}@git.cloudmanager.adobe.com/bhashakatechptrsd/bhasaka-fruitables/
-
-  - name: Push Same Branch to Adobe
-    run: |
-      git push adobe HEAD:${{ github.ref_name }}
+      - name: Push Same Branch to Adobe
+        run: |
+          git push adobe HEAD:${{ github.ref_name }}

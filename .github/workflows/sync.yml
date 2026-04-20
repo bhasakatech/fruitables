@@ -25,4 +25,4 @@ jobs:
 
       - name: Push Same Branch to Adobe
         run: |
-          git push adobe HEAD:${{ github.ref_name }}
+          git push adobe HEAD:${{ github.ref_name }} --force

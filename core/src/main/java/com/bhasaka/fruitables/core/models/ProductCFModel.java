@@ -180,7 +180,7 @@ public class ProductCFModel {
                 stars.add(i);
             }
         } catch (NumberFormatException e) {
-            LOG.error("Invalid product rating value: {}", productRating, e.getMessage());
+            LOG.error("Invalid product rating value: {} - {}", productRating, e.getMessage());
         }
         return stars;
     }

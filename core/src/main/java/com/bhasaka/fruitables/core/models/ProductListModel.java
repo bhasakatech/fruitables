@@ -183,7 +183,7 @@ public class ProductListModel {
      * @return list of {@link ProductItem}
      */
     public List<ProductItem> getItems() {
-        return items;
+        return new ArrayList<>(items);
     }
 
     /**

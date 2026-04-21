@@ -124,6 +124,7 @@ public class ServiceHighlights {
          *
          * @return color code
          */
+        
         public String getColor() {
             return color;
         }

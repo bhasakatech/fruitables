@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import com.day.cq.tagging.TagConstants;
 
 /**
  * Sling Model for the Sidebar Section Layout component.
@@ -379,7 +380,7 @@ public class SidebarSectionLayoutModel {
      * @return true if matching tag exists
      */
     private boolean hasMatchingTag(ValueMap valueMap, Set<String> expectedTags) {
-        String[] multiValueTags = valueMap.get("cq:tags", String[].class);
+        String[] multiValueTags = valueMap.get(TagConstants.PN_TAGS, String[].class);
         if (multiValueTags != null) {
             for (String resourceTag : multiValueTags) {
                 if (matchesTag(resourceTag, expectedTags)) {
@@ -388,7 +389,7 @@ public class SidebarSectionLayoutModel {
             }
         }
 
-        String singleValueTag = valueMap.get("cq:tags", String.class);
+        String singleValueTag = valueMap.get(TagConstants.PN_TAGS, String.class);
         return matchesTag(singleValueTag, expectedTags);
     }
     /**
@@ -463,8 +464,8 @@ public class SidebarSectionLayoutModel {
      * @return normalized tag ID
      */
     private String convertTagPathToId(String value) {
-        if (isBlank(value)) {
-            return value;
+        if (value == null || value.trim().isEmpty()) {
+            return "";
         }
         if (value.startsWith("/content/cq:tags/")) {
             return value.substring("/content/cq:tags/".length()).replaceFirst("/", ":");
@@ -505,12 +506,20 @@ public class SidebarSectionLayoutModel {
      * @return leaf portion of tag
      */
     private String extractTagLeaf(String tagValue) {
-        String normalizedTagId = convertTagPathToId(tagValue);
-        if (normalizedTagId.contains(":")) {
-            normalizedTagId = normalizedTagId.substring(normalizedTagId.indexOf(':') + 1);
+        final String normalizedTagId = convertTagPathToId(tagValue);
+
+        if (normalizedTagId == null || normalizedTagId.trim().isEmpty()) {
+            return "";
         }
-        int lastSlashIndex = normalizedTagId.lastIndexOf('/');
-        return lastSlashIndex >= 0 ? normalizedTagId.substring(lastSlashIndex + 1) : normalizedTagId;
+
+        String processedTag = normalizedTagId.contains(":")
+                ? normalizedTagId.substring(normalizedTagId.indexOf(':') + 1)
+                : normalizedTagId;
+
+        int lastSlashIndex = processedTag.lastIndexOf('/');
+        return lastSlashIndex >= 0
+                ? processedTag.substring(lastSlashIndex + 1)
+                : processedTag;
     }
 
     /**
@@ -748,7 +757,7 @@ public class SidebarSectionLayoutModel {
      * @return list of sorting options
      */
     public List<SortingOption> getSortingOptions() {
-        return sortingOptions;
+        return new ArrayList<>(sortingOptions);
     }
     /**
      * Returns the title for the categories section.
@@ -791,7 +800,7 @@ public class SidebarSectionLayoutModel {
      * @return list of category items
      */
     public List<CategoryItem> getCategories() {
-        return categories;
+        return new ArrayList<>(categories);
     }
     /**
      * Returns the title for the price filter section.
@@ -851,7 +860,7 @@ public class SidebarSectionLayoutModel {
      * @return list of additional options
      */
     public List<AdditionalOption> getAdditionalOptions() {
-        return additionalOptions;
+        return new ArrayList<>(additionalOptions);
     }
     /**
      * Returns the title for the featured products section.
@@ -868,7 +877,7 @@ public class SidebarSectionLayoutModel {
      * @return featured products
      */
     public List<ProductItem> getFeaturedProducts() {
-        return featuredProducts;
+        return new ArrayList<>(featuredProducts);
     }
     /**
      * Returns a preview list of featured products limited to a defined number.

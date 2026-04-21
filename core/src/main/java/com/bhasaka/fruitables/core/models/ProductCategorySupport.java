@@ -7,6 +7,8 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.day.cq.tagging.TagConstants;
+import com.day.cq.commons.jcr.JcrConstants;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
@@ -90,8 +92,8 @@ final class ProductCategorySupport {
      */
     static Set<String> extractProductTagIds(ResourceResolver resourceResolver, ValueMap valueMap, ProductCFModelTag product) {
         Set<String> productTagIds = new LinkedHashSet<>();
-        addNormalizedTags(resourceResolver, productTagIds, valueMap.get("productTags", String[].class));
-        addNormalizedTag(resourceResolver, productTagIds, valueMap.get("productTags", String.class));
+        addNormalizedTags(resourceResolver, productTagIds, valueMap.get(TagConstants.PN_TAGS, String[].class));
+        addNormalizedTag(resourceResolver, productTagIds, valueMap.get(TagConstants.PN_TAGS, String.class));
 
         if (product != null) {
             addNormalizedTags(resourceResolver, productTagIds, product.getProductTags());
@@ -182,9 +184,10 @@ final class ProductCategorySupport {
      * @return generated component ID
      */
     static String buildComponentId(Resource resource, String prefix) {
-        return resource != null
-                ? prefix + Math.abs(resource.getPath().hashCode())
-                : prefix.substring(0, prefix.length() - 1);
+        if (resource == null) {
+            return prefix;
+        }
+        return prefix + Math.abs(resource.getPath().hashCode());
     }
 
     /**
@@ -237,7 +240,7 @@ final class ProductCategorySupport {
         return "SELECT * FROM [nt:unstructured] AS master "
                 + "WHERE ISDESCENDANTNODE(master, '" + escapeSql2Literal(fragmentRootPath) + "') "
                 + "AND NAME(master) = 'master' "
-                + "AND (master.[productTitle] IS NOT NULL OR master.[productName] IS NOT NULL)";
+                + "AND ((master.[productTitle] IS NOT NULL) OR (master.[productName] IS NOT NULL))";
     }
 
     /**
@@ -259,7 +262,7 @@ final class ProductCategorySupport {
     private static Resource findContainingPageContentResource(Resource resource) {
         Resource current = resource;
         while (current != null) {
-            if ("jcr:content".equals(current.getName())) {
+            if (JcrConstants.JCR_CONTENT.equals(current.getName())) {
                 return current;
             }
             current = current.getParent();
@@ -298,16 +301,20 @@ final class ProductCategorySupport {
      * @return extracted tag leaf
      */
     private static String extractTagLeaf(ResourceResolver resourceResolver, String tagValue) {
-        String normalizedTagId = normalizeTagId(resourceResolver, tagValue);
+        final String normalizedTagId = normalizeTagId(resourceResolver, tagValue);
+
         if (isBlank(normalizedTagId)) {
             return "";
         }
 
-        if (normalizedTagId.contains(":")) {
-            normalizedTagId = normalizedTagId.substring(normalizedTagId.indexOf(':') + 1);
-        }
-        int lastSlashIndex = normalizedTagId.lastIndexOf('/');
-        return lastSlashIndex >= 0 ? normalizedTagId.substring(lastSlashIndex + 1) : normalizedTagId;
+        String tagWithoutNamespace = normalizedTagId.contains(":")
+                ? normalizedTagId.substring(normalizedTagId.indexOf(':') + 1)
+                : normalizedTagId;
+
+        int lastSlashIndex = tagWithoutNamespace.lastIndexOf('/');
+        return lastSlashIndex >= 0
+                ? tagWithoutNamespace.substring(lastSlashIndex + 1)
+                : tagWithoutNamespace;
     }
 
     /**

@@ -25,7 +25,7 @@ class FooterModelTest {
      * AEM mock context for Sling model testing.
      */
     private final AemContext context = new AemContext();
-
+    FooterModel model;
     /**
      * Initializes mock context before each test.
      *
@@ -40,16 +40,14 @@ class FooterModelTest {
                 FooterModel.ColumnLink.class);
         context.load().json("/FooterModelTest.json", "/content");
     }
-
     /**
      * Tests successful adaptation of populated footer resource
      * into FooterModel and validates all authored values.
      */
     @Test
-    void testAdaptToFooterModels() {
+    void testAdaptToFooter() {
         Resource footerResource = context.resourceResolver().getResource("/content/footer");
-
-        FooterModel model = footerResource.adaptTo(FooterModel.class);
+        model = footerResource.adaptTo(FooterModel.class);
 
         assertNotNull(model);
         assertEquals("Stay Connected", model.getTitle());
@@ -63,6 +61,16 @@ class FooterModelTest {
         assertEquals(2, iconLinks.size());
         assertEquals("/content/dam/facebook.png", iconLinks.get(0).getIconUrl());
         assertEquals("/content/dam/instagram.png", iconLinks.get(1).getIconUrl());
+    }
+
+    /**
+     * Tests successful adaptation of populated footer resource
+     * into FooterModel and validates all authored values.
+     */
+    @Test
+    void testAdaptToFooterModels() {
+        Resource footerResource = context.resourceResolver().getResource("/content/footer");
+        model = footerResource.adaptTo(FooterModel.class);
 
         List<FooterModel.FooterColumn> footerColumns = model.getFooterLinks();
         assertEquals(2, footerColumns.size());
@@ -102,7 +110,7 @@ class FooterModelTest {
     void testAdaptToFooterModel() {
         Resource footerResource = context.resourceResolver().getResource("/content/footer-empty");
 
-        FooterModel model = footerResource.adaptTo(FooterModel.class);
+        model = footerResource.adaptTo(FooterModel.class);
 
         assertNotNull(model);
         assertNull(model.getTitle());

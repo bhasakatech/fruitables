@@ -54,7 +54,7 @@ public class ServiceHighlights {
      * @return list of ServiceItem objects, never null
      */
     public List<ServiceItem> getServicesList() {
-        return servicesList;
+        return new ArrayList<>(servicesList);
     }
 
     /**
@@ -124,6 +124,7 @@ public class ServiceHighlights {
          *
          * @return color code
          */
+        
         public String getColor() {
             return color;
         }

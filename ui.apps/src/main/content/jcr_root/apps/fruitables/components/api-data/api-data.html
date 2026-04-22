@@ -1,0 +1,21 @@
+<div class="api-table-wrapper">
+
+    <table class="apiTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2">Loading data...</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<!-- Load Client Library -->
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.js @ categories='fruitables.api'}"/>

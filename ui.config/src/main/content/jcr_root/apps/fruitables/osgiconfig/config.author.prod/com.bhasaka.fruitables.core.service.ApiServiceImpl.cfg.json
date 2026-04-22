@@ -1,0 +1,5 @@
+{
+
+  "api": "$[env:API_URL_PROD_AUTHOR;default=https://dummyjson.com/products]",
+  "status": "$[env:API_ENABLED_PROD_AUTHOR;default=true]"
+}

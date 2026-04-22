@@ -1,0 +1,5 @@
+{
+
+  "api": "$[env:CONFIG_API_URL_PUBLISH;default=https://fakestoreapi.com/products]",
+  "status": "$[env:CONFIG_API_ENABLED_PUBLISH;default=false]"
+}

@@ -1,0 +1,4 @@
+{
+  "apiUrl": "$[env:CUSTOM_API_URL_AUTHOR;default=https://fakestoreapi.com/products]",
+  "apiEnabled": "$[env:CUSTOM_API_ENABLED_AUTHOR;default=true]"
+}

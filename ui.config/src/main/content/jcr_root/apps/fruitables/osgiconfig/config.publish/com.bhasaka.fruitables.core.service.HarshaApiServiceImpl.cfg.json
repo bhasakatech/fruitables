@@ -1,0 +1,4 @@
+{
+  "apiUrl": "$[env:REST_API_URL_PUBLISH;default=https://gorest.co.in/public/v2/users]",
+  "enableApi": "$[env:REST_ENABLE_API_PUBLISH;default=true]"
+}

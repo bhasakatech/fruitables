@@ -1,0 +1,4 @@
+{
+  "apiUrl": "$[env:REST_API_URL_AUTHOR;]",
+  "enableApi": "$[env:REST_ENABLE_API_AUTHOR;default=true]"
+}

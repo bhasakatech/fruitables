@@ -1,0 +1,21 @@
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.ProductListModelAem" />
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlib.css @ categories='fruitables.productListAem'}" />
+
+<div class="product-list">
+    <sly data-sly-list.product="${model.products}">
+        <div class="product-card">
+            <img src="${product.image}" alt="${product.name}" class="product-image" />
+            <div class="product-content">
+                <div class="product-title">${product.name}</div>
+                <div class="product-subtitle">${product.brand}</div>
+                <div class="product-description">
+                    ${product.description @ context='html'}
+                </div>
+                <div class="product-price"><span>Rs.</span>${product.price}</div>
+                <div class="product-button">Buy Now</div>
+            </div>
+        </div>
+    </sly>
+</div>

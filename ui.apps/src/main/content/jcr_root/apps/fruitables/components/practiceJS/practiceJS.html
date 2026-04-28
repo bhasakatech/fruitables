@@ -1,0 +1,18 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlib.all @ categories='fruitables.practiceJS'}" />
+
+<div>
+
+    <div>
+        <label for="firstName">firstName</label>
+        <input type="text" id="firstName" name="firstName"/>
+    </div>
+    <div>
+        <label for="lastName">lastName</label>
+        <input type="text" id="lastName" name="lastName" required/>
+    </div>
+    <button id="submitBtn" onclick="showMessage()" class="btn btn-primary">Submit</button>
+</div>
+
+<p id="output"></p>
+   

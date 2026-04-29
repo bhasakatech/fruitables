@@ -1,0 +1,46 @@
+.image-text-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+}
+.image-text-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+.image-text-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.image-text-text {
+    flex: 1;
+}
+.image-text-text p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+.img-left .image-text-container {
+    flex-direction: row;
+}
+.img-right .image-text-container {
+    flex-direction: row-reverse;
+}
+
+.text-top .image-text-text {
+    align-self: flex-start;
+}
+.text-bottom .image-text-text {
+    align-self: flex-end;
+}
+.bg-light {
+    background-color: #ffffff;
+    color: #333;
+}
+.bg-dark {
+    background-color: grey;
+    color: #060606;
+}
+
+ 

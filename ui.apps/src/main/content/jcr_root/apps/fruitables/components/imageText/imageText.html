@@ -1,0 +1,20 @@
+<!-- <sly data-sly-use.model="com.bhasaka.fruitables.core.models.ImageText"/> -->
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.css @ categories='fruitables.imageText'}"/>
+
+<div class="image-text-container ${currentStyle.cssClass}">
+    
+    <div class="image-text-text">
+        <sly data-sly-resource="${'text' @ resourceType='fruitables/components/text'}"></sly>
+    </div>
+
+    <div class="image-text-image">
+        <sly data-sly-resource="${'image' @ resourceType='fruitables/components/image'}"></sly>
+    </div>
+
+</div>
+
+
+
+
+

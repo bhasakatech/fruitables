@@ -1,0 +1,42 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.all @ categories='fruitables.DynamicArticle'}"/>
+
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.DynamicArticlesModel"/>
+
+<template data-sly-template.header>
+    <h2>Bhasaka Technologies</h2>
+</template>
+
+<div class="header-template" data-sly-call="${header}"></div>
+
+<div class="article-container" data-sly-list.article="${model.articles}">
+
+    <div class="article-card">
+
+        <p class="article-count">Article #${articleList.count}</p>
+
+        <div class="article-card-image">
+            <sly data-sly-set.img="${'image' @format=[articleList.index]}"/>
+            <sly data-sly-resource="${img @ resourceType='fruitables/components/image'}"/>
+        </div>
+
+        <div class="article-card-description ${articleList.first ? 'highlight-description-article' : ''}">
+                ${article.description @ context='html'}
+        </div>
+
+        <sly data-sly-test="${article.showAuthor}">
+            <div class="author-card-details">
+                <p>${article.articleType}</p>
+                <p>${article.authorName}</p>
+                <p>${article.articleDate}</p>
+            </div>
+        </sly>
+
+        <div class="article-card-button" data-sly-test="${articleList.last}">
+            <sly data-sly-set.btn="${'button' @format=[articleList.index]}"/>
+            <sly data-sly-resource="${btn @ resourceType='fruitables/components/button'}"/>
+        </div>
+        <p class="article-index"><span>Index : </span>#${articleList.index}</p>
+    </div>
+
+</div>

@@ -50,7 +50,7 @@ public class DynamicCFArticleModel {
     protected void init() {
         if(cfPath != null) {
             for(String contentFragmentPath : cfPath) {
-                LOG.info("Cf Path : {}", contentFragmentPath);
+                LOG.info("Cf Path");
                 Resource contentFragmentresource = resourceResolver.getResource(contentFragmentPath);
                 if(contentFragmentresource != null) {
                     ContentFragment contentFragment = contentFragmentresource.adaptTo(ContentFragment.class);

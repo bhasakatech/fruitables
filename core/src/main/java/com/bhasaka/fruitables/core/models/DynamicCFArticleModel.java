@@ -67,6 +67,7 @@ public class DynamicCFArticleModel {
                             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                             Date date = simpleDateFormat.parse(contentFragment.getElement("articleDate").getContent());
                             dynamicCfArticles.setArticleDate(date);
+                            LOG.info("Article Date is printing");
 
                         } catch (Exception e) {
                             LOG.error("Getting exception : {}", e.getMessage());

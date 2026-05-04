@@ -34,7 +34,6 @@ public class DynamicCFArticleModel {
     @SlingObject
     private ResourceResolver resourceResolver;
 
-    //Getters
     public String[] getCfPath() {
         return cfPath;
     }

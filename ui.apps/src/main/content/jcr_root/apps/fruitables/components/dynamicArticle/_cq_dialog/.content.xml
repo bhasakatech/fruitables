@@ -7,46 +7,52 @@
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
-            <articles
+            <v1container
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                composite="{Boolean}true"
-                fieldLabel="Articles">
-                <field
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="granite/ui/components/coral/foundation/container"
-                    name="./articles">
-                    <items jcr:primaryType="nt:unstructured">
-                        <description
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <articles
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true"
+                        fieldLabel="Articles">
+                        <field
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                            fieldLabel="Description"
-                            name="./description"
-                            useFixedInlineToolbar="true"/>
-                        <showAuthor
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                            name="./showAuthor"
-                            text="Show Author Details"
-                            value="true"/>
-                        <articleType
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Article Type"
-                            name="./articleType"/>
-                        <authorName
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Author Name"
-                            name="./authorName"/>
-                        <articleDate
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
-                            fieldLabel="Article Date"
-                            name="./articleDate"/>
-                    </items>
-                </field>
-            </articles>
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./articles">
+                            <items jcr:primaryType="nt:unstructured">
+                                <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                    fieldLabel="Description"
+                                    name="./description"
+                                    useFixedInlineToolbar="true"/>
+                                <showAuthor
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    name="./showAuthor"
+                                    text="Show Author Details"
+                                    value="true"/>
+                                <articleType
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Article Type"
+                                    name="./articleType"/>
+                                <authorName
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Author Name"
+                                    name="./authorName"/>
+                                <articleDate
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+                                    fieldLabel="Article Date"
+                                    name="./articleDate"/>
+                            </items>
+                        </field>
+                    </articles>
+                </items>
+            </v1container>
         </items>
     </content>
 </jcr:root>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Dynamic CF Article"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[cq.authoring.dialog]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <sourceType
+                granite:class="cq-dialog-dropdown-showhide"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                fieldLabel="Source Type"
+                name="./sourceType">
+                <items jcr:primaryType="nt:unstructured">
+                    <cf
+                        jcr:primaryType="nt:unstructured"
+                        text="Content Fragment"
+                        value="cf"/>
+                    <resource
+                        jcr:primaryType="nt:unstructured"
+                        text="Resource Type"
+                        value="resource"/>
+                </items>
+                <granite:data
+                    jcr:primaryType="nt:unstructured"
+                    cq-dialog-dropdown-showhide-target=".source-toggle"/>
+            </sourceType>
+            <cfContainer
+    granite:class="hide source-toggle"
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="granite/ui/components/coral/foundation/container">
+                <granite:data
+        jcr:primaryType="nt:unstructured"
+        showhidetargetvalue="cf"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <cfList
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+            fieldLabel="Content Fragments"
+            composite="{Boolean}true">
+                        <field
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                            <items jcr:primaryType="nt:unstructured">
+                                <cfPath
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                        fieldLabel="Content Fragment Path"
+                        name="./cfPath"
+                        rootPath="/content/dam"
+                        forceSelection="{Boolean}true"/>
+                            </items>
+                        </field>
+                    </cfList>
+                </items>
+            </cfContainer>
+            <v1container
+                granite:class="hide source-toggle"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <granite:data
+                    jcr:primaryType="nt:unstructured"
+                    showhidetargetvalue="resource"/>
+                <items jcr:primaryType="nt:unstructured"/>
+            </v1container>
+        </items>
+    </content>
+</jcr:root>

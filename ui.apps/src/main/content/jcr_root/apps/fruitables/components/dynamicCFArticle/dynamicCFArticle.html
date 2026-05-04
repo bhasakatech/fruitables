@@ -1,0 +1,23 @@
+<sly data-sly-use.model="com.bhasaka.fruitables.core.models.DynamicCFArticleModel"/>
+<sly data-sly-use.dynamicArticleModel="com.bhasaka.fruitables.core.models.DynamicArticlesModel"/>
+
+<div data-sly-test="${model.sourceType == 'cf'}">
+    <div class="articles-container">
+        <sly data-sly-list.item="${model.cfDataList}">
+            <div class="article-card">
+                <img src="${item.articleImage @ context='uri'}" alt="${item.articleType}" />
+                <p>${item.description @ context='html'}</p>
+                <span>${item.articleType}</span>
+                <span>${item.authorName}</span>
+                <span>${'yyyy-MM-dd' @ format=item.articleDate}</span>
+                <a href="${item.buttonLink @ extension='html'}">
+                    ${item.buttonLabel}
+                </a>
+            </div>
+        </sly>
+    </div>
+</div>
+
+<div data-sly-test="${model.sourceType == 'resource'}">
+     <div data-sly-resource="${resource @ resourceType='fruitables/components/dynamicArticle'}"></div>
+</div>

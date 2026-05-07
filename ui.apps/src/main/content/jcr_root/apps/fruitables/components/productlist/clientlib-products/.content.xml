@@ -3,4 +3,3 @@
     jcr:primaryType="cq:ClientLibraryFolder"
     allowProxy="{Boolean}true"
     categories="[fruitables.product]"/>
-    

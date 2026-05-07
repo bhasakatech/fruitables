@@ -36,10 +36,10 @@
                                 value="Your Email *"/>
                             <reviewPlaceholder
                                 jcr:primaryType="nt:unstructured"
-                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                 useFixedInlineToolbar="{Boolean}true"
+                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                 fieldLabel="Review Placeholder"
                                 name="./reviewPlaceholder"
+                                useFixedInlineToolbar="{Boolean}true"
                                 value="Your Review *"/>
                             <ratingLabel
                                 jcr:primaryType="nt:unstructured"

@@ -1,0 +1,10 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+<sly data-sly-call="${clientlib.all @ categories='fruitables.BlogCF'}"/>
+
+<select id="category-dropdown">
+  <option value="technology">Technology</option>
+  <option value="war">War</option>
+</select>
+
+<div id="blog-container"></div>
+

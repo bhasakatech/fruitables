@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Sidebar Section Properties"
     sling:resourceType="cq/gui/components/authoring/dialog">
@@ -17,8 +17,8 @@
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <layoutPosition
-                                jcr:primaryType="nt:unstructured"
                                 granite:class="cq-dialog-dropdown-showhide"
+                                jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                 fieldDescription="Choose whether the sidebar appears on the left or right side on larger screens. Right layout renders only keyword search, categories, featured products, and banner."
                                 fieldLabel="Sidebar Position"
@@ -39,8 +39,8 @@
                                 </items>
                             </layoutPosition>
                             <sectionTitle
-                                jcr:primaryType="nt:unstructured"
                                 granite:class="hide sidebar-section-layout-dialog-target"
+                                jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="Section Title"
                                 name="./sectionTitle"
@@ -63,8 +63,8 @@
                                 name="./searchImage"
                                 rootPath="/content/dam/fruitables"/>
                             <sortingLabel
-                                jcr:primaryType="nt:unstructured"
                                 granite:class="hide sidebar-section-layout-dialog-target"
+                                jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="Sorting Label"
                                 name="./sortingLabel"
@@ -74,8 +74,8 @@
                                     showhidetargetvalue="left"/>
                             </sortingLabel>
                             <sortingOptions
-                                jcr:primaryType="nt:unstructured"
                                 granite:class="hide sidebar-section-layout-dialog-target"
+                                jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                 composite="{Boolean}true"
                                 fieldLabel="Sorting Options">
@@ -105,7 +105,6 @@
                             </sortingOptions>
                         </items>
                     </searchAndSorting>
-                    
                     <categoryTab
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Categorys"
@@ -116,7 +115,6 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="Category Title"
                                 name="./categoryTitle"/>
-
                             <fragmentRootPath
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
@@ -125,7 +123,6 @@
                                 name="./fragmentRootPath"
                                 required="{Boolean}true"
                                 rootPath="/content/dam/fruitables"/>
-
                             <categoryTags
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="cq/gui/components/coral/common/form/tagfield"
@@ -136,10 +133,9 @@
                                 rootPath="/content/cq:tags"/>
                         </items>
                     </categoryTab>
-
                     <categoryDisplayTab
-                        jcr:primaryType="nt:unstructured"
                         granite:class="hide sidebar-section-layout-dialog-target"
+                        jcr:primaryType="nt:unstructured"
                         jcr:title="Category Display"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <granite:data
@@ -151,7 +147,6 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="Cart Button Text"
                                 name="./cartButtonText"/>
-
                             <cardStyle
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -168,13 +163,11 @@
                                         value="compact"/>
                                 </items>
                             </cardStyle>
-
                             <priceUnit
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                 fieldLabel="Price Unit"
                                 name="./priceUnit"/>
-
                             <showDescription
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -183,7 +176,6 @@
                                 text="Show Description"
                                 uncheckedValue="false"
                                 value="true"/>
-
                             <showRating
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -192,7 +184,6 @@
                                 text="Show Rating"
                                 uncheckedValue="false"
                                 value="true"/>
-
                             <showCategory
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -201,7 +192,6 @@
                                 text="Show Category Badge"
                                 uncheckedValue="false"
                                 value="true"/>
-
                             <showBorder
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -209,7 +199,6 @@
                                 text="Show Card Border"
                                 uncheckedValue="false"
                                 value="true"/>
-
                             <categoryColor
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -230,7 +219,6 @@
                                         value="blue"/>
                                 </items>
                             </categoryColor>
-
                             <badgePosition
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -257,10 +245,9 @@
                             </badgePosition>
                         </items>
                     </categoryDisplayTab>
-
                     <price
-                        jcr:primaryType="nt:unstructured"
                         granite:class="hide sidebar-section-layout-dialog-target"
+                        jcr:primaryType="nt:unstructured"
                         jcr:title="Price"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <granite:data
@@ -300,8 +287,8 @@
                         </items>
                     </price>
                     <additional
-                        jcr:primaryType="nt:unstructured"
                         granite:class="hide sidebar-section-layout-dialog-target"
+                        jcr:primaryType="nt:unstructured"
                         jcr:title="Additional"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <granite:data

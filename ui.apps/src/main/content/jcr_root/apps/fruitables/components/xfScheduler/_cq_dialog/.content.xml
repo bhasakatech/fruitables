@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="XF Scheduler Dialog"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+
+            <type
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                fieldLabel="Select Type"
+                name="./type"
+                granite:class="cq-dialog-dropdown-showhide">
+                <granite:data
+                    jcr:primaryType="nt:unstructured"
+                    cq-dialog-dropdown-showhide-target=".type-showhide-target"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <page
+                        jcr:primaryType="nt:unstructured"
+                        text="Page"
+                        value="page"/>
+                    <asset
+                        jcr:primaryType="nt:unstructured"
+                        text="Asset"
+                        value="asset"/>
+                </items>
+            </type>
+
+            <pageContainer
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container"
+                granite:class="hide type-showhide-target">
+                <granite:data
+                    jcr:primaryType="nt:unstructured"
+                    showhidetargetvalue="page"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <pagePaths
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        fieldLabel="Page Paths">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                            name="./pagePaths"
+                            rootPath="/content"/>
+                    </pagePaths>
+                </items>
+            </pageContainer>
+
+            <assetContainer
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container"
+                granite:class="hide type-showhide-target">
+                <granite:data
+                    jcr:primaryType="nt:unstructured"
+                    showhidetargetvalue="asset"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <assetPaths
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        fieldLabel="Asset Paths">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                            name="./assetPaths"
+                            rootPath="/content/dam"/>
+                    </assetPaths>
+                </items>
+            </assetContainer>
+        </items>
+    </content>
+</jcr:root>

@@ -1,8 +1,10 @@
 package com.bhasaka.fruitables.core.service;
 
 import com.day.cq.dam.api.Asset;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.sling.api.resource.*;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.event.jobs.Job;
 import org.apache.sling.event.jobs.consumer.JobConsumer;
 import org.osgi.service.component.annotations.Component;
@@ -25,9 +27,14 @@ public class AssetDeleteJobConsumer implements JobConsumer {
     @Reference
     private ServiceUtil serviceUtil;
 
+    private final ObjectMapper objectMapper =
+            new ObjectMapper();
+
     @Override
     public JobResult process(Job job) {
+
         log.info("========= SLING JOB STARTED =========");
+
         String assetPath =
                 job.getProperty("assetPath", String.class);
 
@@ -35,9 +42,12 @@ public class AssetDeleteJobConsumer implements JobConsumer {
 
         try (ResourceResolver resolver =
                      serviceUtil.getServiceUserMap()) {
+
             log.info("Service Resolver Created");
+
             Resource assetResource =
                     resolver.getResource(assetPath);
+
             if (assetResource == null) {
                 log.error("Asset Resource Not Found");
                 return JobResult.FAILED;
@@ -45,7 +55,8 @@ public class AssetDeleteJobConsumer implements JobConsumer {
 
             log.info("Asset Resource Found");
 
-            Asset asset = assetResource.adaptTo(Asset.class);
+            Asset asset =
+                    assetResource.adaptTo(Asset.class);
 
             if (asset == null) {
                 log.error("Asset Adaptation Failed");
@@ -55,54 +66,66 @@ public class AssetDeleteJobConsumer implements JobConsumer {
             log.info("Asset Adapted Successfully");
 
 
-            // JSON creation
-            StringBuilder jsonBuilder =
-                    new StringBuilder();
+              //JSON creation using ObjectMapper
 
-            jsonBuilder.append("{");
+            Map<String, Object> jsonMap =
+                    new HashMap<>();
 
-            // asset name
-            jsonBuilder.append("\"assetName\":\"")
-                    .append(asset.getName())
-                    .append("\",");
+            jsonMap.put(
+                    "assetName",
+                    asset.getName()
+            );
 
-            // asset path
-            jsonBuilder.append("\"assetPath\":\"")
-                    .append(assetPath)
-                    .append("\",");
+            jsonMap.put(
+                    "assetPath",
+                    assetPath
+            );
 
-            // deleted time
-            jsonBuilder.append("\"deletedTime\":\"")
-                    .append(Calendar.getInstance().getTime())
-                    .append("\",");
+            jsonMap.put(
+                    "deletedTime",
+                    Calendar.getInstance().getTime()
+            );
 
-
-            // main json close
-            jsonBuilder.append("}");
+            String jsonData =
+                    objectMapper.writeValueAsString(jsonMap);
 
             log.info("Metadata JSON Created");
 
-            // create /var/deleteAssets
+
+             // create /var/deleteAssets
+
             Resource deleteAssetsFolder =
                     resolver.getResource(
                             "/var/deleteAssets"
                     );
 
             if (deleteAssetsFolder == null) {
+
                 log.info("/var/deleteAssets Not Present");
-                Map<String, Object> map =
+
+                Map<String, Object> folderMap =
                         new HashMap<>();
-                map.put("jcr:primaryType",
-                        "sling:Folder");
+
+                folderMap.put(
+                        "jcr:primaryType",
+                        "sling:Folder"
+                );
+
                 deleteAssetsFolder =
-                        resolver.create(resolver.getResource("/var"),
-                                "deleteAssets", map);
+                        resolver.create(
+                                resolver.getResource("/var"),
+
+                                "deleteAssets",
+                                folderMap
+                        );
+
                 resolver.commit();
 
                 log.info("/var/deleteAssets Created");
             }
 
-            // json file name
+            //  JSON file name
+
             String fileName =
                     asset.getName()
                             .replace(".", "_")
@@ -112,15 +135,22 @@ public class AssetDeleteJobConsumer implements JobConsumer {
 
             log.info("JSON File Name : {}", fileName);
 
-            // create nt:file
+
+            //create nt:file
+
             Node fileNode =
                     deleteAssetsFolder
                             .adaptTo(Node.class)
-                            .addNode(fileName, "nt:file");
+                            .addNode(
+                                    fileName,
+                                    "nt:file"
+                            );
 
             log.info("nt:file Node Created");
 
+
             // create jcr:content
+
             Node contentNode =
                     fileNode.addNode(
                             "jcr:content",
@@ -129,30 +159,43 @@ public class AssetDeleteJobConsumer implements JobConsumer {
 
             log.info("jcr:content Node Created");
 
-            // store json
+            /*
+             * store json
+             */
             contentNode.setProperty(
                     "jcr:data",
-                    jsonBuilder.toString()
+                    jsonData
             );
+
             contentNode.setProperty(
                     "jcr:mimeType",
                     "application/json"
             );
+
             contentNode.setProperty(
                     "jcr:lastModified",
                     Calendar.getInstance()
             );
+
             resolver.commit();
+
             log.info("Metadata JSON Stored Successfully");
 
             // delete asset
             resolver.delete(assetResource);
+
             resolver.commit();
+
             log.info("Asset Deleted Successfully");
+
             log.info("========= SLING JOB COMPLETED =========");
+
             return JobResult.OK;
+
         } catch (Exception e) {
+
             log.error("Exception Occurred", e);
+
             return JobResult.FAILED;
         }
     }

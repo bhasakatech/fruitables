@@ -2,6 +2,7 @@ package com.bhasaka.fruitables.core.servlets;
 
 import com.bhasaka.fruitables.core.service.HarshaApiService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
@@ -17,6 +18,7 @@ import java.io.IOException;
                 "sling.servlet.paths=/bin/harsha",
                 "sling.servlet.methods=GET"
         })
+@Slf4j
 public class HarshaApiServlet extends SlingSafeMethodsServlet {
 
     @Reference
@@ -32,6 +34,9 @@ public class HarshaApiServlet extends SlingSafeMethodsServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
+        log.info("HarshaApiServlet doGet");
+        log.error("HarshaApiServlet doGet Error");
+        log.debug("HarshaApiServlet doGet Debug");
         // Get data from service
         Object data = harshaApiService.getData();
 

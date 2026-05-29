@@ -18,3 +18,19 @@
 </sly>
 
 <sly data-sly-resource="${'contexthub' @ resourceType='granite/contexthub/components/contexthub'}"/>
+
+<sly data-sly-use.seoModel="com.bhasaka.fruitables.core.models.SeoModel"/>
+ <sly data-sly-use.metaImageModel="com.bhasaka.fruitables.core.models.ImageFallBackModel"/>
+
+<meta property="og:title"
+      content="${seoModel.ogTitle}"/>
+
+<meta property="og:description"
+      content="${seoModel.ogDescription}"/>
+
+<meta property="og:image"
+      content="${seoModel.ogImage}"/>
+      
+<meta property="og:imagePath"
+      content="${metaImageModel.metaImagePath}" />
+

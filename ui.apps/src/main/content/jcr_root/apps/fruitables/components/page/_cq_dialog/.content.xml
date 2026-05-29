@@ -38,6 +38,36 @@
                             </column>
                         </items>
                     </experienceFragment>
+                    <openGraph
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="OG Tags"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <ogDescription
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        fieldLabel="OG Description"
+                                        name="./ogDescription"/>
+                                    <ogTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="OG Title"
+                                        name="./ogTitle"/>
+                                    <ogImage
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="og Image"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="OG Image"
+                                        name="./ogImage"
+                                        rootPath="/content/dam"/>
+                                </items>
+                            </column>
+                        </items>
+                    </openGraph>
                 </items>
             </tabs>
         </items>

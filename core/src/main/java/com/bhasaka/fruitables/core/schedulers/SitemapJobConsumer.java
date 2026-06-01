@@ -6,12 +6,7 @@ import com.bhasaka.fruitables.core.service.ServiceUtil;
 import com.day.cq.commons.Externalizer;
 import com.day.cq.dam.api.AssetManager;
 
-import com.day.cq.search.PredicateGroup;
-import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
-
-import com.day.cq.search.result.Hit;
-import com.day.cq.search.result.SearchResult;
 
 import org.apache.sling.api.resource.ResourceResolver;
 
@@ -24,15 +19,17 @@ import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.jcr.Node;
+import javax.jcr.NodeIterator;
 import javax.jcr.Session;
+import javax.jcr.query.QueryManager;
+import javax.jcr.query.Query;
+import javax.jcr.query.QueryResult;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import java.nio.charset.StandardCharsets;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Component(
         service = JobConsumer.class,
@@ -82,7 +79,7 @@ public class SitemapJobConsumer implements JobConsumer {
 
             Session session = resolver.adaptTo(Session.class);
 
-            Map<String, String> map = new HashMap<>();
+            /*     Map<String, String> map = new HashMap<>();
 
             map.put("path", rootPath);
             map.put("type", "cq:Page");
@@ -124,6 +121,53 @@ public class SitemapJobConsumer implements JobConsumer {
 
                 xml.append("</url>");
             }
+
+            xml.append("</urlset>");
+*/
+            QueryManager queryManager = session.getWorkspace().getQueryManager();
+
+            String sql2 =
+                    "SELECT * FROM [cq:Page] AS page " +
+                            "WHERE ISDESCENDANTNODE(page, '" + rootPath + "')";
+
+            Query query =
+                    queryManager.createQuery(sql2, Query.JCR_SQL2);
+
+            QueryResult result = query.execute();
+
+            NodeIterator nodes = result.getNodes();
+
+            StringBuilder xml = new StringBuilder();
+
+            xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+            xml.append("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
+
+            int count = 0;
+
+            while (nodes.hasNext()) {
+
+                Node node = nodes.nextNode();
+
+                String path = node.getPath();
+
+                count++;
+
+                LOG.info("Page Path : {}", path);
+
+                String externalizedUrl =
+                        externalizer.publishLink(
+                                resolver,
+                                path
+                        ) + ".html";
+
+                xml.append("<url>");
+                xml.append("<loc>");
+                xml.append(externalizedUrl);
+                xml.append("</loc>");
+                xml.append("</url>");
+            }
+
+            LOG.info("Total Pages Found : {}", count);
 
             xml.append("</urlset>");
 
@@ -174,7 +218,7 @@ public class SitemapJobConsumer implements JobConsumer {
                     true
             );
 
-            resolver.commit();
+//            resolver.commit();
 
             LOG.info("Sitemap Stored in DAM : {}", assetPath);
 

@@ -1,0 +1,12 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlib.all @ categories='fruitables.fetch-api'}" />
+<div class="api-table-wrapper">
+    <h2 class="api-title">Dynamic API Table</h2>
+
+    <table class="api-table" id="apiTable">
+        <thead>
+            <tr id="tableHead"></tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+</div>

@@ -1,0 +1,18 @@
+.api-table-wrapper {
+    padding-top: 10rem;
+}
+
+.api-title {
+    text-align: center;
+}
+
+.api-table {
+    margin-left: 10rem;
+    border-collapse: collapse;
+}
+
+.api-table th,
+.api-table td {
+    padding: 8px;
+    border: 1px solid #000;
+}
